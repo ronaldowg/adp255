@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: ADP255 - Trabalho em Grupo ML
+title: ADP255 - Trabalho em Grupo
 author: Grupo 2 -> Jheniffer, Marcos, Ronaldo G., Ronaldo L.
 logo: logo.png
 
@@ -28,7 +28,7 @@ html:
 launch_buttons:
   notebook_interface : "classic" # The interface interactive links will activate ["classic", "jupyterlab"]
   binderhub_url      : "https://mybinder.org"
-  thebe              : true
+  thebe              : false
 
 repository:
   url          : https://github.com/ronaldowg/adp255  # The URL to your book's repository

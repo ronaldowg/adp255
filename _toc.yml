@@ -2,7 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: p
+- file: passo0
+- file: passo1
+- file: passo2
+- file: passo3
+- file: passo4
