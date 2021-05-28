@@ -1,0 +1,2444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passo 1: Coletar dados &#8212; ADP255 - Trabalho em Grupo</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Passo 2: Preparar os dados" href="passo2.html" />
+    <link rel="prev" title="Passo 0: Look at the big picture" href="passo0.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ADP255 - Trabalho em Grupo</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   ADP255 - Machine Learning
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo0.html">
+   Passo 0: Look at the big picture
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Passo 1: Coletar dados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo2.html">
+   Passo 2: Preparar os dados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo3.html">
+   Passo 3: Testar diferentes algoritmos preditivos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo4.html">
+   Passo 4: Apresentar e interpretar o modelo
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/passo1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ronaldowg/adp255"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fpasso1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ronaldowg/adp255/main?urlpath=tree/passo1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Passo 1: Coletar dados
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dados-de-vendas-de-pulsadores-interruptores-e-tomadas">
+     <strong>
+      Dados de vendas de Pulsadores, Interruptores e Tomadas
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indice-de-atividade-economica-do-banco-central-ibc-br">
+     <strong>
+      Índice de Atividade Econômica do Banco Central
+     </strong>
+     (IBC-Br)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#taxa-de-desemprego-percentual-de-cidadaos-desempregados">
+     <strong>
+      Taxa de desemprego
+     </strong>
+     (percentual de cidadãos desempregados).
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#direcionamento-dos-depositos-de-poupanca-para-construcao-civil">
+     <strong>
+      Direcionamento dos Depósitos de Poupança para Construção Civil
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#financiamento-imobiliario">
+     <strong>
+      Financiamento Imobiliário
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#financiamento-residencial">
+       Financiamento Residencial
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#financiamento-comercial">
+       Financiamento Comercial
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dados-sobre-a-exportacao-de-material-eletrico">
+     <strong>
+      Dados sobre a exportação de material elétrico
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#produto-interno-bruto-pib">
+     <strong>
+      Produto Interno Bruto (PIB)
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pib-absoluto">
+       PIB Absoluto
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pib-variacao-mensal">
+       PIB Variação Mensal
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#consumo-de-energia-eletrica">
+     <strong>
+      Consumo de Energia Elétrica
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indice-de-confianca-da-construcao-icst">
+     <strong>
+      Índice de Confiança da Construção (ICST)
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geracao-de-energia-eletrica">
+     <strong>
+      Geração de Energia Elétrica
+     </strong>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confianca-do-empresario-do-empresario-industrial-icei">
+     <strong>
+      Confiança do Empresário do Empresário Industrial (ICEI)
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#montagem-do-data-set">
+   <strong>
+    Montagem do Data Set
+   </strong>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="passo-1-coletar-dados">
+<h1>Passo 1: Coletar dados<a class="headerlink" href="#passo-1-coletar-dados" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Histórico demanda interruptores. <strong>OK</strong></p></li>
+<li><p>Índice da atividade econômica. <strong>OK</strong></p></li>
+<li><p>Direcionamento financ. construção civil <strong>OK</strong></p></li>
+<li><p>Financiamento imobiliário <strong>OK</strong></p></li>
+<li><p>PIB (Setor Construção) <strong>OK</strong></p></li>
+<li><p>Taxa de crescimento Setor Construção</p></li>
+<li><p>Consumo de energia elétrica <strong>OK</strong></p></li>
+<li><p>Geração (e transmissão de energia) <strong>OK</strong></p></li>
+<li><p>Índice de confiança da Construção (ICST) <strong>OK</strong></p></li>
+<li><p>Taxa de desemprego <strong>OK</strong></p></li>
+<li><p>Variação mensal do PIB (Calculada a partir de 5.) <strong>OK</strong></p></li>
+<li><p>Índice de Confiança do Empresário Industrial <strong>OK</strong></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dados-de-vendas-de-pulsadores-interruptores-e-tomadas">
+<h2><strong>Dados de vendas de Pulsadores, Interruptores e Tomadas</strong><a class="headerlink" href="#dados-de-vendas-de-pulsadores-interruptores-e-tomadas" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vendas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/serie_historica_2014_2020.csv&#39;</span><span class="p">)</span> <span class="c1"># Dados vendas interruptores, tomadas e pulsadores - ADP255.</span>
+<span class="n">vendas</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">vendas</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">vendas</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">vendas</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 84 entries, 0 to 83
+Data columns (total 6 columns):
+ #   Column         Non-Null Count  Dtype
+---  ------         --------------  -----
+ 0   ano            84 non-null     int64
+ 1   mes            84 non-null     int64
+ 2   interruptores  84 non-null     int64
+ 3   pulsadores     84 non-null     int64
+ 4   tomadas        84 non-null     int64
+ 5   total          84 non-null     int64
+dtypes: int64(6)
+memory usage: 4.1 KB
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;ano&#39;, &#39;mes&#39;, &#39;interruptores&#39;, &#39;pulsadores&#39;, &#39;tomadas&#39;, &#39;total&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cria a coluna de data no formato Datetime</span>
+<span class="n">vendas</span> <span class="o">=</span> <span class="n">vendas</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ano&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;mes&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">})</span>
+<span class="n">vendas</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">vendas</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">vendas</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">]])</span>
+
+<span class="c1"># seta a coluna de data como index</span>
+<span class="n">vendas</span> <span class="o">=</span> <span class="n">vendas</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+
+<span class="n">vendas</span> <span class="c1"># Base de dados para o trabalho.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>interruptores</th>
+      <th>pulsadores</th>
+      <th>tomadas</th>
+      <th>total</th>
+      <th>day</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>2014</td>
+      <td>1</td>
+      <td>5109625</td>
+      <td>149613</td>
+      <td>8168659</td>
+      <td>13427897</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>2014</td>
+      <td>2</td>
+      <td>5235998</td>
+      <td>141128</td>
+      <td>8774994</td>
+      <td>14152120</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>2014</td>
+      <td>3</td>
+      <td>5100680</td>
+      <td>144853</td>
+      <td>8465237</td>
+      <td>13710770</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>2014</td>
+      <td>4</td>
+      <td>4695875</td>
+      <td>132094</td>
+      <td>7774926</td>
+      <td>12602895</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>2014</td>
+      <td>5</td>
+      <td>5563254</td>
+      <td>156946</td>
+      <td>8883242</td>
+      <td>14603442</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>2020</td>
+      <td>8</td>
+      <td>11713475</td>
+      <td>210921</td>
+      <td>22059317</td>
+      <td>33983713</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>2020</td>
+      <td>9</td>
+      <td>10635364</td>
+      <td>229234</td>
+      <td>21341217</td>
+      <td>32205815</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>2020</td>
+      <td>10</td>
+      <td>11688385</td>
+      <td>213752</td>
+      <td>21847140</td>
+      <td>33749277</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>2020</td>
+      <td>11</td>
+      <td>11337980</td>
+      <td>237001</td>
+      <td>22187188</td>
+      <td>33762169</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>2020</td>
+      <td>12</td>
+      <td>10198238</td>
+      <td>202845</td>
+      <td>21089020</td>
+      <td>31490103</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="c1"># plota o total de vendas e por tipo de produto</span>
+<span class="n">cols_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">]</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">vendas</span><span class="p">[</span><span class="n">cols_plot</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;quantidade&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo1_6_0.png" src="_images/passo1_6_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="indice-de-atividade-economica-do-banco-central-ibc-br">
+<h2><strong>Índice de Atividade Econômica do Banco Central</strong> (IBC-Br)<a class="headerlink" href="#indice-de-atividade-economica-do-banco-central-ibc-br" title="Permalink to this headline">¶</a></h2>
+<p>Reflete as atividades da indústria, dos serviços e da agropecuária. Divulgado mensalmente, tem metodologia diferente da do PIB, portanto não é exatamente uma prévia deste índice.​</p>
+<p>Fonte: <a class="reference external" href="https://www.bcb.gov.br/estatisticas/grafico/graficoestatistica/ibcbr">https://www.bcb.gov.br/estatisticas/grafico/graficoestatistica/ibcbr</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atividade_economica</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/IBC-Br-Atividade_Economica_2012_2020.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="c1"># Atividade Econômica - BACEN.</span>
+
+<span class="n">atividade_economica</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">atividade_economica</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">atividade_economica</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">atividade_economica</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">atividade_economica</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">atividade_economica</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">])</span>
+
+<span class="n">atividade_economica</span> <span class="o">=</span> <span class="n">atividade_economica</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DateTime&#39;</span><span class="p">)</span>
+
+<span class="n">atividade_economica</span> <span class="o">=</span> <span class="n">atividade_economica</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-12-12&#39;</span><span class="p">]</span>
+
+<span class="n">atividade_economica</span> <span class="c1"># Índice de atividade econômica.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 118 entries, 0 to 117
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype  
+---  ------    --------------  -----  
+ 0   DateTime  118 non-null    object 
+ 1   IBC-Br    118 non-null    float64
+dtypes: float64(1), object(1)
+memory usage: 2.0+ KB
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IBC-Br</th>
+    </tr>
+    <tr>
+      <th>DateTime</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>2.75</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>3.13</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>3.09</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>2.37</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>2.23</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>-3.35</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>-3.56</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>-3.94</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>-4.06</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>-3.99</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">atividade_economica</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;DateTime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;IBC-Br&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DateTime&#39;, ylabel=&#39;IBC-Br&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_9_1.png" src="_images/passo1_9_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="taxa-de-desemprego-percentual-de-cidadaos-desempregados">
+<h2><strong>Taxa de desemprego</strong> (percentual de cidadãos desempregados).<a class="headerlink" href="#taxa-de-desemprego-percentual-de-cidadaos-desempregados" title="Permalink to this headline">¶</a></h2>
+<p>É o total de pessoas sem trabalho, mas que procuraram emprego, dividido pelo total de pessoas na força de trabalho. “Força de trabalho” refere-se às pessoas com 14 anos ou mais de idade com potencial para trabalhar.​</p>
+<p>Fonte: <a class="reference external" href="https://www.bcb.gov.br/estatisticas/grafico/graficoestatistica/taxadesocupacao">https://www.bcb.gov.br/estatisticas/grafico/graficoestatistica/taxadesocupacao</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">desemprego</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/Taxa_Desocupacao-Desemprego_2012_2020.csv&#39;</span><span class="p">,</span>  <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span> <span class="c1"># Dados desocupação/desemprego - BACEN.</span>
+<span class="n">desemprego</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">desemprego</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">desemprego</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">desemprego</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">desemprego</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">desemprego</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">])</span>
+<span class="n">desemprego</span> <span class="o">=</span> <span class="n">desemprego</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DateTime&#39;</span><span class="p">)</span>
+
+<span class="n">desemprego</span> <span class="o">=</span> <span class="n">desemprego</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-12-12&#39;</span><span class="p">]</span>
+
+<span class="n">desemprego</span> <span class="c1"># Taxa de percentual de desemprego.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 106 entries, 0 to 105
+Data columns (total 2 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   DateTime             106 non-null    object 
+ 1   Taxa de Desocupação  106 non-null    float64
+dtypes: float64(1), object(1)
+memory usage: 1.8+ KB
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Taxa de Desocupação</th>
+    </tr>
+    <tr>
+      <th>DateTime</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>6.4</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>7.1</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>14.4</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>14.6</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>14.3</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>14.1</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>13.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">desemprego</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;DateTime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Taxa de Desocupação&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DateTime&#39;, ylabel=&#39;Taxa de Desocupação&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_12_1.png" src="_images/passo1_12_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="direcionamento-dos-depositos-de-poupanca-para-construcao-civil">
+<h2><strong>Direcionamento dos Depósitos de Poupança para Construção Civil</strong><a class="headerlink" href="#direcionamento-dos-depositos-de-poupanca-para-construcao-civil" title="Permalink to this headline">¶</a></h2>
+<p>Deve corresponder ao valor contábil bruto dos financiamentos a pessoas naturais para construção de imóveis residenciais (nas condições do Sistema Financeiro de Habitação - SFH ou não) e de imóveis não residenciais.</p>
+<p>Fonte: <a class="reference external" href="https://www.bcb.gov.br/estatisticas/grafico/graficocosic/direcionamento_construcao">https://www.bcb.gov.br/estatisticas/grafico/graficocosic/direcionamento_construcao</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gasto_construcao</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/Construcao_2014_2020.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># Gasto com a Construção Civil - BACEN.</span>
+
+<span class="n">gasto_construcao</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gasto_construcao</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">gasto_construcao</span> <span class="o">=</span> <span class="n">gasto_construcao</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DateTime&#39;</span><span class="p">)</span>
+
+<span class="n">gasto_construcao</span> <span class="o">=</span> <span class="n">gasto_construcao</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-12-12&#39;</span><span class="p">]</span>
+
+<span class="n">taxa</span> <span class="o">=</span> <span class="n">gasto_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-05-01&#39;</span><span class="p">][</span><span class="s1">&#39;Imobiliário&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">gasto_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-04-01&#39;</span><span class="p">][</span><span class="s1">&#39;Imobiliário&#39;</span><span class="p">]</span>
+
+<span class="c1"># Pensar o que fazer em relação a estes 3 meses</span>
+<span class="n">gasto_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-03-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">gasto_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-04-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+<span class="n">gasto_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-02-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">gasto_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-03-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+<span class="n">gasto_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">gasto_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-02-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+
+<span class="n">gasto_construcao</span> <span class="o">=</span> <span class="n">gasto_construcao</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">gasto_construcao</span> <span class="c1"># Gastos com a Construção Civil (residencial + comercial) em bilhões de reais.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Imobiliário</th>
+    </tr>
+    <tr>
+      <th>DateTime</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>1.827669e+10</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>1.859720e+10</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>1.892334e+10</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>1.925519e+10</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>1.959286e+10</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>5.106029e+10</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>5.152290e+10</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>5.201850e+10</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>5.261910e+10</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>5.334332e+10</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">gasto_construcao</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;DateTime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Imobiliário&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DateTime&#39;, ylabel=&#39;Imobiliário&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_15_1.png" src="_images/passo1_15_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="financiamento-imobiliario">
+<h2><strong>Financiamento Imobiliário</strong><a class="headerlink" href="#financiamento-imobiliario" title="Permalink to this headline">¶</a></h2>
+<p><strong>Residencial</strong> registra as operações de crédito destinadas à construção, reforma, ampliação e aquisição de unidades habitacionais, realizadas nas condições regulamentadas pelo Sistema Financeiro da Habitação - SFH, pelo Sistema Hipotecário e por outras modalidades operacionais.</p>
+<p><strong>Comercial</strong> registra as operações de crédito destinadas à construção, reforma, ampliação e aquisição de unidades industriais e comerciais, exceto as habitacionais.</p>
+<p>As rendas a incorporar de financiamentos imobiliários devem ser registradas nas adequadas contas de financiamentos imobiliários, mediante controle em subtítulo de uso interno.Os valores das rubricas são equivalentes ao conceito de carteira ativa das operações de crédito do SCR.</p>
+<p>Fonte: <a class="reference external" href="https://www.bcb.gov.br/estatisticas/grafico/graficocosic/contabil_financiamentos_imobiliarios">https://www.bcb.gov.br/estatisticas/grafico/graficocosic/contabil_financiamentos_imobiliarios</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">financiamentos_construcao</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/Financiamentos_2014_2020.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">financiamentos_construcao</span> <span class="c1"># Tem que selecionar o período que nos interessa.</span>
+<span class="n">financiamentos_construcao</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">financiamentos_construcao</span><span class="p">[</span><span class="s1">&#39;Comercial&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">financiamentos_construcao</span><span class="p">[</span><span class="s1">&#39;Residencial&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="financiamento-residencial">
+<h3>Financiamento Residencial<a class="headerlink" href="#financiamento-residencial" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">financiamento_residencial</span> <span class="o">=</span> <span class="n">financiamentos_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">,</span> <span class="s1">&#39;Residencial&#39;</span><span class="p">]]</span>
+
+<span class="n">financiamento_residencial</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">financiamento_residencial</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">financiamento_residencial</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">financiamento_residencial</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">financiamento_residencial</span> <span class="o">=</span> <span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DateTime&#39;</span><span class="p">)</span>
+
+<span class="n">financiamento_residencial</span> <span class="o">=</span> <span class="n">financiamento_residencial</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-12-12&#39;</span><span class="p">]</span>
+
+<span class="n">taxa</span> <span class="o">=</span> <span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-05-01&#39;</span><span class="p">][</span><span class="s1">&#39;Residencial&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-04-01&#39;</span><span class="p">][</span><span class="s1">&#39;Residencial&#39;</span><span class="p">]</span>
+
+<span class="c1"># Pensar o que fazer em relação a estes 3 meses</span>
+<span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-03-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-04-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+<span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-02-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-03-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+<span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-02-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+
+<span class="n">financiamento_residencial</span> <span class="o">=</span> <span class="n">financiamento_residencial</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">financiamento_residencial</span> <span class="c1"># Volume de financiamentos destinados à construção - Setor Residencial</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Residencial</th>
+    </tr>
+    <tr>
+      <th>DateTime</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>3.791781e+11</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>3.886426e+11</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>3.983434e+11</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>4.082862e+11</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>4.184773e+11</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>6.995890e+11</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>7.067158e+11</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>7.143470e+11</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>7.221730e+11</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>7.309330e+11</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">financiamento_residencial</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;DateTime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Residencial&quot;</span><span class="p">)</span> <span class="c1"># Tem que ajustar os rótulos.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DateTime&#39;, ylabel=&#39;Residencial&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_20_1.png" src="_images/passo1_20_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="financiamento-comercial">
+<h3>Financiamento Comercial<a class="headerlink" href="#financiamento-comercial" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">financiamento_comercial</span> <span class="o">=</span> <span class="n">financiamentos_construcao</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">,</span> <span class="s1">&#39;Comercial&#39;</span><span class="p">]]</span>
+
+<span class="n">financiamento_comercial</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">financiamento_comercial</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">financiamento_comercial</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">financiamento_comercial</span><span class="p">[</span><span class="s1">&#39;DateTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">financiamento_comercial</span> <span class="o">=</span> <span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DateTime&#39;</span><span class="p">)</span>
+
+<span class="n">financiamento_comercial</span> <span class="o">=</span> <span class="n">financiamento_comercial</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-12-12&#39;</span><span class="p">]</span>
+
+<span class="n">taxa</span> <span class="o">=</span> <span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-05-01&#39;</span><span class="p">][</span><span class="s1">&#39;Comercial&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-04-01&#39;</span><span class="p">][</span><span class="s1">&#39;Comercial&#39;</span><span class="p">]</span>
+
+<span class="c1"># Pensar o que fazer em relação a estes 3 meses</span>
+<span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-03-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-04-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+<span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-02-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-03-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+<span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-02-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">taxa</span>
+
+<span class="n">financiamento_comercial</span> <span class="o">=</span> <span class="n">financiamento_comercial</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">financiamento_comercial</span> <span class="c1"># Volume de financiamentos destinados à construção - Setor Comercial</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Comercial</th>
+    </tr>
+    <tr>
+      <th>DateTime</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>1.243798e+10</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>1.284174e+10</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>1.325861e+10</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>1.368902e+10</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>1.413339e+10</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>1.382031e+10</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>1.340438e+10</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>1.329268e+10</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>1.328123e+10</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>1.292407e+10</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">financiamento_comercial</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;DateTime&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;Comercial&quot;</span><span class="p">)</span> <span class="c1"># Tem que ajustar os rótulos.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;DateTime&#39;, ylabel=&#39;Comercial&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_23_1.png" src="_images/passo1_23_1.png" />
+</div>
+</div>
+<p>Observem a ‘inversão’ nos financiamentos…</p>
+</div>
+</div>
+<div class="section" id="dados-sobre-a-exportacao-de-material-eletrico">
+<h2><strong>Dados sobre a exportação de material elétrico</strong><a class="headerlink" href="#dados-sobre-a-exportacao-de-material-eletrico" title="Permalink to this headline">¶</a></h2>
+<p>A exportação de produtos pode ampliar os mercados e aumentar a receita de vendas das empresas,  porém, com o direcionamento de produtos para mercados internacionais, as vendas domésticas podem ser prejudicadas, já que há menos estoque para distribuição nacional.</p>
+<p>As quantidades apresentadas são o volume de exportações em Milhões de US$.</p>
+<p>Fonte: MDIC / SECEX	/ Abinee/Decon - <a class="reference external" href="http://www.abinee.org.br/abinee/decon/dados/">http://www.abinee.org.br/abinee/decon/dados/</a> - Última atualização em 19/04/2021.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">strptime</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/exportacao.csv&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MES&#39;</span><span class="p">,</span><span class="s1">&#39;MATERIAL ELÉTRICO DE INSTALAÇÃO&#39;</span><span class="p">])</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">strptime</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">MES</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span><span class="s1">&#39;%b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tm_mon</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">+</span><span class="n">row</span><span class="o">.</span><span class="n">MES</span><span class="p">[</span><span class="mi">4</span><span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">]])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;MATERIAL ELÉTRICO DE INSTALAÇÃO&#39;</span><span class="p">:</span><span class="s1">&#39;material_eletrico&#39;</span><span class="p">})</span>
+
+<span class="n">exportacoes</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;material_eletrico&#39;</span><span class="p">]]</span>
+
+<span class="n">exportacoes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>material_eletrico</th>
+    </tr>
+    <tr>
+      <th>data</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>6.9</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>7.8</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>6.8</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>9.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>3.5</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>5.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">exportacoes</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;material_eletrico&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;data&#39;, ylabel=&#39;material_eletrico&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_27_1.png" src="_images/passo1_27_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="produto-interno-bruto-pib">
+<h2><strong>Produto Interno Bruto (PIB)</strong><a class="headerlink" href="#produto-interno-bruto-pib" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pib-absoluto">
+<h3>PIB Absoluto<a class="headerlink" href="#pib-absoluto" title="Permalink to this headline">¶</a></h3>
+<p>Frequência: Mensal de 1990.01 até 2021.02</p>
+<p>Fonte: Banco Central do Brasil, Boletim, Seção Atividade Econômica</p>
+<p>Unidade: R$ (milhões)</p>
+<p>Comentário: O Produto Interno Bruto (PIB) denominado como PIB mensal é um indicador com frequência mensal produzido pelo Banco Central do Brasil (BCB) para utilização no cálculo da relação entre agregados econômicos mensais (como dívida pública, saldo em transações correntes e saldo de crédito) e o PIB.Elaboração Bacen: estimativa é feita via interpolação dos valores trimestrais já divulgados ou dos projetados, não se tratatando de cálculo do PIB a partir de informações primárias. Nota: Este cálculo mensal é feito uma vez que o PIB calculado oficialmente no Brasil pelo IBGE, é divulgado com frequência trimestral, ao passo que várias informações econômicas compiladas pelo Banco Central são mensais. Mais informações: SGS- Sistema de Gerenciamento de Séries Temporais, Banco Central. Atualizado em: 26/04/2021</p>
+<p>Fonte: <a class="reference external" href="http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=521274780&amp;module=M">http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=521274780&amp;module=M</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pib_mensal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/PIB_Variacao_Mensal_1990-2021.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">pib_mensal</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">pib_mensal</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;PIB&#39;</span><span class="p">]</span>
+
+
+<span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+<span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Ajusta a coluna da data.</span>
+<span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pib_mensal</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">pib_mensal</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">pib_mensal</span><span class="o">.</span><span class="n">PIB</span> <span class="o">=</span> <span class="n">pib_mensal</span><span class="o">.</span><span class="n">PIB</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+<span class="n">pib_mensal</span><span class="o">.</span><span class="n">PIB</span> <span class="o">=</span> <span class="n">pib_mensal</span><span class="o">.</span><span class="n">PIB</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="n">pib_mensal_interesse</span> <span class="o">=</span> <span class="n">pib_mensal</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">288</span><span class="p">:</span><span class="mi">372</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">pib_mensal_interesse</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pib_mensal_interesse</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+<span class="n">pib_mensal_interesse</span> <span class="o">=</span> <span class="n">pib_mensal_interesse</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+
+<span class="n">pib_mensal_interesse</span> <span class="c1"># Esses são os valores mensais totais do PIB em milhões de Reais.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-18-c641fe111e1d&gt;:8: FutureWarning: The default value of regex will change from True to False in a future version. In addition, single character regular expressions will*not* be treated as literal strings when regex=True.
+  pib_mensal[&#39;PIB&#39;] = pib_mensal[&#39;PIB&#39;].str.replace(&#39;.&#39;, &#39;-&#39;)
+&lt;ipython-input-18-c641fe111e1d&gt;:16: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  pib_mensal_interesse[&#39;Data&#39;] = pd.to_datetime(pib_mensal_interesse[&#39;Data&#39;])
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PIB</th>
+    </tr>
+    <tr>
+      <th>Data</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>455935.0</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>450358.8</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>462159.8</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>468767.5</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>473347.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>628818.8</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>632047.2</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>660199.5</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>666928.9</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>676371.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">pib_mensal_interesse</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;PIB&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Data&#39;, ylabel=&#39;PIB&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_31_1.png" src="_images/passo1_31_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="pib-variacao-mensal">
+<h3>PIB Variação Mensal<a class="headerlink" href="#pib-variacao-mensal" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variacao_mensal_pib</span> <span class="o">=</span> <span class="n">pib_mensal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">variacao_mensal_pib</span> <span class="o">=</span> <span class="n">variacao_mensal_pib</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">287</span><span class="p">:</span><span class="mi">372</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">variacao_mensal_pib</span><span class="o">.</span><span class="n">PIB</span> <span class="o">=</span> <span class="p">(</span><span class="n">variacao_mensal_pib</span><span class="o">.</span><span class="n">PIB</span><span class="o">-</span> <span class="n">variacao_mensal_pib</span><span class="o">.</span><span class="n">PIB</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">variacao_mensal_pib</span><span class="o">.</span><span class="n">PIB</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="n">variacao_mensal_pib</span> <span class="o">=</span> <span class="n">variacao_mensal_pib</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+<span class="n">variacao_mensal_pib</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Variacao_PIB&#39;</span><span class="p">]</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="n">variacao_mensal_pib</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">variacao_mensal_pib</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+<span class="n">variacao_mensal_pib</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">variacao_mensal_pib</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Ajusta a coluna da data.</span>
+<span class="n">variacao_mensal_pib</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">variacao_mensal_pib</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+<span class="n">variacao_mensal_pib</span> <span class="o">=</span> <span class="n">variacao_mensal_pib</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+
+<span class="n">variacao_mensal_pib</span> <span class="c1"># Estas são as variações percentuais em relção ao mês anterior.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variacao_PIB</th>
+    </tr>
+    <tr>
+      <th>Data</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>-3.720284</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>-1.223025</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>2.620355</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>1.429744</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>0.976945</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>-0.325028</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>0.513407</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>4.454145</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>1.019298</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>1.415893</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">variacao_mensal_pib</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Variacao_PIB&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Data&#39;, ylabel=&#39;Variacao_PIB&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_34_1.png" src="_images/passo1_34_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="consumo-de-energia-eletrica">
+<h2><strong>Consumo de Energia Elétrica</strong><a class="headerlink" href="#consumo-de-energia-eletrica" title="Permalink to this headline">¶</a></h2>
+<p>Consumo Mensal de Energia Elétrica em MWh</p>
+<p>Fonte: EPE - <a class="reference external" href="https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/Consumo-mensal-de-energia-eletrica-por-classe-regioes-e-subsistemas">https://www.epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/Consumo-mensal-de-energia-eletrica-por-classe-regioes-e-subsistemas</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">consumo_energia_eletrica</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="n">consumo_energia_eletrica</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;datasets/consumo_mensal_energia_eletrica_2014_2020.xls&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span> <span class="s2">&quot;Trabalho&quot;</span><span class="p">)</span>
+<span class="c1"># Eu criei essa sheet &#39;Trabalho&#39; na força bruta: achei que daria menos trabalho.</span>
+<span class="n">consumo_energia_eletrica</span> <span class="o">=</span> <span class="n">consumo_energia_eletrica</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+
+<span class="n">consumo_energia_eletrica</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">consumo_energia_eletrica</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+<span class="n">consumo_energia_eletrica</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">consumo_energia_eletrica</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Ajusta a coluna da data.</span>
+<span class="n">consumo_energia_eletrica</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">consumo_energia_eletrica</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+<span class="n">consumo_energia_eletrica</span> <span class="o">=</span> <span class="n">consumo_energia_eletrica</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">consumo_energia_eletrica</span><span class="o">.</span><span class="n">CONSUMO</span> <span class="o">=</span> <span class="n">consumo_energia_eletrica</span><span class="o">.</span><span class="n">CONSUMO</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+<span class="n">consumo_energia_eletrica</span> <span class="c1"># Consumo de energia elétrica em MWh.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CONSUMO</th>
+    </tr>
+    <tr>
+      <th>Data</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>4.027976e+07</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>4.165349e+07</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>4.026943e+07</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>3.959185e+07</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>3.910050e+07</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>3.912152e+07</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>4.020856e+07</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>4.245064e+07</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>4.100828e+07</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>4.187399e+07</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">consumo_energia_eletrica</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;CONSUMO&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Data&#39;, ylabel=&#39;CONSUMO&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_37_1.png" src="_images/passo1_37_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="indice-de-confianca-da-construcao-icst">
+<h2><strong>Índice de Confiança da Construção (ICST)</strong><a class="headerlink" href="#indice-de-confianca-da-construcao-icst" title="Permalink to this headline">¶</a></h2>
+<p>A Sondagem da Construção é uma pesquisa que gera, mensalmente, um conjunto de informações usados no monitoramento e antecipação de tendências econômicas do setor. Tendo como referência as melhores práticas internacionais para pesquisas do gênero, a Sondagem tem como um de seus principais atributos a rapidez com que é produzida e divulgada, tornando-se uma ferramenta essencial à análise de conjuntura e à tomada de decisão nos âmbitos público e privado.</p>
+<p>O questionário básico da Sondagem da Construção é composto por 13 perguntas direcionadas exclusivamente à atividade econômica da empresa. Abrangem temas como o nível atual de demanda, absorção de mão de obra, acesso ao crédito e situação geral dos negócios.</p>
+<p>As perguntas apresentam opções de resposta de natureza qualitativa. A pergunta sobre situação atual dos negócios, por exemplo, oferece as seguintes opções de resposta: boa, normal ou ruim. As perspectivas para a evolução do pessoal ocupado pela empresa nos três meses seguintes podem ser consideradas pela empresa como sendo de aumento, estabilidade ou diminuição.</p>
+<p>O horizonte temporal das perguntas pode ser classificado em quatro modalidades: observações a respeito do trimestre imediatamente anterior ao mês de referência da pesquisa; avaliações sobre o momento de realização da pesquisa; previsões para o trimestre que se inicia no mês de referência da pesquisa; e previsões para o semestre que se inicia no mês de referência da pesquisa, horizonte adotado somente no quesito relativo às perspectivas para a situação dos negócios.</p>
+<p>O Índice de Confiança da Construção (ICST) é o indicador-síntese da pesquisa, composto por quatro quesitos: Situação Atual dos Negócios, Carteira de Contratos, Expectativas com relação à evolução do Volume de Demanda nos três meses seguintes e Expectativas em relação à evolução da Situação dos Negócios da Empresa nos seis meses seguintes.</p>
+<p>As classes e os grupos setoriais são definidos de acordo com a Classificação Nacional de Atividades Econômicas, versão 2.0 (CNAE 2.0), do IBGE.</p>
+<p>Fonte: <a class="reference external" href="http://www14.fgv.br/fgvdados20/consulta.aspx">http://www14.fgv.br/fgvdados20/consulta.aspx</a></p>
+<p>Fonte: <a class="reference external" href="https://portalibre.fgv.br/estudos-e-pesquisas/indices-de-precos/sondagem-da-construcao">https://portalibre.fgv.br/estudos-e-pesquisas/indices-de-precos/sondagem-da-construcao</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">icst</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/ICST-FGV_2014_20120.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="n">icst</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-A&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-R&#39;</span><span class="p">]</span>
+
+<span class="n">icst</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">icst</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+<span class="n">icst</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">icst</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Ajusta a coluna da data.</span>
+<span class="n">icst</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">icst</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">])</span>
+
+<span class="n">icst</span> <span class="o">=</span> <span class="n">icst</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">icst</span>
+
+<span class="c1"># Colunas =&gt; &#39;ICST-A&#39; valores ajustados; &#39;ICST-R&#39; valores brutos; segundo o site do IBGE, os ajustes referem-se à retirada da sazonalidade.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ICST-A</th>
+      <th>ICST-R</th>
+    </tr>
+    <tr>
+      <th>Data</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>99.6</td>
+      <td>97.8</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>98.4</td>
+      <td>96.7</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>97.1</td>
+      <td>96.3</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>92.9</td>
+      <td>92.6</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>95.2</td>
+      <td>94.6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>87.5</td>
+      <td>87.8</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>90.5</td>
+      <td>91.5</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>93.7</td>
+      <td>95.2</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>92.2</td>
+      <td>93.8</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>93.1</td>
+      <td>93.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">icst</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;ICST-R&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Data&#39;, ylabel=&#39;ICST-R&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_40_1.png" src="_images/passo1_40_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">icst</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Data&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;ICST-A&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Data&#39;, ylabel=&#39;ICST-A&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_41_1.png" src="_images/passo1_41_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="geracao-de-energia-eletrica">
+<h2><strong>Geração de Energia Elétrica</strong><a class="headerlink" href="#geracao-de-energia-eletrica" title="Permalink to this headline">¶</a></h2>
+<p>Histórico do volume de energia elétrica produzida no país em GWh, expressa pelos valores de carga de energia despachada no Sistema Interligado Nacional – SIN, classificada por fontes renováveis ou não e do volume produzido pelas geradoras ainda não interligadas.</p>
+<p>Fonte: <a class="reference external" href="https://www.aneel.gov.br/dados/geracao">https://www.aneel.gov.br/dados/geracao</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/Geracao-Energia-PorFonte_2000_2020.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ideGeracaoFonte&#39;</span><span class="p">,</span><span class="s1">&#39;dthProcessamento&#39;</span><span class="p">])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;anoReferencia&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;mesReferencia&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;mdaEnergiaDespachadaGWh&#39;</span><span class="p">:</span> <span class="s1">&#39;geracaoGWh&#39;</span><span class="p">})</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">]])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-12-12&#39;</span><span class="p">]</span>
+
+<span class="n">df</span><span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)[</span><span class="s1">&#39;geracaoGWh&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">geracao_mensal</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">geracao_mensal</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="c1"># faltam 6 meses (de julho/2020 até dezembro/2020)</span>
+<span class="c1"># Vamos calcular os missing values a partir da média dos últimos 12 meses</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">13</span><span class="p">):</span> <span class="c1">#meses faltantes</span>
+  <span class="n">geracao_mensal</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2020-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">geracao_mensal</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+
+<span class="n">geracao_mensal</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 78 entries, 2014-01-01 to 2020-06-01
+Data columns (total 1 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   geracaoGWh  78 non-null     float64
+dtypes: float64(1)
+memory usage: 1.2 KB
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 84 entries, 2014-01-01 to 2020-12-01
+Data columns (total 1 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   geracaoGWh  84 non-null     float64
+dtypes: float64(1)
+memory usage: 1.3 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">geracao_mensal</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;geracaoGWh&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;, ylabel=&#39;geracaoGWh&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_44_1.png" src="_images/passo1_44_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="confianca-do-empresario-do-empresario-industrial-icei">
+<h2><strong>Confiança do Empresário do Empresário Industrial (ICEI)</strong><a class="headerlink" href="#confianca-do-empresario-do-empresario-industrial-icei" title="Permalink to this headline">¶</a></h2>
+<p>Máquinas, aparelhos e materiais elétricos.</p>
+<p>(1) Indicador varia entre 0 a 100 pontos:</p>
+<blockquote>
+<div><p>valores acima de 50 pontos indicam confiança do empresário; 		
+valores abaixo de 50 pontos indicam falta de confiança do empresário.</p>
+</div></blockquote>
+<p>(2) Agregação Abinee</p>
+<p>Fonte: CNI - Confederação Nacional da Indústria.</p>
+<p>Última atualização em 25/03/2021</p>
+<p>Fonte: <a class="reference external" href="http://www.abinee.org.br/abinee/decon/dados/shiceism.xlsx">http://www.abinee.org.br/abinee/decon/dados/shiceism.xlsx</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">confianca_empresario</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">confianca_empresario</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;datasets/Índice de confiança do empresário.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span> <span class="s2">&quot;ICEI Setor&quot;</span><span class="p">)</span>
+
+<span class="n">confianca_empresario</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">138</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">confianca_empresario</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">confianca_empresario</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">confianca_empresario</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;IndEletronica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndEletrica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndGeral&#39;</span> <span class="p">]</span>
+
+<span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;IndEletronica&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;IndEletronica&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;IndEletrica&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;IndEletrica&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;IndGeral&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;IndGeral&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;jan&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;01-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;fev&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;02-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;mar&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;03-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;abr&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;04-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;mai&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;05-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;jun&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;06-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;jul&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;07-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ago&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;08-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;set&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;09-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;out&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;10-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;nov&#39;</span><span class="p">:</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;11-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dez&#39;</span>
+        <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;12-20&#39;</span><span class="o">+</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+
+<span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Ajusta a coluna da data.</span>
+<span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<span class="n">confianca_empresario</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">confianca_empresario</span> <span class="o">=</span> <span class="n">confianca_empresario</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-12-01&#39;</span><span class="p">]</span>
+<span class="n">confianca_empresario</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IndEletronica</th>
+      <th>IndEletrica</th>
+      <th>IndEletronica+Eletrica</th>
+      <th>IndGeral</th>
+    </tr>
+    <tr>
+      <th>data</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>47.4</td>
+      <td>45.3</td>
+      <td>46.308</td>
+      <td>53.1</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>48.8</td>
+      <td>49.1</td>
+      <td>48.956</td>
+      <td>52.3</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>48.9</td>
+      <td>47.6</td>
+      <td>48.224</td>
+      <td>52.4</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>45.8</td>
+      <td>44.2</td>
+      <td>44.968</td>
+      <td>49.2</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>42.6</td>
+      <td>40.1</td>
+      <td>41.300</td>
+      <td>47.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>58.1</td>
+      <td>58.2</td>
+      <td>58.152</td>
+      <td>57.0</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>63.0</td>
+      <td>63.1</td>
+      <td>63.052</td>
+      <td>61.6</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>56.7</td>
+      <td>62.8</td>
+      <td>59.872</td>
+      <td>61.8</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>61.1</td>
+      <td>64.6</td>
+      <td>62.920</td>
+      <td>62.9</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>64.0</td>
+      <td>64.3</td>
+      <td>64.156</td>
+      <td>63.1</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">confianca_empresario</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;IndEletrica&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;data&#39;, ylabel=&#39;IndEletrica&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo1_47_1.png" src="_images/passo1_47_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="montagem-do-data-set">
+<h1><strong>Montagem do Data Set</strong><a class="headerlink" href="#montagem-do-data-set" title="Permalink to this headline">¶</a></h1>
+<p>Aqui estão as variáveis selecionadas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">vendas</span><span class="p">,</span><span class="n">atividade_economica</span><span class="p">,</span><span class="n">desemprego</span><span class="p">,</span><span class="n">gasto_construcao</span><span class="p">,</span><span class="n">financiamento_comercial</span><span class="p">,</span><span class="n">financiamento_residencial</span><span class="p">,</span>
+                   <span class="n">exportacoes</span><span class="p">,</span> <span class="n">pib_mensal_interesse</span><span class="p">,</span> <span class="n">variacao_mensal_pib</span><span class="p">,</span><span class="n">consumo_energia_eletrica</span><span class="p">,</span> <span class="n">icst</span><span class="p">,</span> <span class="n">geracao_mensal</span><span class="p">,</span> <span class="n">confianca_empresario</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dados</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">dados</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 84 entries, 2014-01-01 to 2020-12-01
+Data columns (total 23 columns):
+ #   Column                  Non-Null Count  Dtype  
+---  ------                  --------------  -----  
+ 0   year                    84 non-null     int64  
+ 1   month                   84 non-null     int64  
+ 2   interruptores           84 non-null     int64  
+ 3   pulsadores              84 non-null     int64  
+ 4   tomadas                 84 non-null     int64  
+ 5   total                   84 non-null     int64  
+ 6   day                     84 non-null     int64  
+ 7   IBC-Br                  84 non-null     float64
+ 8   Taxa de Desocupação     84 non-null     float64
+ 9   Imobiliário             84 non-null     float64
+ 10  Comercial               84 non-null     float64
+ 11  Residencial             84 non-null     float64
+ 12  material_eletrico       84 non-null     float64
+ 13  PIB                     84 non-null     float64
+ 14  Variacao_PIB            84 non-null     float64
+ 15  CONSUMO                 84 non-null     float64
+ 16  ICST-A                  84 non-null     float64
+ 17  ICST-R                  84 non-null     float64
+ 18  geracaoGWh              84 non-null     float64
+ 19  IndEletronica           84 non-null     float64
+ 20  IndEletrica             84 non-null     float64
+ 21  IndEletronica+Eletrica  84 non-null     float64
+ 22  IndGeral                84 non-null     float64
+dtypes: float64(16), int64(7)
+memory usage: 15.8 KB
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>interruptores</th>
+      <th>pulsadores</th>
+      <th>tomadas</th>
+      <th>total</th>
+      <th>day</th>
+      <th>IBC-Br</th>
+      <th>Taxa de Desocupação</th>
+      <th>Imobiliário</th>
+      <th>...</th>
+      <th>PIB</th>
+      <th>Variacao_PIB</th>
+      <th>CONSUMO</th>
+      <th>ICST-A</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndEletronica</th>
+      <th>IndEletrica</th>
+      <th>IndEletronica+Eletrica</th>
+      <th>IndGeral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>2014</td>
+      <td>1</td>
+      <td>5109625</td>
+      <td>149613</td>
+      <td>8168659</td>
+      <td>13427897</td>
+      <td>1</td>
+      <td>2.75</td>
+      <td>6.4</td>
+      <td>1.827669e+10</td>
+      <td>...</td>
+      <td>455935.0</td>
+      <td>-3.720284</td>
+      <td>40279759.0</td>
+      <td>99.6</td>
+      <td>97.8</td>
+      <td>50045.962407</td>
+      <td>47.4</td>
+      <td>45.3</td>
+      <td>46.308</td>
+      <td>53.1</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>2014</td>
+      <td>2</td>
+      <td>5235998</td>
+      <td>141128</td>
+      <td>8774994</td>
+      <td>14152120</td>
+      <td>1</td>
+      <td>3.13</td>
+      <td>6.7</td>
+      <td>1.859720e+10</td>
+      <td>...</td>
+      <td>450358.8</td>
+      <td>-1.223025</td>
+      <td>41653487.0</td>
+      <td>98.4</td>
+      <td>96.7</td>
+      <td>46459.730274</td>
+      <td>48.8</td>
+      <td>49.1</td>
+      <td>48.956</td>
+      <td>52.3</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>2014</td>
+      <td>3</td>
+      <td>5100680</td>
+      <td>144853</td>
+      <td>8465237</td>
+      <td>13710770</td>
+      <td>1</td>
+      <td>3.09</td>
+      <td>7.2</td>
+      <td>1.892334e+10</td>
+      <td>...</td>
+      <td>462159.8</td>
+      <td>2.620355</td>
+      <td>40269429.0</td>
+      <td>97.1</td>
+      <td>96.3</td>
+      <td>48004.277170</td>
+      <td>48.9</td>
+      <td>47.6</td>
+      <td>48.224</td>
+      <td>52.4</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>2014</td>
+      <td>4</td>
+      <td>4695875</td>
+      <td>132094</td>
+      <td>7774926</td>
+      <td>12602895</td>
+      <td>1</td>
+      <td>2.37</td>
+      <td>7.1</td>
+      <td>1.925519e+10</td>
+      <td>...</td>
+      <td>468767.5</td>
+      <td>1.429744</td>
+      <td>39591854.0</td>
+      <td>92.9</td>
+      <td>92.6</td>
+      <td>45412.583753</td>
+      <td>45.8</td>
+      <td>44.2</td>
+      <td>44.968</td>
+      <td>49.2</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>2014</td>
+      <td>5</td>
+      <td>5563254</td>
+      <td>156946</td>
+      <td>8883242</td>
+      <td>14603442</td>
+      <td>1</td>
+      <td>2.23</td>
+      <td>7.0</td>
+      <td>1.959286e+10</td>
+      <td>...</td>
+      <td>473347.1</td>
+      <td>0.976945</td>
+      <td>39100499.0</td>
+      <td>95.2</td>
+      <td>94.6</td>
+      <td>44890.282526</td>
+      <td>42.6</td>
+      <td>40.1</td>
+      <td>41.300</td>
+      <td>47.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 23 columns</p>
+</div></div></div>
+</div>
+<p>Salvamos o objeto <strong>dados</strong> para ser utilizado no <a class="reference internal" href="passo2.html"><span class="doc std std-doc">Passo 2</span></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_to_store</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datasets/dados.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">file_to_store</span><span class="p">)</span>
+<span class="n">file_to_store</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "env_adp255"
+        },
+        kernelOptions: {
+            kernelName: "env_adp255",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'env_adp255'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="passo0.html" title="previous page">Passo 0: Look at the big picture</a>
+    <a class='right-next' id="next-link" href="passo2.html" title="next page">Passo 2: Preparar os dados</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Grupo 2 -> Jheniffer, Marcos, Ronaldo G., Ronaldo L.<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

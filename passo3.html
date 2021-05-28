@@ -1,0 +1,2328 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passo 3: Testar diferentes algoritmos preditivos &#8212; ADP255 - Trabalho em Grupo</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Passo 4: Apresentar e interpretar o modelo" href="passo4.html" />
+    <link rel="prev" title="Passo 2: Preparar os dados" href="passo2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ADP255 - Trabalho em Grupo</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   ADP255 - Machine Learning
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo0.html">
+   Passo 0: Look at the big picture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo1.html">
+   Passo 1: Coletar dados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo2.html">
+   Passo 2: Preparar os dados
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Passo 3: Testar diferentes algoritmos preditivos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo4.html">
+   Passo 4: Apresentar e interpretar o modelo
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/passo3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ronaldowg/adp255"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fpasso3.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ronaldowg/adp255/main?urlpath=tree/passo3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arima-sarima">
+   ARIMA (SARIMA)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#primeiras-exploracoes-da-ferramenta-automated-time-series-forecasting-autots">
+   <strong>
+    Primeiras explorações da ferramenta Automated Time Series Forecasting (AutoTS)
+   </strong>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="passo-3-testar-diferentes-algoritmos-preditivos">
+<h1>Passo 3: Testar diferentes algoritmos preditivos<a class="headerlink" href="#passo-3-testar-diferentes-algoritmos-preditivos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="arima-sarima">
+<h2>ARIMA (SARIMA)<a class="headerlink" href="#arima-sarima" title="Permalink to this headline">¶</a></h2>
+<p>Primeiro aplicamos o S(ARIMA) nos dados históricos referente à venda de interruptores, pulsadores e tomadas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">import</span> <span class="nn">pickle</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vendas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/serie_historica_2014_2020.csv&#39;</span><span class="p">)</span> <span class="c1"># Dados vendas interruptores, tomadas e pulsadores - ADP255.</span>
+<span class="c1"># cria a coluna de data no formato Datetime</span>
+<span class="n">vendas</span> <span class="o">=</span> <span class="n">vendas</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ano&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;mes&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">})</span>
+<span class="n">vendas</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">vendas</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">vendas</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">]])</span>
+<span class="c1"># seta a coluna de data como index</span>
+<span class="n">vendas</span> <span class="o">=</span> <span class="n">vendas</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+
+<span class="n">vendas</span> <span class="c1"># Base de dados para o trabalho.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>interruptores</th>
+      <th>pulsadores</th>
+      <th>tomadas</th>
+      <th>total</th>
+      <th>day</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>2014</td>
+      <td>1</td>
+      <td>5109625</td>
+      <td>149613</td>
+      <td>8168659</td>
+      <td>13427897</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>2014</td>
+      <td>2</td>
+      <td>5235998</td>
+      <td>141128</td>
+      <td>8774994</td>
+      <td>14152120</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>2014</td>
+      <td>3</td>
+      <td>5100680</td>
+      <td>144853</td>
+      <td>8465237</td>
+      <td>13710770</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>2014</td>
+      <td>4</td>
+      <td>4695875</td>
+      <td>132094</td>
+      <td>7774926</td>
+      <td>12602895</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>2014</td>
+      <td>5</td>
+      <td>5563254</td>
+      <td>156946</td>
+      <td>8883242</td>
+      <td>14603442</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>2020</td>
+      <td>8</td>
+      <td>11713475</td>
+      <td>210921</td>
+      <td>22059317</td>
+      <td>33983713</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>2020</td>
+      <td>9</td>
+      <td>10635364</td>
+      <td>229234</td>
+      <td>21341217</td>
+      <td>32205815</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>2020</td>
+      <td>10</td>
+      <td>11688385</td>
+      <td>213752</td>
+      <td>21847140</td>
+      <td>33749277</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>2020</td>
+      <td>11</td>
+      <td>11337980</td>
+      <td>237001</td>
+      <td>22187188</td>
+      <td>33762169</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>2020</td>
+      <td>12</td>
+      <td>10198238</td>
+      <td>202845</td>
+      <td>21089020</td>
+      <td>31490103</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plota o total de vendas e por tipo de produto</span>
+<span class="n">cols_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">]</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">vendas</span><span class="p">[</span><span class="n">cols_plot</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;quantidade&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo3_5_0.png" src="_images/passo3_5_0.png" />
+</div>
+</div>
+<p>É possível observar que os três produtos possuem um padrão de venda semelhante. Também observa-se uma sazonalidade nas vendas, onde após o início do ano há uma declínio seguido de um significante aumento nas vendas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># venda total (média anual)</span>
+<span class="n">data_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+<span class="n">vendas_media_anual</span> <span class="o">=</span> <span class="n">vendas</span><span class="p">[</span><span class="n">data_columns</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">vendas_media_anual</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo3_7_1.png" src="_images/passo3_7_1.png" />
+</div>
+</div>
+<p>Considerando apenas a média anual das vendas totais, percebe-se apenas no ano de 2015 um declínio na quantidade. Após 2016, a quantidade média do total de produtos apresenta crescimento constante.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sazonalidade (agrupa por meses)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">vendas</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;month&#39;, ylabel=&#39;total&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo3_9_1.png" src="_images/passo3_9_1.png" />
+</div>
+</div>
+<p>Aqui é possível verificar a sazonalidade na quantidade total, com declínio nas vendas no mês de março, seguido de aumento até o final do ano.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apenas para marcar a FREQ=MS, &quot;calcula&quot; a média mas não altera os valores</span>
+<span class="c1"># pois continua sendo frequencia mensal</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">vendas</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">8</span>
+<span class="n">decomposition</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo3_12_0.png" src="_images/passo3_12_0.png" />
+</div>
+</div>
+<p>time-series decomposition: that allows us to decompose our time series into three distinct components: trend, seasonality, and noise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid-Search para achar os parâmetros ótimos para o modelo ARIMA</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">d</span> <span class="o">=</span> <span class="n">q</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">pdq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
+<span class="n">seasonal_pdq</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">12</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))]</span>
+
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">pdq</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">param_seasonal</span> <span class="ow">in</span> <span class="n">seasonal_pdq</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">param</span><span class="p">,</span><span class="n">seasonal_order</span><span class="o">=</span><span class="n">param_seasonal</span><span class="p">,</span><span class="n">enforce_stationarity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">enforce_invertibility</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">continue</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ARIMA</span><span class="si">{}</span><span class="s1">x</span><span class="si">{}</span><span class="s1">12 - AIC:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">param_seasonal</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">aic</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(1, 1, 1)x(1, 1, 1, 12)12 - AIC:1870.1591523536733
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">y</span><span class="p">,</span>
+                                <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+                                <span class="n">enforce_stationarity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                <span class="n">enforce_invertibility</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1          0.3444      0.224      1.536      0.125      -0.095       0.784
+ma.L1         -0.7764      0.210     -3.705      0.000      -1.187      -0.366
+ar.S.L12      -0.4707      0.392     -1.201      0.230      -1.239       0.297
+ma.S.L12      -0.1674      0.396     -0.422      0.673      -0.944       0.610
+sigma2      9.851e+12   6.98e-14   1.41e+26      0.000    9.85e+12    9.85e+12
+==============================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># verifica se alguma anomalia nos dados</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot_diagnostics</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo3_16_0.png" src="_images/passo3_16_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cereja do Bolo: aqui podemos comparar a previsão da demanda para o ano de 2020.</span>
+<span class="c1"># em AZUL são os dados reais da demanda</span>
+<span class="c1"># em LARANJA sao os dados projetados pelo modelo</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_prediction</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">),</span> <span class="n">dynamic</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pred_ci</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observado&#39;</span><span class="p">)</span>
+<span class="n">pred</span><span class="o">.</span><span class="n">predicted_mean</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Projetado&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">pred_ci</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                <span class="n">pred_ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="n">pred_ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Quantidade&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo3_17_0.png" src="_images/passo3_17_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_forecasted</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">predicted_mean</span>
+<span class="n">y_truth</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">:]</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="p">((</span><span class="n">y_forecasted</span> <span class="o">-</span> <span class="n">y_truth</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erro Quadrático Médio da projeção </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">mse</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Raiz do Erro Quadrático Médio da projeção </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">),</span> <span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Erro Quadrático Médio da projeção 27765454118830.02
+Raiz do Erro Quadrático Médio da projeção 5269293.51
+</pre></div>
+</div>
+</div>
+</div>
+<p>Raiz do MSE = 5.269.293 Sendo que os totais de venda variam de 41.851.313 a 11.024.039</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Projetando a demanda para 2021 e 2022. Será?! kkk</span>
+
+<span class="n">pred_uc</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">pred_ci</span> <span class="o">=</span> <span class="n">pred_uc</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;observado&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">pred_uc</span><span class="o">.</span><span class="n">predicted_mean</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Projetado&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">pred_ci</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                <span class="n">pred_ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="n">pred_ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Quantidade&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo3_20_0.png" src="_images/passo3_20_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="primeiras-exploracoes-da-ferramenta-automated-time-series-forecasting-autots">
+<h2><strong>Primeiras explorações da ferramenta Automated Time Series Forecasting (AutoTS)</strong><a class="headerlink" href="#primeiras-exploracoes-da-ferramenta-automated-time-series-forecasting-autots" title="Permalink to this headline">¶</a></h2>
+<p>O AutoTS busca o modelo mais adequado para a base de dados, dentre mais de 20 modelos pré-definidos, de acordo com a sua sazonalidade e tendência, além de limpar os dados e eliminar outliers.</p>
+<p>Fonte: <a class="reference external" href="https://pypi.org/project/AutoTS/">https://pypi.org/project/AutoTS/</a></p>
+<p>Fonte: <a class="reference external" href="https://analyticsindiamag.com/hands-on-guide-to-autots-effective-model-selection-for-multiple-time-series/">https://analyticsindiamag.com/hands-on-guide-to-autots-effective-model-selection-for-multiple-time-series/</a></p>
+<p>Fonte: <a class="reference external" href="https://winedarksea.github.io/AutoTS/build/html/source/tutorial.html">https://winedarksea.github.io/AutoTS/build/html/source/tutorial.html</a></p>
+<div class="figure align-default" id="modelos">
+<img alt="_images/autots.png" src="_images/autots.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text"><a class="reference external" href="https://winedarksea.github.io/AutoTS/build/html/source/tutorial.html">fonte</a></span><a class="headerlink" href="#modelos" title="Permalink to this image">¶</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_to_read</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datasets/dados.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_read</span><span class="p">)</span>
+<span class="n">file_to_read</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">dados_autoML</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dados_autoML</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dados_autoML</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 84 entries, 0 to 83
+Data columns (total 24 columns):
+ #   Column                  Non-Null Count  Dtype         
+---  ------                  --------------  -----         
+ 0   index                   84 non-null     datetime64[ns]
+ 1   year                    84 non-null     int64         
+ 2   month                   84 non-null     int64         
+ 3   interruptores           84 non-null     int64         
+ 4   pulsadores              84 non-null     int64         
+ 5   tomadas                 84 non-null     int64         
+ 6   total                   84 non-null     int64         
+ 7   day                     84 non-null     int64         
+ 8   IBC-Br                  84 non-null     float64       
+ 9   Taxa de Desocupação     84 non-null     float64       
+ 10  Imobiliário             84 non-null     float64       
+ 11  Comercial               84 non-null     float64       
+ 12  Residencial             84 non-null     float64       
+ 13  material_eletrico       84 non-null     float64       
+ 14  PIB                     84 non-null     float64       
+ 15  Variacao_PIB            84 non-null     float64       
+ 16  CONSUMO                 84 non-null     float64       
+ 17  ICST-A                  84 non-null     float64       
+ 18  ICST-R                  84 non-null     float64       
+ 19  geracaoGWh              84 non-null     float64       
+ 20  IndEletronica           84 non-null     float64       
+ 21  IndEletrica             84 non-null     float64       
+ 22  IndEletronica+Eletrica  84 non-null     float64       
+ 23  IndGeral                84 non-null     float64       
+dtypes: datetime64[ns](1), float64(16), int64(7)
+memory usage: 15.9 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados_autoML</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;Data&#39;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">dados_autoML</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;datasets/dados_autoML.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dados_autoML</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Data</th>
+      <th>year</th>
+      <th>month</th>
+      <th>interruptores</th>
+      <th>pulsadores</th>
+      <th>tomadas</th>
+      <th>total</th>
+      <th>day</th>
+      <th>IBC-Br</th>
+      <th>Taxa de Desocupação</th>
+      <th>...</th>
+      <th>PIB</th>
+      <th>Variacao_PIB</th>
+      <th>CONSUMO</th>
+      <th>ICST-A</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndEletronica</th>
+      <th>IndEletrica</th>
+      <th>IndEletronica+Eletrica</th>
+      <th>IndGeral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2014-01-01</td>
+      <td>2014</td>
+      <td>1</td>
+      <td>5109625</td>
+      <td>149613</td>
+      <td>8168659</td>
+      <td>13427897</td>
+      <td>1</td>
+      <td>2.75</td>
+      <td>6.4</td>
+      <td>...</td>
+      <td>455935.0</td>
+      <td>-3.720284</td>
+      <td>4.027976e+07</td>
+      <td>99.6</td>
+      <td>97.8</td>
+      <td>50045.962407</td>
+      <td>47.4</td>
+      <td>45.3</td>
+      <td>46.308</td>
+      <td>53.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2014-02-01</td>
+      <td>2014</td>
+      <td>2</td>
+      <td>5235998</td>
+      <td>141128</td>
+      <td>8774994</td>
+      <td>14152120</td>
+      <td>1</td>
+      <td>3.13</td>
+      <td>6.7</td>
+      <td>...</td>
+      <td>450358.8</td>
+      <td>-1.223025</td>
+      <td>4.165349e+07</td>
+      <td>98.4</td>
+      <td>96.7</td>
+      <td>46459.730274</td>
+      <td>48.8</td>
+      <td>49.1</td>
+      <td>48.956</td>
+      <td>52.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014-03-01</td>
+      <td>2014</td>
+      <td>3</td>
+      <td>5100680</td>
+      <td>144853</td>
+      <td>8465237</td>
+      <td>13710770</td>
+      <td>1</td>
+      <td>3.09</td>
+      <td>7.2</td>
+      <td>...</td>
+      <td>462159.8</td>
+      <td>2.620355</td>
+      <td>4.026943e+07</td>
+      <td>97.1</td>
+      <td>96.3</td>
+      <td>48004.277170</td>
+      <td>48.9</td>
+      <td>47.6</td>
+      <td>48.224</td>
+      <td>52.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2014-04-01</td>
+      <td>2014</td>
+      <td>4</td>
+      <td>4695875</td>
+      <td>132094</td>
+      <td>7774926</td>
+      <td>12602895</td>
+      <td>1</td>
+      <td>2.37</td>
+      <td>7.1</td>
+      <td>...</td>
+      <td>468767.5</td>
+      <td>1.429744</td>
+      <td>3.959185e+07</td>
+      <td>92.9</td>
+      <td>92.6</td>
+      <td>45412.583753</td>
+      <td>45.8</td>
+      <td>44.2</td>
+      <td>44.968</td>
+      <td>49.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2014-05-01</td>
+      <td>2014</td>
+      <td>5</td>
+      <td>5563254</td>
+      <td>156946</td>
+      <td>8883242</td>
+      <td>14603442</td>
+      <td>1</td>
+      <td>2.23</td>
+      <td>7.0</td>
+      <td>...</td>
+      <td>473347.1</td>
+      <td>0.976945</td>
+      <td>3.910050e+07</td>
+      <td>95.2</td>
+      <td>94.6</td>
+      <td>44890.282526</td>
+      <td>42.6</td>
+      <td>40.1</td>
+      <td>41.300</td>
+      <td>47.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>2020-08-01</td>
+      <td>2020</td>
+      <td>8</td>
+      <td>11713475</td>
+      <td>210921</td>
+      <td>22059317</td>
+      <td>33983713</td>
+      <td>1</td>
+      <td>-3.35</td>
+      <td>14.4</td>
+      <td>...</td>
+      <td>628818.8</td>
+      <td>-0.325028</td>
+      <td>3.912152e+07</td>
+      <td>87.5</td>
+      <td>87.8</td>
+      <td>45954.347797</td>
+      <td>58.1</td>
+      <td>58.2</td>
+      <td>58.152</td>
+      <td>57.0</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>2020-09-01</td>
+      <td>2020</td>
+      <td>9</td>
+      <td>10635364</td>
+      <td>229234</td>
+      <td>21341217</td>
+      <td>32205815</td>
+      <td>1</td>
+      <td>-3.56</td>
+      <td>14.6</td>
+      <td>...</td>
+      <td>632047.2</td>
+      <td>0.513407</td>
+      <td>4.020856e+07</td>
+      <td>90.5</td>
+      <td>91.5</td>
+      <td>46045.040560</td>
+      <td>63.0</td>
+      <td>63.1</td>
+      <td>63.052</td>
+      <td>61.6</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>2020-10-01</td>
+      <td>2020</td>
+      <td>10</td>
+      <td>11688385</td>
+      <td>213752</td>
+      <td>21847140</td>
+      <td>33749277</td>
+      <td>1</td>
+      <td>-3.94</td>
+      <td>14.3</td>
+      <td>...</td>
+      <td>660199.5</td>
+      <td>4.454145</td>
+      <td>4.245064e+07</td>
+      <td>93.7</td>
+      <td>95.2</td>
+      <td>46098.056273</td>
+      <td>56.7</td>
+      <td>62.8</td>
+      <td>59.872</td>
+      <td>61.8</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>2020-11-01</td>
+      <td>2020</td>
+      <td>11</td>
+      <td>11337980</td>
+      <td>237001</td>
+      <td>22187188</td>
+      <td>33762169</td>
+      <td>1</td>
+      <td>-4.06</td>
+      <td>14.1</td>
+      <td>...</td>
+      <td>666928.9</td>
+      <td>1.019298</td>
+      <td>4.100828e+07</td>
+      <td>92.2</td>
+      <td>93.8</td>
+      <td>45883.704482</td>
+      <td>61.1</td>
+      <td>64.6</td>
+      <td>62.920</td>
+      <td>62.9</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>2020-12-01</td>
+      <td>2020</td>
+      <td>12</td>
+      <td>10198238</td>
+      <td>202845</td>
+      <td>21089020</td>
+      <td>31490103</td>
+      <td>1</td>
+      <td>-3.99</td>
+      <td>13.9</td>
+      <td>...</td>
+      <td>676371.9</td>
+      <td>1.415893</td>
+      <td>4.187399e+07</td>
+      <td>93.1</td>
+      <td>93.9</td>
+      <td>45799.031123</td>
+      <td>64.0</td>
+      <td>64.3</td>
+      <td>64.156</td>
+      <td>63.1</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 24 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados_autoML</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 84 entries, 0 to 83
+Data columns (total 24 columns):
+ #   Column                  Non-Null Count  Dtype         
+---  ------                  --------------  -----         
+ 0   Data                    84 non-null     datetime64[ns]
+ 1   year                    84 non-null     int64         
+ 2   month                   84 non-null     int64         
+ 3   interruptores           84 non-null     int64         
+ 4   pulsadores              84 non-null     int64         
+ 5   tomadas                 84 non-null     int64         
+ 6   total                   84 non-null     int64         
+ 7   day                     84 non-null     int64         
+ 8   IBC-Br                  84 non-null     float64       
+ 9   Taxa de Desocupação     84 non-null     float64       
+ 10  Imobiliário             84 non-null     float64       
+ 11  Comercial               84 non-null     float64       
+ 12  Residencial             84 non-null     float64       
+ 13  material_eletrico       84 non-null     float64       
+ 14  PIB                     84 non-null     float64       
+ 15  Variacao_PIB            84 non-null     float64       
+ 16  CONSUMO                 84 non-null     float64       
+ 17  ICST-A                  84 non-null     float64       
+ 18  ICST-R                  84 non-null     float64       
+ 19  geracaoGWh              84 non-null     float64       
+ 20  IndEletronica           84 non-null     float64       
+ 21  IndEletrica             84 non-null     float64       
+ 22  IndEletronica+Eletrica  84 non-null     float64       
+ 23  IndGeral                84 non-null     float64       
+dtypes: datetime64[ns](1), float64(16), int64(7)
+memory usage: 15.9 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_outputPrepend docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">autots</span> <span class="kn">import</span> <span class="n">AutoTS</span>
+
+<span class="n">long</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoTS</span><span class="p">(</span>
+    <span class="n">forecast_length</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">,</span>
+    <span class="n">prediction_interval</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+    <span class="n">ensemble</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">model_list</span><span class="o">=</span><span class="s2">&quot;superfast&quot;</span><span class="p">,</span> <span class="c1"># É possível reduzir esta lista de modelos candidatos.</span>
+	<span class="n">transformer_list</span><span class="o">=</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span>
+    <span class="n">max_generations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="c1"># original 5</span>
+    <span class="n">num_validations</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># original 2</span>
+    <span class="n">validation_method</span><span class="o">=</span><span class="s2">&quot;backwards&quot;</span>
+<span class="p">)</span> 
+<span class="c1">#Saída de dados da TS em &#39;total&#39;.</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">dados_autoML</span><span class="p">,</span>
+    <span class="n">date_col</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span> <span class="k">if</span> <span class="n">long</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">value_col</span><span class="o">=</span><span class="s1">&#39;total&#39;</span> <span class="k">if</span> <span class="n">long</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">id_col</span><span class="o">=</span> <span class="s1">&#39;None&#39;</span> <span class="k">if</span> <span class="n">long</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inferred frequency is: MS
+Model Number: 1 with model AverageValueNaive in generation 0 of 10
+Model Number: 2 with model AverageValueNaive in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 3 with model AverageValueNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 3: AverageValueNaive
+Model Number: 4 with model GLS in generation 0 of 10
+Model Number: 5 with model GLS in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 6 with model LastValueNaive in generation 0 of 10
+Model Number: 7 with model LastValueNaive in generation 0 of 10
+Model Number: 8 with model LastValueNaive in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 9 with model LastValueNaive in generation 0 of 10
+Model Number: 10 with model SeasonalNaive in generation 0 of 10
+Model Number: 11 with model SeasonalNaive in generation 0 of 10
+Model Number: 12 with model SeasonalNaive in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 12: SeasonalNaive
+Model Number: 13 with model SeasonalNaive in generation 0 of 10
+Model Number: 14 with model ZeroesNaive in generation 0 of 10
+Model Number: 15 with model SeasonalNaive in generation 0 of 10
+Model Number: 16 with model LastValueNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 16: LastValueNaive
+Model Number: 17 with model LastValueNaive in generation 0 of 10
+Model Number: 18 with model SeasonalNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 18: SeasonalNaive
+Model Number: 19 with model AverageValueNaive in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 19: AverageValueNaive
+Model Number: 20 with model LastValueNaive in generation 0 of 10
+Model Number: 21 with model AverageValueNaive in generation 0 of 10
+Model Number: 22 with model GLS in generation 0 of 10
+Model Number: 23 with model ZeroesNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 23: ZeroesNaive
+Model Number: 24 with model AverageValueNaive in generation 0 of 10
+Model Number: 25 with model GLS in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 26 with model GLS in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 26: GLS
+Model Number: 27 with model SeasonalNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 27: SeasonalNaive
+Model Number: 28 with model LastValueNaive in generation 0 of 10
+Model Number: 29 with model GLS in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 29: GLS
+Model Number: 30 with model GLS in generation 0 of 10
+Model Number: 31 with model LastValueNaive in generation 0 of 10
+Model Number: 32 with model GLS in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 32: GLS
+Model Number: 33 with model LastValueNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 33: LastValueNaive
+Model Number: 34 with model AverageValueNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 34: AverageValueNaive
+Model Number: 35 with model LastValueNaive in generation 0 of 10
+Model Number: 36 with model GLS in generation 0 of 10
+Model Number: 37 with model GLS in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 38 with model AverageValueNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 38: AverageValueNaive
+Model Number: 39 with model LastValueNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 39: LastValueNaive
+Model Number: 40 with model SeasonalNaive in generation 0 of 10
+Model Number: 41 with model AverageValueNaive in generation 0 of 10
+Model Number: 42 with model AverageValueNaive in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 43 with model GLS in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 43: GLS
+Model Number: 44 with model SeasonalNaive in generation 0 of 10
+Model Number: 45 with model GLS in generation 0 of 10
+Model Number: 46 with model SeasonalNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 46: SeasonalNaive
+Model Number: 47 with model SeasonalNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 47: SeasonalNaive
+Model Number: 48 with model AverageValueNaive in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 49 with model SeasonalNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 49: SeasonalNaive
+Model Number: 50 with model GLS in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 50: GLS
+Model Number: 51 with model AverageValueNaive in generation 0 of 10
+Model Number: 52 with model SeasonalNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 52: SeasonalNaive
+Model Number: 53 with model GLS in generation 0 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 54 with model ZeroesNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 54: ZeroesNaive
+New Generation: 1 of 10
+Model Number: 55 with model LastValueNaive in generation 1 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 55: LastValueNaive
+Model Number: 56 with model LastValueNaive in generation 1 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 56: LastValueNaive
+Model Number: 57 with model LastValueNaive in generation 1 of 10
+Model Number: 58 with model AverageValueNaive in generation 1 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 59 with model AverageValueNaive in generation 1 of 10
+Model Number: 60 with model AverageValueNaive in generation 1 of 10
+Model Number: 61 with model SeasonalNaive in generation 1 of 10
+Model Number: 62 with model SeasonalNaive in generation 1 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 63 with model SeasonalNaive in generation 1 of 10
+Model Number: 64 with model SeasonalNaive in generation 1 of 10
+Model Number: 65 with model GLS in generation 1 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 66 with model GLS in generation 1 of 10
+Model Number: 67 with model GLS in generation 1 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 67: GLS
+Model Number: 68 with model ZeroesNaive in generation 1 of 10
+Model Number: 69 with model ZeroesNaive in generation 1 of 10
+Model Number: 70 with model ZeroesNaive in generation 1 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 70: ZeroesNaive
+New Generation: 2 of 10
+Model Number: 71 with model AverageValueNaive in generation 2 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 72 with model AverageValueNaive in generation 2 of 10
+Model Number: 73 with model LastValueNaive in generation 2 of 10
+Model Number: 74 with model LastValueNaive in generation 2 of 10
+Model Number: 75 with model LastValueNaive in generation 2 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 76 with model SeasonalNaive in generation 2 of 10
+Model Number: 77 with model SeasonalNaive in generation 2 of 10
+Model Number: 78 with model SeasonalNaive in generation 2 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 79 with model SeasonalNaive in generation 2 of 10
+Model Number: 80 with model GLS in generation 2 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 81 with model GLS in generation 2 of 10
+Model Number: 82 with model GLS in generation 2 of 10
+Model Number: 83 with model ZeroesNaive in generation 2 of 10
+Model Number: 84 with model ZeroesNaive in generation 2 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New Generation: 3 of 10
+Model Number: 85 with model LastValueNaive in generation 3 of 10
+Model Number: 86 with model LastValueNaive in generation 3 of 10
+Model Number: 87 with model LastValueNaive in generation 3 of 10
+Model Number: 88 with model AverageValueNaive in generation 3 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 89 with model AverageValueNaive in generation 3 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Template Eval Error: ValueError(&#39;Length mismatch: Expected axis has 82 elements, new values have 1 elements&#39;) in model 89: AverageValueNaive
+Model Number: 90 with model AverageValueNaive in generation 3 of 10
+Template Eval Error: ValueError(&#39;Length mismatch: Expected axis has 82 elements, new values have 1 elements&#39;) in model 90: AverageValueNaive
+Model Number: 91 with model GLS in generation 3 of 10
+Model Number: 92 with model GLS in generation 3 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 93 with model SeasonalNaive in generation 3 of 10
+Model Number: 94 with model SeasonalNaive in generation 3 of 10
+Model Number: 95 with model SeasonalNaive in generation 3 of 10
+Model Number: 96 with model SeasonalNaive in generation 3 of 10
+Model Number: 97 with model ZeroesNaive in generation 3 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Template Eval Error: ValueError(&#39;Length mismatch: Expected axis has 82 elements, new values have 1 elements&#39;) in model 97: ZeroesNaive
+Model Number: 98 with model ZeroesNaive in generation 3 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Template Eval Error: ValueError(&#39;Length mismatch: Expected axis has 82 elements, new values have 1 elements&#39;) in model 98: ZeroesNaive
+Model Number: 99 with model ZeroesNaive in generation 3 of 10
+New Generation: 4 of 10
+Model Number: 100 with model LastValueNaive in generation 4 of 10
+Model Number: 101 with model LastValueNaive in generation 4 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 102 with model AverageValueNaive in generation 4 of 10
+Model Number: 103 with model AverageValueNaive in generation 4 of 10
+Model Number: 104 with model AverageValueNaive in generation 4 of 10
+Model Number: 105 with model GLS in generation 4 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 106 with model GLS in generation 4 of 10
+Model Number: 107 with model GLS in generation 4 of 10
+Model Number: 108 with model SeasonalNaive in generation 4 of 10
+Model Number: 109 with model SeasonalNaive in generation 4 of 10
+Model Number: 110 with model SeasonalNaive in generation 4 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 111 with model SeasonalNaive in generation 4 of 10
+Model Number: 112 with model ZeroesNaive in generation 4 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 113 with model ZeroesNaive in generation 4 of 10
+Model Number: 114 with model ZeroesNaive in generation 4 of 10
+New Generation: 5 of 10
+Model Number: 115 with model SeasonalNaive in generation 5 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 116 with model SeasonalNaive in generation 5 of 10
+Model Number: 117 with model SeasonalNaive in generation 5 of 10
+Model Number: 118 with model SeasonalNaive in generation 5 of 10
+Model Number: 119 with model LastValueNaive in generation 5 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 120 with model LastValueNaive in generation 5 of 10
+Model Number: 121 with model LastValueNaive in generation 5 of 10
+Model Number: 122 with model AverageValueNaive in generation 5 of 10
+Model Number: 123 with model AverageValueNaive in generation 5 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 124 with model AverageValueNaive in generation 5 of 10
+Model Number: 125 with model GLS in generation 5 of 10
+Model Number: 126 with model GLS in generation 5 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 126: GLS
+Model Number: 127 with model ZeroesNaive in generation 5 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 128 with model ZeroesNaive in generation 5 of 10
+Model Number: 129 with model ZeroesNaive in generation 5 of 10
+New Generation: 6 of 10
+Model Number: 130 with model SeasonalNaive in generation 6 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 131 with model SeasonalNaive in generation 6 of 10
+Model Number: 132 with model SeasonalNaive in generation 6 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 133 with model SeasonalNaive in generation 6 of 10
+Model Number: 134 with model LastValueNaive in generation 6 of 10
+Model Number: 135 with model LastValueNaive in generation 6 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 135: LastValueNaive
+Model Number: 136 with model LastValueNaive in generation 6 of 10
+Model Number: 137 with model AverageValueNaive in generation 6 of 10
+Model Number: 138 with model AverageValueNaive in generation 6 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 139 with model AverageValueNaive in generation 6 of 10
+Model Number: 140 with model GLS in generation 6 of 10
+Model Number: 141 with model GLS in generation 6 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 142 with model ZeroesNaive in generation 6 of 10
+Model Number: 143 with model ZeroesNaive in generation 6 of 10
+Model Number: 144 with model ZeroesNaive in generation 6 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New Generation: 7 of 10
+Model Number: 145 with model LastValueNaive in generation 7 of 10
+Model Number: 146 with model LastValueNaive in generation 7 of 10
+Model Number: 147 with model LastValueNaive in generation 7 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 148 with model SeasonalNaive in generation 7 of 10
+Model Number: 149 with model SeasonalNaive in generation 7 of 10
+Model Number: 150 with model SeasonalNaive in generation 7 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 151 with model SeasonalNaive in generation 7 of 10
+Model Number: 152 with model AverageValueNaive in generation 7 of 10
+Model Number: 153 with model AverageValueNaive in generation 7 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 154 with model ZeroesNaive in generation 7 of 10
+Model Number: 155 with model ZeroesNaive in generation 7 of 10
+Model Number: 156 with model ZeroesNaive in generation 7 of 10
+Model Number: 157 with model GLS in generation 7 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 158 with model GLS in generation 7 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 158: GLS
+Model Number: 159 with model GLS in generation 7 of 10
+New Generation: 8 of 10
+Model Number: 160 with model ZeroesNaive in generation 8 of 10
+Model Number: 161 with model ZeroesNaive in generation 8 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 162 with model ZeroesNaive in generation 8 of 10
+Model Number: 163 with model LastValueNaive in generation 8 of 10
+Model Number: 164 with model LastValueNaive in generation 8 of 10
+Model Number: 165 with model LastValueNaive in generation 8 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 166 with model SeasonalNaive in generation 8 of 10
+Model Number: 167 with model SeasonalNaive in generation 8 of 10
+Model Number: 168 with model SeasonalNaive in generation 8 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 169 with model AverageValueNaive in generation 8 of 10
+Model Number: 170 with model AverageValueNaive in generation 8 of 10
+Model Number: 171 with model AverageValueNaive in generation 8 of 10
+Model Number: 172 with model GLS in generation 8 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 173 with model GLS in generation 8 of 10
+Model Number: 174 with model GLS in generation 8 of 10
+New Generation: 9 of 10
+Model Number: 175 with model LastValueNaive in generation 9 of 10
+Model Number: 176 with model LastValueNaive in generation 9 of 10
+Model Number: 177 with model AverageValueNaive in generation 9 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 178 with model AverageValueNaive in generation 9 of 10
+Model Number: 179 with model AverageValueNaive in generation 9 of 10
+Model Number: 180 with model ZeroesNaive in generation 9 of 10
+Model Number: 181 with model ZeroesNaive in generation 9 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 182 with model SeasonalNaive in generation 9 of 10
+Model Number: 183 with model SeasonalNaive in generation 9 of 10
+Model Number: 184 with model SeasonalNaive in generation 9 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 185 with model SeasonalNaive in generation 9 of 10
+Model Number: 186 with model GLS in generation 9 of 10
+Model Number: 187 with model GLS in generation 9 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New Generation: 10 of 10
+Model Number: 188 with model LastValueNaive in generation 10 of 10
+Model Number: 189 with model LastValueNaive in generation 10 of 10
+Model Number: 190 with model AverageValueNaive in generation 10 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 191 with model AverageValueNaive in generation 10 of 10
+Model Number: 192 with model ZeroesNaive in generation 10 of 10
+Model Number: 193 with model SeasonalNaive in generation 10 of 10
+Model Number: 194 with model SeasonalNaive in generation 10 of 10
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 195 with model SeasonalNaive in generation 10 of 10
+Model Number: 196 with model SeasonalNaive in generation 10 of 10
+Validation Round: 1
+Model Number: 1 of 30 with model LastValueNaive for Validation 1
+Model Number: 2 of 30 with model AverageValueNaive for Validation 1
+Model Number: 3 of 30 with model AverageValueNaive for Validation 1
+Model Number: 4 of 30 with model AverageValueNaive for Validation 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 5 of 30 with model ZeroesNaive for Validation 1
+Model Number: 6 of 30 with model ZeroesNaive for Validation 1
+Model Number: 7 of 30 with model ZeroesNaive for Validation 1
+Model Number: 8 of 30 with model ZeroesNaive for Validation 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 9 of 30 with model ZeroesNaive for Validation 1
+Model Number: 10 of 30 with model LastValueNaive for Validation 1
+Model Number: 11 of 30 with model LastValueNaive for Validation 1
+Model Number: 12 of 30 with model SeasonalNaive for Validation 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 13 of 30 with model SeasonalNaive for Validation 1
+Model Number: 14 of 30 with model SeasonalNaive for Validation 1
+Model Number: 15 of 30 with model SeasonalNaive for Validation 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 16 of 30 with model AverageValueNaive for Validation 1
+Model Number: 17 of 30 with model SeasonalNaive for Validation 1
+Model Number: 18 of 30 with model AverageValueNaive for Validation 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 19 of 30 with model SeasonalNaive for Validation 1
+Model Number: 20 of 30 with model SeasonalNaive for Validation 1
+Model Number: 21 of 30 with model LastValueNaive for Validation 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 22 of 30 with model LastValueNaive for Validation 1
+Model Number: 23 of 30 with model AverageValueNaive for Validation 1
+Model Number: 24 of 30 with model AverageValueNaive for Validation 1
+Model Number: 25 of 30 with model LastValueNaive for Validation 1
+Model Number: 26 of 30 with model LastValueNaive for Validation 1
+Model Number: 27 of 30 with model ZeroesNaive for Validation 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 28 of 30 with model GLS for Validation 1
+Model Number: 29 of 30 with model GLS for Validation 1
+Model Number: 30 of 30 with model GLS for Validation 1
+Validation Round: 2
+Model Number: 1 of 30 with model LastValueNaive for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 2 of 30 with model AverageValueNaive for Validation 2
+Model Number: 3 of 30 with model AverageValueNaive for Validation 2
+Model Number: 4 of 30 with model AverageValueNaive for Validation 2
+Model Number: 5 of 30 with model ZeroesNaive for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 6 of 30 with model ZeroesNaive for Validation 2
+Model Number: 7 of 30 with model ZeroesNaive for Validation 2
+Model Number: 8 of 30 with model ZeroesNaive for Validation 2
+Model Number: 9 of 30 with model ZeroesNaive for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 10 of 30 with model LastValueNaive for Validation 2
+Model Number: 11 of 30 with model LastValueNaive for Validation 2
+Model Number: 12 of 30 with model SeasonalNaive for Validation 2
+Model Number: 13 of 30 with model SeasonalNaive for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 14 of 30 with model SeasonalNaive for Validation 2
+Model Number: 15 of 30 with model SeasonalNaive for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 16 of 30 with model AverageValueNaive for Validation 2
+Model Number: 17 of 30 with model SeasonalNaive for Validation 2
+Model Number: 18 of 30 with model AverageValueNaive for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 19 of 30 with model SeasonalNaive for Validation 2
+Model Number: 20 of 30 with model SeasonalNaive for Validation 2
+Model Number: 21 of 30 with model LastValueNaive for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 22 of 30 with model LastValueNaive for Validation 2
+Model Number: 23 of 30 with model AverageValueNaive for Validation 2
+Model Number: 24 of 30 with model AverageValueNaive for Validation 2
+Model Number: 25 of 30 with model LastValueNaive for Validation 2
+Model Number: 26 of 30 with model LastValueNaive for Validation 2
+Model Number: 27 of 30 with model ZeroesNaive for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 28 of 30 with model GLS for Validation 2
+Model Number: 29 of 30 with model GLS for Validation 2
+Model Number: 30 of 30 with model GLS for Validation 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation Round: 3
+Model Number: 1 of 30 with model LastValueNaive for Validation 3
+Model Number: 2 of 30 with model AverageValueNaive for Validation 3
+Model Number: 3 of 30 with model AverageValueNaive for Validation 3
+Model Number: 4 of 30 with model AverageValueNaive for Validation 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 5 of 30 with model ZeroesNaive for Validation 3
+Model Number: 6 of 30 with model ZeroesNaive for Validation 3
+Model Number: 7 of 30 with model ZeroesNaive for Validation 3
+Model Number: 8 of 30 with model ZeroesNaive for Validation 3
+Model Number: 9 of 30 with model ZeroesNaive for Validation 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 10 of 30 with model LastValueNaive for Validation 3
+Model Number: 11 of 30 with model LastValueNaive for Validation 3
+Model Number: 12 of 30 with model SeasonalNaive for Validation 3
+Model Number: 13 of 30 with model SeasonalNaive for Validation 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 14 of 30 with model SeasonalNaive for Validation 3
+Model Number: 15 of 30 with model SeasonalNaive for Validation 3
+Model Number: 16 of 30 with model AverageValueNaive for Validation 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 17 of 30 with model SeasonalNaive for Validation 3
+Model Number: 18 of 30 with model AverageValueNaive for Validation 3
+Model Number: 19 of 30 with model SeasonalNaive for Validation 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 20 of 30 with model SeasonalNaive for Validation 3
+Model Number: 21 of 30 with model LastValueNaive for Validation 3
+Model Number: 22 of 30 with model LastValueNaive for Validation 3
+Model Number: 23 of 30 with model AverageValueNaive for Validation 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 24 of 30 with model AverageValueNaive for Validation 3
+Model Number: 25 of 30 with model LastValueNaive for Validation 3
+Model Number: 26 of 30 with model LastValueNaive for Validation 3
+Model Number: 27 of 30 with model ZeroesNaive for Validation 3
+Model Number: 28 of 30 with model GLS for Validation 3
+Model Number: 29 of 30 with model GLS for Validation 3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 30 of 30 with model GLS for Validation 3
+Validation Round: 4
+Model Number: 1 of 30 with model LastValueNaive for Validation 4
+Model Number: 2 of 30 with model AverageValueNaive for Validation 4
+Model Number: 3 of 30 with model AverageValueNaive for Validation 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 4 of 30 with model AverageValueNaive for Validation 4
+Model Number: 5 of 30 with model ZeroesNaive for Validation 4
+Model Number: 6 of 30 with model ZeroesNaive for Validation 4
+Model Number: 7 of 30 with model ZeroesNaive for Validation 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 8 of 30 with model ZeroesNaive for Validation 4
+Model Number: 9 of 30 with model ZeroesNaive for Validation 4
+Model Number: 10 of 30 with model LastValueNaive for Validation 4
+Model Number: 11 of 30 with model LastValueNaive for Validation 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 12 of 30 with model SeasonalNaive for Validation 4
+Model Number: 13 of 30 with model SeasonalNaive for Validation 4
+Model Number: 14 of 30 with model SeasonalNaive for Validation 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 15 of 30 with model SeasonalNaive for Validation 4
+Model Number: 16 of 30 with model AverageValueNaive for Validation 4
+Model Number: 17 of 30 with model SeasonalNaive for Validation 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 18 of 30 with model AverageValueNaive for Validation 4
+Model Number: 19 of 30 with model SeasonalNaive for Validation 4
+Model Number: 20 of 30 with model SeasonalNaive for Validation 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 21 of 30 with model LastValueNaive for Validation 4
+Model Number: 22 of 30 with model LastValueNaive for Validation 4
+Model Number: 23 of 30 with model AverageValueNaive for Validation 4
+Model Number: 24 of 30 with model AverageValueNaive for Validation 4
+Model Number: 25 of 30 with model LastValueNaive for Validation 4
+Model Number: 26 of 30 with model LastValueNaive for Validation 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 27 of 30 with model ZeroesNaive for Validation 4
+Model Number: 28 of 30 with model GLS for Validation 4
+Model Number: 29 of 30 with model GLS for Validation 4
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 30 of 30 with model GLS for Validation 4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the details of the best model</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initiated AutoTS object with best model: 
+AverageValueNaive
+{&quot;fillna&quot;: &quot;ffill&quot;, &quot;transformations&quot;: {&quot;0&quot;: &quot;DifferencedTransformer&quot;, &quot;1&quot;: &quot;ClipOutliers&quot;}, &quot;transformation_params&quot;: {&quot;0&quot;: {}, &quot;1&quot;: {&quot;method&quot;: &quot;clip&quot;, &quot;std_threshold&quot;: 3.5, &quot;fillna&quot;: null}}}
+{&quot;method&quot;: &quot;Mean&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># point forecasts dataframe</span>
+<span class="n">forecasts_df</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">forecast</span>
+<span class="c1"># upper and lower forecasts</span>
+<span class="n">forecasts_up</span><span class="p">,</span> <span class="n">forecasts_low</span> <span class="o">=</span> <span class="n">prediction</span><span class="o">.</span><span class="n">upper_forecast</span><span class="p">,</span> <span class="n">prediction</span><span class="o">.</span><span class="n">lower_forecast</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># accuracy of all tried model results</span>
+<span class="n">model_results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">()</span>
+<span class="n">model_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Model</th>
+      <th>ModelParameters</th>
+      <th>TransformationParameters</th>
+      <th>TransformationRuntime</th>
+      <th>FitRuntime</th>
+      <th>PredictRuntime</th>
+      <th>TotalRuntime</th>
+      <th>Ensemble</th>
+      <th>Exceptions</th>
+      <th>...</th>
+      <th>spl</th>
+      <th>contour</th>
+      <th>smape_weighted</th>
+      <th>mae_weighted</th>
+      <th>rmse_weighted</th>
+      <th>containment_weighted</th>
+      <th>spl_weighted</th>
+      <th>contour_weighted</th>
+      <th>TotalRuntimeSeconds</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2887d2af24ace64615ccf0154ef2e4be</td>
+      <td>AverageValueNaive</td>
+      <td>{"method": "Mean"}</td>
+      <td>{"fillna": "fake_date", "transformations": {"0...</td>
+      <td>0 days 00:00:00.031033</td>
+      <td>0 days 00:00:00.001313</td>
+      <td>0 days 00:00:00.001555</td>
+      <td>0 days 00:00:00.033901</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.517599</td>
+      <td>0.5</td>
+      <td>5.130883</td>
+      <td>1.669625e+06</td>
+      <td>1.788361e+06</td>
+      <td>1.000000</td>
+      <td>0.517599</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>15.634113</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>48b83f14f0704b892258390f56edbd5f</td>
+      <td>AverageValueNaive</td>
+      <td>{"method": "Mean"}</td>
+      <td>{"fillna": "mean", "transformations": {"0": "C...</td>
+      <td>0 days 00:00:00.386976</td>
+      <td>0 days 00:00:00.001256</td>
+      <td>0 days 00:00:00.001462</td>
+      <td>0 days 00:00:00.389694</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.808371</td>
+      <td>0.5</td>
+      <td>4.794812</td>
+      <td>1.604529e+06</td>
+      <td>2.230759e+06</td>
+      <td>1.000000</td>
+      <td>0.808371</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>15.102940</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>da3c53c0617d9f838e7cfcf5e786e702</td>
+      <td>AverageValueNaive</td>
+      <td>{"method": "Mean"}</td>
+      <td>{"fillna": "rolling_mean_24", "transformations...</td>
+      <td>0 days 00:00:00</td>
+      <td>0 days 00:00:00</td>
+      <td>0 days 00:00:00</td>
+      <td>0 days 00:00:00</td>
+      <td>0</td>
+      <td>ValueError('Unable to coerce to Series, length...</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>36ca223faaa43b7034902862aafc1026</td>
+      <td>GLS</td>
+      <td>{}</td>
+      <td>{"fillna": "rolling_mean", "transformations": ...</td>
+      <td>0 days 00:00:00.108445</td>
+      <td>0 days 00:00:00.001439</td>
+      <td>0 days 00:00:00.035807</td>
+      <td>0 days 00:00:00.145691</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.690577</td>
+      <td>0.5</td>
+      <td>13.122061</td>
+      <td>4.623450e+06</td>
+      <td>4.918553e+06</td>
+      <td>0.333333</td>
+      <td>0.690577</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>39.768386</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>c1d0aca175f6832e905ebfd3f8fe1985</td>
+      <td>GLS</td>
+      <td>{}</td>
+      <td>{"fillna": "median", "transformations": {"0": ...</td>
+      <td>0 days 00:00:00.059180</td>
+      <td>0 days 00:00:00.002030</td>
+      <td>0 days 00:00:00.031569</td>
+      <td>0 days 00:00:00.092779</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>1.269718</td>
+      <td>0.5</td>
+      <td>67.712041</td>
+      <td>1.670516e+07</td>
+      <td>1.673927e+07</td>
+      <td>1.000000</td>
+      <td>1.269718</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>196.830983</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>310</th>
+      <td>400b7b5797e1e4b10c3b3a5d7f698d00</td>
+      <td>LastValueNaive</td>
+      <td>{}</td>
+      <td>{"fillna": "zero", "transformations": {"0": "P...</td>
+      <td>0 days 00:00:00.025318</td>
+      <td>0 days 00:00:00.001589</td>
+      <td>0 days 00:00:00.003053</td>
+      <td>0 days 00:00:00.029960</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.436271</td>
+      <td>0.5</td>
+      <td>4.494185</td>
+      <td>1.158526e+06</td>
+      <td>1.160305e+06</td>
+      <td>1.000000</td>
+      <td>0.436271</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>13.387574</td>
+    </tr>
+    <tr>
+      <th>311</th>
+      <td>4c4a7f43bb221b0f6e534082b22e15ad</td>
+      <td>ZeroesNaive</td>
+      <td>{}</td>
+      <td>{"fillna": "rolling_mean_24", "transformations...</td>
+      <td>0 days 00:00:00.075603</td>
+      <td>0 days 00:00:00.000414</td>
+      <td>0 days 00:00:00.000435</td>
+      <td>0 days 00:00:00.076452</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.718178</td>
+      <td>0.5</td>
+      <td>4.494185</td>
+      <td>1.158526e+06</td>
+      <td>1.160388e+06</td>
+      <td>0.000000</td>
+      <td>0.718178</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>13.613531</td>
+    </tr>
+    <tr>
+      <th>312</th>
+      <td>f012c047a597ff27b21af87591beca35</td>
+      <td>GLS</td>
+      <td>{}</td>
+      <td>{"fillna": "rolling_mean", "transformations": ...</td>
+      <td>0 days 00:00:00.049458</td>
+      <td>0 days 00:00:00.002167</td>
+      <td>0 days 00:00:00.028243</td>
+      <td>0 days 00:00:00.079868</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.826368</td>
+      <td>0.5</td>
+      <td>4.494549</td>
+      <td>1.163207e+06</td>
+      <td>1.440160e+06</td>
+      <td>1.000000</td>
+      <td>0.826368</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>13.809589</td>
+    </tr>
+    <tr>
+      <th>313</th>
+      <td>b9802d16c1b2306026464639401ed526</td>
+      <td>GLS</td>
+      <td>{}</td>
+      <td>{"fillna": "mean", "transformations": {"0": "D...</td>
+      <td>0 days 00:00:00.030635</td>
+      <td>0 days 00:00:00.001845</td>
+      <td>0 days 00:00:00.028732</td>
+      <td>0 days 00:00:00.061212</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>1.245390</td>
+      <td>0.5</td>
+      <td>4.500221</td>
+      <td>1.165287e+06</td>
+      <td>1.474139e+06</td>
+      <td>1.000000</td>
+      <td>1.245390</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>14.174485</td>
+    </tr>
+    <tr>
+      <th>314</th>
+      <td>a181bddbb5b27cc244c37ff3aaeb6fe2</td>
+      <td>GLS</td>
+      <td>{}</td>
+      <td>{"fillna": "rolling_mean", "transformations": ...</td>
+      <td>0 days 00:00:00.031637</td>
+      <td>0 days 00:00:00.001694</td>
+      <td>0 days 00:00:00.027596</td>
+      <td>0 days 00:00:00.060927</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>1.245390</td>
+      <td>0.5</td>
+      <td>4.500221</td>
+      <td>1.165287e+06</td>
+      <td>1.474139e+06</td>
+      <td>1.000000</td>
+      <td>1.245390</td>
+      <td>0.5</td>
+      <td>1</td>
+      <td>14.174485</td>
+    </tr>
+  </tbody>
+</table>
+<p>315 rows × 26 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># and aggregated from cross validation</span>
+<span class="n">model</span><span class="o">.</span><span class="n">results</span><span class="p">(</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Model</th>
+      <th>ModelParameters</th>
+      <th>TransformationParameters</th>
+      <th>Ensemble</th>
+      <th>Runs</th>
+      <th>smape</th>
+      <th>mae</th>
+      <th>rmse</th>
+      <th>containment</th>
+      <th>spl</th>
+      <th>contour</th>
+      <th>smape_weighted</th>
+      <th>mae_weighted</th>
+      <th>rmse_weighted</th>
+      <th>containment_weighted</th>
+      <th>contour_weighted</th>
+      <th>spl_weighted</th>
+      <th>TotalRuntimeSeconds</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00070706ad0277f41b13b99928575281</td>
+      <td>LastValueNaive</td>
+      <td>{}</td>
+      <td>{"fillna": "ffill", "transformations": {"0": "...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>14.185911</td>
+      <td>4.350497e+06</td>
+      <td>4.415551e+06</td>
+      <td>0.333333</td>
+      <td>0.855152</td>
+      <td>0.5</td>
+      <td>14.185911</td>
+      <td>4.350497e+06</td>
+      <td>4.415551e+06</td>
+      <td>0.333333</td>
+      <td>0.5</td>
+      <td>0.855152</td>
+      <td>1</td>
+      <td>42.441806</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0135cb7ab2c30ba2c6d90e0bffa3532d</td>
+      <td>GLS</td>
+      <td>{}</td>
+      <td>{"fillna": "rolling_mean", "transformations": ...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>182.302912</td>
+      <td>2.160979e+08</td>
+      <td>3.391720e+08</td>
+      <td>0.000000</td>
+      <td>35.800818</td>
+      <td>0.5</td>
+      <td>182.302912</td>
+      <td>2.160979e+08</td>
+      <td>3.391720e+08</td>
+      <td>0.000000</td>
+      <td>0.5</td>
+      <td>35.800818</td>
+      <td>1</td>
+      <td>745.581723</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0431ea0a40602a188276c54afa9475db</td>
+      <td>ZeroesNaive</td>
+      <td>{}</td>
+      <td>{"fillna": "median", "transformations": {"0": ...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>10.976173</td>
+      <td>3.448311e+06</td>
+      <td>3.730450e+06</td>
+      <td>0.000000</td>
+      <td>1.754809</td>
+      <td>0.5</td>
+      <td>10.976173</td>
+      <td>3.448311e+06</td>
+      <td>3.730450e+06</td>
+      <td>0.000000</td>
+      <td>0.5</td>
+      <td>1.754809</td>
+      <td>1</td>
+      <td>33.871582</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>045bdecc3b57fce5cf0ed8443a9b2ccf</td>
+      <td>AverageValueNaive</td>
+      <td>{"method": "Mean"}</td>
+      <td>{"fillna": "mean", "transformations": {"0": "P...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>200.000000</td>
+      <td>3.300052e+07</td>
+      <td>3.301779e+07</td>
+      <td>0.000000</td>
+      <td>16.793611</td>
+      <td>0.5</td>
+      <td>200.000000</td>
+      <td>3.300052e+07</td>
+      <td>3.301779e+07</td>
+      <td>0.000000</td>
+      <td>0.5</td>
+      <td>16.793611</td>
+      <td>1</td>
+      <td>578.142710</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>06ba7c7d86ab5e1b473ad8913d3388b0</td>
+      <td>AverageValueNaive</td>
+      <td>{"method": "Mean"}</td>
+      <td>{"fillna": "mean", "transformations": {"0": "D...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3.881636</td>
+      <td>1.271843e+06</td>
+      <td>1.288775e+06</td>
+      <td>1.000000</td>
+      <td>0.464244</td>
+      <td>0.5</td>
+      <td>3.881636</td>
+      <td>1.271843e+06</td>
+      <td>1.288775e+06</td>
+      <td>1.000000</td>
+      <td>0.5</td>
+      <td>0.464244</td>
+      <td>1</td>
+      <td>11.865436</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>f8b86034adce3a66b52c3a928c89f821</td>
+      <td>AverageValueNaive</td>
+      <td>{"method": "Median"}</td>
+      <td>{"fillna": "ffill", "transformations": {"0": "...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>24.992119</td>
+      <td>7.346826e+06</td>
+      <td>7.444769e+06</td>
+      <td>0.000000</td>
+      <td>2.227366</td>
+      <td>0.5</td>
+      <td>24.992119</td>
+      <td>7.346826e+06</td>
+      <td>7.444769e+06</td>
+      <td>0.000000</td>
+      <td>0.5</td>
+      <td>2.227366</td>
+      <td>1</td>
+      <td>75.077985</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>fad5638a13a2abf29b1b30a8dae27d7f</td>
+      <td>AverageValueNaive</td>
+      <td>{"method": "Mean"}</td>
+      <td>{"fillna": "ffill", "transformations": {"0": "...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>20.523161</td>
+      <td>6.156947e+06</td>
+      <td>6.256321e+06</td>
+      <td>0.333333</td>
+      <td>1.059608</td>
+      <td>1.0</td>
+      <td>20.523161</td>
+      <td>6.156947e+06</td>
+      <td>6.256321e+06</td>
+      <td>0.333333</td>
+      <td>1.0</td>
+      <td>1.059608</td>
+      <td>1</td>
+      <td>61.146947</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>fb1a056aa32d46c89ed86d5dcb1b6ca9</td>
+      <td>GLS</td>
+      <td>{}</td>
+      <td>{"fillna": "median", "transformations": {"0": ...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>28.583014</td>
+      <td>8.268258e+06</td>
+      <td>8.354622e+06</td>
+      <td>0.000000</td>
+      <td>2.446821</td>
+      <td>0.5</td>
+      <td>28.583014</td>
+      <td>8.268258e+06</td>
+      <td>8.354622e+06</td>
+      <td>0.000000</td>
+      <td>0.5</td>
+      <td>2.446821</td>
+      <td>1</td>
+      <td>85.662811</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>fdb1efddf07d46b6d544e7b3148cd678</td>
+      <td>ZeroesNaive</td>
+      <td>{}</td>
+      <td>{"fillna": "fake_date", "transformations": {"0...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>191.069452</td>
+      <td>3.259929e+07</td>
+      <td>3.259934e+07</td>
+      <td>0.000000</td>
+      <td>16.589431</td>
+      <td>1.0</td>
+      <td>191.069452</td>
+      <td>3.259929e+07</td>
+      <td>3.259934e+07</td>
+      <td>0.000000</td>
+      <td>1.0</td>
+      <td>16.589431</td>
+      <td>1</td>
+      <td>553.654227</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>ff3db92bbf2d5009b4e37da67bcc1553</td>
+      <td>LastValueNaive</td>
+      <td>{}</td>
+      <td>{"fillna": "rolling_mean", "transformations": ...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>14.185911</td>
+      <td>4.350497e+06</td>
+      <td>4.415551e+06</td>
+      <td>0.333333</td>
+      <td>0.965761</td>
+      <td>0.5</td>
+      <td>14.185911</td>
+      <td>4.350497e+06</td>
+      <td>4.415551e+06</td>
+      <td>0.333333</td>
+      <td>0.5</td>
+      <td>0.965761</td>
+      <td>1</td>
+      <td>42.530451</td>
+    </tr>
+  </tbody>
+</table>
+<p>163 rows × 20 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "env_adp255"
+        },
+        kernelOptions: {
+            kernelName: "env_adp255",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'env_adp255'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="passo2.html" title="previous page">Passo 2: Preparar os dados</a>
+    <a class='right-next' id="next-link" href="passo4.html" title="next page">Passo 4: Apresentar e interpretar o modelo</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Grupo 2 -> Jheniffer, Marcos, Ronaldo G., Ronaldo L.<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

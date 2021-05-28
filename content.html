@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content in Jupyter Book &#8212; ADP255 - Trabalho em Grupo ML</title>
+    <title>Passo 0: Look at the big picture &#8212; ADP255 - Trabalho em Grupo</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -75,7 +73,7 @@
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">ADP255 - Trabalho em Grupo ML</h1>
+      <h1 class="site-logo" id="site-title">ADP255 - Trabalho em Grupo</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -86,35 +84,10 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   ADP255 - Machine Learning
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
-   Content in Jupyter Book
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="p.html">
-     Página Teste
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
     </div>
 </nav> <!-- To handle the deprecated key -->
 
@@ -203,11 +176,22 @@
         
               <div>
                 
-  <div class="section" id="content-in-jupyter-book">
-<h1>Content in Jupyter Book<a class="headerlink" href="#content-in-jupyter-book" title="Permalink to this headline">¶</a></h1>
-<p>There are many ways to write content in Jupyter Book. This short section
-covers a few tips for how to do so.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="passo-0-look-at-the-big-picture">
+<h1>Passo 0: Look at the big picture<a class="headerlink" href="#passo-0-look-at-the-big-picture" title="Permalink to this headline">¶</a></h1>
+<p>Antes da coleta de dados, é necessário ter uma visão geral do problema proposto.</p>
+<p>Os dados de vendas de interruptores, pulsadores e tomadas são apresentados em uma série temporal com a quantidade total de vendas mensal no período de jan/2014 a dez/2020.</p>
+<p>Para entender o comportamento de venda dos produtos, torna-se necessário compreender a dinâmica da indústria de material de construação.</p>
+<p>Mercado de Tomadas - Interruptores - Pulsadores</p>
+<p>O mercado de interruptores e tomadas é impulsionado pelas novas construções, que representam um terço do mercado total. Os dois terços restantes são alavancados pela autoconstrução e pelas reformas e/ou manutenção, que são abastecidas pelo varejo</p>
+<div class="figure align-default" id="fatores-que-influenciam-no-mercado-de-interruptores">
+<img alt="fig/mercado_tomdas.png" src="fig/mercado_tomdas.png" />
+<p class="caption"><span class="caption-text"><a class="reference external" href="http://www.osetoreletrico.com.br/wp-content/uploads/2013/03/Ed85_pesquisa_tomadas_interruptores.pdf">fonte</a></span><a class="headerlink" href="#fatores-que-influenciam-no-mercado-de-interruptores" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sazonalidade: O comércio de materiais de construção que costuma apresentar vendas acima da média no período de julho à novembro. Isso acontece pois no segundo semestre o orçamento familiar costuma estar menos comprometido e as pessoas tendem a querer arrumar ou reformar a casa, antes da chegada do fim de ano.</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -236,8 +220,6 @@ covers a few tips for how to do so.</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Welcome to your Jupyter Book</a>
-    <a class='right-next' id="next-link" href="markdown.html" title="next page">Markdown Files</a>
 
         </div>
         

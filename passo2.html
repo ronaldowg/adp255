@@ -1,0 +1,2253 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passo 2: Preparar os dados &#8212; ADP255 - Trabalho em Grupo</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Passo 3: Testar diferentes algoritmos preditivos" href="passo3.html" />
+    <link rel="prev" title="Passo 1: Coletar dados" href="passo1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ADP255 - Trabalho em Grupo</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   ADP255 - Machine Learning
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo0.html">
+   Passo 0: Look at the big picture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo1.html">
+   Passo 1: Coletar dados
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Passo 2: Preparar os dados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo3.html">
+   Passo 3: Testar diferentes algoritmos preditivos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo4.html">
+   Passo 4: Apresentar e interpretar o modelo
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/passo2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ronaldowg/adp255"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fpasso2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ronaldowg/adp255/main?urlpath=tree/passo2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Passo 2: Preparar os dados
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots">
+   <strong>
+    Plots
+   </strong>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transformar-os-dados-em-estacionarios">
+     Transformar os dados em estacionários
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dicionario-de-dados">
+     Dicionário de Dados
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="passo-2-preparar-os-dados">
+<h1>Passo 2: Preparar os dados<a class="headerlink" href="#passo-2-preparar-os-dados" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Importamos o objeto <strong>dados</strong> salvo no passo anterior</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_to_read</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datasets/dados.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_read</span><span class="p">)</span>
+<span class="n">file_to_read</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plots">
+<h1><strong>Plots</strong><a class="headerlink" href="#plots" title="Permalink to this headline">¶</a></h1>
+<p>Alguns plots em busca de insights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots do &#39;total&#39; de vendas (Tomadas+pulsadores+interruptores) - RECORTE 1.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;IBC-Br&#39;</span><span class="p">,</span> <span class="s1">&#39;Taxa de Desocupação&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;Imobiliário&#39;</span><span class="p">,</span> <span class="s1">&#39;Comercial&#39;</span><span class="p">,</span> <span class="s1">&#39;Residencial&#39;</span><span class="p">,</span> <span class="s1">&#39;material_eletrico&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_5_0.png" src="_images/passo2_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots das vendas de &#39;total&#39; - RECORTE 2.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">,</span> <span class="s1">&#39;Variacao_PIB&#39;</span><span class="p">,</span><span class="s1">&#39;CONSUMO&#39;</span><span class="p">,</span><span class="s1">&#39;ICST-A&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-R&#39;</span><span class="p">,</span> <span class="s1">&#39;geracaoGWh&#39;</span><span class="p">,</span>
+                                                    <span class="s1">&#39;IndEletronica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndGeral&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_6_0.png" src="_images/passo2_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots das vendas de &#39;tomadas&#39;- RECORTE 1.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">,</span><span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="s1">&#39;IBC-Br&#39;</span><span class="p">,</span> <span class="s1">&#39;Taxa de Desocupação&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;Imobiliário&#39;</span><span class="p">,</span> <span class="s1">&#39;Comercial&#39;</span><span class="p">,</span> <span class="s1">&#39;Residencial&#39;</span><span class="p">,</span> <span class="s1">&#39;material_eletrico&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_7_0.png" src="_images/passo2_7_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots das vendas de &#39;tomadas&#39; - RECORTE 2.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">,</span> <span class="s1">&#39;Variacao_PIB&#39;</span><span class="p">,</span><span class="s1">&#39;CONSUMO&#39;</span><span class="p">,</span><span class="s1">&#39;ICST-A&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-R&#39;</span><span class="p">,</span> <span class="s1">&#39;geracaoGWh&#39;</span><span class="p">,</span>
+                                                    <span class="s1">&#39;IndEletronica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndGeral&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_8_0.png" src="_images/passo2_8_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots das vendas de &#39;interruptores&#39;- RECORTE 1.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="s1">&#39;IBC-Br&#39;</span><span class="p">,</span> <span class="s1">&#39;Taxa de Desocupação&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;Imobiliário&#39;</span><span class="p">,</span> <span class="s1">&#39;Comercial&#39;</span><span class="p">,</span> <span class="s1">&#39;Residencial&#39;</span><span class="p">,</span> <span class="s1">&#39;material_eletrico&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_9_0.png" src="_images/passo2_9_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots das vendas de &#39;interruptores&#39; - RECORTE 2.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">,</span> <span class="s1">&#39;Variacao_PIB&#39;</span><span class="p">,</span><span class="s1">&#39;CONSUMO&#39;</span><span class="p">,</span><span class="s1">&#39;ICST-A&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-R&#39;</span><span class="p">,</span> <span class="s1">&#39;geracaoGWh&#39;</span><span class="p">,</span>
+                                                    <span class="s1">&#39;IndEletronica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndGeral&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_10_0.png" src="_images/passo2_10_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots das vendas de &#39;pulsadores&#39; - RECORTE 1.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;IBC-Br&#39;</span><span class="p">,</span> <span class="s1">&#39;Taxa de Desocupação&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;Imobiliário&#39;</span><span class="p">,</span> <span class="s1">&#39;Comercial&#39;</span><span class="p">,</span> <span class="s1">&#39;Residencial&#39;</span><span class="p">,</span> <span class="s1">&#39;material_eletrico&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_11_0.png" src="_images/passo2_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots das vendas de &#39;pulsadores&#39; - RECORTE 2.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">,</span> <span class="s1">&#39;Variacao_PIB&#39;</span><span class="p">,</span><span class="s1">&#39;CONSUMO&#39;</span><span class="p">,</span><span class="s1">&#39;ICST-A&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-R&#39;</span><span class="p">,</span> <span class="s1">&#39;geracaoGWh&#39;</span><span class="p">,</span>
+                                                    <span class="s1">&#39;IndEletronica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndGeral&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_12_0.png" src="_images/passo2_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots do &#39;total&#39; de vendas (Tomadas+pulsadores+interruptores) - RECORTE 1.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;IBC-Br&#39;</span><span class="p">,</span> <span class="s1">&#39;Taxa de Desocupação&#39;</span><span class="p">,</span>
+                                            <span class="s1">&#39;Imobiliário&#39;</span><span class="p">,</span> <span class="s1">&#39;Comercial&#39;</span><span class="p">,</span> <span class="s1">&#39;Residencial&#39;</span><span class="p">,</span> <span class="s1">&#39;material_eletrico&#39;</span><span class="p">],</span>  <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_13_0.png" src="_images/passo2_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Observação dos plots do &#39;total&#39; de vendas (Tomadas+pulsadores+interruptores) - RECORTE 2.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dados</span><span class="p">,</span> <span class="n">y_vars</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PIB&#39;</span><span class="p">,</span> <span class="s1">&#39;Variacao_PIB&#39;</span><span class="p">,</span><span class="s1">&#39;CONSUMO&#39;</span><span class="p">,</span><span class="s1">&#39;ICST-A&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-R&#39;</span><span class="p">,</span> <span class="s1">&#39;geracaoGWh&#39;</span><span class="p">,</span>
+                                                    <span class="s1">&#39;IndEletronica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">,</span> <span class="s1">&#39;IndGeral&#39;</span><span class="p">],</span>  <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_14_0.png" src="_images/passo2_14_0.png" />
+</div>
+</div>
+<p>Ao que parece as vendas de tomadas, interruptores e pulsadores estão relacionadas. Usaremos apenas o ‘total’?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;IBC-Br&#39;</span><span class="p">:</span><span class="s1">&#39;ibc&#39;</span><span class="p">,</span><span class="s1">&#39;Taxa de Desocupação&#39;</span><span class="p">:</span><span class="s1">&#39;desemprego&#39;</span><span class="p">,</span><span class="s1">&#39;Imobiliário&#39;</span><span class="p">:</span><span class="s1">&#39;imobiliario&#39;</span><span class="p">,</span><span class="s1">&#39;Comercial&#39;</span><span class="p">:</span><span class="s1">&#39;comercial&#39;</span><span class="p">,</span><span class="s1">&#39;Residencial&#39;</span><span class="p">:</span><span class="s1">&#39;residencial&#39;</span><span class="p">,</span><span class="s1">&#39;PIB&#39;</span><span class="p">:</span><span class="s1">&#39;pib&#39;</span><span class="p">,</span><span class="s1">&#39;Variacao_PIB&#39;</span><span class="p">:</span><span class="s1">&#39;variacao_pib&#39;</span><span class="p">,</span><span class="s1">&#39;CONSUMO&#39;</span><span class="p">:</span><span class="s1">&#39;consumo&#39;</span><span class="p">})</span>
+<span class="n">dados</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dados</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>interruptores</th>
+      <th>pulsadores</th>
+      <th>tomadas</th>
+      <th>total</th>
+      <th>ibc</th>
+      <th>desemprego</th>
+      <th>imobiliario</th>
+      <th>comercial</th>
+      <th>residencial</th>
+      <th>material_eletrico</th>
+      <th>pib</th>
+      <th>variacao_pib</th>
+      <th>consumo</th>
+      <th>ICST-A</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndEletronica</th>
+      <th>IndEletrica</th>
+      <th>IndEletronica+Eletrica</th>
+      <th>IndGeral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>interruptores</th>
+      <td>1.000000</td>
+      <td>0.886950</td>
+      <td>0.989260</td>
+      <td>0.995224</td>
+      <td>0.115787</td>
+      <td>0.513427</td>
+      <td>0.786555</td>
+      <td>-0.429736</td>
+      <td>0.685025</td>
+      <td>-0.575877</td>
+      <td>0.784588</td>
+      <td>0.181344</td>
+      <td>0.151601</td>
+      <td>0.385183</td>
+      <td>0.420987</td>
+      <td>0.090170</td>
+      <td>0.413813</td>
+      <td>0.496855</td>
+      <td>0.461891</td>
+      <td>0.464844</td>
+    </tr>
+    <tr>
+      <th>pulsadores</th>
+      <td>0.886950</td>
+      <td>1.000000</td>
+      <td>0.869474</td>
+      <td>0.878505</td>
+      <td>0.194732</td>
+      <td>0.214204</td>
+      <td>0.572859</td>
+      <td>-0.652046</td>
+      <td>0.401692</td>
+      <td>-0.440588</td>
+      <td>0.582705</td>
+      <td>0.230787</td>
+      <td>0.248615</td>
+      <td>0.582000</td>
+      <td>0.616158</td>
+      <td>0.088726</td>
+      <td>0.276526</td>
+      <td>0.354477</td>
+      <td>0.320157</td>
+      <td>0.375115</td>
+    </tr>
+    <tr>
+      <th>tomadas</th>
+      <td>0.989260</td>
+      <td>0.869474</td>
+      <td>1.000000</td>
+      <td>0.998799</td>
+      <td>0.080536</td>
+      <td>0.567933</td>
+      <td>0.841516</td>
+      <td>-0.401740</td>
+      <td>0.750327</td>
+      <td>-0.593254</td>
+      <td>0.835448</td>
+      <td>0.162918</td>
+      <td>0.173872</td>
+      <td>0.355234</td>
+      <td>0.388990</td>
+      <td>0.123818</td>
+      <td>0.452127</td>
+      <td>0.537273</td>
+      <td>0.501796</td>
+      <td>0.497976</td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td>0.995224</td>
+      <td>0.878505</td>
+      <td>0.998799</td>
+      <td>1.000000</td>
+      <td>0.092943</td>
+      <td>0.549905</td>
+      <td>0.824605</td>
+      <td>-0.413443</td>
+      <td>0.729331</td>
+      <td>-0.588537</td>
+      <td>0.819948</td>
+      <td>0.169809</td>
+      <td>0.167476</td>
+      <td>0.367315</td>
+      <td>0.401846</td>
+      <td>0.112964</td>
+      <td>0.439995</td>
+      <td>0.524669</td>
+      <td>0.489260</td>
+      <td>0.487958</td>
+    </tr>
+    <tr>
+      <th>ibc</th>
+      <td>0.115787</td>
+      <td>0.194732</td>
+      <td>0.080536</td>
+      <td>0.092943</td>
+      <td>1.000000</td>
+      <td>-0.234901</td>
+      <td>0.019020</td>
+      <td>-0.301964</td>
+      <td>-0.187121</td>
+      <td>-0.182413</td>
+      <td>0.038570</td>
+      <td>-0.073258</td>
+      <td>0.214063</td>
+      <td>0.666022</td>
+      <td>0.652780</td>
+      <td>0.206875</td>
+      <td>0.330719</td>
+      <td>0.326324</td>
+      <td>0.332900</td>
+      <td>0.438508</td>
+    </tr>
+    <tr>
+      <th>desemprego</th>
+      <td>0.513427</td>
+      <td>0.214204</td>
+      <td>0.567933</td>
+      <td>0.549905</td>
+      <td>-0.234901</td>
+      <td>1.000000</td>
+      <td>0.772372</td>
+      <td>0.347935</td>
+      <td>0.891297</td>
+      <td>-0.505044</td>
+      <td>0.766155</td>
+      <td>0.072114</td>
+      <td>-0.047910</td>
+      <td>-0.203637</td>
+      <td>-0.195233</td>
+      <td>0.063939</td>
+      <td>0.594997</td>
+      <td>0.614217</td>
+      <td>0.612815</td>
+      <td>0.511049</td>
+    </tr>
+    <tr>
+      <th>imobiliario</th>
+      <td>0.786555</td>
+      <td>0.572859</td>
+      <td>0.841516</td>
+      <td>0.824605</td>
+      <td>0.019020</td>
+      <td>0.772372</td>
+      <td>1.000000</td>
+      <td>-0.209289</td>
+      <td>0.936172</td>
+      <td>-0.674161</td>
+      <td>0.931737</td>
+      <td>0.043947</td>
+      <td>0.125921</td>
+      <td>0.160076</td>
+      <td>0.175377</td>
+      <td>0.150830</td>
+      <td>0.526674</td>
+      <td>0.628998</td>
+      <td>0.586141</td>
+      <td>0.569568</td>
+    </tr>
+    <tr>
+      <th>comercial</th>
+      <td>-0.429736</td>
+      <td>-0.652046</td>
+      <td>-0.401740</td>
+      <td>-0.413443</td>
+      <td>-0.301964</td>
+      <td>0.347935</td>
+      <td>-0.209289</td>
+      <td>1.000000</td>
+      <td>0.077912</td>
+      <td>0.304309</td>
+      <td>-0.094646</td>
+      <td>0.017901</td>
+      <td>-0.307418</td>
+      <td>-0.670440</td>
+      <td>-0.667098</td>
+      <td>-0.065856</td>
+      <td>0.173789</td>
+      <td>0.053519</td>
+      <td>0.114519</td>
+      <td>-0.018565</td>
+    </tr>
+    <tr>
+      <th>residencial</th>
+      <td>0.685025</td>
+      <td>0.401692</td>
+      <td>0.750327</td>
+      <td>0.729331</td>
+      <td>-0.187121</td>
+      <td>0.891297</td>
+      <td>0.936172</td>
+      <td>0.077912</td>
+      <td>1.000000</td>
+      <td>-0.588045</td>
+      <td>0.909991</td>
+      <td>0.059823</td>
+      <td>0.024430</td>
+      <td>-0.104392</td>
+      <td>-0.082454</td>
+      <td>0.085968</td>
+      <td>0.508927</td>
+      <td>0.590729</td>
+      <td>0.557645</td>
+      <td>0.483214</td>
+    </tr>
+    <tr>
+      <th>material_eletrico</th>
+      <td>-0.575877</td>
+      <td>-0.440588</td>
+      <td>-0.593254</td>
+      <td>-0.588537</td>
+      <td>-0.182413</td>
+      <td>-0.505044</td>
+      <td>-0.674161</td>
+      <td>0.304309</td>
+      <td>-0.588045</td>
+      <td>1.000000</td>
+      <td>-0.582912</td>
+      <td>0.108658</td>
+      <td>-0.017230</td>
+      <td>-0.255858</td>
+      <td>-0.246613</td>
+      <td>-0.097196</td>
+      <td>-0.327240</td>
+      <td>-0.438243</td>
+      <td>-0.388479</td>
+      <td>-0.402976</td>
+    </tr>
+    <tr>
+      <th>pib</th>
+      <td>0.784588</td>
+      <td>0.582705</td>
+      <td>0.835448</td>
+      <td>0.819948</td>
+      <td>0.038570</td>
+      <td>0.766155</td>
+      <td>0.931737</td>
+      <td>-0.094646</td>
+      <td>0.909991</td>
+      <td>-0.582912</td>
+      <td>1.000000</td>
+      <td>0.221791</td>
+      <td>0.192401</td>
+      <td>0.199175</td>
+      <td>0.235990</td>
+      <td>0.210868</td>
+      <td>0.637376</td>
+      <td>0.725197</td>
+      <td>0.690898</td>
+      <td>0.663863</td>
+    </tr>
+    <tr>
+      <th>variacao_pib</th>
+      <td>0.181344</td>
+      <td>0.230787</td>
+      <td>0.162918</td>
+      <td>0.169809</td>
+      <td>-0.073258</td>
+      <td>0.072114</td>
+      <td>0.043947</td>
+      <td>0.017901</td>
+      <td>0.059823</td>
+      <td>0.108658</td>
+      <td>0.221791</td>
+      <td>1.000000</td>
+      <td>-0.021436</td>
+      <td>-0.032322</td>
+      <td>0.012544</td>
+      <td>-0.012614</td>
+      <td>0.001710</td>
+      <td>-0.003593</td>
+      <td>-0.000983</td>
+      <td>-0.017833</td>
+    </tr>
+    <tr>
+      <th>consumo</th>
+      <td>0.151601</td>
+      <td>0.248615</td>
+      <td>0.173872</td>
+      <td>0.167476</td>
+      <td>0.214063</td>
+      <td>-0.047910</td>
+      <td>0.125921</td>
+      <td>-0.307418</td>
+      <td>0.024430</td>
+      <td>-0.017230</td>
+      <td>0.192401</td>
+      <td>-0.021436</td>
+      <td>1.000000</td>
+      <td>0.556296</td>
+      <td>0.546705</td>
+      <td>0.683430</td>
+      <td>0.404264</td>
+      <td>0.457877</td>
+      <td>0.437141</td>
+      <td>0.474808</td>
+    </tr>
+    <tr>
+      <th>ICST-A</th>
+      <td>0.385183</td>
+      <td>0.582000</td>
+      <td>0.355234</td>
+      <td>0.367315</td>
+      <td>0.666022</td>
+      <td>-0.203637</td>
+      <td>0.160076</td>
+      <td>-0.670440</td>
+      <td>-0.104392</td>
+      <td>-0.255858</td>
+      <td>0.199175</td>
+      <td>-0.032322</td>
+      <td>0.556296</td>
+      <td>1.000000</td>
+      <td>0.992810</td>
+      <td>0.337237</td>
+      <td>0.435553</td>
+      <td>0.487298</td>
+      <td>0.467893</td>
+      <td>0.599330</td>
+    </tr>
+    <tr>
+      <th>ICST-R</th>
+      <td>0.420987</td>
+      <td>0.616158</td>
+      <td>0.388990</td>
+      <td>0.401846</td>
+      <td>0.652780</td>
+      <td>-0.195233</td>
+      <td>0.175377</td>
+      <td>-0.667098</td>
+      <td>-0.082454</td>
+      <td>-0.246613</td>
+      <td>0.235990</td>
+      <td>0.012544</td>
+      <td>0.546705</td>
+      <td>0.992810</td>
+      <td>1.000000</td>
+      <td>0.295810</td>
+      <td>0.446301</td>
+      <td>0.495278</td>
+      <td>0.477367</td>
+      <td>0.606697</td>
+    </tr>
+    <tr>
+      <th>geracaoGWh</th>
+      <td>0.090170</td>
+      <td>0.088726</td>
+      <td>0.123818</td>
+      <td>0.112964</td>
+      <td>0.206875</td>
+      <td>0.063939</td>
+      <td>0.150830</td>
+      <td>-0.065856</td>
+      <td>0.085968</td>
+      <td>-0.097196</td>
+      <td>0.210868</td>
+      <td>-0.012614</td>
+      <td>0.683430</td>
+      <td>0.337237</td>
+      <td>0.295810</td>
+      <td>1.000000</td>
+      <td>0.379513</td>
+      <td>0.443515</td>
+      <td>0.417380</td>
+      <td>0.438206</td>
+    </tr>
+    <tr>
+      <th>IndEletronica</th>
+      <td>0.413813</td>
+      <td>0.276526</td>
+      <td>0.452127</td>
+      <td>0.439995</td>
+      <td>0.330719</td>
+      <td>0.594997</td>
+      <td>0.526674</td>
+      <td>0.173789</td>
+      <td>0.508927</td>
+      <td>-0.327240</td>
+      <td>0.637376</td>
+      <td>0.001710</td>
+      <td>0.404264</td>
+      <td>0.435553</td>
+      <td>0.446301</td>
+      <td>0.379513</td>
+      <td>1.000000</td>
+      <td>0.947446</td>
+      <td>0.986485</td>
+      <td>0.961842</td>
+    </tr>
+    <tr>
+      <th>IndEletrica</th>
+      <td>0.496855</td>
+      <td>0.354477</td>
+      <td>0.537273</td>
+      <td>0.524669</td>
+      <td>0.326324</td>
+      <td>0.614217</td>
+      <td>0.628998</td>
+      <td>0.053519</td>
+      <td>0.590729</td>
+      <td>-0.438243</td>
+      <td>0.725197</td>
+      <td>-0.003593</td>
+      <td>0.457877</td>
+      <td>0.487298</td>
+      <td>0.495278</td>
+      <td>0.443515</td>
+      <td>0.947446</td>
+      <td>1.000000</td>
+      <td>0.987060</td>
+      <td>0.970091</td>
+    </tr>
+    <tr>
+      <th>IndEletronica+Eletrica</th>
+      <td>0.461891</td>
+      <td>0.320157</td>
+      <td>0.501796</td>
+      <td>0.489260</td>
+      <td>0.332900</td>
+      <td>0.612815</td>
+      <td>0.586141</td>
+      <td>0.114519</td>
+      <td>0.557645</td>
+      <td>-0.388479</td>
+      <td>0.690898</td>
+      <td>-0.000983</td>
+      <td>0.437141</td>
+      <td>0.467893</td>
+      <td>0.477367</td>
+      <td>0.417380</td>
+      <td>0.986485</td>
+      <td>0.987060</td>
+      <td>1.000000</td>
+      <td>0.978957</td>
+    </tr>
+    <tr>
+      <th>IndGeral</th>
+      <td>0.464844</td>
+      <td>0.375115</td>
+      <td>0.497976</td>
+      <td>0.487958</td>
+      <td>0.438508</td>
+      <td>0.511049</td>
+      <td>0.569568</td>
+      <td>-0.018565</td>
+      <td>0.483214</td>
+      <td>-0.402976</td>
+      <td>0.663863</td>
+      <td>-0.017833</td>
+      <td>0.474808</td>
+      <td>0.599330</td>
+      <td>0.606697</td>
+      <td>0.438206</td>
+      <td>0.961842</td>
+      <td>0.970091</td>
+      <td>0.978957</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>De fato, a partir dos valores da matriz de correlações, podemos usar o ‘total’ no modelo de predição.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;datasets/dados.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="transformar-os-dados-em-estacionarios">
+<h2>Transformar os dados em estacionários<a class="headerlink" href="#transformar-os-dados-em-estacionarios" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The Augmented Dickey-Fuller test can be used to test for a unit root </span>
+<span class="c1"># in a univariate process in the presence of serial correlation.</span>
+<span class="c1"># h0 = série temporal é NAO estacionária</span>
+<span class="c1"># h1 = série temporal é estacionária</span>
+<span class="c1"># OUTPUT = estatística-teste ; p-value ; critical-values (valores do teste para</span>
+<span class="c1"># diferentes valores de ALPHA)</span>
+<span class="c1"># https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.adfuller.html</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+<span class="k">def</span> <span class="nf">test_stationary</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">variable</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ADF Statistic: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Critical Values:&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>    
+
+<span class="n">test_stationary</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>interruptores
+ADF Statistic: -1.963913
+p-value: 0.302617
+Critical Values:
+	1%: -3.512
+	5%: -2.897
+	10%: -2.586
+pulsadores
+ADF Statistic: 0.670854
+p-value: 0.989238
+Critical Values:
+	1%: -3.526
+	5%: -2.903
+	10%: -2.589
+tomadas
+ADF Statistic: 1.809575
+p-value: 0.998368
+Critical Values:
+	1%: -3.521
+	5%: -2.901
+	10%: -2.588
+total
+ADF Statistic: 1.787845
+p-value: 0.998325
+Critical Values:
+	1%: -3.521
+	5%: -2.901
+	10%: -2.588
+ibc
+ADF Statistic: -1.499994
+p-value: 0.533514
+Critical Values:
+	1%: -3.526
+	5%: -2.903
+	10%: -2.589
+desemprego
+ADF Statistic: -2.074337
+p-value: 0.254958
+Critical Values:
+	1%: -3.525
+	5%: -2.903
+	10%: -2.589
+imobiliario
+ADF Statistic: 0.604146
+p-value: 0.987717
+Critical Values:
+	1%: -3.512
+	5%: -2.897
+	10%: -2.586
+comercial
+ADF Statistic: -0.871417
+p-value: 0.797239
+Critical Values:
+	1%: -3.513
+	5%: -2.897
+	10%: -2.586
+residencial
+ADF Statistic: 3.333425
+p-value: 1.000000
+Critical Values:
+	1%: -3.518
+	5%: -2.900
+	10%: -2.587
+material_eletrico
+ADF Statistic: 0.155120
+p-value: 0.969629
+Critical Values:
+	1%: -3.526
+	5%: -2.903
+	10%: -2.589
+pib
+ADF Statistic: -0.097376
+p-value: 0.949699
+Critical Values:
+	1%: -3.525
+	5%: -2.903
+	10%: -2.589
+variacao_pib
+ADF Statistic: -8.303231
+p-value: 0.000000
+Critical Values:
+	1%: -3.523
+	5%: -2.902
+	10%: -2.588
+consumo
+ADF Statistic: -1.970691
+p-value: 0.299570
+Critical Values:
+	1%: -3.526
+	5%: -2.903
+	10%: -2.589
+ICST-A
+ADF Statistic: -2.645384
+p-value: 0.083975
+Critical Values:
+	1%: -3.513
+	5%: -2.897
+	10%: -2.586
+ICST-R
+ADF Statistic: -2.445095
+p-value: 0.129411
+Critical Values:
+	1%: -3.513
+	5%: -2.897
+	10%: -2.586
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>geracaoGWh
+ADF Statistic: -1.308942
+p-value: 0.625071
+Critical Values:
+	1%: -3.526
+	5%: -2.903
+	10%: -2.589
+IndEletronica
+ADF Statistic: -2.418999
+p-value: 0.136446
+Critical Values:
+	1%: -3.513
+	5%: -2.897
+	10%: -2.586
+IndEletrica
+ADF Statistic: -1.589048
+p-value: 0.489093
+Critical Values:
+	1%: -3.526
+	5%: -2.903
+	10%: -2.589
+IndEletronica+Eletrica
+ADF Statistic: -2.523638
+p-value: 0.109828
+Critical Values:
+	1%: -3.513
+	5%: -2.897
+	10%: -2.586
+IndGeral
+ADF Statistic: -2.600443
+p-value: 0.092906
+Critical Values:
+	1%: -3.513
+	5%: -2.897
+	10%: -2.586
+</pre></div>
+</div>
+</div>
+</div>
+<p>Percebe-se que apenas variacao_PIB (que indica a variação mensal do PIB) é uma série temporal <strong>estacionária</strong>. Pra todas as demais, é necessário transformar, pois os algoritmos que serão utilizados para predição têm, como premissa, a aplicação sobre uma série temporal estacionária.</p>
+<p>Para o teste Granger Causality, pressupoe-se uma série estacionária. Ao se utilizar uma série não estacionária, poderá se obter falsos valores de ‘granger-causalidade’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transformar em séries estacionárias</span>
+
+<span class="c1"># Diferencia cada série temporal num processo</span>
+<span class="c1"># iterativo até todas as séries se transformarem</span>
+<span class="c1"># em série estacionária</span>
+<span class="k">def</span> <span class="nf">transform_series</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">p_value</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">variable</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">p_value</span> <span class="o">&gt;</span> <span class="mf">0.05</span><span class="p">:</span>
+            <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+            <span class="n">p_value</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">variable</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">dataset</span>
+
+<span class="c1"># pct_change() - Computes the percentage change from the immediately </span>
+<span class="c1"># previous row by default.</span>
+<span class="c1"># diff() - Calculates the difference of a Dataframe element compared </span>
+<span class="c1"># with another element in the Dataframe (default is element in previous row).</span>
+
+<span class="n">dados_st</span> <span class="o">=</span> <span class="n">transform_series</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+
+<span class="n">test_stationary</span><span class="p">(</span><span class="n">dados_st</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>interruptores
+ADF Statistic: -5.412712
+p-value: 0.000003
+Critical Values:
+	1%: -3.530
+	5%: -2.905
+	10%: -2.590
+pulsadores
+ADF Statistic: -6.003111
+p-value: 0.000000
+Critical Values:
+	1%: -3.529
+	5%: -2.904
+	10%: -2.590
+tomadas
+ADF Statistic: -5.563617
+p-value: 0.000002
+Critical Values:
+	1%: -3.529
+	5%: -2.904
+	10%: -2.590
+total
+ADF Statistic: -5.515656
+p-value: 0.000002
+Critical Values:
+	1%: -3.529
+	5%: -2.904
+	10%: -2.590
+ibc
+ADF Statistic: -2.976659
+p-value: 0.037132
+Critical Values:
+	1%: -3.527
+	5%: -2.904
+	10%: -2.589
+desemprego
+ADF Statistic: -8.859378
+p-value: 0.000000
+Critical Values:
+	1%: -3.527
+	5%: -2.904
+	10%: -2.589
+imobiliario
+ADF Statistic: -5.936292
+p-value: 0.000000
+Critical Values:
+	1%: -3.526
+	5%: -2.903
+	10%: -2.589
+comercial
+ADF Statistic: -5.268500
+p-value: 0.000006
+Critical Values:
+	1%: -3.529
+	5%: -2.904
+	10%: -2.590
+residencial
+ADF Statistic: -8.389298
+p-value: 0.000000
+Critical Values:
+	1%: -3.523
+	5%: -2.902
+	10%: -2.588
+material_eletrico
+ADF Statistic: -7.443959
+p-value: 0.000000
+Critical Values:
+	1%: -3.526
+	5%: -2.903
+	10%: -2.589
+pib
+ADF Statistic: -5.010658
+p-value: 0.000021
+Critical Values:
+	1%: -3.530
+	5%: -2.905
+	10%: -2.590
+variacao_pib
+ADF Statistic: -12.282028
+p-value: 0.000000
+Critical Values:
+	1%: -3.525
+	5%: -2.903
+	10%: -2.589
+consumo
+ADF Statistic: -6.578857
+p-value: 0.000000
+Critical Values:
+	1%: -3.530
+	5%: -2.905
+	10%: -2.590
+ICST-A
+ADF Statistic: -5.634130
+p-value: 0.000001
+Critical Values:
+	1%: -3.530
+	5%: -2.905
+	10%: -2.590
+ICST-R
+ADF Statistic: -5.087104
+p-value: 0.000015
+Critical Values:
+	1%: -3.529
+	5%: -2.904
+	10%: -2.590
+geracaoGWh
+ADF Statistic: -7.040435
+p-value: 0.000000
+Critical Values:
+	1%: -3.529
+	5%: -2.904
+	10%: -2.590
+IndEletronica
+ADF Statistic: -5.278236
+p-value: 0.000006
+Critical Values:
+	1%: -3.530
+	5%: -2.905
+	10%: -2.590
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IndEletrica
+ADF Statistic: -6.938516
+p-value: 0.000000
+Critical Values:
+	1%: -3.530
+	5%: -2.905
+	10%: -2.590
+IndEletronica+Eletrica
+ADF Statistic: -6.288882
+p-value: 0.000000
+Critical Values:
+	1%: -3.530
+	5%: -2.905
+	10%: -2.590
+IndGeral
+ADF Statistic: -5.839543
+p-value: 0.000000
+Critical Values:
+	1%: -3.530
+	5%: -2.905
+	10%: -2.590
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados_st</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>interruptores</th>
+      <th>pulsadores</th>
+      <th>tomadas</th>
+      <th>total</th>
+      <th>ibc</th>
+      <th>desemprego</th>
+      <th>imobiliario</th>
+      <th>comercial</th>
+      <th>residencial</th>
+      <th>material_eletrico</th>
+      <th>pib</th>
+      <th>variacao_pib</th>
+      <th>consumo</th>
+      <th>ICST-A</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndEletronica</th>
+      <th>IndEletrica</th>
+      <th>IndEletronica+Eletrica</th>
+      <th>IndGeral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-04-01</th>
+      <td>-7796.0</td>
+      <td>-28694.0</td>
+      <td>535538.0</td>
+      <td>499048.0</td>
+      <td>-0.26</td>
+      <td>-0.8</td>
+      <td>9.856883e+04</td>
+      <td>4.254844e+05</td>
+      <td>5.896661e+06</td>
+      <td>-1.6</td>
+      <td>-22570.5</td>
+      <td>-6.380113</td>
+      <td>3464269.000</td>
+      <td>-2.8</td>
+      <td>-4.000000e+00</td>
+      <td>-9267.019342</td>
+      <td>-1.9</td>
+      <td>3.4</td>
+      <td>0.856</td>
+      <td>-4.2</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>1541671.0</td>
+      <td>54095.0</td>
+      <td>2179181.0</td>
+      <td>3774947.0</td>
+      <td>1.26</td>
+      <td>0.6</td>
+      <td>1.002974e+05</td>
+      <td>4.392966e+05</td>
+      <td>6.043845e+06</td>
+      <td>5.6</td>
+      <td>3165.2</td>
+      <td>5.771805</td>
+      <td>-520263.000</td>
+      <td>9.4</td>
+      <td>9.000000e+00</td>
+      <td>6205.632503</td>
+      <td>3.1</td>
+      <td>1.2</td>
+      <td>2.112</td>
+      <td>5.2</td>
+    </tr>
+    <tr>
+      <th>2014-06-01</th>
+      <td>-2761669.0</td>
+      <td>-85449.0</td>
+      <td>-3568943.0</td>
+      <td>-6416061.0</td>
+      <td>-0.82</td>
+      <td>-0.1</td>
+      <td>-1.115147e+07</td>
+      <td>1.099647e+08</td>
+      <td>-1.266728e+09</td>
+      <td>-10.7</td>
+      <td>-17382.1</td>
+      <td>-4.395093</td>
+      <td>-1068891.120</td>
+      <td>-11.2</td>
+      <td>-9.200000e+00</td>
+      <td>-4467.068100</td>
+      <td>1.3</td>
+      <td>6.2</td>
+      <td>3.848</td>
+      <td>-1.1</td>
+    </tr>
+    <tr>
+      <th>2014-07-01</th>
+      <td>2654039.0</td>
+      <td>85808.0</td>
+      <td>3321457.0</td>
+      <td>6061304.0</td>
+      <td>0.22</td>
+      <td>0.4</td>
+      <td>6.523308e+07</td>
+      <td>-2.792775e+08</td>
+      <td>8.892933e+08</td>
+      <td>11.1</td>
+      <td>57718.3</td>
+      <td>16.020811</td>
+      <td>2397033.360</td>
+      <td>5.5</td>
+      <td>3.500000e+00</td>
+      <td>6339.293227</td>
+      <td>1.1</td>
+      <td>-6.8</td>
+      <td>-3.008</td>
+      <td>-1.3</td>
+    </tr>
+    <tr>
+      <th>2014-08-01</th>
+      <td>-1875403.0</td>
+      <td>-68732.0</td>
+      <td>-2458900.0</td>
+      <td>-4403035.0</td>
+      <td>0.10</td>
+      <td>-0.4</td>
+      <td>-6.704298e+07</td>
+      <td>2.165989e+08</td>
+      <td>5.508340e+07</td>
+      <td>-5.4</td>
+      <td>-66726.7</td>
+      <td>-26.762437</td>
+      <td>-970813.360</td>
+      <td>1.3</td>
+      <td>1.900000e+00</td>
+      <td>-5318.303789</td>
+      <td>0.6</td>
+      <td>2.0</td>
+      <td>1.328</td>
+      <td>1.6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>-5254047.0</td>
+      <td>-104238.0</td>
+      <td>-10283504.0</td>
+      <td>-15641789.0</td>
+      <td>0.38</td>
+      <td>0.0</td>
+      <td>-1.393647e+08</td>
+      <td>-8.866488e+07</td>
+      <td>-4.457559e+08</td>
+      <td>2.6</td>
+      <td>-12716.7</td>
+      <td>7.267532</td>
+      <td>-3262998.857</td>
+      <td>-0.1</td>
+      <td>-2.842171e-14</td>
+      <td>-9482.313443</td>
+      <td>4.0</td>
+      <td>8.3</td>
+      <td>6.236</td>
+      <td>3.1</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>7755969.0</td>
+      <td>123974.0</td>
+      <td>15321452.0</td>
+      <td>23201395.0</td>
+      <td>-0.17</td>
+      <td>-0.5</td>
+      <td>2.281863e+08</td>
+      <td>1.555618e+08</td>
+      <td>-1.235903e+09</td>
+      <td>-1.4</td>
+      <td>34726.1</td>
+      <td>7.218936</td>
+      <td>428291.246</td>
+      <td>0.8</td>
+      <td>2.100000e+00</td>
+      <td>4494.160730</td>
+      <td>-8.9</td>
+      <td>-10.9</td>
+      <td>-9.940</td>
+      <td>-7.8</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>405904.0</td>
+      <td>-77969.0</td>
+      <td>-3096277.0</td>
+      <td>-2768342.0</td>
+      <td>-0.25</td>
+      <td>-0.1</td>
+      <td>-2.071667e+07</td>
+      <td>3.749437e+08</td>
+      <td>1.042359e+09</td>
+      <td>0.5</td>
+      <td>19645.0</td>
+      <td>-2.601001</td>
+      <td>1443950.224</td>
+      <td>1.5</td>
+      <td>4.000000e-01</td>
+      <td>3.089064</td>
+      <td>-5.2</td>
+      <td>0.8</td>
+      <td>-2.080</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>-3534558.0</td>
+      <td>72526.0</td>
+      <td>-1389898.0</td>
+      <td>-4851930.0</td>
+      <td>0.43</td>
+      <td>0.6</td>
+      <td>7.201459e+07</td>
+      <td>-2.039821e+08</td>
+      <td>-3.097203e+08</td>
+      <td>-2.0</td>
+      <td>-46346.8</td>
+      <td>-10.477889</td>
+      <td>-4839471.063</td>
+      <td>-4.9</td>
+      <td>-5.100000e+00</td>
+      <td>-229.690454</td>
+      <td>21.9</td>
+      <td>7.3</td>
+      <td>14.308</td>
+      <td>5.3</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>614089.0</td>
+      <td>-96136.0</td>
+      <td>-1272341.0</td>
+      <td>-754388.0</td>
+      <td>-0.07</td>
+      <td>-0.1</td>
+      <td>1.861534e+07</td>
+      <td>-4.459502e+08</td>
+      <td>7.392279e+08</td>
+      <td>3.2</td>
+      <td>24136.5</td>
+      <td>11.207028</td>
+      <td>5992506.001</td>
+      <td>7.1</td>
+      <td>6.600000e+00</td>
+      <td>397.045935</td>
+      <td>-12.2</td>
+      <td>-4.2</td>
+      <td>-8.040</td>
+      <td>-1.8</td>
+    </tr>
+  </tbody>
+</table>
+<p>81 rows × 20 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados_st</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;datasets/dados_st.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()):</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">dados_st</span><span class="p">[</span><span class="n">dados_st</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Decorations</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">dados_st</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo2_25_0.png" src="_images/passo2_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Agora todas as séries são estáticas, podemos</span>
+<span class="c1"># testar o Granger Causality Test</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">grangercausalitytests</span>
+<span class="k">def</span> <span class="nf">grangers_causation_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">maxlag</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="s1">&#39;ssr_chi2test&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="n">columns</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">preditor</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">resultado</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+            <span class="n">test_result</span> <span class="o">=</span> <span class="n">grangercausalitytests</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="n">resultado</span><span class="p">,</span> <span class="n">preditor</span><span class="p">]],</span> <span class="n">maxlag</span><span class="o">=</span><span class="n">maxlag</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">p_values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">test_result</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">test</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">maxlag</span><span class="p">)]</span>    
+            <span class="n">min_p_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>    
+            <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">resultado</span><span class="p">,</span> <span class="n">preditor</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_p_value</span>
+    <span class="k">return</span> <span class="n">df</span>
+<span class="n">dados_st</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ibc&#39;</span><span class="p">,</span> <span class="s1">&#39;desemprego&#39;</span><span class="p">,</span> <span class="s1">&#39;imobiliario&#39;</span><span class="p">,</span> <span class="s1">&#39;comercial&#39;</span><span class="p">,</span> <span class="s1">&#39;residencial&#39;</span><span class="p">,</span> 
+     <span class="s1">&#39;material_eletrico&#39;</span><span class="p">,</span> <span class="s1">&#39;pib&#39;</span><span class="p">,</span> <span class="s1">&#39;variacao_pib&#39;</span><span class="p">,</span> <span class="s1">&#39;consumo&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-A&#39;</span><span class="p">,</span>	
+     <span class="s1">&#39;ICST-R&#39;</span><span class="p">,</span>	<span class="s1">&#39;geracaoGWh&#39;</span><span class="p">,</span>	<span class="s1">&#39;IndEletronica&#39;</span><span class="p">,</span>	<span class="s1">&#39;IndEletrica&#39;</span><span class="p">,</span>	
+     <span class="s1">&#39;IndEletronica+Eletrica&#39;</span><span class="p">,</span>	<span class="s1">&#39;IndGeral&#39;</span><span class="p">]</span>
+
+<span class="n">maxlag</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;ssr_chi2test&#39;</span>
+<span class="n">grangers_causation_matrix</span><span class="p">(</span><span class="n">dados_st</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">maxlag</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">)</span>     
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ibc</th>
+      <th>desemprego</th>
+      <th>imobiliario</th>
+      <th>comercial</th>
+      <th>residencial</th>
+      <th>material_eletrico</th>
+      <th>pib</th>
+      <th>variacao_pib</th>
+      <th>consumo</th>
+      <th>ICST-A</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndEletronica</th>
+      <th>IndEletrica</th>
+      <th>IndEletronica+Eletrica</th>
+      <th>IndGeral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>interruptores</th>
+      <td>0.0</td>
+      <td>0.1533</td>
+      <td>0.4821</td>
+      <td>0.1427</td>
+      <td>0.1453</td>
+      <td>0.1527</td>
+      <td>0.0074</td>
+      <td>0.0159</td>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>pulsadores</th>
+      <td>0.0</td>
+      <td>0.0007</td>
+      <td>0.0590</td>
+      <td>0.0059</td>
+      <td>0.0001</td>
+      <td>0.0024</td>
+      <td>0.0069</td>
+      <td>0.0141</td>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0008</td>
+      <td>0.0</td>
+      <td>0.0013</td>
+      <td>0.0008</td>
+      <td>0.0003</td>
+    </tr>
+    <tr>
+      <th>tomadas</th>
+      <td>0.0</td>
+      <td>0.0894</td>
+      <td>0.1625</td>
+      <td>0.1142</td>
+      <td>0.0253</td>
+      <td>0.1225</td>
+      <td>0.0554</td>
+      <td>0.0667</td>
+      <td>0.0004</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0011</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td>0.0</td>
+      <td>0.1249</td>
+      <td>0.2781</td>
+      <td>0.1401</td>
+      <td>0.0505</td>
+      <td>0.1256</td>
+      <td>0.0268</td>
+      <td>0.0523</td>
+      <td>0.0001</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0003</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>A priori as variáveis <strong>taxa de desemprego</strong>, <strong>direcionamento dos depósitos de poupança para construção civil</strong>, <strong>financiamento comercial</strong> e <strong>exportação de material elétrico</strong> não “explicam” (Granger causam) o comportamento de venda do total dos produtos.</p>
+<p>Variáveis a manter:</p>
+<ul class="simple">
+<li><p>IBC-Br</p></li>
+<li><p>PIB</p></li>
+<li><p>Consumo de Energia Elétrica</p></li>
+<li><p>Índice de Confiança da Construção civil ICST-R</p></li>
+<li><p>GeraçãoGWh</p></li>
+<li><p>Índice Confiança do Empresário Industrial (Geral)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aqui rodei apenas um exemplo do teste de Granger entre o total de vendas e o IBC</span>
+<span class="c1"># Para mostrar como o teste de Grangers-Casualidade trabalha sobre as lags e as estatísiticas.</span>
+<span class="n">grangercausalitytests</span><span class="p">(</span><span class="n">dados_st</span><span class="p">[[</span><span class="s1">&#39;total&#39;</span><span class="p">,</span><span class="s1">&#39;ibc&#39;</span><span class="p">]],</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Granger Causality
+number of lags (no zero) 1
+ssr based F test:         F=0.0145  , p=0.9043  , df_denom=77, df_num=1
+ssr based chi2 test:   chi2=0.0151  , p=0.9022  , df=1
+likelihood ratio test: chi2=0.0151  , p=0.9022  , df=1
+parameter F test:         F=0.0145  , p=0.9043  , df_denom=77, df_num=1
+
+Granger Causality
+number of lags (no zero) 2
+ssr based F test:         F=0.7580  , p=0.4722  , df_denom=74, df_num=2
+ssr based chi2 test:   chi2=1.6184  , p=0.4452  , df=2
+likelihood ratio test: chi2=1.6020  , p=0.4489  , df=2
+parameter F test:         F=0.7580  , p=0.4722  , df_denom=74, df_num=2
+
+Granger Causality
+number of lags (no zero) 3
+ssr based F test:         F=8.1428  , p=0.0001  , df_denom=71, df_num=3
+ssr based chi2 test:   chi2=26.8368 , p=0.0000  , df=3
+likelihood ratio test: chi2=23.0643 , p=0.0000  , df=3
+parameter F test:         F=8.1428  , p=0.0001  , df_denom=71, df_num=3
+
+Granger Causality
+number of lags (no zero) 4
+ssr based F test:         F=9.6309  , p=0.0000  , df_denom=68, df_num=4
+ssr based chi2 test:   chi2=43.6222 , p=0.0000  , df=4
+likelihood ratio test: chi2=34.5621 , p=0.0000  , df=4
+parameter F test:         F=9.6309  , p=0.0000  , df_denom=68, df_num=4
+
+Granger Causality
+number of lags (no zero) 5
+ssr based F test:         F=7.9470  , p=0.0000  , df_denom=65, df_num=5
+ssr based chi2 test:   chi2=46.4595 , p=0.0000  , df=5
+likelihood ratio test: chi2=36.2556 , p=0.0000  , df=5
+parameter F test:         F=7.9470  , p=0.0000  , df_denom=65, df_num=5
+
+Granger Causality
+number of lags (no zero) 6
+ssr based F test:         F=6.4109  , p=0.0000  , df_denom=62, df_num=6
+ssr based chi2 test:   chi2=46.5308 , p=0.0000  , df=6
+likelihood ratio test: chi2=36.2010 , p=0.0000  , df=6
+parameter F test:         F=6.4109  , p=0.0000  , df_denom=62, df_num=6
+
+Granger Causality
+number of lags (no zero) 7
+ssr based F test:         F=5.0823  , p=0.0001  , df_denom=59, df_num=7
+ssr based chi2 test:   chi2=44.6206 , p=0.0000  , df=7
+likelihood ratio test: chi2=34.9180 , p=0.0000  , df=7
+parameter F test:         F=5.0823  , p=0.0001  , df_denom=59, df_num=7
+
+Granger Causality
+number of lags (no zero) 8
+ssr based F test:         F=4.7602  , p=0.0002  , df_denom=56, df_num=8
+ssr based chi2 test:   chi2=49.6422 , p=0.0000  , df=8
+likelihood ratio test: chi2=37.8732 , p=0.0000  , df=8
+parameter F test:         F=4.7602  , p=0.0002  , df_denom=56, df_num=8
+
+Granger Causality
+number of lags (no zero) 9
+ssr based F test:         F=3.9009  , p=0.0008  , df_denom=53, df_num=9
+ssr based chi2 test:   chi2=47.6938 , p=0.0000  , df=9
+likelihood ratio test: chi2=36.5955 , p=0.0000  , df=9
+parameter F test:         F=3.9009  , p=0.0008  , df_denom=53, df_num=9
+
+Granger Causality
+number of lags (no zero) 10
+ssr based F test:         F=3.0701  , p=0.0041  , df_denom=50, df_num=10
+ssr based chi2 test:   chi2=43.5952 , p=0.0000  , df=10
+likelihood ratio test: chi2=33.9896 , p=0.0002  , df=10
+parameter F test:         F=3.0701  , p=0.0041  , df_denom=50, df_num=10
+
+Granger Causality
+number of lags (no zero) 11
+ssr based F test:         F=2.5151  , p=0.0140  , df_denom=47, df_num=11
+ssr based chi2 test:   chi2=41.2047 , p=0.0000  , df=11
+likelihood ratio test: chi2=32.4014 , p=0.0007  , df=11
+parameter F test:         F=2.5151  , p=0.0140  , df_denom=47, df_num=11
+
+Granger Causality
+number of lags (no zero) 12
+ssr based F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
+ssr based chi2 test:   chi2=46.4104 , p=0.0000  , df=12
+likelihood ratio test: chi2=35.4928 , p=0.0004  , df=12
+parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: ({&#39;ssr_ftest&#39;: (0.01453680109371313, 0.9043467544469335, 77.0, 1),
+   &#39;ssr_chi2test&#39;: (0.015103169967494163, 0.9021902806608234, 1),
+   &#39;lrtest&#39;: (0.015101744485946256, 0.9021948733642501, 1),
+   &#39;params_ftest&#39;: (0.014536801093682232, 0.9043467544470174, 77.0, 1.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12658f0a0&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1267008b0&gt;,
+   array([[0., 1., 0.]])]),
+ 2: ({&#39;ssr_ftest&#39;: (0.757985966750342, 0.47221243984939976, 74.0, 2),
+   &#39;ssr_chi2test&#39;: (1.6184024695480277, 0.44521354533001367, 2),
+   &#39;lrtest&#39;: (1.6020480677830164, 0.44886907154250943, 2),
+   &#39;params_ftest&#39;: (0.7579859667503319, 0.47221243984940164, 74.0, 2.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12751e8e0&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12656e7c0&gt;,
+   array([[0., 0., 1., 0., 0.],
+          [0., 0., 0., 1., 0.]])]),
+ 3: ({&#39;ssr_ftest&#39;: (8.142801174261391, 9.856225115368751e-05, 71.0, 3),
+   &#39;ssr_chi2test&#39;: (26.83683767291783, 6.369753766703703e-06, 3),
+   &#39;lrtest&#39;: (23.064318259841457, 3.915541323894831e-05, 3),
+   &#39;params_ftest&#39;: (8.142801174261384, 9.856225115368849e-05, 71.0, 3.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126576520&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126576160&gt;,
+   array([[0., 0., 0., 1., 0., 0., 0.],
+          [0., 0., 0., 0., 1., 0., 0.],
+          [0., 0., 0., 0., 0., 1., 0.]])]),
+ 4: ({&#39;ssr_ftest&#39;: (9.630883969238795, 3.132351505417038e-06, 68.0, 4),
+   &#39;ssr_chi2test&#39;: (43.62223915478748, 7.685953002143935e-09, 4),
+   &#39;lrtest&#39;: (34.562085227483294, 5.713990478028571e-07, 4),
+   &#39;params_ftest&#39;: (9.630883969238795, 3.132351505417038e-06, 68.0, 4.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1265764f0&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1264f86a0&gt;,
+   array([[0., 0., 0., 0., 1., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 1., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 1., 0.]])]),
+ 5: ({&#39;ssr_ftest&#39;: (7.947020696509614, 6.846042068818698e-06, 65.0, 5),
+   &#39;ssr_chi2test&#39;: (46.4595056103639, 7.321626374852195e-09, 5),
+   &#39;lrtest&#39;: (36.25557721385212, 8.443065252228178e-07, 5),
+   &#39;params_ftest&#39;: (7.947020696509608, 6.84604206881874e-06, 65.0, 5.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1264f89d0&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13280&gt;,
+   array([[0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.]])]),
+ 6: ({&#39;ssr_ftest&#39;: (6.410912471036177, 2.7163416816780273e-05, 62.0, 6),
+   &#39;ssr_chi2test&#39;: (46.53081632203676, 2.3208323893363332e-08, 6),
+   &#39;lrtest&#39;: (36.20098120239027, 2.5194435909462903e-06, 6),
+   &#39;params_ftest&#39;: (6.410912471036162, 2.7163416816780954e-05, 62.0, 6.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13100&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13190&gt;,
+   array([[0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.]])]),
+ 7: ({&#39;ssr_ftest&#39;: (5.082267475525944, 0.00014719665479880756, 59.0, 7),
+   &#39;ssr_chi2test&#39;: (44.62058563258371, 1.620216160517908e-07, 7),
+   &#39;lrtest&#39;: (34.91800631789329, 1.1588324881795948e-05, 7),
+   &#39;params_ftest&#39;: (5.082267475525952, 0.00014719665479880477, 59.0, 7.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13880&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a138e0&gt;,
+   array([[0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.]])]),
+ 8: ({&#39;ssr_ftest&#39;: (4.760207168509302, 0.00017093692529828304, 56.0, 8),
+   &#39;ssr_chi2test&#39;: (49.642160471597, 4.787554998323702e-08, 8),
+   &#39;lrtest&#39;: (37.87323290297854, 7.945285396619697e-06, 8),
+   &#39;params_ftest&#39;: (4.760207168509319, 0.00017093692529827691, 56.0, 8.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13af0&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13b20&gt;,
+   array([[0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.,
+           0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.,
+           0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.,
+           0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+           0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
+           0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
+           0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
+           0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.,
+           0.]])]),
+ 9: ({&#39;ssr_ftest&#39;: (3.9008825172276484, 0.0007528572400908561, 53.0, 9),
+   &#39;ssr_chi2test&#39;: (47.693808889877666, 2.913548445147297e-07, 9),
+   &#39;lrtest&#39;: (36.59549546312428, 3.107127684286246e-05, 9),
+   &#39;params_ftest&#39;: (3.9008825172276076, 0.0007528572400909259, 53.0, 9.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13c70&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13d30&gt;,
+   array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.,
+           0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+           0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
+           0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
+           0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
+           0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.,
+           0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           1., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 1., 0.]])]),
+ 10: ({&#39;ssr_ftest&#39;: (3.0700877220526666, 0.0041067570272121014, 50.0, 10),
+   &#39;ssr_chi2test&#39;: (43.59524565314786, 3.8908881078288595e-06, 10),
+   &#39;lrtest&#39;: (33.9895772351374, 0.00018545045638616116, 10),
+   &#39;params_ftest&#39;: (3.070087722052674, 0.004106757027212034, 50.0, 10.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13f10&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126a13e80&gt;,
+   array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.,
+           0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+           0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
+           0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
+           0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
+           0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.,
+           0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           1., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 1., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 1., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 1., 0.]])]),
+ 11: ({&#39;ssr_ftest&#39;: (2.515091627745255, 0.013993725227959245, 47.0, 11),
+   &#39;ssr_chi2test&#39;: (41.204692624762686, 2.2221826831114168e-05, 11),
+   &#39;lrtest&#39;: (32.401413711779696, 0.0006574031169319448, 11),
+   &#39;params_ftest&#39;: (2.5150916277452593, 0.013993725227959084, 47.0, 11.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126971040&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1269717c0&gt;,
+   array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+           0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
+           0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
+           0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
+           0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.,
+           0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           1., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 1., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 1., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 1., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 0., 1., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 0., 0., 1., 0.]])]),
+ 12: ({&#39;ssr_ftest&#39;: (2.4662514154345225, 0.014664073244602751, 44.0, 12),
+   &#39;ssr_chi2test&#39;: (46.410367544995104, 5.895048012196348e-06, 12),
+   &#39;lrtest&#39;: (35.49275030083254, 0.00039073239301149913, 12),
+   &#39;params_ftest&#39;: (2.466251415434524, 0.014664073244602713, 44.0, 12.0)},
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126971940&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x126971c40&gt;,
+   array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
+           0., 0., 0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
+           0., 0., 0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0.,
+           0., 0., 0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1.,
+           0., 0., 0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           1., 0., 0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 1., 0., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 1., 0., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 1., 0., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 0., 1., 0., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 0., 0., 1., 0., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 0., 0., 0., 1., 0., 0.],
+          [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+           0., 0., 0., 0., 0., 0., 0., 1., 0.]])])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">]</span>
+
+<span class="n">maxlag</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;ssr_chi2test&#39;</span>
+<span class="n">grangers_causation_matrix</span><span class="p">(</span><span class="n">dados_st</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">maxlag</span><span class="p">,</span> <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">)</span>     
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>interruptores</th>
+      <th>pulsadores</th>
+      <th>tomadas</th>
+      <th>total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>interruptores</th>
+      <td>1.0000</td>
+      <td>0.0005</td>
+      <td>0.0008</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>pulsadores</th>
+      <td>0.0000</td>
+      <td>1.0000</td>
+      <td>0.0007</td>
+      <td>0.0001</td>
+    </tr>
+    <tr>
+      <th>tomadas</th>
+      <td>0.0012</td>
+      <td>0.0290</td>
+      <td>1.0000</td>
+      <td>0.0021</td>
+    </tr>
+    <tr>
+      <th>total</th>
+      <td>0.0009</td>
+      <td>0.0054</td>
+      <td>0.0022</td>
+      <td>1.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Ao rodar o teste de Granger entre os três produtos e o total, percebe-se que a partir do total podemos analisar o comportamento de cada produto. Ou seja, utilizaremos o total no modelo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 84 entries, 2014-01-01 to 2020-12-01
+Data columns (total 20 columns):
+ #   Column                  Non-Null Count  Dtype  
+---  ------                  --------------  -----  
+ 0   interruptores           84 non-null     int64  
+ 1   pulsadores              84 non-null     int64  
+ 2   tomadas                 84 non-null     int64  
+ 3   total                   84 non-null     int64  
+ 4   ibc                     84 non-null     float64
+ 5   desemprego              84 non-null     float64
+ 6   imobiliario             84 non-null     float64
+ 7   comercial               84 non-null     float64
+ 8   residencial             84 non-null     float64
+ 9   material_eletrico       84 non-null     float64
+ 10  pib                     84 non-null     float64
+ 11  variacao_pib            84 non-null     float64
+ 12  consumo                 84 non-null     float64
+ 13  ICST-A                  84 non-null     float64
+ 14  ICST-R                  84 non-null     float64
+ 15  geracaoGWh              84 non-null     float64
+ 16  IndEletronica           84 non-null     float64
+ 17  IndEletrica             84 non-null     float64
+ 18  IndEletronica+Eletrica  84 non-null     float64
+ 19  IndGeral                84 non-null     float64
+dtypes: float64(16), int64(4)
+memory usage: 13.8 KB
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dicionario-de-dados">
+<h2>Dicionário de Dados<a class="headerlink" href="#dicionario-de-dados" title="Permalink to this headline">¶</a></h2>
+<p>variável - tipo - descrição - periodicidade</p>
+<hr class="docutils" />
+<p><strong>total</strong>  - int64 - quantidade total de interruptores, tomadas e pulsadores - mensal</p>
+<p><strong>ibc</strong> - float64 - índice de atividade econômica do BACEN - mensal</p>
+<p><strong>residencial</strong> - float64 - volume em reais (R$) das operações de crédito de financiamento imobiliário residencial - mensal</p>
+<p><strong>pib</strong> - float64 - produto interno bruto do Brasil - mensal</p>
+<p><strong>consumo</strong> - float64 - Consumo de Energia Elétrica em MWh no Brasil - mensal</p>
+<p><strong>ICST-R</strong> - float64 - Índice de Confiança da Construção Civil - mensal</p>
+<p><strong>geracaoGWH</strong> - float64 - Geração de energia elétrica no Brasil em GWh - mensal</p>
+<p><strong>IndGeral</strong> - float64 - Índice Confiança do Empresário Industrial (Geral) - mensal</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "env_adp255"
+        },
+        kernelOptions: {
+            kernelName: "env_adp255",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'env_adp255'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="passo1.html" title="previous page">Passo 1: Coletar dados</a>
+    <a class='right-next' id="next-link" href="passo3.html" title="next page">Passo 3: Testar diferentes algoritmos preditivos</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Grupo 2 -> Jheniffer, Marcos, Ronaldo G., Ronaldo L.<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
