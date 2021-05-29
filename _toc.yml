@@ -6,4 +6,6 @@
 - file: passo1
 - file: passo2
 - file: passo3
+  sections:
+    - file: passo3-CNN
 - file: passo4
