@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Passo 4: Apresentar e interpretar o modelo" href="passo4.html" />
-    <link rel="prev" title="Passo 3: Testar diferentes algoritmos preditivos" href="passo3.html" />
+    <link rel="prev" title="ARIMA (SARIMA)" href="passo3-arima.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -116,6 +116,11 @@
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo3-arima.html">
+     ARIMA (SARIMA)
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      CNN - Convolutional Neural Network
@@ -126,6 +131,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="passo4.html">
    Passo 4: Apresentar e interpretar o modelo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="referencias.html">
+   Referências
   </a>
  </li>
 </ul>
@@ -237,10 +247,12 @@
                 
   <div class="section" id="cnn-convolutional-neural-network">
 <h1>CNN - Convolutional Neural Network<a class="headerlink" href="#cnn-convolutional-neural-network" title="Permalink to this headline">¶</a></h1>
-<p>Deep Learning…..</p>
+<p>Convolutional Neural Network, abreviado como CNN, é uma técnica do campo de Deep Leraning, ou seja, é uma implementação em redes neurais com multi camadas. O seu nome vem da operação matemática entre as camadas chamada de convolução <span id="id1">[<a class="reference internal" href="referencias.html#id7"><span>AMA17</span></a>]</span>.</p>
+<p>Após a sua popularidade no campo de reconhecimento de imagens a partir do trabalho de <span id="id2">[<a class="reference internal" href="referencias.html#id4"><span>KSH12</span></a>]</span>, a técnica de CNN foi expandida para demais aplicações. Devido a sua estrutura, o CNN tem sido aplicado em problemas de séries temporal <span id="id3">[<a class="reference internal" href="referencias.html#id5"><span>YY95</span></a>,<a class="reference internal" href="referencias.html#id6"><span>IsmailFawazFW+19</span></a>]</span>.</p>
+<p>Sendo assim, neste capítulo aplicamos o CNN para prever o total de vendas de tomdas, interruptores e pulsadores no ano de 2020 a partir das séries temporais selecionadas no <a class="reference internal" href="passo2.html"><span class="doc std std-doc">Passo 2</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">hstack</span><span class="p">,</span> <span class="n">vstack</span> 
 <span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span> 
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span>
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Flatten</span> 
@@ -249,9 +261,13 @@
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">date</span>
 <span class="kn">from</span> <span class="nn">dateutil.</span> <span class="n">relativedelta</span> <span class="kn">import</span> <span class="nn">relativedelta</span>
 
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">Normalizer</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">StandardScaler</span>
+
+<span class="kn">import</span> <span class="nn">keras</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -269,13 +285,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span> <span class="o">=</span> <span class="n">dados</span><span class="p">[[</span><span class="s1">&#39;ibc&#39;</span><span class="p">,</span><span class="s1">&#39;pib&#39;</span><span class="p">,</span><span class="s1">&#39;consumo&#39;</span><span class="p">,</span><span class="s1">&#39;ICST-R&#39;</span><span class="p">,</span><span class="s1">&#39;geracaoGWh&#39;</span><span class="p">,</span><span class="s1">&#39;IndGeral&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dados</span>
+<span class="n">dados</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -322,7 +332,7 @@
       <th>2014-01-01</th>
       <td>2.75</td>
       <td>455935.0</td>
-      <td>4.027976e+07</td>
+      <td>40279759.0</td>
       <td>97.8</td>
       <td>50045.962407</td>
       <td>53.1</td>
@@ -332,7 +342,7 @@
       <th>2014-02-01</th>
       <td>3.13</td>
       <td>450358.8</td>
-      <td>4.165349e+07</td>
+      <td>41653487.0</td>
       <td>96.7</td>
       <td>46459.730274</td>
       <td>52.3</td>
@@ -342,7 +352,7 @@
       <th>2014-03-01</th>
       <td>3.09</td>
       <td>462159.8</td>
-      <td>4.026943e+07</td>
+      <td>40269429.0</td>
       <td>96.3</td>
       <td>48004.277170</td>
       <td>52.4</td>
@@ -352,7 +362,7 @@
       <th>2014-04-01</th>
       <td>2.37</td>
       <td>468767.5</td>
-      <td>3.959185e+07</td>
+      <td>39591854.0</td>
       <td>92.6</td>
       <td>45412.583753</td>
       <td>49.2</td>
@@ -362,77 +372,51 @@
       <th>2014-05-01</th>
       <td>2.23</td>
       <td>473347.1</td>
-      <td>3.910050e+07</td>
+      <td>39100499.0</td>
       <td>94.6</td>
       <td>44890.282526</td>
       <td>47.9</td>
       <td>14603442</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2020-08-01</th>
-      <td>-3.35</td>
-      <td>628818.8</td>
-      <td>3.912152e+07</td>
-      <td>87.8</td>
-      <td>45954.347797</td>
-      <td>57.0</td>
-      <td>33983713</td>
-    </tr>
-    <tr>
-      <th>2020-09-01</th>
-      <td>-3.56</td>
-      <td>632047.2</td>
-      <td>4.020856e+07</td>
-      <td>91.5</td>
-      <td>46045.040560</td>
-      <td>61.6</td>
-      <td>32205815</td>
-    </tr>
-    <tr>
-      <th>2020-10-01</th>
-      <td>-3.94</td>
-      <td>660199.5</td>
-      <td>4.245064e+07</td>
-      <td>95.2</td>
-      <td>46098.056273</td>
-      <td>61.8</td>
-      <td>33749277</td>
-    </tr>
-    <tr>
-      <th>2020-11-01</th>
-      <td>-4.06</td>
-      <td>666928.9</td>
-      <td>4.100828e+07</td>
-      <td>93.8</td>
-      <td>45883.704482</td>
-      <td>62.9</td>
-      <td>33762169</td>
-    </tr>
-    <tr>
-      <th>2020-12-01</th>
-      <td>-3.99</td>
-      <td>676371.9</td>
-      <td>4.187399e+07</td>
-      <td>93.9</td>
-      <td>45799.031123</td>
-      <td>63.1</td>
-      <td>31490103</td>
-    </tr>
   </tbody>
 </table>
-<p>84 rows × 7 columns</p>
 </div></div></div>
 </div>
+<p>Para implementar o algoritmo de machine learning como CNN, primeiro é necessário organizar os dados no formato adequado para entrada no modelo.</p>
+<p>Podemos considerar cada variável (coluna do dataframe dados) como uma série temporal. Neste caso, teremos múltiplas séries como input e apenas uma série como output.</p>
+<p>Para exemplificar, vamos considerar apenas as variáveis ibc, pib como input e a variável total como o output. Consideramos também apenas o período de jan/2014 a maio/2014.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">in_seq1</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2014-05-01&#39;</span><span class="p">,[</span><span class="s1">&#39;ibc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">in_seq2</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2014-05-01&#39;</span><span class="p">,[</span><span class="s1">&#39;pib&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">out_seq</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2014-05-01&#39;</span><span class="p">,[</span><span class="s1">&#39;total&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">hstack</span><span class="p">((</span><span class="n">in_seq1</span><span class="p">,</span><span class="n">in_seq2</span><span class="p">,</span><span class="n">out_seq</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2.7500000e+00 4.5593500e+05 1.3427897e+07]
+ [3.1300000e+00 4.5035880e+05 1.4152120e+07]
+ [3.0900000e+00 4.6215980e+05 1.3710770e+07]
+ [2.3700000e+00 4.6876750e+05 1.2602895e+07]
+ [2.2300000e+00 4.7334710e+05 1.4603442e+07]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Percebe-se que o dataset possui duas dimensões, a primeira com 5 linhas representando cada mês da série temporal e a segunda com 3 colunas, representando cada uma das variáveis.</p>
+<p>Como a intenção é prever a última coluna (total de vendas), podemos escrever o seu valor como função das observações anteriores. Para tanto, devemos definir o número de passos (meses) para prever cada valor do total. Para facilitar esse procedimento a função a seguir é definida: baseado no trabalho de <span id="id4">[<a class="reference internal" href="referencias.html#id3"><span>Bro18</span></a>]</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split a multivariate sequence into samples </span>
@@ -455,6 +439,30 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="o">=</span> <span class="n">split_sequences</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;--&gt;&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2.750000e+00 4.559350e+05]
+ [3.130000e+00 4.503588e+05]] --&gt; 13710770.0
+
+[[3.130000e+00 4.503588e+05]
+ [3.090000e+00 4.621598e+05]] --&gt; 12602895.0
+
+[[3.090000e+00 4.621598e+05]
+ [2.370000e+00 4.687675e+05]] --&gt; 14603442.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neste exemplo verificamos que o total de vendas 137+05 (março) será previsto em função do ibc e pib dos meses de janeiro e fevereiro. Já o total de vedas de abril (126+05) será previsto em relação às variáveis de fevereiro e março. Repare que, como o passo escolhido foi de 2 unidades, cada output será previsto em relação a 2 meses atrás.</p>
+<p>Para fins do presente exercício, considerou-se que os totais de vendas do ano de 2020 deveriam ser previstos mês a mês com base nas variáveis escolhidas a partir dos meses anteriores. Ou seja, para predição do total de vendas de janeiro de 2020, apenas as variáveis de dezembro de 2019 para trás foram consideradas; assim sucessivamente. Adotou-se o passo de 12 meses para predição de cada mês de 2020.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># número de steps para considerar no modelo</span>
 <span class="n">n_steps</span> <span class="o">=</span> <span class="mi">12</span>
 
@@ -464,7 +472,18 @@
 
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 
-<span class="c1"># dados de 2014 até final 2019</span>
+<span class="c1">#normalização do dados de entrada</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um procedimento de extrema importância foi a normalização dos dados de entrada. No trabalho de <span id="id5">[<a class="reference internal" href="referencias.html#id2"><span>BD18</span></a>]</span> os autores abordam os impactos da normalização de dados em Deep Neural Network para séries temporais. A efetividade da predição de uma série temporal depende fortemente da técnica de normalização de dados adotada. Neste trabalho, adotamos a normalização entre -1 e 1, tendo em vista que algumas variáveis possuem valores negativos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dados de 2014 até final 2019</span>
 <span class="n">train</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">72</span><span class="p">]</span>
 
 <span class="c1"># valores da variável totoal de jan/2020 até dez/2020</span>
@@ -474,10 +493,10 @@
 <span class="c1"># convert into input/output</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_sequences</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># the dataset knows the number of features, e.g. 2 </span>
+<span class="c1"># the dataset knows the number of features </span>
 <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -487,22 +506,133 @@
 </div>
 </div>
 </div>
+<p>O dataset para treinamento do modelo foi limitado até dezembro de 2019.</p>
+<p>O array das variáveis preditoras (X), possui 3 dimensões: 60 predições a serem realizadas com 12 meses e 6 variáveis.</p>
+<p>O array da variável dependente (y), tem apenas uma dimensão, ou seja, é uma lista com 60 valores do total de vendas (output).</p>
+<p>Repare que de jan/2014 a dez/2019 há 72 meses. Todavia, como foi escolhido um passo de 12 meses, não é possível treinar o modelo com o output (total de vendas) do meses do ano de 2014, pois não haveria 12 meses para trás. Sendo assim, a dimensão 60 da variável y, representa os 60 meses de janeiro/2015 a dezembro/2019.</p>
+<p>Por fim o modelo é definido e treinado com os seguintes parâmetros:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span> 
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span> <span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)))</span>
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> 
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span> 
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span> <span class="p">))</span> 
-<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> 
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span> <span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span> <span class="p">)</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span> <span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span> <span class="p">))</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span> <span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span> <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">modelos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">score</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x1536f65e0&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">30</span><span class="n">cd53069d7e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span> <span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span> <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">modelos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">score</span><span class="p">)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/keras/engine/training.py</span> in <span class="ni">fit</span><span class="nt">(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_batch_size, validation_freq, max_queue_size, workers, use_multiprocessing)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1156</span>                 <span class="n">_r</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1157</span>               <span class="n">callbacks</span><span class="o">.</span><span class="n">on_train_batch_begin</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1158</span>               <span class="n">tmp_logs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_function</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1159</span>               <span class="k">if</span> <span class="n">data_handler</span><span class="o">.</span><span class="n">should_sync</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1160</span>                 <span class="n">context</span><span class="o">.</span><span class="n">async_wait</span><span class="p">()</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/eager/def_function.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">887</span> 
+<span class="g g-Whitespace">    </span><span class="mi">888</span>       <span class="k">with</span> <span class="n">OptionalXlaContext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jit_compile</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">889</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">890</span> 
+<span class="g g-Whitespace">    </span><span class="mi">891</span>       <span class="n">new_tracing_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experimental_get_tracing_count</span><span class="p">()</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/eager/def_function.py</span> in <span class="ni">_call</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">915</span>       <span class="c1"># In this case we have created variables on the first call, so we run the</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span>       <span class="c1"># defunned version which is guaranteed to never create variables.</span>
+<span class="ne">--&gt; </span><span class="mi">917</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stateless_fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>  <span class="c1"># pylint: disable=not-callable</span>
+<span class="g g-Whitespace">    </span><span class="mi">918</span>     <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stateful_fn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">919</span>       <span class="c1"># Release the lock early so that multiple threads can perform the call</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/eager/function.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3021</span>       <span class="p">(</span><span class="n">graph_function</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">3022</span>        <span class="n">filtered_flat_args</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maybe_define_function</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3023</span>     <span class="k">return</span> <span class="n">graph_function</span><span class="o">.</span><span class="n">_call_flat</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3024</span>         <span class="n">filtered_flat_args</span><span class="p">,</span> <span class="n">captured_inputs</span><span class="o">=</span><span class="n">graph_function</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+<span class="g g-Whitespace">   </span><span class="mi">3025</span> 
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/eager/function.py</span> in <span class="ni">_call_flat</span><span class="nt">(self, args, captured_inputs, cancellation_manager)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1958</span>         <span class="ow">and</span> <span class="n">executing_eagerly</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1959</span>       <span class="c1"># No tape is watching; skip to running the function.</span>
+<span class="ne">-&gt; </span><span class="mi">1960</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_call_outputs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inference_function</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1961</span>           <span class="n">ctx</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">cancellation_manager</span><span class="o">=</span><span class="n">cancellation_manager</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1962</span>     <span class="n">forward_backward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_forward_and_backward_functions</span><span class="p">(</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/eager/function.py</span> in <span class="ni">call</span><span class="nt">(self, ctx, args, cancellation_manager)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span>       <span class="k">with</span> <span class="n">_InterpolateFunctionError</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>         <span class="k">if</span> <span class="n">cancellation_manager</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">591</span>           <span class="n">outputs</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>               <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span>               <span class="n">num_outputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_num_outputs</span><span class="p">,</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/eager/execute.py</span> in <span class="ni">quick_execute</span><span class="nt">(op_name, num_outputs, inputs, attrs, ctx, name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span>   <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="n">ctx</span><span class="o">.</span><span class="n">ensure_initialized</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="n">tensors</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_Execute</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">op_name</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span>                                         <span class="n">inputs</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>   <span class="k">except</span> <span class="n">core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Devido à natureza estocástica do algoritmo, pequenas variações no modelo ocorrem a cada treinamento. Os principais motivos são a aleatoriedade na escolha dos pesos iniciais (coeficientes do modelo) e do embaralhamento das amostrar a cada epoch. Sendo assim, foram treinados 100 vezes o modelo, sendo selecionado aquele com a menor perda.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rank_modelos</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">modelos</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">modelos</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> 
+
+<span class="n">best20</span> <span class="o">=</span> <span class="n">rank_modelos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="p">,</span> <span class="n">model_loss</span> <span class="o">=</span> <span class="n">modelos</span><span class="p">[</span><span class="n">best20</span><span class="p">]</span> <span class="c1">#modelo com a menor perda</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="n">model_loss</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_30&quot;
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv1d_30 (Conv1D)           (None, 11, 64)            832       
+_________________________________________________________________
+max_pooling1d_30 (MaxPooling (None, 5, 64)             0         
+_________________________________________________________________
+flatten_30 (Flatten)         (None, 320)               0         
+_________________________________________________________________
+dense_60 (Dense)             (None, 50)                16050     
+_________________________________________________________________
+dense_61 (Dense)             (None, 1)                 51        
+=================================================================
+Total params: 16,933
+Trainable params: 16,933
+Non-trainable params: 0
+_________________________________________________________________
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.812259301919158e-16
 </pre></div>
 </div>
 </div>
@@ -510,20 +640,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### PREDICAO dos totais em 2020 ####</span>
-
-<span class="c1"># split a multivariate sequence into samples </span>
-<span class="k">def</span> <span class="nf">split_sequences_pred</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">):</span> 
-    <span class="n">X</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">)):</span> 
-        <span class="c1"># find the end of this pattern </span>
-        <span class="n">end_ix</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">n_steps</span> 
-        <span class="c1"># check if we are beyond the dataset </span>
-        <span class="k">if</span> <span class="n">end_ix</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">):</span> 
-            <span class="k">break</span>
-        <span class="c1"># gather input and output parts of the pattern </span>
-        <span class="n">seq_x</span> <span class="o">=</span> <span class="n">sequences</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">end_ix</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seq_x</span><span class="p">)</span> 
-    <span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="n">begin_ix</span> <span class="o">=</span> <span class="mi">72</span><span class="o">-</span><span class="n">n_steps</span> <span class="c1">#72 é posição onde está janeiro 2020</span>
 <span class="n">dataset_X_pred</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">begin_ix</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#83 é novembro, pois max que vamos é até dez/20</span>
@@ -549,28 +665,246 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span><span class="o">/</span><span class="n">y_2020</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_todos_anos</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">X_sem_Y_2020</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">72</span><span class="p">:</span><span class="mi">84</span><span class="p">,:</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="n">y_2020</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">novo_2020</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">X_sem_Y_2020</span><span class="p">,</span><span class="n">y_2020</span><span class="p">))</span>
+
+<span class="n">dataset_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">dataset</span><span class="p">[:</span><span class="mi">72</span><span class="p">],</span><span class="n">novo_2020</span><span class="p">))</span>
+
+<span class="n">dados_pred</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">dataset_pred</span><span class="p">)</span>
+
+<span class="n">y_dados_pred_2020</span> <span class="o">=</span> <span class="n">dados_pred</span><span class="p">[</span><span class="mi">72</span><span class="p">:</span><span class="mi">84</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">dados</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+<span class="n">y_todos_anos</span> <span class="o">=</span> <span class="n">dados</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">y_todos_anos</span> <span class="o">=</span> <span class="n">y_todos_anos</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">84</span><span class="p">,)</span>
+<span class="n">y_dados_pred_2020</span> <span class="o">=</span> <span class="n">y_dados_pred_2020</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,)</span>
+
+<span class="n">d_total</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">85</span><span class="p">))</span>
+<span class="n">d_2020</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">73</span><span class="p">,</span><span class="mi">85</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_total</span><span class="p">,</span> <span class="n">y_todos_anos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_2020</span><span class="p">,</span><span class="n">y_dados_pred_2020</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;previsto 2020&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.74783938, 0.74127246, 1.10649755, 0.85420934, 0.87611349,
-       0.59978336, 0.46540557, 0.5834705 , 0.62160557, 0.57846786,
-       0.56617553, 0.59467421])
+<img alt="_images/passo3-CNN_22_0.svg" src="_images/passo3-CNN_22_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dados de 2014 até final 2018</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">60</span><span class="p">]</span>
+<span class="n">y_2018</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">72</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_sequences</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># the dataset knows the number of features</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+
+<span class="n">modelos_19</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span> <span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span> <span class="p">))</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span> <span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span> <span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">modelos_19</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">score</span><span class="p">)</span>
+
+<span class="n">rank_modelos_19</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">modelos_19</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">modelos_19</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> 
+
+<span class="n">best</span> <span class="o">=</span> <span class="n">rank_modelos_19</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">model_19</span><span class="p">,</span> <span class="n">model_loss_19</span> <span class="o">=</span> <span class="n">modelos_19</span><span class="p">[</span><span class="n">best</span><span class="p">]</span> <span class="c1">#modelo com a menor perda</span>
+
+
+<span class="n">begin_ix</span> <span class="o">=</span> <span class="mi">60</span><span class="o">-</span><span class="n">n_steps</span> <span class="c1">#72 é posição onde está janeiro 2019</span>
+<span class="n">dataset_X_pred</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">begin_ix</span><span class="p">:</span><span class="mi">71</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#71 é novembro, pois max que vamos é até dez/19</span>
+
+<span class="n">X_pred</span> <span class="o">=</span> <span class="n">split_sequences_pred</span><span class="p">(</span><span class="n">dataset_X_pred</span> <span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+<span class="c1">#começa em -1 e vai diminuindo</span>
+<span class="n">y_pred_19</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">X_pred</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_steps</span><span class="p">,</span><span class="n">n_features</span><span class="p">)</span>
+    <span class="n">yhat</span> <span class="o">=</span> <span class="n">model_19</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">y_pred_19</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">yhat</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="n">y_2019</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">y_pred_19</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dataset</span><span class="p">[:</span><span class="mi">60</span><span class="p">]</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">dataset</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">72</span><span class="p">,:</span><span class="mi">6</span><span class="p">],</span><span class="n">y_2019</span><span class="p">))</span>
+
+<span class="n">dataset</span><span class="p">[</span><span class="mi">72</span><span class="p">:</span><span class="mi">84</span><span class="p">]</span>
+
+<span class="n">dataset_novo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">dataset</span><span class="p">[:</span><span class="mi">60</span><span class="p">],</span><span class="n">d</span><span class="p">,</span><span class="n">dataset</span><span class="p">[</span><span class="mi">72</span><span class="p">:</span><span class="mi">84</span><span class="p">]))</span>
+
+<span class="n">dados_2019pred</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">dataset_novo</span><span class="p">)</span>
+
+<span class="n">y_dados_pred_2019</span> <span class="o">=</span> <span class="n">dados_2019pred</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">72</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">y_dados_pred_2019</span> <span class="o">=</span> <span class="n">y_dados_pred_2019</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(48, 12, 6) (48,)
+2/2 [==============================] - 0s 4ms/step - loss: 5.3582e-14
+2/2 [==============================] - 0s 4ms/step - loss: 1.5115e-13
+2/2 [==============================] - 0s 5ms/step - loss: 5.4669e-14
+2/2 [==============================] - 0s 4ms/step - loss: 1.2769e-13
+2/2 [==============================] - 0s 3ms/step - loss: 9.8902e-15
+2/2 [==============================] - 0s 3ms/step - loss: 3.3723e-15
+2/2 [==============================] - 0s 4ms/step - loss: 4.1217e-15
+2/2 [==============================] - 0s 3ms/step - loss: 1.0880e-14
+2/2 [==============================] - 0s 4ms/step - loss: 9.7746e-15
+2/2 [==============================] - 0s 4ms/step - loss: 2.3361e-15
+2/2 [==============================] - 0s 5ms/step - loss: 1.0748e-13
+2/2 [==============================] - 0s 3ms/step - loss: 3.1348e-13
+2/2 [==============================] - 0s 3ms/step - loss: 3.6240e-14
+2/2 [==============================] - 0s 5ms/step - loss: 1.2444e-15
+2/2 [==============================] - 0s 6ms/step - loss: 1.2681e-11
+2/2 [==============================] - 0s 8ms/step - loss: 1.2569e-14
+2/2 [==============================] - 0s 7ms/step - loss: 1.7162e-15
+2/2 [==============================] - 0s 4ms/step - loss: 3.5990e-15
+2/2 [==============================] - 0s 5ms/step - loss: 2.0863e-15
+2/2 [==============================] - 0s 3ms/step - loss: 8.5904e-15
+2/2 [==============================] - 0s 4ms/step - loss: 7.3506e-15
+2/2 [==============================] - 0s 7ms/step - loss: 1.9383e-15
+2/2 [==============================] - 0s 4ms/step - loss: 1.4895e-15
+2/2 [==============================] - 0s 3ms/step - loss: 1.7139e-14
+2/2 [==============================] - 0s 4ms/step - loss: 2.3082e-11
+2/2 [==============================] - 0s 3ms/step - loss: 1.1380e-15
+2/2 [==============================] - 0s 4ms/step - loss: 2.1140e-15
+2/2 [==============================] - 0s 3ms/step - loss: 1.8791e-14
+2/2 [==============================] - 0s 3ms/step - loss: 3.4616e-14
+2/2 [==============================] - 0s 6ms/step - loss: 1.3424e-14
+2/2 [==============================] - 0s 4ms/step - loss: 2.1187e-15
+2/2 [==============================] - 0s 3ms/step - loss: 2.8496e-15
+2/2 [==============================] - 0s 3ms/step - loss: 7.9520e-15
+2/2 [==============================] - 0s 3ms/step - loss: 7.1332e-15
+2/2 [==============================] - 0s 5ms/step - loss: 1.5066e-13
+2/2 [==============================] - 0s 4ms/step - loss: 1.2583e-15
+2/2 [==============================] - 0s 4ms/step - loss: 2.2852e-15
+2/2 [==============================] - 0s 3ms/step - loss: 1.5904e-14
+2/2 [==============================] - 0s 3ms/step - loss: 5.3476e-15
+2/2 [==============================] - 0s 3ms/step - loss: 1.6158e-14
+2/2 [==============================] - 0s 3ms/step - loss: 2.2528e-15
+2/2 [==============================] - 0s 9ms/step - loss: 5.7736e-14
+2/2 [==============================] - 0s 3ms/step - loss: 4.2674e-14
+2/2 [==============================] - 0s 5ms/step - loss: 7.7438e-15
+2/2 [==============================] - 0s 7ms/step - loss: 1.4391e-10
+2/2 [==============================] - 0s 3ms/step - loss: 3.2826e-13
+2/2 [==============================] - 0s 9ms/step - loss: 1.0667e-14
+2/2 [==============================] - 0s 4ms/step - loss: 1.8588e-12
+2/2 [==============================] - 0s 3ms/step - loss: 6.0345e-11
+2/2 [==============================] - 0s 3ms/step - loss: 6.8829e-14
+2/2 [==============================] - 0s 4ms/step - loss: 1.2305e-15
+2/2 [==============================] - 0s 9ms/step - loss: 1.3241e-12
+2/2 [==============================] - 0s 6ms/step - loss: 6.4069e-15
+2/2 [==============================] - 0s 3ms/step - loss: 5.4678e-15
+2/2 [==============================] - 0s 7ms/step - loss: 7.2581e-15
+2/2 [==============================] - 0s 3ms/step - loss: 2.0737e-09
+2/2 [==============================] - 0s 4ms/step - loss: 1.5774e-15
+2/2 [==============================] - 0s 8ms/step - loss: 1.4461e-14
+2/2 [==============================] - 0s 4ms/step - loss: 5.5187e-15
+2/2 [==============================] - 0s 3ms/step - loss: 2.2373e-13
+2/2 [==============================] - 0s 11ms/step - loss: 4.7414e-12
+2/2 [==============================] - 0s 3ms/step - loss: 3.0281e-14
+2/2 [==============================] - 0s 6ms/step - loss: 1.4803e-12
+2/2 [==============================] - 0s 3ms/step - loss: 6.8464e-16
+2/2 [==============================] - 0s 3ms/step - loss: 2.9685e-14
+2/2 [==============================] - 0s 4ms/step - loss: 3.7979e-15
+2/2 [==============================] - 0s 11ms/step - loss: 8.7532e-13
+2/2 [==============================] - 0s 4ms/step - loss: 2.7293e-15
+2/2 [==============================] - 0s 3ms/step - loss: 1.4418e-13
+2/2 [==============================] - 0s 10ms/step - loss: 3.0809e-15
+2/2 [==============================] - 0s 3ms/step - loss: 9.6312e-15
+2/2 [==============================] - 2s 407ms/step - loss: 2.8952e-12
+2/2 [==============================] - 1s 6ms/step - loss: 4.8572e-16
+2/2 [==============================] - 0s 3ms/step - loss: 1.5459e-10
+2/2 [==============================] - 0s 4ms/step - loss: 2.7977e-10
+2/2 [==============================] - 0s 3ms/step - loss: 1.2407e-14
+2/2 [==============================] - 0s 3ms/step - loss: 2.1048e-15
+2/2 [==============================] - 0s 4ms/step - loss: 1.5849e-13
+2/2 [==============================] - 0s 3ms/step - loss: 4.2975e-15
+2/2 [==============================] - 0s 3ms/step - loss: 5.9119e-15
+2/2 [==============================] - 0s 3ms/step - loss: 1.8764e-12
+2/2 [==============================] - 0s 3ms/step - loss: 7.5019e-11
+2/2 [==============================] - 0s 3ms/step - loss: 4.9266e-15
+2/2 [==============================] - 0s 4ms/step - loss: 5.6688e-12
+2/2 [==============================] - 0s 3ms/step - loss: 5.2860e-14
+2/2 [==============================] - 0s 3ms/step - loss: 1.3420e-14
+2/2 [==============================] - 0s 4ms/step - loss: 2.8477e-09
+2/2 [==============================] - 0s 3ms/step - loss: 6.6523e-13
+2/2 [==============================] - 0s 3ms/step - loss: 8.9651e-15
+2/2 [==============================] - 0s 3ms/step - loss: 2.5156e-14
+2/2 [==============================] - 0s 3ms/step - loss: 1.5289e-14
+2/2 [==============================] - 0s 3ms/step - loss: 6.0720e-14
+2/2 [==============================] - 0s 3ms/step - loss: 2.9018e-12
+2/2 [==============================] - 0s 3ms/step - loss: 6.2080e-15
+2/2 [==============================] - 0s 3ms/step - loss: 6.6290e-15
+2/2 [==============================] - 4033s 9ms/step - loss: 5.6880e-14
+2/2 [==============================] - 0s 3ms/step - loss: 1.0085e-15
+2/2 [==============================] - 1s 7ms/step - loss: 5.1113e-10
+2/2 [==============================] - 1s 5ms/step - loss: 1.7625e-15
+2/2 [==============================] - 0s 4ms/step - loss: 4.5202e-11
+</pre></div>
+</div>
+<img alt="_images/passo3-CNN_23_1.svg" src="_images/passo3-CNN_23_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d_total</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">85</span><span class="p">))</span>
+<span class="n">d_2020</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">73</span><span class="p">,</span><span class="mi">85</span><span class="p">))</span>
+<span class="n">d_2019</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">61</span><span class="p">,</span><span class="mi">73</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_total</span><span class="p">,</span> <span class="n">y_todos_anos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_2020</span><span class="p">,</span><span class="n">y_dados_pred_2020</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;previsto 2019&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_2019</span><span class="p">,</span><span class="n">y_dados_pred_2019</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;previsto 2020&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo3-CNN_24_0.svg" src="_images/passo3-CNN_24_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#model.save(&quot;adp255/datasets/cnn_20.h5&quot;)</span>
+<span class="c1">#model = keras.models.load_model(&quot;adp255/datasets/cnn_20.h5&quot;)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">y_2020</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#model_19.save(&quot;adp255/datasets/cnn_19.h5&quot;)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/passo3-CNN_12_0.png" src="_images/passo3-CNN_12_0.png" />
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#model.save(&quot;adp255/datasets/cnn_100_20.h5&quot;)</span>
+<span class="c1">#model_19.save(&quot;adp255/datasets/cnn_100_19.h5&quot;)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -600,7 +934,7 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="passo3.html" title="previous page">Passo 3: Testar diferentes algoritmos preditivos</a>
+    <a class='left-prev' id="prev-link" href="passo3-arima.html" title="previous page">ARIMA (SARIMA)</a>
     <a class='right-next' id="next-link" href="passo4.html" title="next page">Passo 4: Apresentar e interpretar o modelo</a>
 
         </div>

@@ -52,7 +52,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CNN - Convolutional Neural Network" href="passo3-CNN.html" />
+    <link rel="next" title="ARIMA (SARIMA)" href="passo3-arima.html" />
     <link rel="prev" title="Passo 2: Preparar os dados" href="passo2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -117,6 +117,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="passo3-arima.html">
+     ARIMA (SARIMA)
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="passo3-CNN.html">
      CNN - Convolutional Neural Network
     </a>
@@ -126,6 +131,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="passo4.html">
    Passo 4: Apresentar e interpretar o modelo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="referencias.html">
+   Referências
   </a>
  </li>
 </ul>
@@ -233,11 +243,6 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#arima-sarima">
-   ARIMA (SARIMA)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#primeiras-exploracoes-da-ferramenta-automated-time-series-forecasting-autots">
    <strong>
     Primeiras explorações da ferramenta Automated Time Series Forecasting (AutoTS)
@@ -257,397 +262,7 @@
                 
   <div class="section" id="passo-3-testar-diferentes-algoritmos-preditivos">
 <h1>Passo 3: Testar diferentes algoritmos preditivos<a class="headerlink" href="#passo-3-testar-diferentes-algoritmos-preditivos" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="arima-sarima">
-<h2>ARIMA (SARIMA)<a class="headerlink" href="#arima-sarima" title="Permalink to this headline">¶</a></h2>
-<p>Primeiro aplicamos o S(ARIMA) nos dados históricos referente à venda de interruptores, pulsadores e tomadas.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="kn">import</span> <span class="nn">pickle</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vendas</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/serie_historica_2014_2020.csv&#39;</span><span class="p">)</span> <span class="c1"># Dados vendas interruptores, tomadas e pulsadores - ADP255.</span>
-<span class="c1"># cria a coluna de data no formato Datetime</span>
-<span class="n">vendas</span> <span class="o">=</span> <span class="n">vendas</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ano&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;mes&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">})</span>
-<span class="n">vendas</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">vendas</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">vendas</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">]])</span>
-<span class="c1"># seta a coluna de data como index</span>
-<span class="n">vendas</span> <span class="o">=</span> <span class="n">vendas</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
-
-<span class="n">vendas</span> <span class="c1"># Base de dados para o trabalho.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>interruptores</th>
-      <th>pulsadores</th>
-      <th>tomadas</th>
-      <th>total</th>
-      <th>day</th>
-    </tr>
-    <tr>
-      <th>date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2014-01-01</th>
-      <td>2014</td>
-      <td>1</td>
-      <td>5109625</td>
-      <td>149613</td>
-      <td>8168659</td>
-      <td>13427897</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2014-02-01</th>
-      <td>2014</td>
-      <td>2</td>
-      <td>5235998</td>
-      <td>141128</td>
-      <td>8774994</td>
-      <td>14152120</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2014-03-01</th>
-      <td>2014</td>
-      <td>3</td>
-      <td>5100680</td>
-      <td>144853</td>
-      <td>8465237</td>
-      <td>13710770</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2014-04-01</th>
-      <td>2014</td>
-      <td>4</td>
-      <td>4695875</td>
-      <td>132094</td>
-      <td>7774926</td>
-      <td>12602895</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2014-05-01</th>
-      <td>2014</td>
-      <td>5</td>
-      <td>5563254</td>
-      <td>156946</td>
-      <td>8883242</td>
-      <td>14603442</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2020-08-01</th>
-      <td>2020</td>
-      <td>8</td>
-      <td>11713475</td>
-      <td>210921</td>
-      <td>22059317</td>
-      <td>33983713</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2020-09-01</th>
-      <td>2020</td>
-      <td>9</td>
-      <td>10635364</td>
-      <td>229234</td>
-      <td>21341217</td>
-      <td>32205815</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2020-10-01</th>
-      <td>2020</td>
-      <td>10</td>
-      <td>11688385</td>
-      <td>213752</td>
-      <td>21847140</td>
-      <td>33749277</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2020-11-01</th>
-      <td>2020</td>
-      <td>11</td>
-      <td>11337980</td>
-      <td>237001</td>
-      <td>22187188</td>
-      <td>33762169</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2020-12-01</th>
-      <td>2020</td>
-      <td>12</td>
-      <td>10198238</td>
-      <td>202845</td>
-      <td>21089020</td>
-      <td>31490103</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-<p>84 rows × 7 columns</p>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plota o total de vendas e por tipo de produto</span>
-<span class="n">cols_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="s1">&#39;interruptores&#39;</span><span class="p">,</span> <span class="s1">&#39;tomadas&#39;</span><span class="p">,</span> <span class="s1">&#39;pulsadores&#39;</span><span class="p">]</span>
-<span class="n">axes</span> <span class="o">=</span> <span class="n">vendas</span><span class="p">[</span><span class="n">cols_plot</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;quantidade&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/passo3_5_0.png" src="_images/passo3_5_0.png" />
-</div>
-</div>
-<p>É possível observar que os três produtos possuem um padrão de venda semelhante. Também observa-se uma sazonalidade nas vendas, onde após o início do ano há uma declínio seguido de um significante aumento nas vendas.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># venda total (média anual)</span>
-<span class="n">data_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
-<span class="n">vendas_media_anual</span> <span class="o">=</span> <span class="n">vendas</span><span class="p">[</span><span class="n">data_columns</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">vendas_media_anual</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/passo3_7_1.png" src="_images/passo3_7_1.png" />
-</div>
-</div>
-<p>Considerando apenas a média anual das vendas totais, percebe-se apenas no ano de 2015 um declínio na quantidade. Após 2016, a quantidade média do total de produtos apresenta crescimento constante.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sazonalidade (agrupa por meses)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">vendas</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;month&#39;, ylabel=&#39;total&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/passo3_9_1.png" src="_images/passo3_9_1.png" />
-</div>
-</div>
-<p>Aqui é possível verificar a sazonalidade na quantidade total, com declínio nas vendas no mês de março, seguido de aumento até o final do ano.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apenas para marcar a FREQ=MS, &quot;calcula&quot; a média mas não altera os valores</span>
-<span class="c1"># pois continua sendo frequencia mensal</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">vendas</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">8</span>
-<span class="n">decomposition</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">seasonal_decompose</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;additive&#39;</span><span class="p">)</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">decomposition</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/passo3_12_0.png" src="_images/passo3_12_0.png" />
-</div>
-</div>
-<p>time-series decomposition: that allows us to decompose our time series into three distinct components: trend, seasonality, and noise.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid-Search para achar os parâmetros ótimos para o modelo ARIMA</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">d</span> <span class="o">=</span> <span class="n">q</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">pdq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))</span>
-<span class="n">seasonal_pdq</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">12</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">))]</span>
-
-<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">pdq</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">param_seasonal</span> <span class="ow">in</span> <span class="n">seasonal_pdq</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="n">param</span><span class="p">,</span><span class="n">seasonal_order</span><span class="o">=</span><span class="n">param_seasonal</span><span class="p">,</span><span class="n">enforce_stationarity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">enforce_invertibility</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">continue</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ARIMA</span><span class="si">{}</span><span class="s1">x</span><span class="si">{}</span><span class="s1">12 - AIC:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">param_seasonal</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">aic</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARIMA(1, 1, 1)x(1, 1, 1, 12)12 - AIC:1870.1591523536733
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">y</span><span class="p">,</span>
-                                <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-                                <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
-                                <span class="n">enforce_stationarity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                <span class="n">enforce_invertibility</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==============================================================================
-                 coef    std err          z      P&gt;|z|      [0.025      0.975]
-------------------------------------------------------------------------------
-ar.L1          0.3444      0.224      1.536      0.125      -0.095       0.784
-ma.L1         -0.7764      0.210     -3.705      0.000      -1.187      -0.366
-ar.S.L12      -0.4707      0.392     -1.201      0.230      -1.239       0.297
-ma.S.L12      -0.1674      0.396     -0.422      0.673      -0.944       0.610
-sigma2      9.851e+12   6.98e-14   1.41e+26      0.000    9.85e+12    9.85e+12
-==============================================================================
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># verifica se alguma anomalia nos dados</span>
-<span class="n">results</span><span class="o">.</span><span class="n">plot_diagnostics</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/passo3_16_0.png" src="_images/passo3_16_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cereja do Bolo: aqui podemos comparar a previsão da demanda para o ano de 2020.</span>
-<span class="c1"># em AZUL são os dados reais da demanda</span>
-<span class="c1"># em LARANJA sao os dados projetados pelo modelo</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_prediction</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">),</span> <span class="n">dynamic</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">pred_ci</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observado&#39;</span><span class="p">)</span>
-<span class="n">pred</span><span class="o">.</span><span class="n">predicted_mean</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Projetado&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.7</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">pred_ci</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
-                <span class="n">pred_ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
-                <span class="n">pred_ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Quantidade&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/passo3_17_0.png" src="_images/passo3_17_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_forecasted</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">predicted_mean</span>
-<span class="n">y_truth</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">:]</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="p">((</span><span class="n">y_forecasted</span> <span class="o">-</span> <span class="n">y_truth</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erro Quadrático Médio da projeção </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">mse</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Raiz do Erro Quadrático Médio da projeção </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">),</span> <span class="mi">2</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Erro Quadrático Médio da projeção 27765454118830.02
-Raiz do Erro Quadrático Médio da projeção 5269293.51
-</pre></div>
-</div>
-</div>
-</div>
-<p>Raiz do MSE = 5.269.293 Sendo que os totais de venda variam de 41.851.313 a 11.024.039</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Projetando a demanda para 2021 e 2022. Será?! kkk</span>
-
-<span class="n">pred_uc</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_forecast</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-<span class="n">pred_ci</span> <span class="o">=</span> <span class="n">pred_uc</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;observado&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-<span class="n">pred_uc</span><span class="o">.</span><span class="n">predicted_mean</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Projetado&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">pred_ci</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
-                <span class="n">pred_ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
-                <span class="n">pred_ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Quantidade&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/passo3_20_0.png" src="_images/passo3_20_0.png" />
-</div>
-</div>
-</div>
+<p>Neste capítulo são apresentados os algoritmos de machine learning que foram testados com os dados selecionados no passo anterior.</p>
 <div class="section" id="primeiras-exploracoes-da-ferramenta-automated-time-series-forecasting-autots">
 <h2><strong>Primeiras explorações da ferramenta Automated Time Series Forecasting (AutoTS)</strong><a class="headerlink" href="#primeiras-exploracoes-da-ferramenta-automated-time-series-forecasting-autots" title="Permalink to this headline">¶</a></h2>
 <p>O AutoTS busca o modelo mais adequado para a base de dados, dentre mais de 20 modelos pré-definidos, de acordo com a sua sazonalidade e tendência, além de limpar os dados e eliminar outliers.</p>
@@ -671,37 +286,16 @@ Raiz do Erro Quadrático Médio da projeção 5269293.51
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 84 entries, 0 to 83
-Data columns (total 24 columns):
- #   Column                  Non-Null Count  Dtype         
----  ------                  --------------  -----         
- 0   index                   84 non-null     datetime64[ns]
- 1   year                    84 non-null     int64         
- 2   month                   84 non-null     int64         
- 3   interruptores           84 non-null     int64         
- 4   pulsadores              84 non-null     int64         
- 5   tomadas                 84 non-null     int64         
- 6   total                   84 non-null     int64         
- 7   day                     84 non-null     int64         
- 8   IBC-Br                  84 non-null     float64       
- 9   Taxa de Desocupação     84 non-null     float64       
- 10  Imobiliário             84 non-null     float64       
- 11  Comercial               84 non-null     float64       
- 12  Residencial             84 non-null     float64       
- 13  material_eletrico       84 non-null     float64       
- 14  PIB                     84 non-null     float64       
- 15  Variacao_PIB            84 non-null     float64       
- 16  CONSUMO                 84 non-null     float64       
- 17  ICST-A                  84 non-null     float64       
- 18  ICST-R                  84 non-null     float64       
- 19  geracaoGWh              84 non-null     float64       
- 20  IndEletronica           84 non-null     float64       
- 21  IndEletrica             84 non-null     float64       
- 22  IndEletronica+Eletrica  84 non-null     float64       
- 23  IndGeral                84 non-null     float64       
-dtypes: datetime64[ns](1), float64(16), int64(7)
-memory usage: 15.9 KB
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">ba0fb62c594f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">file_to_read</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datasets/dados.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">dados</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_to_read</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">file_to_read</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">dados_autoML</span> <span class="o">=</span> <span class="n">dados</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;pickle&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1098,105 +692,21 @@ memory usage: 15.9 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inferred frequency is: MS
-Model Number: 1 with model AverageValueNaive in generation 0 of 10
-Model Number: 2 with model AverageValueNaive in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 3 with model AverageValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 3: AverageValueNaive
-Model Number: 4 with model GLS in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 5 with model GLS in generation 0 of 10
-Model Number: 6 with model LastValueNaive in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 7 with model LastValueNaive in generation 0 of 10
-Model Number: 8 with model LastValueNaive in generation 0 of 10
-Model Number: 9 with model LastValueNaive in generation 0 of 10
-Model Number: 10 with model SeasonalNaive in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 11 with model SeasonalNaive in generation 0 of 10
-Model Number: 12 with model SeasonalNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 12: SeasonalNaive
-Model Number: 13 with model SeasonalNaive in generation 0 of 10
-Model Number: 14 with model ZeroesNaive in generation 0 of 10
-Model Number: 15 with model SeasonalNaive in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 16 with model AverageValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 16: AverageValueNaive
-Model Number: 17 with model AverageValueNaive in generation 0 of 10
-Model Number: 18 with model GLS in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 18: GLS
-Model Number: 19 with model ZeroesNaive in generation 0 of 10
-Model Number: 20 with model AverageValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 20: AverageValueNaive
-Model Number: 21 with model LastValueNaive in generation 0 of 10
-Model Number: 22 with model ZeroesNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 22: ZeroesNaive
-Model Number: 23 with model SeasonalNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 23: SeasonalNaive
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 24 with model LastValueNaive in generation 0 of 10
-Model Number: 25 with model LastValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 25: LastValueNaive
-Model Number: 26 with model AverageValueNaive in generation 0 of 10
-Model Number: 27 with model AverageValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 27: AverageValueNaive
-Model Number: 28 with model AverageValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 28: AverageValueNaive
-Model Number: 29 with model AverageValueNaive in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 29: AverageValueNaive
-Model Number: 30 with model ZeroesNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 30: ZeroesNaive
-Model Number: 31 with model LastValueNaive in generation 0 of 10
-Model Number: 32 with model ZeroesNaive in generation 0 of 10
-Model Number: 33 with model AverageValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 33: AverageValueNaive
-Model Number: 34 with model SeasonalNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 34: SeasonalNaive
-Model Number: 35 with model GLS in generation 0 of 10
-Model Number: 36 with model AverageValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 36: AverageValueNaive
-Model Number: 37 with model LastValueNaive in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 38 with model ZeroesNaive in generation 0 of 10
-Model Number: 39 with model SeasonalNaive in generation 0 of 10
-Model Number: 40 with model GLS in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 41 with model LastValueNaive in generation 0 of 10
-Model Number: 42 with model AverageValueNaive in generation 0 of 10
-Model Number: 43 with model ZeroesNaive in generation 0 of 10
-Model Number: 44 with model AverageValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 44: AverageValueNaive
-Model Number: 45 with model GLS in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 45: GLS
-Model Number: 46 with model SeasonalNaive in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 47 with model ZeroesNaive in generation 0 of 10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> SeasonalNaive
+Model Number: 45 with model ZeroesNaive in generation 0 of 10
+Model Number: 46 with model LastValueNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 46: LastValueNaive
+Model Number: 47 with model LastValueNaive in generation 0 of 10
 Model Number: 48 with model ZeroesNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 48: ZeroesNaive
-Model Number: 49 with model GLS in generation 0 of 10
-Model Number: 50 with model LastValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 50: LastValueNaive
-Model Number: 51 with model LastValueNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 51: LastValueNaive
+Model Number: 49 with model SeasonalNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 49: SeasonalNaive
+Model Number: 50 with model SeasonalNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 50: SeasonalNaive
+Model Number: 51 with model GLS in generation 0 of 10
 Model Number: 52 with model GLS in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 52: GLS
-Model Number: 53 with model SeasonalNaive in generation 0 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 54 with model ZeroesNaive in generation 0 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 54: ZeroesNaive
+Model Number: 53 with model AverageValueNaive in generation 0 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 53: AverageValueNaive
+Model Number: 54 with model GLS in generation 0 of 10
 New Generation: 1 of 10
 Model Number: 55 with model LastValueNaive in generation 1 of 10
 Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 55: LastValueNaive
@@ -1204,19 +714,13 @@ Model Number: 56 with model LastValueNaive in generation 1 of 10
 Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 56: LastValueNaive
 Model Number: 57 with model LastValueNaive in generation 1 of 10
 Model Number: 58 with model AverageValueNaive in generation 1 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 59 with model AverageValueNaive in generation 1 of 10
+Model Number: 59 with model AverageValueNaive in generation 1 of 10
 Model Number: 60 with model AverageValueNaive in generation 1 of 10
 Model Number: 61 with model SeasonalNaive in generation 1 of 10
 Model Number: 62 with model SeasonalNaive in generation 1 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 63 with model SeasonalNaive in generation 1 of 10
+Model Number: 63 with model SeasonalNaive in generation 1 of 10
 Model Number: 64 with model SeasonalNaive in generation 1 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 65 with model GLS in generation 1 of 10
+Model Number: 65 with model GLS in generation 1 of 10
 Model Number: 66 with model GLS in generation 1 of 10
 Model Number: 67 with model GLS in generation 1 of 10
 Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 67: GLS
@@ -1224,480 +728,283 @@ Model Number: 68 with model ZeroesNaive in generation 1 of 10
 Model Number: 69 with model ZeroesNaive in generation 1 of 10
 Model Number: 70 with model ZeroesNaive in generation 1 of 10
 New Generation: 2 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 71 with model SeasonalNaive in generation 2 of 10
+Model Number: 71 with model SeasonalNaive in generation 2 of 10
 Model Number: 72 with model SeasonalNaive in generation 2 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 73 with model SeasonalNaive in generation 2 of 10
+Model Number: 73 with model SeasonalNaive in generation 2 of 10
 Model Number: 74 with model SeasonalNaive in generation 2 of 10
 Model Number: 75 with model AverageValueNaive in generation 2 of 10
 Model Number: 76 with model AverageValueNaive in generation 2 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 77 with model LastValueNaive in generation 2 of 10
+Model Number: 77 with model AverageValueNaive in generation 2 of 10
 Model Number: 78 with model LastValueNaive in generation 2 of 10
+Template Eval Error: ValueError(&quot;Input contains NaN, infinity or a value too large for dtype(&#39;float64&#39;).&quot;) in model 78: LastValueNaive
 Model Number: 79 with model LastValueNaive in generation 2 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 80 with model GLS in generation 2 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 80: GLS
+Model Number: 80 with model LastValueNaive in generation 2 of 10
 Model Number: 81 with model GLS in generation 2 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 81: GLS
 Model Number: 82 with model GLS in generation 2 of 10
-Model Number: 83 with model ZeroesNaive in generation 2 of 10
+Model Number: 83 with model GLS in generation 2 of 10
 Model Number: 84 with model ZeroesNaive in generation 2 of 10
 Model Number: 85 with model ZeroesNaive in generation 2 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New Generation: 3 of 10
-Model Number: 86 with model SeasonalNaive in generation 3 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 87 with model SeasonalNaive in generation 3 of 10
-Model Number: 88 with model SeasonalNaive in generation 3 of 10
-Model Number: 89 with model SeasonalNaive in generation 3 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 90 with model LastValueNaive in generation 3 of 10
-Model Number: 91 with model LastValueNaive in generation 3 of 10
-Model Number: 92 with model LastValueNaive in generation 3 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 93 with model AverageValueNaive in generation 3 of 10
-Model Number: 94 with model AverageValueNaive in generation 3 of 10
-Model Number: 95 with model AverageValueNaive in generation 3 of 10
-Model Number: 96 with model ZeroesNaive in generation 3 of 10
-Model Number: 97 with model ZeroesNaive in generation 3 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 98 with model ZeroesNaive in generation 3 of 10
-Model Number: 99 with model GLS in generation 3 of 10
-Model Number: 100 with model GLS in generation 3 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 101 with model GLS in generation 3 of 10
+Model Number: 86 with model ZeroesNaive in generation 2 of 10
+New Generation: 3 of 10
+Model Number: 87 with model AverageValueNaive in generation 3 of 10
+Model Number: 88 with model AverageValueNaive in generation 3 of 10
+Model Number: 89 with model AverageValueNaive in generation 3 of 10
+Model Number: 90 with model GLS in generation 3 of 10
+Model Number: 91 with model GLS in generation 3 of 10
+Model Number: 92 with model SeasonalNaive in generation 3 of 10
+Model Number: 93 with model SeasonalNaive in generation 3 of 10
+Model Number: 94 with model SeasonalNaive in generation 3 of 10
+Model Number: 95 with model SeasonalNaive in generation 3 of 10
+Model Number: 96 with model LastValueNaive in generation 3 of 10
+Model Number: 97 with model LastValueNaive in generation 3 of 10
+Model Number: 98 with model LastValueNaive in generation 3 of 10
+Model Number: 99 with model ZeroesNaive in generation 3 of 10
+Model Number: 100 with model ZeroesNaive in generation 3 of 10
+Model Number: 101 with model ZeroesNaive in generation 3 of 10
 New Generation: 4 of 10
 Model Number: 102 with model SeasonalNaive in generation 4 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 103 with model SeasonalNaive in generation 4 of 10
+Model Number: 103 with model SeasonalNaive in generation 4 of 10
 Model Number: 104 with model SeasonalNaive in generation 4 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 105 with model SeasonalNaive in generation 4 of 10
-Model Number: 106 with model LastValueNaive in generation 4 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 107 with model LastValueNaive in generation 4 of 10
-Model Number: 108 with model LastValueNaive in generation 4 of 10
-Model Number: 109 with model AverageValueNaive in generation 4 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 110 with model AverageValueNaive in generation 4 of 10
-Model Number: 111 with model AverageValueNaive in generation 4 of 10
+Model Number: 105 with model AverageValueNaive in generation 4 of 10
+Model Number: 106 with model AverageValueNaive in generation 4 of 10
+Model Number: 107 with model AverageValueNaive in generation 4 of 10
+Model Number: 108 with model GLS in generation 4 of 10
+Model Number: 109 with model GLS in generation 4 of 10
+Model Number: 110 with model GLS in generation 4 of 10
+Model Number: 111 with model ZeroesNaive in generation 4 of 10
 Model Number: 112 with model ZeroesNaive in generation 4 of 10
 Model Number: 113 with model ZeroesNaive in generation 4 of 10
-Model Number: 114 with model GLS in generation 4 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 115 with model GLS in generation 4 of 10
-Model Number: 116 with model GLS in generation 4 of 10
+Model Number: 114 with model LastValueNaive in generation 4 of 10
+Model Number: 115 with model LastValueNaive in generation 4 of 10
+Model Number: 116 with model LastValueNaive in generation 4 of 10
 New Generation: 5 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 117 with model SeasonalNaive in generation 5 of 10
+Model Number: 117 with model SeasonalNaive in generation 5 of 10
 Model Number: 118 with model SeasonalNaive in generation 5 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 119 with model SeasonalNaive in generation 5 of 10
+Model Number: 119 with model SeasonalNaive in generation 5 of 10
 Model Number: 120 with model SeasonalNaive in generation 5 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 121 with model LastValueNaive in generation 5 of 10
-Model Number: 122 with model LastValueNaive in generation 5 of 10
-Model Number: 123 with model LastValueNaive in generation 5 of 10
-Model Number: 124 with model AverageValueNaive in generation 5 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 125 with model AverageValueNaive in generation 5 of 10
-Template Eval Error: UFuncTypeError(&lt;ufunc &#39;multiply&#39;&gt;, &#39;same_kind&#39;, dtype(&#39;float64&#39;), dtype(&#39;int64&#39;), 2) in model 125: AverageValueNaive
-Model Number: 126 with model AverageValueNaive in generation 5 of 10
+Model Number: 121 with model AverageValueNaive in generation 5 of 10
+Model Number: 122 with model AverageValueNaive in generation 5 of 10
+Model Number: 123 with model AverageValueNaive in generation 5 of 10
+Model Number: 124 with model GLS in generation 5 of 10
+Model Number: 125 with model GLS in generation 5 of 10
+Model Number: 126 with model GLS in generation 5 of 10
 Model Number: 127 with model ZeroesNaive in generation 5 of 10
 Model Number: 128 with model ZeroesNaive in generation 5 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 129 with model GLS in generation 5 of 10
-Model Number: 130 with model GLS in generation 5 of 10
-Model Number: 131 with model GLS in generation 5 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New Generation: 6 of 10
-Model Number: 132 with model SeasonalNaive in generation 6 of 10
+Model Number: 129 with model ZeroesNaive in generation 5 of 10
+Model Number: 130 with model LastValueNaive in generation 5 of 10
+Model Number: 131 with model LastValueNaive in generation 5 of 10
+Model Number: 132 with model LastValueNaive in generation 5 of 10
+New Generation: 6 of 10
 Model Number: 133 with model SeasonalNaive in generation 6 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 134 with model SeasonalNaive in generation 6 of 10
+Model Number: 134 with model SeasonalNaive in generation 6 of 10
 Model Number: 135 with model SeasonalNaive in generation 6 of 10
-Model Number: 136 with model LastValueNaive in generation 6 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 137 with model LastValueNaive in generation 6 of 10
-Model Number: 138 with model LastValueNaive in generation 6 of 10
+Model Number: 136 with model SeasonalNaive in generation 6 of 10
+Model Number: 137 with model AverageValueNaive in generation 6 of 10
+Model Number: 138 with model AverageValueNaive in generation 6 of 10
 Model Number: 139 with model AverageValueNaive in generation 6 of 10
-Model Number: 140 with model AverageValueNaive in generation 6 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 141 with model AverageValueNaive in generation 6 of 10
+Model Number: 140 with model GLS in generation 6 of 10
+Model Number: 141 with model GLS in generation 6 of 10
 Model Number: 142 with model GLS in generation 6 of 10
-Model Number: 143 with model GLS in generation 6 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 144 with model GLS in generation 6 of 10
+Model Number: 143 with model ZeroesNaive in generation 6 of 10
+Model Number: 144 with model ZeroesNaive in generation 6 of 10
 Model Number: 145 with model ZeroesNaive in generation 6 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 146 with model ZeroesNaive in generation 6 of 10
-Model Number: 147 with model ZeroesNaive in generation 6 of 10
+Model Number: 146 with model LastValueNaive in generation 6 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 146: LastValueNaive
+Model Number: 147 with model LastValueNaive in generation 6 of 10
+Model Number: 148 with model LastValueNaive in generation 6 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 148: LastValueNaive
 New Generation: 7 of 10
-Model Number: 148 with model LastValueNaive in generation 7 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 149 with model LastValueNaive in generation 7 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 149: LastValueNaive
-Model Number: 150 with model LastValueNaive in generation 7 of 10
+Model Number: 149 with model SeasonalNaive in generation 7 of 10
+Model Number: 150 with model SeasonalNaive in generation 7 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 150: SeasonalNaive
 Model Number: 151 with model SeasonalNaive in generation 7 of 10
 Model Number: 152 with model SeasonalNaive in generation 7 of 10
-Model Number: 153 with model SeasonalNaive in generation 7 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 154 with model SeasonalNaive in generation 7 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 155 with model AverageValueNaive in generation 7 of 10
-Model Number: 156 with model AverageValueNaive in generation 7 of 10
-Model Number: 157 with model AverageValueNaive in generation 7 of 10
+Model Number: 153 with model AverageValueNaive in generation 7 of 10
+Model Number: 154 with model AverageValueNaive in generation 7 of 10
+Model Number: 155 with model AverageValueNaive in generation 7 of 10
+Model Number: 156 with model GLS in generation 7 of 10
+Model Number: 157 with model GLS in generation 7 of 10
 Model Number: 158 with model GLS in generation 7 of 10
-Model Number: 159 with model GLS in generation 7 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 160 with model GLS in generation 7 of 10
-Model Number: 161 with model ZeroesNaive in generation 7 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 162 with model ZeroesNaive in generation 7 of 10
-Model Number: 163 with model ZeroesNaive in generation 7 of 10
+Model Number: 159 with model ZeroesNaive in generation 7 of 10
+Model Number: 160 with model ZeroesNaive in generation 7 of 10
+Model Number: 161 with model LastValueNaive in generation 7 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 161: LastValueNaive
+Model Number: 162 with model LastValueNaive in generation 7 of 10
 New Generation: 8 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 164 with model SeasonalNaive in generation 8 of 10
+Model Number: 163 with model SeasonalNaive in generation 8 of 10
+Model Number: 164 with model SeasonalNaive in generation 8 of 10
 Model Number: 165 with model SeasonalNaive in generation 8 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 166 with model SeasonalNaive in generation 8 of 10
-Model Number: 167 with model SeasonalNaive in generation 8 of 10
-Model Number: 168 with model LastValueNaive in generation 8 of 10
-Model Number: 169 with model LastValueNaive in generation 8 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 170 with model LastValueNaive in generation 8 of 10
-Model Number: 171 with model AverageValueNaive in generation 8 of 10
-Model Number: 172 with model AverageValueNaive in generation 8 of 10
-Model Number: 173 with model AverageValueNaive in generation 8 of 10
-Model Number: 174 with model GLS in generation 8 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 175 with model GLS in generation 8 of 10
-Model Number: 176 with model GLS in generation 8 of 10
-Model Number: 177 with model ZeroesNaive in generation 8 of 10
-Model Number: 178 with model ZeroesNaive in generation 8 of 10
-Model Number: 179 with model ZeroesNaive in generation 8 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New Generation: 9 of 10
-Model Number: 180 with model LastValueNaive in generation 9 of 10
-Model Number: 181 with model LastValueNaive in generation 9 of 10
-Model Number: 182 with model LastValueNaive in generation 9 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 183 with model ZeroesNaive in generation 9 of 10
-Model Number: 184 with model ZeroesNaive in generation 9 of 10
+Model Number: 166 with model SeasonalNaive in generation 8 of 10
+Model Number: 167 with model AverageValueNaive in generation 8 of 10
+Model Number: 168 with model AverageValueNaive in generation 8 of 10
+Model Number: 169 with model GLS in generation 8 of 10
+Model Number: 170 with model GLS in generation 8 of 10
+Model Number: 171 with model ZeroesNaive in generation 8 of 10
+Model Number: 172 with model ZeroesNaive in generation 8 of 10
+Model Number: 173 with model LastValueNaive in generation 8 of 10
+Model Number: 174 with model LastValueNaive in generation 8 of 10
+New Generation: 9 of 10
+Model Number: 175 with model SeasonalNaive in generation 9 of 10
+Model Number: 176 with model SeasonalNaive in generation 9 of 10
+Model Number: 177 with model SeasonalNaive in generation 9 of 10
+Model Number: 178 with model SeasonalNaive in generation 9 of 10
+Model Number: 179 with model AverageValueNaive in generation 9 of 10
+Model Number: 180 with model AverageValueNaive in generation 9 of 10
+Model Number: 181 with model AverageValueNaive in generation 9 of 10
+Model Number: 182 with model GLS in generation 9 of 10
+Model Number: 183 with model GLS in generation 9 of 10
+Model Number: 184 with model GLS in generation 9 of 10
 Model Number: 185 with model ZeroesNaive in generation 9 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 186 with model SeasonalNaive in generation 9 of 10
-Model Number: 187 with model SeasonalNaive in generation 9 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 188 with model SeasonalNaive in generation 9 of 10
-Model Number: 189 with model SeasonalNaive in generation 9 of 10
-Model Number: 190 with model AverageValueNaive in generation 9 of 10
-Model Number: 191 with model AverageValueNaive in generation 9 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 192 with model AverageValueNaive in generation 9 of 10
-Model Number: 193 with model GLS in generation 9 of 10
-Model Number: 194 with model GLS in generation 9 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Template Eval Error: ValueError(&#39;Length mismatch: Expected axis has 82 elements, new values have 1 elements&#39;) in model 194: GLS
-Model Number: 195 with model GLS in generation 9 of 10
+Model Number: 186 with model ZeroesNaive in generation 9 of 10
+Model Number: 187 with model ZeroesNaive in generation 9 of 10
+Model Number: 188 with model LastValueNaive in generation 9 of 10
+Model Number: 189 with model LastValueNaive in generation 9 of 10
+Model Number: 190 with model LastValueNaive in generation 9 of 10
 New Generation: 10 of 10
-Model Number: 196 with model SeasonalNaive in generation 10 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 197 with model SeasonalNaive in generation 10 of 10
-Model Number: 198 with model SeasonalNaive in generation 10 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 199 with model SeasonalNaive in generation 10 of 10
-Model Number: 200 with model LastValueNaive in generation 10 of 10
-Model Number: 201 with model LastValueNaive in generation 10 of 10
-Model Number: 202 with model GLS in generation 10 of 10
-Model Number: 203 with model GLS in generation 10 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 204 with model GLS in generation 10 of 10
-Model Number: 205 with model ZeroesNaive in generation 10 of 10
-Model Number: 206 with model ZeroesNaive in generation 10 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 206: ZeroesNaive
-Model Number: 207 with model ZeroesNaive in generation 10 of 10
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 208 with model AverageValueNaive in generation 10 of 10
-Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 208: AverageValueNaive
-Model Number: 209 with model AverageValueNaive in generation 10 of 10
+Model Number: 191 with model SeasonalNaive in generation 10 of 10
+Model Number: 192 with model SeasonalNaive in generation 10 of 10
+Model Number: 193 with model SeasonalNaive in generation 10 of 10
+Model Number: 194 with model SeasonalNaive in generation 10 of 10
+Model Number: 195 with model AverageValueNaive in generation 10 of 10
+Template Eval Error: ValueError(&#39;Unable to coerce to Series, length must be 1: given 81&#39;) in model 195: AverageValueNaive
+Model Number: 196 with model AverageValueNaive in generation 10 of 10
+Model Number: 197 with model AverageValueNaive in generation 10 of 10
+Model Number: 198 with model GLS in generation 10 of 10
+Model Number: 199 with model GLS in generation 10 of 10
+Model Number: 200 with model GLS in generation 10 of 10
+Model Number: 201 with model ZeroesNaive in generation 10 of 10
+Model Number: 202 with model ZeroesNaive in generation 10 of 10
+Model Number: 203 with model ZeroesNaive in generation 10 of 10
+Model Number: 204 with model LastValueNaive in generation 10 of 10
+Model Number: 205 with model LastValueNaive in generation 10 of 10
 Validation Round: 1
-Model Number: 1 of 32 with model SeasonalNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 2 of 32 with model SeasonalNaive for Validation 1
-Model Number: 3 of 32 with model SeasonalNaive for Validation 1
-Model Number: 4 of 32 with model LastValueNaive for Validation 1
-Model Number: 5 of 32 with model LastValueNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 6 of 32 with model LastValueNaive for Validation 1
-Model Number: 7 of 32 with model ZeroesNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 8 of 32 with model LastValueNaive for Validation 1
-Model Number: 9 of 32 with model SeasonalNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 10 of 32 with model ZeroesNaive for Validation 1
-Model Number: 11 of 32 with model SeasonalNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 12 of 32 with model LastValueNaive for Validation 1
-Model Number: 13 of 32 with model GLS for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 14 of 32 with model ZeroesNaive for Validation 1
-Model Number: 15 of 32 with model GLS for Validation 1
-Model Number: 16 of 32 with model SeasonalNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 17 of 32 with model SeasonalNaive for Validation 1
-Model Number: 18 of 32 with model SeasonalNaive for Validation 1
-Model Number: 19 of 32 with model AverageValueNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 20 of 32 with model AverageValueNaive for Validation 1
-Model Number: 21 of 32 with model AverageValueNaive for Validation 1
-Model Number: 22 of 32 with model LastValueNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 23 of 32 with model LastValueNaive for Validation 1
-Model Number: 24 of 32 with model LastValueNaive for Validation 1
-Model Number: 25 of 32 with model AverageValueNaive for Validation 1
-Model Number: 26 of 32 with model AverageValueNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 27 of 32 with model AverageValueNaive for Validation 1
-Model Number: 28 of 32 with model GLS for Validation 1
-Model Number: 29 of 32 with model GLS for Validation 1
-Model Number: 30 of 32 with model GLS for Validation 1
-Model Number: 31 of 32 with model AverageValueNaive for Validation 1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 32 of 32 with model AverageValueNaive for Validation 1
+Model Number: 1 of 31 with model SeasonalNaive for Validation 1
+Model Number: 2 of 31 with model SeasonalNaive for Validation 1
+Model Number: 3 of 31 with model SeasonalNaive for Validation 1
+Model Number: 4 of 31 with model SeasonalNaive for Validation 1
+Model Number: 5 of 31 with model SeasonalNaive for Validation 1
+Model Number: 6 of 31 with model SeasonalNaive for Validation 1
+Model Number: 7 of 31 with model SeasonalNaive for Validation 1
+Model Number: 8 of 31 with model AverageValueNaive for Validation 1
+Model Number: 9 of 31 with model GLS for Validation 1
+Model Number: 10 of 31 with model SeasonalNaive for Validation 1
+Model Number: 11 of 31 with model GLS for Validation 1
+Model Number: 12 of 31 with model GLS for Validation 1
+Model Number: 13 of 31 with model GLS for Validation 1
+Model Number: 14 of 31 with model GLS for Validation 1
+Model Number: 15 of 31 with model GLS for Validation 1
+Model Number: 16 of 31 with model ZeroesNaive for Validation 1
+Model Number: 17 of 31 with model LastValueNaive for Validation 1
+Model Number: 18 of 31 with model ZeroesNaive for Validation 1
+Model Number: 19 of 31 with model ZeroesNaive for Validation 1
+Model Number: 20 of 31 with model AverageValueNaive for Validation 1
+Model Number: 21 of 31 with model AverageValueNaive for Validation 1
+Model Number: 22 of 31 with model AverageValueNaive for Validation 1
+Model Number: 23 of 31 with model AverageValueNaive for Validation 1
+Model Number: 24 of 31 with model AverageValueNaive for Validation 1
+Model Number: 25 of 31 with model AverageValueNaive for Validation 1
+Model Number: 26 of 31 with model AverageValueNaive for Validation 1
+Model Number: 27 of 31 with model LastValueNaive for Validation 1
+Model Number: 28 of 31 with model LastValueNaive for Validation 1
+Model Number: 29 of 31 with model LastValueNaive for Validation 1
+Model Number: 30 of 31 with model LastValueNaive for Validation 1
+Model Number: 31 of 31 with model LastValueNaive for Validation 1
 Validation Round: 2
-Model Number: 1 of 32 with model SeasonalNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 2 of 32 with model SeasonalNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 3 of 32 with model SeasonalNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 4 of 32 with model LastValueNaive for Validation 2
-Model Number: 5 of 32 with model LastValueNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 6 of 32 with model LastValueNaive for Validation 2
-Model Number: 7 of 32 with model ZeroesNaive for Validation 2
-Model Number: 8 of 32 with model LastValueNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 9 of 32 with model SeasonalNaive for Validation 2
-Model Number: 10 of 32 with model ZeroesNaive for Validation 2
-Model Number: 11 of 32 with model SeasonalNaive for Validation 2
-Model Number: 12 of 32 with model LastValueNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 13 of 32 with model GLS for Validation 2
-Model Number: 14 of 32 with model ZeroesNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 15 of 32 with model GLS for Validation 2
-Model Number: 16 of 32 with model SeasonalNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 17 of 32 with model SeasonalNaive for Validation 2
-Model Number: 18 of 32 with model SeasonalNaive for Validation 2
-Model Number: 19 of 32 with model AverageValueNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 20 of 32 with model AverageValueNaive for Validation 2
-Model Number: 21 of 32 with model AverageValueNaive for Validation 2
-Model Number: 22 of 32 with model LastValueNaive for Validation 2
-Model Number: 23 of 32 with model LastValueNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 24 of 32 with model LastValueNaive for Validation 2
-Model Number: 25 of 32 with model AverageValueNaive for Validation 2
-Model Number: 26 of 32 with model AverageValueNaive for Validation 2
-Model Number: 27 of 32 with model AverageValueNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 28 of 32 with model GLS for Validation 2
-Model Number: 29 of 32 with model GLS for Validation 2
-Model Number: 30 of 32 with model GLS for Validation 2
-Model Number: 31 of 32 with model AverageValueNaive for Validation 2
-Model Number: 32 of 32 with model AverageValueNaive for Validation 2
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validation Round: 3
-Model Number: 1 of 32 with model SeasonalNaive for Validation 3
-Model Number: 2 of 32 with model SeasonalNaive for Validation 3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 3 of 32 with model SeasonalNaive for Validation 3
-Model Number: 4 of 32 with model LastValueNaive for Validation 3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 5 of 32 with model LastValueNaive for Validation 3
-Model Number: 6 of 32 with model LastValueNaive for Validation 3
-Model Number: 7 of 32 with model ZeroesNaive for Validation 3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 8 of 32 with model LastValueNaive for Validation 3
-Model Number: 9 of 32 with model SeasonalNaive for Validation 3
-Model Number: 10 of 32 with model ZeroesNaive for Validation 3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 11 of 32 with model SeasonalNaive for Validation 3
-Model Number: 12 of 32 with model LastValueNaive for Validation 3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 13 of 32 with model GLS for Validation 3
-Model Number: 14 of 32 with model ZeroesNaive for Validation 3
-Model Number: 15 of 32 with model GLS for Validation 3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 16 of 32 with model SeasonalNaive for Validation 3
-Model Number: 17 of 32 with model SeasonalNaive for Validation 3
-Model Number: 18 of 32 with model SeasonalNaive for Validation 3
-Model Number: 19 of 32 with model AverageValueNaive for Validation 3
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Number: 20 of 32 with model AverageValueNaive for Validation 3
-Model Number: 21 of 32 with model AverageValueNaive for Validation 3
-Model Number: 22 of 32 with model LastValueNaive for Validation 3
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/autots/evaluator/auto_model.py</span> in <span class="ni">TemplateWizard</span><span class="nt">(template, df_train, df_test, weights, model_count, ensemble, forecast_length, frequency, prediction_interval, no_negatives, constraint, future_regressor_train, future_regressor_forecast, holiday_country, startTimeStamps, random_seed, verbose, n_jobs, validation_round, current_generation, max_generations, model_interrupt, grouping_ids, template_cols)</span>
-<span class="g g-Whitespace">    </span><span class="mi">894</span>                     <span class="nb">print</span><span class="p">(</span><span class="n">base_print</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">895</span>             <span class="n">df_forecast</span> <span class="o">=</span> <span class="n">PredictWitch</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">896</span>                 <span class="n">current_template</span><span class="p">,</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/autots/evaluator/auto_model.py</span> in <span class="ni">PredictWitch</span><span class="nt">(template, df_train, forecast_length, frequency, prediction_interval, no_negatives, constraint, future_regressor_train, future_regressor_forecast, holiday_country, startTimeStamps, grouping_ids, random_seed, verbose, n_jobs, template_cols, horizontal_subset)</span>
-<span class="g g-Whitespace">    </span><span class="mi">765</span> 
-<span class="ne">--&gt; </span><span class="mi">766</span>             <span class="n">df_forecast</span> <span class="o">=</span> <span class="n">ModelPrediction</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span>                 <span class="n">df_train_low</span><span class="p">,</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/autots/evaluator/auto_model.py</span> in <span class="ni">ModelPrediction</span><span class="nt">(df_train, forecast_length, transformation_dict, model_str, parameter_dict, frequency, prediction_interval, no_negatives, constraint, future_regressor_train, future_regressor_forecast, holiday_country, startTimeStamps, grouping_ids, random_seed, verbose, n_jobs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span>     <span class="n">df_forecast</span><span class="o">.</span><span class="n">forecast</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">451</span>         <span class="n">transformer_object</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">df_forecast</span><span class="o">.</span><span class="n">forecast</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span>     <span class="p">)</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/autots/tools/transform.py</span> in <span class="ni">inverse_transform</span><span class="nt">(self, df, trans_method, fillzero)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2039</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2040</span>                 <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2041</span>             <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/sklearn/preprocessing/_data.py</span> in <span class="ni">inverse_transform</span><span class="nt">(self, X)</span>
-<span class="g g-Whitespace">    </span><span class="mi">457</span> 
-<span class="ne">--&gt; </span><span class="mi">458</span>         <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">FLOAT_DTYPES</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">459</span>                         <span class="n">force_all_finite</span><span class="o">=</span><span class="s2">&quot;allow-nan&quot;</span><span class="p">)</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">inner_f</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>             <span class="k">if</span> <span class="n">extra_args</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">63</span>                 <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span> 
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/sklearn/utils/validation.py</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator)</span>
-<span class="g g-Whitespace">    </span><span class="mi">569</span>             <span class="kn">from</span> <span class="nn">pandas.api.types</span> <span class="kn">import</span> <span class="n">is_sparse</span>
-<span class="ne">--&gt; </span><span class="mi">570</span>             <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="s1">&#39;sparse&#39;</span><span class="p">)</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">571</span>                     <span class="n">array</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_sparse</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()):</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/accessor.py</span> in <span class="ni">__get__</span><span class="nt">(self, obj, cls)</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span>
-<span class="ne">--&gt; </span><span class="mi">180</span>         <span class="n">accessor_obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span>         <span class="c1"># Replace the property with the accessor object. Inspired by:</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">__init__</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">data</span>
-<span class="ne">---&gt; </span><span class="mi">19</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> 
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/arrays/sparse/accessor.py</span> in <span class="ni">_validate</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span>         <span class="n">dtypes</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dtypes</span>
-<span class="ne">--&gt; </span><span class="mi">222</span>         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">SparseDtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">dtypes</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span>             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_validation_msg</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">17</span><span class="o">-</span><span class="n">d1c51a998116</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span> 
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1">#Saída de dados da TS em &#39;total&#39;.</span>
-<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">dados_autoML</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">date_col</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span> <span class="k">if</span> <span class="n">long</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/autots/evaluator/auto_ts.py</span> in <span class="ni">fit</span><span class="nt">(self, df, date_col, value_col, id_col, future_regressor, weights, result_file, grouping_ids)</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span> 
-<span class="g g-Whitespace">    </span><span class="mi">797</span>                 <span class="c1"># run validation template on current slice</span>
-<span class="ne">--&gt; </span><span class="mi">798</span>                 <span class="n">template_result</span> <span class="o">=</span> <span class="n">TemplateWizard</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">799</span>                     <span class="n">validation_template</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">800</span>                     <span class="n">df_train</span><span class="o">=</span><span class="n">val_df_train</span><span class="p">,</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/autots/evaluator/auto_model.py</span> in <span class="ni">TemplateWizard</span><span class="nt">(template, df_train, df_test, weights, model_count, ensemble, forecast_length, frequency, prediction_interval, no_negatives, constraint, future_regressor_train, future_regressor_forecast, holiday_country, startTimeStamps, random_seed, verbose, n_jobs, validation_round, current_generation, max_generations, model_interrupt, grouping_ids, template_cols)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1028</span>                 <span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1029</span>             <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1030</span>                 <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
-<span class="g g-Whitespace">   </span><span class="mi">1031</span>         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1032</span>             <span class="k">if</span> <span class="n">verbose</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+Model Number: 1 of 31 with model SeasonalNaive for Validation 2
+Model Number: 2 of 31 with model SeasonalNaive for Validation 2
+Model Number: 3 of 31 with model SeasonalNaive for Validation 2
+Model Number: 4 of 31 with model SeasonalNaive for Validation 2
+Model Number: 5 of 31 with model SeasonalNaive for Validation 2
+Model Number: 6 of 31 with model SeasonalNaive for Validation 2
+Model Number: 7 of 31 with model SeasonalNaive for Validation 2
+Model Number: 8 of 31 with model AverageValueNaive for Validation 2
+Model Number: 9 of 31 with model GLS for Validation 2
+Model Number: 10 of 31 with model SeasonalNaive for Validation 2
+Model Number: 11 of 31 with model GLS for Validation 2
+Model Number: 12 of 31 with model GLS for Validation 2
+Model Number: 13 of 31 with model GLS for Validation 2
+Model Number: 14 of 31 with model GLS for Validation 2
+Model Number: 15 of 31 with model GLS for Validation 2
+Model Number: 16 of 31 with model ZeroesNaive for Validation 2
+Model Number: 17 of 31 with model LastValueNaive for Validation 2
+Model Number: 18 of 31 with model ZeroesNaive for Validation 2
+Model Number: 19 of 31 with model ZeroesNaive for Validation 2
+Model Number: 20 of 31 with model AverageValueNaive for Validation 2
+Model Number: 21 of 31 with model AverageValueNaive for Validation 2
+Model Number: 22 of 31 with model AverageValueNaive for Validation 2
+Model Number: 23 of 31 with model AverageValueNaive for Validation 2
+Model Number: 24 of 31 with model AverageValueNaive for Validation 2
+Model Number: 25 of 31 with model AverageValueNaive for Validation 2
+Model Number: 26 of 31 with model AverageValueNaive for Validation 2
+Model Number: 27 of 31 with model LastValueNaive for Validation 2
+Model Number: 28 of 31 with model LastValueNaive for Validation 2
+Model Number: 29 of 31 with model LastValueNaive for Validation 2
+Model Number: 30 of 31 with model LastValueNaive for Validation 2
+Model Number: 31 of 31 with model LastValueNaive for Validation 2
+Validation Round: 3
+Model Number: 1 of 31 with model SeasonalNaive for Validation 3
+Model Number: 2 of 31 with model SeasonalNaive for Validation 3
+Model Number: 3 of 31 with model SeasonalNaive for Validation 3
+Model Number: 4 of 31 with model SeasonalNaive for Validation 3
+Model Number: 5 of 31 with model SeasonalNaive for Validation 3
+Model Number: 6 of 31 with model SeasonalNaive for Validation 3
+Model Number: 7 of 31 with model SeasonalNaive for Validation 3
+Model Number: 8 of 31 with model AverageValueNaive for Validation 3
+Model Number: 9 of 31 with model GLS for Validation 3
+Model Number: 10 of 31 with model SeasonalNaive for Validation 3
+Model Number: 11 of 31 with model GLS for Validation 3
+Model Number: 12 of 31 with model GLS for Validation 3
+Model Number: 13 of 31 with model GLS for Validation 3
+Model Number: 14 of 31 with model GLS for Validation 3
+Model Number: 15 of 31 with model GLS for Validation 3
+Model Number: 16 of 31 with model ZeroesNaive for Validation 3
+Model Number: 17 of 31 with model LastValueNaive for Validation 3
+Model Number: 18 of 31 with model ZeroesNaive for Validation 3
+Model Number: 19 of 31 with model ZeroesNaive for Validation 3
+Model Number: 20 of 31 with model AverageValueNaive for Validation 3
+Model Number: 21 of 31 with model AverageValueNaive for Validation 3
+Model Number: 22 of 31 with model AverageValueNaive for Validation 3
+Model Number: 23 of 31 with model AverageValueNaive for Validation 3
+Model Number: 24 of 31 with model AverageValueNaive for Validation 3
+Model Number: 25 of 31 with model AverageValueNaive for Validation 3
+Model Number: 26 of 31 with model AverageValueNaive for Validation 3
+Model Number: 27 of 31 with model LastValueNaive for Validation 3
+Model Number: 28 of 31 with model LastValueNaive for Validation 3
+Model Number: 29 of 31 with model LastValueNaive for Validation 3
+Model Number: 30 of 31 with model LastValueNaive for Validation 3
+Model Number: 31 of 31 with model LastValueNaive for Validation 3
+Validation Round: 4
+Model Number: 1 of 31 with model SeasonalNaive for Validation 4
+Model Number: 2 of 31 with model SeasonalNaive for Validation 4
+Model Number: 3 of 31 with model SeasonalNaive for Validation 4
+Model Number: 4 of 31 with model SeasonalNaive for Validation 4
+Model Number: 5 of 31 with model SeasonalNaive for Validation 4
+Model Number: 6 of 31 with model SeasonalNaive for Validation 4
+Model Number: 7 of 31 with model SeasonalNaive for Validation 4
+Model Number: 8 of 31 with model AverageValueNaive for Validation 4
+Model Number: 9 of 31 with model GLS for Validation 4
+Model Number: 10 of 31 with model SeasonalNaive for Validation 4
+Model Number: 11 of 31 with model GLS for Validation 4
+Model Number: 12 of 31 with model GLS for Validation 4
+Model Number: 13 of 31 with model GLS for Validation 4
+Model Number: 14 of 31 with model GLS for Validation 4
+Model Number: 15 of 31 with model GLS for Validation 4
+Model Number: 16 of 31 with model ZeroesNaive for Validation 4
+Model Number: 17 of 31 with model LastValueNaive for Validation 4
+Model Number: 18 of 31 with model ZeroesNaive for Validation 4
+Model Number: 19 of 31 with model ZeroesNaive for Validation 4
+Model Number: 20 of 31 with model AverageValueNaive for Validation 4
+Model Number: 21 of 31 with model AverageValueNaive for Validation 4
+Model Number: 22 of 31 with model AverageValueNaive for Validation 4
+Model Number: 23 of 31 with model AverageValueNaive for Validation 4
+Model Number: 24 of 31 with model AverageValueNaive for Validation 4
+Model Number: 25 of 31 with model AverageValueNaive for Validation 4
+Model Number: 26 of 31 with model AverageValueNaive for Validation 4
+Model Number: 27 of 31 with model LastValueNaive for Validation 4
+Model Number: 28 of 31 with model LastValueNaive for Validation 4
+Model Number: 29 of 31 with model LastValueNaive for Validation 4
+Model Number: 30 of 31 with model LastValueNaive for Validation 4
+Model Number: 31 of 31 with model LastValueNaive for Validation 4
 </pre></div>
 </div>
 </div>
@@ -2446,7 +1753,7 @@ SeasonalNaive
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="passo2.html" title="previous page">Passo 2: Preparar os dados</a>
-    <a class='right-next' id="next-link" href="passo3-CNN.html" title="next page">CNN - Convolutional Neural Network</a>
+    <a class='right-next' id="next-link" href="passo3-arima.html" title="next page">ARIMA (SARIMA)</a>
 
         </div>
         
