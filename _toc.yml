@@ -7,5 +7,7 @@
 - file: passo2
 - file: passo3
   sections:
+    - file: passo3-arima
     - file: passo3-CNN
 - file: passo4
+- file: referencias
