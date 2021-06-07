@@ -514,7 +514,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modelos</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span> 
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span> <span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">n_features</span><span class="p">)))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> 
@@ -531,7 +531,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">30</span><span class="n">cd53069d7e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">0</span><span class="n">a94cbc9402d</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span> <span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span> <span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">10</span>     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -630,11 +630,67 @@
 <span class="g g-Whitespace">    </span><span class="mi">448</span>       <span class="n">_attach_error_metadata</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">converted_f</span><span class="p">)</span>
 
 <span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/keras/engine/training.py</span> in <span class="ni">tf__step_function</span><span class="nt">(model, iterator)</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>                 <span class="n">outputs</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">distribute_strategy</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">run_step</span><span class="p">),),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">data</span><span class="p">),)),</span> <span class="n">fscope</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>                         <span class="k">return</span> <span class="n">fscope_1</span><span class="o">.</span><span class="n">ret</span><span class="p">(</span><span class="n">retval__1</span><span class="p">,</span> <span class="n">do_return_1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>                 <span class="n">data</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="nb">next</span><span class="p">),</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">iterator</span><span class="p">),),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fscope</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">29</span>                 <span class="n">outputs</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">distribute_strategy</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">run_step</span><span class="p">),),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">data</span><span class="p">),)),</span> <span class="n">fscope</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">30</span>                 <span class="n">outputs</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">reduce_per_replica</span><span class="p">),</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">outputs</span><span class="p">),</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">distribute_strategy</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">),</span> <span class="n">fscope</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">31</span>                 <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">write_scalar_summaries</span><span class="p">),</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">outputs</span><span class="p">),),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">_train_counter</span><span class="p">),</span> <span class="n">fscope</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span>                 <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span>                     <span class="n">do_return</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span>                 <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">write_scalar_summaries</span><span class="p">),</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">outputs</span><span class="p">),),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">step</span><span class="o">=</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">_train_counter</span><span class="p">),</span> <span class="n">fscope</span><span class="p">)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">converted_call</span><span class="nt">(f, args, kwargs, caller_fn_scope, options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span> 
+<span class="g g-Whitespace">    </span><span class="mi">381</span>   <span class="k">if</span> <span class="ow">not</span> <span class="n">options</span><span class="o">.</span><span class="n">user_requested</span> <span class="ow">and</span> <span class="n">conversion</span><span class="o">.</span><span class="n">is_allowlisted</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">382</span>     <span class="k">return</span> <span class="n">_call_unconverted</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> 
+<span class="g g-Whitespace">    </span><span class="mi">384</span>   <span class="c1"># internal_convert_user_code is for example turned off when issuing a dynamic</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">_call_unconverted</span><span class="nt">(f, args, kwargs, options, update_cache)</span>
+<span class="g g-Whitespace">    </span><span class="mi">461</span> 
+<span class="g g-Whitespace">    </span><span class="mi">462</span>   <span class="k">if</span> <span class="n">kwargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">463</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">464</span>   <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">465</span> 
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/distribute/distribute_lib.py</span> in <span class="ni">run</span><span class="nt">(***failed resolving arguments***)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1283</span>       <span class="n">fn</span> <span class="o">=</span> <span class="n">autograph</span><span class="o">.</span><span class="n">tf_convert</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1284</span>           <span class="n">fn</span><span class="p">,</span> <span class="n">autograph_ctx</span><span class="o">.</span><span class="n">control_status_ctx</span><span class="p">(),</span> <span class="n">convert_by_default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1285</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extended</span><span class="o">.</span><span class="n">call_for_each_replica</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1286</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1287</span>   <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reduce_op</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/distribute/distribute_lib.py</span> in <span class="ni">call_for_each_replica</span><span class="nt">(self, fn, args, kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2831</span>       <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">   </span><span class="mi">2832</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_container_strategy</span><span class="p">()</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
+<span class="ne">-&gt; </span><span class="mi">2833</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_for_each_replica</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2834</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2835</span>   <span class="k">def</span> <span class="nf">_call_for_each_replica</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/distribute/distribute_lib.py</span> in <span class="ni">_call_for_each_replica</span><span class="nt">(self, fn, args, kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3606</span>   <span class="k">def</span> <span class="nf">_call_for_each_replica</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3607</span>     <span class="k">with</span> <span class="n">ReplicaContext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_container_strategy</span><span class="p">(),</span> <span class="n">replica_id_in_sync_group</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">3608</span>       <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3609</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3610</span>   <span class="k">def</span> <span class="nf">_reduce_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reduce_op</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">destinations</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/keras/engine/training.py</span> in <span class="ni">run_step</span><span class="nt">(data)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>                         <span class="n">do_return_1</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>                         <span class="n">retval__1</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">UndefinedReturnValue</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">18</span>                         <span class="n">outputs</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">train_step</span><span class="p">,</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">data</span><span class="p">),),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fscope_1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>                         <span class="k">with</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span><span class="o">.</span><span class="n">control_dependencies</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">_minimum_control_deps</span><span class="p">)(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">outputs</span><span class="p">))):</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>                             <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">_train_counter</span><span class="o">.</span><span class="n">assign_add</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fscope_1</span><span class="p">)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">converted_call</span><span class="nt">(f, args, kwargs, caller_fn_scope, options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">converted_f</span><span class="p">(</span><span class="o">*</span><span class="n">effective_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>       <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">446</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">converted_f</span><span class="p">(</span><span class="o">*</span><span class="n">effective_args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>       <span class="n">_attach_error_metadata</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">converted_f</span><span class="p">)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/keras/engine/training.py</span> in <span class="ni">tf__train_step</span><span class="nt">(self, data)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>                 <span class="k">with</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>                     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">x</span><span class="p">),),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">fscope</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>                     <span class="n">loss</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">compiled_loss</span><span class="p">,</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">y_pred</span><span class="p">),</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">regularization_losses</span><span class="o">=</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">losses</span><span class="p">),</span> <span class="n">fscope</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>                 <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">minimize</span><span class="p">,</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">loss</span><span class="p">),</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">trainable_variables</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">tape</span><span class="o">=</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">tape</span><span class="p">)),</span> <span class="n">fscope</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>                 <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">compiled_metrics</span><span class="o">.</span><span class="n">update_state</span><span class="p">,</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">y_pred</span><span class="p">),</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">)),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fscope</span><span class="p">)</span>
 
 <span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">converted_call</span><span class="nt">(f, args, kwargs, caller_fn_scope, options)</span>
 <span class="g g-Whitespace">    </span><span class="mi">430</span>   <span class="k">try</span><span class="p">:</span>
@@ -658,122 +714,200 @@
 <span class="g g-Whitespace">    </span><span class="mi">288</span><span class="s2">     raise NotImplementedError(&#39;Non-function: </span><span class="si">{}</span><span class="s2">&#39;.format(type(obj)))</span>
 
 <span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transpiler.py</span> in <span class="ni">transform_function</span><span class="nt">(self, fn, user_context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">468</span><span class="s2">           logging.log(1, &#39;</span><span class="si">%s</span><span class="s2"> is not cached for subkey </span><span class="si">%s</span><span class="s2">&#39;, fn, cache_subkey)</span>
-<span class="g g-Whitespace">    </span><span class="mi">469</span><span class="s2">           # TODO(mdan): Confusing overloading pattern. Fix.</span>
-<span class="ne">--&gt; </span><span class="mi">470</span><span class="s2">           nodes, ctx = super(PyToPy, self).transform_function(fn, user_context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">471</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">472</span><span class="s2">           if isinstance(nodes, gast.Lambda):</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="s2">           factory = _PythonFnFactory(</span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span><span class="s2">               ctx.info.name, fn.__code__.co_freevars, self.get_extra_locals())</span>
+<span class="ne">--&gt; </span><span class="mi">490</span><span class="s2">           factory.create(</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span><span class="s2">               nodes, ctx.namer, future_features=ctx.info.future_features)</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span><span class="s2">           self._cache[fn][cache_subkey] = factory</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transpiler.py</span> in <span class="ni">transform_function</span><span class="nt">(self, fn, user_context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">362</span><span class="s2">     node = self._erase_arg_defaults(node)</span>
-<span class="ne">--&gt; </span><span class="mi">363</span><span class="s2">     result = self.transform_ast(node, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">364</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">365</span><span class="s2">     return result, context</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transpiler.py</span> in <span class="ni">create</span><span class="nt">(self, nodes, namer, inner_factory_name, outer_factory_name, future_features)</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span><span class="s2">                                self._extra_locals.keys(), future_features)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="s2"> </span>
+<span class="ne">--&gt; </span><span class="mi">183</span><span class="s2">     module, _, source_map = loader.load_ast(</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span><span class="s2">         nodes, include_source_map=True)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span><span class="s2">     outer_factory = getattr(module, outer_factory_name)</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">transform_ast</span><span class="nt">(self, node, ctx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="s2">     node = call_trees.transform(node, ctx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">258</span><span class="s2">     node = control_flow.transform(node, ctx)</span>
-<span class="ne">--&gt; </span><span class="mi">259</span><span class="s2">     node = conditional_expressions.transform(node, ctx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">260</span><span class="s2">     node = logical_expressions.transform(node, ctx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span><span class="s2">     node = variables.transform(node, ctx)</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/loader.py</span> in <span class="ni">load_ast</span><span class="nt">(nodes, indentation, include_source_map, delete_on_exit)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="s2">   if include_source_map:</span>
+<span class="ne">---&gt; </span><span class="mi">99</span><span class="s2">     source_map = origin_info.create_source_map(nodes, source, module.__file__)</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span><span class="s2">   else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span><span class="s2">     source_map = None</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/converters/conditional_expressions.py</span> in <span class="ni">transform</span><span class="nt">(node, ctx)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span><span class="s2"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span><span class="s2"> def transform(node, ctx):</span>
-<span class="ne">---&gt; </span><span class="mi">49</span><span class="s2">   node = ConditionalExpressionTransformer(ctx).visit(node)</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="s2">   return node</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">create_source_map</span><span class="nt">(nodes, code, filepath)</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="s2">   reparsed_nodes = parser.parse(code, preamble_len=0, single_node=False)</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span><span class="s2">   for node in reparsed_nodes:</span>
+<span class="ne">--&gt; </span><span class="mi">106</span><span class="s2">     resolve(node, code, filepath, node.lineno, node.col_offset)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span><span class="s2">   source_map = </span><span class="si">{}</span><span class="s2"></span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/core/converter.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">     self._ast_depth += 1</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s2">     try:</span>
-<span class="ne">--&gt; </span><span class="mi">319</span><span class="s2">       return super(Base, self).visit(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2">     finally:</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2">       self._ast_depth -= 1</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">resolve</span><span class="nt">(node, source, context_filepath, context_lineno, context_col_offset)</span>
+<span class="g g-Whitespace">    </span><span class="mi">266</span><span class="s2">                            context_lineno, context_col_offset,</span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span><span class="s2">                            context_filepath)</span>
+<span class="ne">--&gt; </span><span class="mi">268</span><span class="s2">   visitor.visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">269</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span><span class="s2"> </span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transformer.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="s2">         entry_expr_value = node.value</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">445</span><span class="s2">       result = super(Base, self).visit(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">       # Adjust for consistency: replacing the value of an Expr with</span>
-
-<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="s2">         method = &#39;visit_&#39; + node.__class__.__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span><span class="s2">         visitor = getattr(self, method, self.generic_visit)</span>
-<span class="ne">--&gt; </span><span class="mi">371</span><span class="s2">         return visitor(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span><span class="s2">     def generic_visit(self, node):</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
 
 <span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2">                 for value in old_value:</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">                     if isinstance(value, AST):</span>
-<span class="ne">--&gt; </span><span class="mi">447</span><span class="s2">                         value = self.visit(value)</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">                         if value is None:</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span><span class="s2">                             continue</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/core/converter.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">     self._ast_depth += 1</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s2">     try:</span>
-<span class="ne">--&gt; </span><span class="mi">319</span><span class="s2">       return super(Base, self).visit(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2">     finally:</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2">       self._ast_depth -= 1</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transformer.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="s2">         entry_expr_value = node.value</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">445</span><span class="s2">       result = super(Base, self).visit(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">       # Adjust for consistency: replacing the value of an Expr with</span>
-
-<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="s2">         method = &#39;visit_&#39; + node.__class__.__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span><span class="s2">         visitor = getattr(self, method, self.generic_visit)</span>
-<span class="ne">--&gt; </span><span class="mi">371</span><span class="s2">         return visitor(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span><span class="s2">     def generic_visit(self, node):</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
 
 <span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2">                 for value in old_value:</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">                     if isinstance(value, AST):</span>
-<span class="ne">--&gt; </span><span class="mi">447</span><span class="s2">                         value = self.visit(value)</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">                         if value is None:</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span><span class="s2">                             continue</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/core/converter.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">     self._ast_depth += 1</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s2">     try:</span>
-<span class="ne">--&gt; </span><span class="mi">319</span><span class="s2">       return super(Base, self).visit(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2">     finally:</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2">       self._ast_depth -= 1</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transformer.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span><span class="s2">         entry_expr_value = node.value</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">445</span><span class="s2">       result = super(Base, self).visit(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">       # Adjust for consistency: replacing the value of an Expr with</span>
-
-<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span><span class="s2">         method = &#39;visit_&#39; + node.__class__.__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span><span class="s2">         visitor = getattr(self, method, self.generic_visit)</span>
-<span class="ne">--&gt; </span><span class="mi">371</span><span class="s2">         return visitor(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">373</span><span class="s2">     def generic_visit(self, node):</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
 
 <span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2">                 for value in old_value:</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">                     if isinstance(value, AST):</span>
-<span class="ne">--&gt; </span><span class="mi">447</span><span class="s2">                         value = self.visit(value)</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">                         if value is None:</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span><span class="s2">                             continue</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/core/converter.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">     self._ast_depth += 1</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s2">     try:</span>
-<span class="ne">--&gt; </span><span class="mi">319</span><span class="s2">       return super(Base, self).visit(node)</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2">     finally:</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2">       self._ast_depth -= 1</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span><span class="s2">     def visit_Constant(self, node):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span><span class="s2">                 for item in value:</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span><span class="s2">                     if isinstance(item, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="s2">     if hasattr(node, &#39;lineno&#39;):</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="s2">       self._attach_origin_info(node)</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="s2">     self.generic_visit(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="s2">     if entered_function:</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">379</span><span class="s2">                         self.visit(item)</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span><span class="s2">             elif isinstance(value, AST):</span>
+<span class="ne">--&gt; </span><span class="mi">381</span><span class="s2">                 self.visit(value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span><span class="s2">     def visit_Constant(self, node):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/origin_info.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span><span class="s2">   def visit(self, node):</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span><span class="s2">     entered_function = False</span>
+<span class="ne">--&gt; </span><span class="mi">214</span><span class="s2">     if isinstance(node, gast.FunctionDef):</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span><span class="s2">       entered_function = True</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span><span class="s2">       self._function_stack.append(_Function(node.name))</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -800,19 +934,19 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_30&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential&quot;
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
-conv1d_30 (Conv1D)           (None, 11, 64)            832       
+conv1d (Conv1D)              (None, 11, 64)            832       
 _________________________________________________________________
-max_pooling1d_30 (MaxPooling (None, 5, 64)             0         
+max_pooling1d (MaxPooling1D) (None, 5, 64)             0         
 _________________________________________________________________
-flatten_30 (Flatten)         (None, 320)               0         
+flatten (Flatten)            (None, 320)               0         
 _________________________________________________________________
-dense_60 (Dense)             (None, 50)                16050     
+dense (Dense)                (None, 50)                16050     
 _________________________________________________________________
-dense_61 (Dense)             (None, 1)                 51        
+dense_1 (Dense)              (None, 1)                 51        
 =================================================================
 Total params: 16,933
 Trainable params: 16,933
@@ -820,7 +954,7 @@ Non-trainable params: 0
 _________________________________________________________________
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.812259301919158e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.2009116731691097e-15
 </pre></div>
 </div>
 </div>
@@ -888,16 +1022,7 @@ _________________________________________________________________
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dados de 2014 até final 2018</span>
-<span class="n">train</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">60</span><span class="p">]</span>
-<span class="n">y_2018</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">72</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_sequences</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># the dataset knows the number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 
 
 <span class="n">modelos_19</span> <span class="o">=</span> <span class="p">{}</span>
@@ -918,12 +1043,27 @@ _________________________________________________________________
 <span class="n">best</span> <span class="o">=</span> <span class="n">rank_modelos_19</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">model_19</span><span class="p">,</span> <span class="n">model_loss_19</span> <span class="o">=</span> <span class="n">modelos_19</span><span class="p">[</span><span class="n">best</span><span class="p">]</span> <span class="c1">#modelo com a menor perda</span>
-
-
-<span class="n">begin_ix</span> <span class="o">=</span> <span class="mi">60</span><span class="o">-</span><span class="n">n_steps</span> <span class="c1">#72 é posição onde está janeiro 2019</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">begin_ix</span> <span class="o">=</span> <span class="mi">60</span><span class="o">-</span><span class="n">n_steps</span> <span class="c1">#72 é posição onde está janeiro 2019</span>
 <span class="n">dataset_X_pred</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">begin_ix</span><span class="p">:</span><span class="mi">71</span><span class="p">,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#71 é novembro, pois max que vamos é até dez/19</span>
 
 <span class="n">X_pred</span> <span class="o">=</span> <span class="n">split_sequences_pred</span><span class="p">(</span><span class="n">dataset_X_pred</span> <span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+
+<span class="c1"># dados de 2014 até final 2018</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">60</span><span class="p">]</span>
+<span class="n">y_2018</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">72</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">split_sequences</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># the dataset knows the number of features</span>
+
 <span class="c1">#começa em -1 e vai diminuindo</span>
 <span class="n">y_pred_19</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
@@ -952,109 +1092,9 @@ _________________________________________________________________
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(48, 12, 6) (48,)
-2/2 [==============================] - 0s 4ms/step - loss: 5.3582e-14
-2/2 [==============================] - 0s 4ms/step - loss: 1.5115e-13
-2/2 [==============================] - 0s 5ms/step - loss: 5.4669e-14
-2/2 [==============================] - 0s 4ms/step - loss: 1.2769e-13
-2/2 [==============================] - 0s 3ms/step - loss: 9.8902e-15
-2/2 [==============================] - 0s 3ms/step - loss: 3.3723e-15
-2/2 [==============================] - 0s 4ms/step - loss: 4.1217e-15
-2/2 [==============================] - 0s 3ms/step - loss: 1.0880e-14
-2/2 [==============================] - 0s 4ms/step - loss: 9.7746e-15
-2/2 [==============================] - 0s 4ms/step - loss: 2.3361e-15
-2/2 [==============================] - 0s 5ms/step - loss: 1.0748e-13
-2/2 [==============================] - 0s 3ms/step - loss: 3.1348e-13
-2/2 [==============================] - 0s 3ms/step - loss: 3.6240e-14
-2/2 [==============================] - 0s 5ms/step - loss: 1.2444e-15
-2/2 [==============================] - 0s 6ms/step - loss: 1.2681e-11
-2/2 [==============================] - 0s 8ms/step - loss: 1.2569e-14
-2/2 [==============================] - 0s 7ms/step - loss: 1.7162e-15
-2/2 [==============================] - 0s 4ms/step - loss: 3.5990e-15
-2/2 [==============================] - 0s 5ms/step - loss: 2.0863e-15
-2/2 [==============================] - 0s 3ms/step - loss: 8.5904e-15
-2/2 [==============================] - 0s 4ms/step - loss: 7.3506e-15
-2/2 [==============================] - 0s 7ms/step - loss: 1.9383e-15
-2/2 [==============================] - 0s 4ms/step - loss: 1.4895e-15
-2/2 [==============================] - 0s 3ms/step - loss: 1.7139e-14
-2/2 [==============================] - 0s 4ms/step - loss: 2.3082e-11
-2/2 [==============================] - 0s 3ms/step - loss: 1.1380e-15
-2/2 [==============================] - 0s 4ms/step - loss: 2.1140e-15
-2/2 [==============================] - 0s 3ms/step - loss: 1.8791e-14
-2/2 [==============================] - 0s 3ms/step - loss: 3.4616e-14
-2/2 [==============================] - 0s 6ms/step - loss: 1.3424e-14
-2/2 [==============================] - 0s 4ms/step - loss: 2.1187e-15
-2/2 [==============================] - 0s 3ms/step - loss: 2.8496e-15
-2/2 [==============================] - 0s 3ms/step - loss: 7.9520e-15
-2/2 [==============================] - 0s 3ms/step - loss: 7.1332e-15
-2/2 [==============================] - 0s 5ms/step - loss: 1.5066e-13
-2/2 [==============================] - 0s 4ms/step - loss: 1.2583e-15
-2/2 [==============================] - 0s 4ms/step - loss: 2.2852e-15
-2/2 [==============================] - 0s 3ms/step - loss: 1.5904e-14
-2/2 [==============================] - 0s 3ms/step - loss: 5.3476e-15
-2/2 [==============================] - 0s 3ms/step - loss: 1.6158e-14
-2/2 [==============================] - 0s 3ms/step - loss: 2.2528e-15
-2/2 [==============================] - 0s 9ms/step - loss: 5.7736e-14
-2/2 [==============================] - 0s 3ms/step - loss: 4.2674e-14
-2/2 [==============================] - 0s 5ms/step - loss: 7.7438e-15
-2/2 [==============================] - 0s 7ms/step - loss: 1.4391e-10
-2/2 [==============================] - 0s 3ms/step - loss: 3.2826e-13
-2/2 [==============================] - 0s 9ms/step - loss: 1.0667e-14
-2/2 [==============================] - 0s 4ms/step - loss: 1.8588e-12
-2/2 [==============================] - 0s 3ms/step - loss: 6.0345e-11
-2/2 [==============================] - 0s 3ms/step - loss: 6.8829e-14
-2/2 [==============================] - 0s 4ms/step - loss: 1.2305e-15
-2/2 [==============================] - 0s 9ms/step - loss: 1.3241e-12
-2/2 [==============================] - 0s 6ms/step - loss: 6.4069e-15
-2/2 [==============================] - 0s 3ms/step - loss: 5.4678e-15
-2/2 [==============================] - 0s 7ms/step - loss: 7.2581e-15
-2/2 [==============================] - 0s 3ms/step - loss: 2.0737e-09
-2/2 [==============================] - 0s 4ms/step - loss: 1.5774e-15
-2/2 [==============================] - 0s 8ms/step - loss: 1.4461e-14
-2/2 [==============================] - 0s 4ms/step - loss: 5.5187e-15
-2/2 [==============================] - 0s 3ms/step - loss: 2.2373e-13
-2/2 [==============================] - 0s 11ms/step - loss: 4.7414e-12
-2/2 [==============================] - 0s 3ms/step - loss: 3.0281e-14
-2/2 [==============================] - 0s 6ms/step - loss: 1.4803e-12
-2/2 [==============================] - 0s 3ms/step - loss: 6.8464e-16
-2/2 [==============================] - 0s 3ms/step - loss: 2.9685e-14
-2/2 [==============================] - 0s 4ms/step - loss: 3.7979e-15
-2/2 [==============================] - 0s 11ms/step - loss: 8.7532e-13
-2/2 [==============================] - 0s 4ms/step - loss: 2.7293e-15
-2/2 [==============================] - 0s 3ms/step - loss: 1.4418e-13
-2/2 [==============================] - 0s 10ms/step - loss: 3.0809e-15
-2/2 [==============================] - 0s 3ms/step - loss: 9.6312e-15
-2/2 [==============================] - 2s 407ms/step - loss: 2.8952e-12
-2/2 [==============================] - 1s 6ms/step - loss: 4.8572e-16
-2/2 [==============================] - 0s 3ms/step - loss: 1.5459e-10
-2/2 [==============================] - 0s 4ms/step - loss: 2.7977e-10
-2/2 [==============================] - 0s 3ms/step - loss: 1.2407e-14
-2/2 [==============================] - 0s 3ms/step - loss: 2.1048e-15
-2/2 [==============================] - 0s 4ms/step - loss: 1.5849e-13
-2/2 [==============================] - 0s 3ms/step - loss: 4.2975e-15
-2/2 [==============================] - 0s 3ms/step - loss: 5.9119e-15
-2/2 [==============================] - 0s 3ms/step - loss: 1.8764e-12
-2/2 [==============================] - 0s 3ms/step - loss: 7.5019e-11
-2/2 [==============================] - 0s 3ms/step - loss: 4.9266e-15
-2/2 [==============================] - 0s 4ms/step - loss: 5.6688e-12
-2/2 [==============================] - 0s 3ms/step - loss: 5.2860e-14
-2/2 [==============================] - 0s 3ms/step - loss: 1.3420e-14
-2/2 [==============================] - 0s 4ms/step - loss: 2.8477e-09
-2/2 [==============================] - 0s 3ms/step - loss: 6.6523e-13
-2/2 [==============================] - 0s 3ms/step - loss: 8.9651e-15
-2/2 [==============================] - 0s 3ms/step - loss: 2.5156e-14
-2/2 [==============================] - 0s 3ms/step - loss: 1.5289e-14
-2/2 [==============================] - 0s 3ms/step - loss: 6.0720e-14
-2/2 [==============================] - 0s 3ms/step - loss: 2.9018e-12
-2/2 [==============================] - 0s 3ms/step - loss: 6.2080e-15
-2/2 [==============================] - 0s 3ms/step - loss: 6.6290e-15
-2/2 [==============================] - 4033s 9ms/step - loss: 5.6880e-14
-2/2 [==============================] - 0s 3ms/step - loss: 1.0085e-15
-2/2 [==============================] - 1s 7ms/step - loss: 5.1113e-10
-2/2 [==============================] - 1s 5ms/step - loss: 1.7625e-15
-2/2 [==============================] - 0s 4ms/step - loss: 4.5202e-11
 </pre></div>
 </div>
-<img alt="_images/passo3-CNN_23_1.svg" src="_images/passo3-CNN_23_1.svg" /></div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1062,35 +1102,20 @@ _________________________________________________________________
 <span class="n">d_2020</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">73</span><span class="p">,</span><span class="mi">85</span><span class="p">))</span>
 <span class="n">d_2019</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">61</span><span class="p">,</span><span class="mi">73</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_total</span><span class="p">,</span> <span class="n">y_todos_anos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;real&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_2020</span><span class="p">,</span><span class="n">y_dados_pred_2020</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;previsto 2019&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_2019</span><span class="p">,</span><span class="n">y_dados_pred_2019</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;previsto 2020&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_2020</span><span class="p">,</span><span class="n">y_dados_pred_2020</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;previsto 2020&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d_2019</span><span class="p">,</span><span class="n">y_dados_pred_2019</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;previsto 2019&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/passo3-CNN_24_0.svg" src="_images/passo3-CNN_24_0.svg" /></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#model.save(&quot;adp255/datasets/cnn_20.h5&quot;)</span>
-<span class="c1">#model = keras.models.load_model(&quot;adp255/datasets/cnn_20.h5&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#model_19.save(&quot;adp255/datasets/cnn_19.h5&quot;)</span>
-</pre></div>
-</div>
-</div>
+<img alt="_images/passo3-CNN_25_0.svg" src="_images/passo3-CNN_25_0.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#model.save(&quot;adp255/datasets/cnn_100_20.h5&quot;)</span>
-<span class="c1">#model_19.save(&quot;adp255/datasets/cnn_100_19.h5&quot;)</span>
+<span class="c1">#model_19 = keras.models.load_model(&quot;adp255/datasets/cnn_100_19.h5&quot;)</span>
 </pre></div>
 </div>
 </div>
