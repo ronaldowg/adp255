@@ -9,5 +9,11 @@
   sections:
     - file: passo3-arima
     - file: passo3-CNN
+    - file: passo3-AutoTS-2019
+    - file: passo3-AutoTS-2020
+    - file: passo3-Prophet-2019
+    - file: passo3-Prophet-2020
+    - file: passo3-VAR-2019
+    - file: passo3-VAR-2020
 - file: passo4
 - file: referencias
