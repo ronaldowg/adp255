@@ -1,0 +1,1145 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoTS 2019 &#8212; ADP255 - Trabalho em Grupo</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AutoTS 2020" href="passo3-AutoTS-2020.html" />
+    <link rel="prev" title="CNN - Convolutional Neural Network" href="passo3-CNN.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ADP255 - Trabalho em Grupo</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   ADP255 - Machine Learning
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo0.html">
+   Passo 0: Look at the big picture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo1.html">
+   Passo 1: Coletar dados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo2.html">
+   Passo 2: Preparar os dados
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="passo3.html">
+   Passo 3: Testar diferentes algoritmos preditivos
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo3-arima.html">
+     ARIMA (SARIMA)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo3-CNN.html">
+     CNN - Convolutional Neural Network
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     AutoTS 2019
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo3-AutoTS-2020.html">
+     AutoTS 2020
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo3-Prophet-2019.html">
+     Prophet 2019
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo3-Prophet-2020.html">
+     Prophet 2020
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo3-VAR-2019.html">
+     VAR 2019
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo3-VAR-2020.html">
+     VAR 2020
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="passo4.html">
+   Passo 4: Apresentar e interpretar o modelo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="referencias.html">
+   Referências
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/passo3-AutoTS-2019.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ronaldowg/adp255"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fpasso3-AutoTS-2019.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ronaldowg/adp255/main?urlpath=tree/passo3-AutoTS-2019.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="autots-2019">
+<h1>AutoTS 2019<a class="headerlink" href="#autots-2019" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importa bibliotecas; inicializa variáveis; define funções.</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">auto_ts</span> <span class="k">as</span> <span class="nn">AT</span>
+<span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">mt</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">colunas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">,</span><span class="s1">&#39;ibc&#39;</span><span class="p">,</span><span class="s1">&#39;pib&#39;</span><span class="p">,</span><span class="s1">&#39;consumo&#39;</span><span class="p">,</span> <span class="s1">&#39;ICST-R&#39;</span><span class="p">,</span> <span class="s1">&#39;geracaoGWh&#39;</span><span class="p">,</span><span class="s1">&#39;IndGeral&#39;</span><span class="p">]</span>
+
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">dados_autoML</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dadosRonaldo.csv&#39;</span><span class="p">)</span>
+<span class="n">dados_autoML</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">dados_autoML</span><span class="p">[</span><span class="n">colunas</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Rows     : &quot;</span> <span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Columns  : &quot;</span> <span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Features : </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Missing values :  &quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Unique values :  </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imported auto_timeseries version:0.0.36. Call by using:
+model = auto_timeseries(score_type=&#39;rmse&#39;,
+                time_interval=&#39;M&#39;,
+                non_seasonal_pdq=None, seasonality=False, seasonal_period=12,
+                model_type=[&#39;best&#39;],
+                verbose=2)
+model.fit(traindata, ts_column,target)
+model.predict(testdata, model=&#39;best&#39;)
+
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 84 entries, 2014-01-01 to 2020-12-01
+Data columns (total 7 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   total       84 non-null     int64  
+ 1   ibc         84 non-null     float64
+ 2   pib         84 non-null     float64
+ 3   consumo     84 non-null     float64
+ 4   ICST-R      84 non-null     float64
+ 5   geracaoGWh  84 non-null     float64
+ 6   IndGeral    84 non-null     float64
+dtypes: float64(6), int64(1)
+memory usage: 5.2 KB
+Rows     :  84
+Columns  :  7
+
+Features : 
+ [&#39;total&#39;, &#39;ibc&#39;, &#39;pib&#39;, &#39;consumo&#39;, &#39;ICST-R&#39;, &#39;geracaoGWh&#39;, &#39;IndGeral&#39;]
+
+Missing values :   total         False
+ibc           False
+pib           False
+consumo       False
+ICST-R        False
+geracaoGWh    False
+IndGeral      False
+dtype: bool
+
+Unique values :  
+ total         84
+ibc           79
+pib           84
+consumo       72
+ICST-R        73
+geracaoGWh    84
+IndGeral      74
+dtype: int64
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total</th>
+      <th>ibc</th>
+      <th>pib</th>
+      <th>consumo</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndGeral</th>
+    </tr>
+    <tr>
+      <th>data</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-01-01</th>
+      <td>13427897</td>
+      <td>2.75</td>
+      <td>455935.0</td>
+      <td>4.027976e+07</td>
+      <td>97.8</td>
+      <td>50045.962407</td>
+      <td>53.1</td>
+    </tr>
+    <tr>
+      <th>2014-02-01</th>
+      <td>14152120</td>
+      <td>3.13</td>
+      <td>450358.8</td>
+      <td>4.165349e+07</td>
+      <td>96.7</td>
+      <td>46459.730274</td>
+      <td>52.3</td>
+    </tr>
+    <tr>
+      <th>2014-03-01</th>
+      <td>13710770</td>
+      <td>3.09</td>
+      <td>462159.8</td>
+      <td>4.026943e+07</td>
+      <td>96.3</td>
+      <td>48004.277170</td>
+      <td>52.4</td>
+    </tr>
+    <tr>
+      <th>2014-04-01</th>
+      <td>12602895</td>
+      <td>2.37</td>
+      <td>468767.5</td>
+      <td>3.959185e+07</td>
+      <td>92.6</td>
+      <td>45412.583753</td>
+      <td>49.2</td>
+    </tr>
+    <tr>
+      <th>2014-05-01</th>
+      <td>14603442</td>
+      <td>2.23</td>
+      <td>473347.1</td>
+      <td>3.910050e+07</td>
+      <td>94.6</td>
+      <td>44890.282526</td>
+      <td>47.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2020-08-01</th>
+      <td>33983713</td>
+      <td>-3.35</td>
+      <td>628818.8</td>
+      <td>3.912152e+07</td>
+      <td>87.8</td>
+      <td>45954.347797</td>
+      <td>57.0</td>
+    </tr>
+    <tr>
+      <th>2020-09-01</th>
+      <td>32205815</td>
+      <td>-3.56</td>
+      <td>632047.2</td>
+      <td>4.020856e+07</td>
+      <td>91.5</td>
+      <td>46045.040560</td>
+      <td>61.6</td>
+    </tr>
+    <tr>
+      <th>2020-10-01</th>
+      <td>33749277</td>
+      <td>-3.94</td>
+      <td>660199.5</td>
+      <td>4.245064e+07</td>
+      <td>95.2</td>
+      <td>46098.056273</td>
+      <td>61.8</td>
+    </tr>
+    <tr>
+      <th>2020-11-01</th>
+      <td>33762169</td>
+      <td>-4.06</td>
+      <td>666928.9</td>
+      <td>4.100828e+07</td>
+      <td>93.8</td>
+      <td>45883.704482</td>
+      <td>62.9</td>
+    </tr>
+    <tr>
+      <th>2020-12-01</th>
+      <td>31490103</td>
+      <td>-3.99</td>
+      <td>676371.9</td>
+      <td>4.187399e+07</td>
+      <td>93.9</td>
+      <td>45799.031123</td>
+      <td>63.1</td>
+    </tr>
+  </tbody>
+</table>
+<p>84 rows × 7 columns</p>
+</div></div></div>
+</div>
+<p>Explorando o conjunto de dados utilizados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ec_df</span> <span class="o">=</span> <span class="n">df</span>
+<span class="n">ec_data</span> <span class="o">=</span> <span class="n">ec_df</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+<span class="n">ec_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">ec_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;data&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo3-AutoTS-2019_3_1.png" src="_images/passo3-AutoTS-2019_3_1.png" />
+</div>
+</div>
+<p>Vamos avaliar o funcionamento da AutoTS, utilizando os dados de 2014 até 2018 para prever o ‘total’ em 2019.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ec_df_2019</span><span class="o">=</span><span class="n">ec_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2019&#39;</span><span class="p">]</span>
+<span class="n">ec_data_2019</span><span class="o">=</span><span class="n">ec_df_2019</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+<span class="n">ec_data_2019</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;data&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/passo3-AutoTS-2019_5_1.png" src="_images/passo3-AutoTS-2019_5_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">final_df</span><span class="o">=</span><span class="n">final_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">final_df</span><span class="o">=</span><span class="n">final_df</span><span class="p">[</span><span class="n">colunas</span><span class="p">]</span>
+
+<span class="n">final_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+      <th>total</th>
+      <th>ibc</th>
+      <th>pib</th>
+      <th>consumo</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndGeral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2014-01-01</td>
+      <td>13427897</td>
+      <td>2.75</td>
+      <td>455935.0</td>
+      <td>40279759.00</td>
+      <td>97.8</td>
+      <td>50045.962407</td>
+      <td>53.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2014-02-01</td>
+      <td>14152120</td>
+      <td>3.13</td>
+      <td>450358.8</td>
+      <td>41653487.00</td>
+      <td>96.7</td>
+      <td>46459.730274</td>
+      <td>52.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014-03-01</td>
+      <td>13710770</td>
+      <td>3.09</td>
+      <td>462159.8</td>
+      <td>40269429.00</td>
+      <td>96.3</td>
+      <td>48004.277170</td>
+      <td>52.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2014-04-01</td>
+      <td>12602895</td>
+      <td>2.37</td>
+      <td>468767.5</td>
+      <td>39591854.00</td>
+      <td>92.6</td>
+      <td>45412.583753</td>
+      <td>49.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2014-05-01</td>
+      <td>14603442</td>
+      <td>2.23</td>
+      <td>473347.1</td>
+      <td>39100499.00</td>
+      <td>94.6</td>
+      <td>44890.282526</td>
+      <td>47.9</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2014-06-01</td>
+      <td>13296350</td>
+      <td>1.85</td>
+      <td>458516.5</td>
+      <td>37726472.88</td>
+      <td>93.1</td>
+      <td>41970.305389</td>
+      <td>47.4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2014-07-01</td>
+      <td>14742923</td>
+      <td>1.45</td>
+      <td>481994.0</td>
+      <td>37866809.00</td>
+      <td>91.6</td>
+      <td>42991.945569</td>
+      <td>46.4</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2014-08-01</td>
+      <td>14540126</td>
+      <td>1.13</td>
+      <td>477052.9</td>
+      <td>38550694.00</td>
+      <td>92.0</td>
+      <td>42636.899277</td>
+      <td>46.5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2014-09-01</td>
+      <td>15667226</td>
+      <td>0.85</td>
+      <td>476520.6</td>
+      <td>38894976.00</td>
+      <td>90.5</td>
+      <td>43171.224770</td>
+      <td>46.5</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2014-10-01</td>
+      <td>14301399</td>
+      <td>0.49</td>
+      <td>493304.7</td>
+      <td>40100440.59</td>
+      <td>88.0</td>
+      <td>46186.817965</td>
+      <td>45.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Preparando os conjuntos de treino e teste; também outros parâmetros usado pelo AutoTS.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">traindata</span> <span class="o">=</span> <span class="n">final_df</span><span class="p">[:</span><span class="mi">60</span><span class="p">]</span>
+<span class="n">testdata</span> <span class="o">=</span> <span class="n">final_df</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">72</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traindata</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">testdata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">ts_column</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span>
+<span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;total&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(60, 8) (12, 8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dados de treino.</span>
+<span class="n">traindata</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+      <th>total</th>
+      <th>ibc</th>
+      <th>pib</th>
+      <th>consumo</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndGeral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2014-01-01</td>
+      <td>13427897</td>
+      <td>2.75</td>
+      <td>455935.0</td>
+      <td>40279759.0</td>
+      <td>97.8</td>
+      <td>50045.962407</td>
+      <td>53.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2014-02-01</td>
+      <td>14152120</td>
+      <td>3.13</td>
+      <td>450358.8</td>
+      <td>41653487.0</td>
+      <td>96.7</td>
+      <td>46459.730274</td>
+      <td>52.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014-03-01</td>
+      <td>13710770</td>
+      <td>3.09</td>
+      <td>462159.8</td>
+      <td>40269429.0</td>
+      <td>96.3</td>
+      <td>48004.277170</td>
+      <td>52.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2014-04-01</td>
+      <td>12602895</td>
+      <td>2.37</td>
+      <td>468767.5</td>
+      <td>39591854.0</td>
+      <td>92.6</td>
+      <td>45412.583753</td>
+      <td>49.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2014-05-01</td>
+      <td>14603442</td>
+      <td>2.23</td>
+      <td>473347.1</td>
+      <td>39100499.0</td>
+      <td>94.6</td>
+      <td>44890.282526</td>
+      <td>47.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dados de teste.</span>
+<span class="n">testdata</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data</th>
+      <th>total</th>
+      <th>ibc</th>
+      <th>pib</th>
+      <th>consumo</th>
+      <th>ICST-R</th>
+      <th>geracaoGWh</th>
+      <th>IndGeral</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>60</th>
+      <td>2019-01-01</td>
+      <td>20039718</td>
+      <td>1.13</td>
+      <td>578452.6</td>
+      <td>40033265.79</td>
+      <td>84.5</td>
+      <td>53103.613862</td>
+      <td>64.6</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>2019-02-01</td>
+      <td>19745890</td>
+      <td>1.35</td>
+      <td>567984.5</td>
+      <td>39126855.44</td>
+      <td>84.3</td>
+      <td>47109.519973</td>
+      <td>64.6</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>2019-03-01</td>
+      <td>20240937</td>
+      <td>1.21</td>
+      <td>579172.6</td>
+      <td>41065355.60</td>
+      <td>82.1</td>
+      <td>49768.704279</td>
+      <td>62.0</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>2019-04-01</td>
+      <td>19011266</td>
+      <td>0.91</td>
+      <td>592916.0</td>
+      <td>40646412.05</td>
+      <td>82.5</td>
+      <td>47347.279561</td>
+      <td>58.4</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>2019-05-01</td>
+      <td>21433199</td>
+      <td>1.57</td>
+      <td>604607.4</td>
+      <td>39220655.51</td>
+      <td>80.7</td>
+      <td>46865.964756</td>
+      <td>56.5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Rodando o AutoTS: ferramenta realizando o set inicial e o fit.</p>
+<p>“WARNING: Running best models will take time… Be Patient…” &lt;= Aviso da ferramenta…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">AT</span><span class="o">.</span><span class="n">auto_timeseries</span><span class="p">(</span><span class="n">score_type</span><span class="o">=</span><span class="s1">&#39;rmse&#39;</span><span class="p">,</span>
+                <span class="n">time_interval</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span>
+                <span class="n">non_seasonal_pdq</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seasonality</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seasonal_period</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                <span class="n">model_type</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;best&#39;</span><span class="p">],</span>
+                <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Lista de Modelos permitidos (10): best, prophet, stats, ml, arima, ARIMA, </span>
+<span class="sd">                                    Prophet, SARIMAX, VAR, ML.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">traindata</span><span class="p">,</span> <span class="n">ts_column</span><span class="p">,</span><span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Start of Fit.....
+Running Augmented Dickey-Fuller test with paramters:
+    maxlag: 31 regression: c autolag: BIC
+Error: Stationary test failed. Data must be np.array. Check your input and try stationary test again
+    Target variable given as = total
+Start of loading of data.....
+Input is data frame. Performing Time Series Analysis
+ts_column: data sep: , target: total
+    Loaded pandas dataframe...
+    pandas Dataframe loaded successfully. Shape of data set = (60, 7)
+</pre></div>
+</div>
+<img alt="_images/passo3-AutoTS-2019_12_1.png" src="_images/passo3-AutoTS-2019_12_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time Interval is given as M
+    Correct Time interval given as a valid Pandas date-range frequency...
+<span class=" -Color -Color-Bold">WARNING: Running best models will take time... Be Patient...</span>
+
+
+==================================================
+Building Prophet Model
+==================================================
+
+
+
+<span class=" -Color -Color-Bold">Running Facebook Prophet Model...</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Fit-Predict data (shape=(60, 8)) with Confidence Interval = 0.95...
+  Starting Prophet Fit
+       Adding monthly seasonality to Prophet with period=12, fourier_order=12 and prior_scale=0.10
+  Starting Prophet Cross Validation
+Max. iterations using expanding window cross validation = 5
+
+Fold Number: 1 --&gt; Train Shape: 35 Test Shape: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 4,875,434.26
+    Std Deviation of actuals = 1,842,443.27
+    Normalized RMSE = 265%
+Cross Validation window: 1 completed
+
+Fold Number: 2 --&gt; Train Shape: 40 Test Shape: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 5,990,995.67
+    Std Deviation of actuals = 2,427,892.46
+    Normalized RMSE = 247%
+Cross Validation window: 2 completed
+
+Fold Number: 3 --&gt; Train Shape: 45 Test Shape: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 573,841.93
+    Std Deviation of actuals = 1,597,310.07
+    Normalized RMSE = 36%
+Cross Validation window: 3 completed
+
+Fold Number: 4 --&gt; Train Shape: 50 Test Shape: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 4,178,380.13
+    Std Deviation of actuals = 2,471,810.70
+    Normalized RMSE = 169%
+Cross Validation window: 4 completed
+
+Fold Number: 5 --&gt; Train Shape: 55 Test Shape: 5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 3,085,526.94
+    Std Deviation of actuals = 1,365,998.89
+    Normalized RMSE = 226%
+Cross Validation window: 5 completed
+
+-------------------------------------------
+Model Cross Validation Results:
+-------------------------------------------
+    MAE (as % Std Dev of Actuals) = 108.81%
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    MAPE (Mean Absolute Percent Error) = 18%
+    RMSE (Root Mean Squared Error) = 4170623.9330
+    Normalized RMSE (MinMax) = 38%
+    Normalized RMSE (as Std Dev of Actuals)= 139%
+Time Taken = 23 seconds
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception occurred while building Prophet model...
+&lt;class &#39;stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_2558615561988454785.PyStanHolder&#39;&gt; returned a result with an error set
+    FB Prophet may not be installed or Model is not running...
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mf">38e86</span><span class="n">d23682b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">11</span><span class="s2"> model.fit(traindata, ts_column,target)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/auto_ts/__init__.py</span> in <span class="ni">fit</span><span class="nt">(self, traindata, ts_column, target, sep, cv)</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span><span class="s2">             self.ml_dict[name][&#39;model&#39;] = model</span>
+<span class="ne">--&gt; </span><span class="mi">506</span><span class="s2">             self.ml_dict[name][&#39;forecast&#39;] = forecast_df_folds</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span><span class="s2">             self.ml_dict[name][self.score_type] = score_val</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span><span class="s2">             self.ml_dict[name][&#39;model_build&#39;] = model_build</span>
+
+<span class="ne">UnboundLocalError</span>: local variable &#39;forecast_df_folds&#39; referenced before assignment
+</pre></div>
+</div>
+<img alt="_images/passo3-AutoTS-2019_12_12.png" src="_images/passo3-AutoTS-2019_12_12.png" />
+<img alt="_images/passo3-AutoTS-2019_12_13.png" src="_images/passo3-AutoTS-2019_12_13.png" />
+</div>
+</div>
+<p>A ferramenta ofereceu um ranking…</p>
+<p>Leaderboard with best model on top of list:
+name          rmse
+1  auto_SARIMAX  2.280062e+06
+3            ML  3.180795e+06
+2           VAR  3.560624e+06
+0       Prophet  3.740836e+06</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Best =&gt; auto_SARIMAX</span>
+<span class="n">predicao</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testdata</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">predicao</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;yhat&#39;</span><span class="p">]]</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">resultado</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">resultado</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span><span class="p">})</span>
+
+<span class="n">real</span> <span class="o">=</span> <span class="n">testdata</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">]]</span>
+
+<span class="n">final_2019</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">resultado</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">final_2019</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">final_2019</span><span class="p">[</span><span class="s1">&#39;yhat&#39;</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span><span class="n">final_2019</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AutoML - Resultado </span><span class="se">\&#39;</span><span class="s1">Best</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Previsto - 2019&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Real - 2019&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O valor do rmse é: &#39;</span><span class="p">,</span> \
+          <span class="n">mt</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">final_2019</span><span class="p">[</span><span class="s1">&#39;yhat&#39;</span><span class="p">],</span> <span class="n">final_2019</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/passo3-AutoTS-2019_14_0.png" src="_images/passo3-AutoTS-2019_14_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>O valor do rmse é:  2212519.0524612465
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "env_adp255"
+        },
+        kernelOptions: {
+            kernelName: "env_adp255",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'env_adp255'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="passo3-CNN.html" title="previous page">CNN - Convolutional Neural Network</a>
+    <a class='right-next' id="next-link" href="passo3-AutoTS-2020.html" title="next page">AutoTS 2020</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Grupo 2 -> Jheniffer, Marcos, Ronaldo G., Ronaldo L.<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
