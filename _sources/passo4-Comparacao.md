@@ -30,8 +30,6 @@ $$
 
 O RMSE é normalmente utilizado para computar a acurácia dos resultados numéricos com a vantagem de apresentar valores do erro nas mesmas dimensões da variável analisada.
 
-No ano de 2019, o total de vendas variou de 19.011266e+06 a 26.826165e+06, obtendo o auto_SARIMAX um erro de apenas 2.280062e+06 quando comparado com o CNN
-
 No ano de 2020, o total de vendas apresentou uma amplitude muito maior do que em relação aos anos anteriores, variande de 16.697718e+06 a 41.851313e+06. O auto_SARIMAX apresentou um erro médio de 1.892610e+06, contra 13.180175+06 do CNN.
 
 Já no ano de 2019, com o total de vendas variando de 19.011266e+06 a 26.826165e+06, auto_SARIMAX um erro de apenas 2.280062e+06, estando o CNN logo atrás com o valor de 2.930361+06.
