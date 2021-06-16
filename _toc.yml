@@ -16,4 +16,7 @@
     - file: passo3-VAR-2019
     - file: passo3-VAR-2020
 - file: passo4
+  sections:
+    - file: passo4-Comparacao
+    - file: passo4-VariaveisExplicativas
 - file: referencias
