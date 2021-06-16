@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Passo 4: Apresentar e interpretar o modelo &#8212; ADP255 - Trabalho em Grupo</title>
+    <title>Variáveis Explicativas &#8212; ADP255 - Trabalho em Grupo</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Comparação entre os algoritmos" href="passo4-Comparacao.html" />
-    <link rel="prev" title="VAR 2020" href="passo3-VAR-2020.html" />
+    <link rel="next" title="Referências" href="referencias.html" />
+    <link rel="prev" title="Comparação entre os algoritmos" href="passo4-Comparacao.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -159,7 +159,7 @@
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="passo4.html">
    Passo 4: Apresentar e interpretar o modelo
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -167,14 +167,14 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="passo4-Comparacao.html">
      Comparação entre os algoritmos
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="passo4-VariaveisExplicativas.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Variáveis Explicativas
     </a>
    </li>
@@ -226,7 +226,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/passo4.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/passo4-VariaveisExplicativas.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -246,7 +246,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fpasso4.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fpasso4-VariaveisExplicativas.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -275,11 +275,36 @@
         
               <div>
                 
-  <div class="section" id="passo-4-apresentar-e-interpretar-o-modelo">
-<h1>Passo 4: Apresentar e interpretar o modelo<a class="headerlink" href="#passo-4-apresentar-e-interpretar-o-modelo" title="Permalink to this headline">¶</a></h1>
-<p>Neste capítulo são discutos os resultados e apresentadas as principais conclusões. Uma análise comparativa entre os algoritmos é realizada com o objetivo de permitir aferir a performance de cada implementação.</p>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="section" id="variaveis-explicativas">
+<h1>Variáveis Explicativas<a class="headerlink" href="#variaveis-explicativas" title="Permalink to this headline">¶</a></h1>
+<p>A partir dos modelos desenvolvidos, foi possível identificar as variáveis que mais explicam o comportamento do total de vendas de interruptores.</p>
+<p>Primeiramente as seguintes variáveis foram analisadas:</p>
+<ol class="simple">
+<li><p>Histórico demanda interruptores.</p></li>
+<li><p>Índice da atividade econômica.</p></li>
+<li><p>Direcionamento financ. construção civil</p></li>
+<li><p>Financiamento imobiliário</p></li>
+<li><p>PIB (Setor Construção)</p></li>
+<li><p>Taxa de crescimento Setor Construção</p></li>
+<li><p>Consumo de energia elétrica</p></li>
+<li><p>Geração (e transmissão de energia)</p></li>
+<li><p>Índice de confiança da Construção (ICST)</p></li>
+<li><p>Taxa de desemprego</p></li>
+<li><p>Variação mensal do PIB (Calculada a partir de 5.)</p></li>
+<li><p>Índice de Confiança do Empresário Industrial</p></li>
+</ol>
+<p>Após o teste de causalidade de Granger conforme descrito no <a class="reference internal" href="passo2.html"><span class="doc std std-doc">Passo 2</span></a> e, após os testes dos diferentes algoritmos conforme o <a class="reference internal" href="passo3.html"><span class="doc std std-doc">Passo 3</span></a>, as seguintes variáveis foram selecionadas com maior poder explicativo:</p>
+<ol class="simple">
+<li><p>Índice de Confiança do Empresário Industrial.</p></li>
+<li><p>Índice da atividade econômica.</p></li>
+<li><p>PIB (Setor Construção).</p></li>
+<li><p>Consumo de energia elétrica.</p></li>
+<li><p>Geração de Energia Elétrica.</p></li>
+<li><p>Índice de confiança da Construção (ICST).</p></li>
+</ol>
+<p>Percebe-se que as variáveis explicativas estão relacionadas a área de energia elétrica e ao aspecto geral da economia do setor. Quanto ao primeiro aspecto, pode-se especular que o aumento de consumo e geração de energia estejam relacionados à expansão da construção civil e ao próprio crescimento da economia. Já quanto quanto às demais variáveis, o crescimnento do PIB do setor, aliado com a confiança dos stackholders, ajudam a prever o total de vendas de interruptores no país.</p>
+<p>Todavia, é necessário cautela quanto a conclusões da influência das variáveis sobre a venda total de interruptores. Isto, pois, não é possível afirmar que, por exemplo, o consumo de energia elétrica influencia o total de vendas. O que pode-se afirmar é que a partir do comportamento das variáveis escolhidas é possível inferir o comportamento futuro do total de vendas de interruptores. Os modelos utilizados não apontam relações de causa e efeito, ou seja, o aumento do consumo de energia elétrica, por exemplo, pode ser um resultado do crescimento econômico, o qual influencia tanto no consumo de energia quanto no total de vendas.</p>
+<p>Por fim, cabe ressaltar que provavelmente existam melhores variáveis que ajudem na predição do total de vendas de interruptores. Essa conclusão tem como base o desempenho superior do algoritmo auto_SARIMAX, que é univariado, quando comparado com os demais algoritmos multivariados. Ou seja, a predição do total de vendaas é mais preciso quando olhamos apenas para o desempenho passado do que quando utilizamos demais variáveis. Especula-se que existam outras variáveis exógenas influenciadoras do comportamento de vendas, que de alguma forma são representadas pelo próprio histórico da variável de vendas total. Sendo assim, de forma indireta, a partir do passado de vendas, é possível capturar já o efeito dessas variáveis para prever o futuro.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -307,8 +332,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="passo3-VAR-2020.html" title="previous page">VAR 2020</a>
-    <a class='right-next' id="next-link" href="passo4-Comparacao.html" title="next page">Comparação entre os algoritmos</a>
+    <a class='left-prev' id="prev-link" href="passo4-Comparacao.html" title="previous page">Comparação entre os algoritmos</a>
+    <a class='right-next' id="next-link" href="referencias.html" title="next page">Referências</a>
 
         </div>
         

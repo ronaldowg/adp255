@@ -158,10 +158,27 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="passo4.html">
    Passo 4: Apresentar e interpretar o modelo
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo4-Comparacao.html">
+     Comparação entre os algoritmos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo4-VariaveisExplicativas.html">
+     Variáveis Explicativas
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="referencias.html">
@@ -653,62 +670,6 @@
 <span class="g g-Whitespace">     </span><span class="mi">17</span>                     <span class="n">do_return</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">converted_call</span><span class="nt">(f, args, kwargs, caller_fn_scope, options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">converted_f</span><span class="p">(</span><span class="o">*</span><span class="n">effective_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span>       <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">446</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">converted_f</span><span class="p">(</span><span class="o">*</span><span class="n">effective_args</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span>     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span>       <span class="n">_attach_error_metadata</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">converted_f</span><span class="p">)</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/keras/engine/training.py</span> in <span class="ni">tf__step_function</span><span class="nt">(model, iterator)</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span>                         <span class="k">return</span> <span class="n">fscope_1</span><span class="o">.</span><span class="n">ret</span><span class="p">(</span><span class="n">retval__1</span><span class="p">,</span> <span class="n">do_return_1</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span>                 <span class="n">data</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="nb">next</span><span class="p">),</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">iterator</span><span class="p">),),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fscope</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">29</span>                 <span class="n">outputs</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">distribute_strategy</span><span class="o">.</span><span class="n">run</span><span class="p">,</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">run_step</span><span class="p">),),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">data</span><span class="p">),)),</span> <span class="n">fscope</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span>                 <span class="n">outputs</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">reduce_per_replica</span><span class="p">),</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">outputs</span><span class="p">),</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">distribute_strategy</span><span class="p">),</span> <span class="nb">dict</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">),</span> <span class="n">fscope</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>                 <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">converted_call</span><span class="nt">(f, args, kwargs, caller_fn_scope, options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span>   <span class="k">if</span> <span class="n">conversion</span><span class="o">.</span><span class="n">is_in_allowlist_cache</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span>     <span class="n">logging</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Allowlisted </span><span class="si">%s</span><span class="s1">: from cache&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">336</span>     <span class="k">return</span> <span class="n">_call_unconverted</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">337</span> 
-<span class="g g-Whitespace">    </span><span class="mi">338</span>   <span class="k">if</span> <span class="n">ag_ctx</span><span class="o">.</span><span class="n">control_status_ctx</span><span class="p">()</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">ag_ctx</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">DISABLED</span><span class="p">:</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">_call_unconverted</span><span class="nt">(f, args, kwargs, options, update_cache)</span>
-<span class="g g-Whitespace">    </span><span class="mi">461</span> 
-<span class="g g-Whitespace">    </span><span class="mi">462</span>   <span class="k">if</span> <span class="n">kwargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">463</span>     <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">464</span>   <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">465</span> 
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/distribute/distribute_lib.py</span> in <span class="ni">run</span><span class="nt">(***failed resolving arguments***)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1283</span>       <span class="n">fn</span> <span class="o">=</span> <span class="n">autograph</span><span class="o">.</span><span class="n">tf_convert</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1284</span>           <span class="n">fn</span><span class="p">,</span> <span class="n">autograph_ctx</span><span class="o">.</span><span class="n">control_status_ctx</span><span class="p">(),</span> <span class="n">convert_by_default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1285</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extended</span><span class="o">.</span><span class="n">call_for_each_replica</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1286</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1287</span>   <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reduce_op</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">axis</span><span class="p">):</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/distribute/distribute_lib.py</span> in <span class="ni">call_for_each_replica</span><span class="nt">(self, fn, args, kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2831</span>       <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">   </span><span class="mi">2832</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_container_strategy</span><span class="p">()</span><span class="o">.</span><span class="n">scope</span><span class="p">():</span>
-<span class="ne">-&gt; </span><span class="mi">2833</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_for_each_replica</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2834</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2835</span>   <span class="k">def</span> <span class="nf">_call_for_each_replica</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/distribute/distribute_lib.py</span> in <span class="ni">_call_for_each_replica</span><span class="nt">(self, fn, args, kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3606</span>   <span class="k">def</span> <span class="nf">_call_for_each_replica</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">3607</span>     <span class="k">with</span> <span class="n">ReplicaContext</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_container_strategy</span><span class="p">(),</span> <span class="n">replica_id_in_sync_group</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">3608</span>       <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3609</span> 
-<span class="g g-Whitespace">   </span><span class="mi">3610</span>   <span class="k">def</span> <span class="nf">_reduce_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reduce_op</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">destinations</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/keras/engine/training.py</span> in <span class="ni">run_step</span><span class="nt">(data)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>                         <span class="n">do_return_1</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>                         <span class="n">retval__1</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">UndefinedReturnValue</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">18</span>                         <span class="n">outputs</span> <span class="o">=</span> <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">test_step</span><span class="p">,</span> <span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">data</span><span class="p">),),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fscope_1</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>                         <span class="k">with</span> <span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">tf</span><span class="p">)</span><span class="o">.</span><span class="n">control_dependencies</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">_minimum_control_deps</span><span class="p">)(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">outputs</span><span class="p">))):</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>                             <span class="n">ag__</span><span class="o">.</span><span class="n">converted_call</span><span class="p">(</span><span class="n">ag__</span><span class="o">.</span><span class="n">ld</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">_test_counter</span><span class="o">.</span><span class="n">assign_add</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fscope_1</span><span class="p">)</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">converted_call</span><span class="nt">(f, args, kwargs, caller_fn_scope, options)</span>
 <span class="g g-Whitespace">    </span><span class="mi">430</span>   <span class="k">try</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">431</span>     <span class="n">program_ctx</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">ProgramContext</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">432</span>     <span class="n">converted_f</span> <span class="o">=</span> <span class="n">_convert_actual</span><span class="p">(</span><span class="n">target_entity</span><span class="p">,</span> <span class="n">program_ctx</span><span class="p">)</span>
@@ -723,45 +684,213 @@
 <span class="g g-Whitespace">    </span><span class="mi">276</span>   <span class="k">assert</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">transformed</span><span class="p">,</span> <span class="s1">&#39;ag_module&#39;</span><span class="p">)</span>
 
 <span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transpiler.py</span> in <span class="ni">transform</span><span class="nt">(self, obj, user_context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="s2">     if inspect.isfunction(obj) or inspect.ismethod(obj):</span>
-<span class="ne">--&gt; </span><span class="mi">286</span><span class="s2">       return self.transform_function(obj, user_context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">287</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">288</span><span class="s2">     raise NotImplementedError(&#39;Non-function: </span><span class="si">{}</span><span class="s2">&#39;.format(type(obj)))</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd">     if inspect.isfunction(obj) or inspect.ismethod(obj):</span>
+<span class="ne">--&gt; </span><span class="mi">286</span><span class="sd">       return self.transform_function(obj, user_context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span><span class="sd">     raise NotImplementedError(&#39;Non-function: {}&#39;.format(type(obj)))</span>
 
 <span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transpiler.py</span> in <span class="ni">transform_function</span><span class="nt">(self, fn, user_context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="s2">           factory = _PythonFnFactory(</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span><span class="s2">               ctx.info.name, fn.__code__.co_freevars, self.get_extra_locals())</span>
-<span class="ne">--&gt; </span><span class="mi">490</span><span class="s2">           factory.create(</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span><span class="s2">               nodes, ctx.namer, future_features=ctx.info.future_features)</span>
-<span class="g g-Whitespace">    </span><span class="mi">492</span><span class="s2">           self._cache[fn][cache_subkey] = factory</span>
+<span class="g g-Whitespace">    </span><span class="mi">468</span><span class="sd">           logging.log(1, &#39;%s is not cached for subkey %s&#39;, fn, cache_subkey)</span>
+<span class="g g-Whitespace">    </span><span class="mi">469</span><span class="sd">           # TODO(mdan): Confusing overloading pattern. Fix.</span>
+<span class="ne">--&gt; </span><span class="mi">470</span><span class="sd">           nodes, ctx = super(PyToPy, self).transform_function(fn, user_context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">471</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">472</span><span class="sd">           if isinstance(nodes, gast.Lambda):</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transpiler.py</span> in <span class="ni">create</span><span class="nt">(self, nodes, namer, inner_factory_name, outer_factory_name, future_features)</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span><span class="s2">                                self._extra_locals.keys(), future_features)</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">183</span><span class="s2">     module, _, source_map = loader.load_ast(</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span><span class="s2">         nodes, include_source_map=True)</span>
-<span class="g g-Whitespace">    </span><span class="mi">185</span><span class="s2">     outer_factory = getattr(module, outer_factory_name)</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transpiler.py</span> in <span class="ni">transform_function</span><span class="nt">(self, fn, user_context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">361</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span><span class="sd">     node = self._erase_arg_defaults(node)</span>
+<span class="ne">--&gt; </span><span class="mi">363</span><span class="sd">     result = self.transform_ast(node, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">364</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span><span class="sd">     return result, context</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/loader.py</span> in <span class="ni">load_ast</span><span class="nt">(nodes, indentation, include_source_map, delete_on_exit)</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span><span class="s2"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span><span class="s2">   source = parser.unparse(nodes, indentation=indentation)</span>
-<span class="ne">---&gt; </span><span class="mi">96</span><span class="s2">   module, _ = load_source(source, delete_on_exit)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="s2"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="s2">   if include_source_map:</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/impl/api.py</span> in <span class="ni">transform_ast</span><span class="nt">(self, node, ctx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">256</span><span class="sd">       node = slices.transform(node, ctx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="sd">     node = call_trees.transform(node, ctx)</span>
+<span class="ne">--&gt; </span><span class="mi">258</span><span class="sd">     node = control_flow.transform(node, ctx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span><span class="sd">     node = conditional_expressions.transform(node, ctx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span><span class="sd">     node = logical_expressions.transform(node, ctx)</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/loader.py</span> in <span class="ni">load_source</span><span class="nt">(source, delete_on_exit)</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span><span class="s2">   spec = importlib.util.spec_from_file_location(module_name, file_name)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2">   module = importlib.util.module_from_spec(spec)</span>
-<span class="ne">---&gt; </span><span class="mi">63</span><span class="s2">   spec.loader.exec_module(module)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="s2">   # TODO(mdan): Use our own garbage-collected cache instead of sys.modules.</span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="s2">   sys.modules[module_name] = module</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/converters/control_flow.py</span> in <span class="ni">transform</span><span class="nt">(node, ctx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span><span class="sd">   node = reaching_definitions.resolve(node, ctx, graphs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span><span class="sd">   node = reaching_fndefs.resolve(node, ctx, graphs)</span>
+<span class="ne">--&gt; </span><span class="mi">414</span><span class="sd">   node = liveness.resolve(node, ctx, graphs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span><span class="sd">   node = ControlFlowTransformer(ctx).visit(node)</span>
 
-<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/importlib/_bootstrap_external.py</span> in <span class="ni">exec_module</span><span class="nt">(self, module)</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">resolve</span><span class="nt">(node, source_info, graphs, include_annotations)</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span><span class="sd">     ast.AST</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span><span class="sd">   &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">218</span>   <span class="n">node</span> <span class="o">=</span> <span class="n">TreeAnnotator</span><span class="p">(</span><span class="n">source_info</span><span class="p">,</span> <span class="n">graphs</span><span class="p">,</span> <span class="n">include_annotations</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>   <span class="k">return</span> <span class="n">node</span>
 
-<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/importlib/_bootstrap_external.py</span> in <span class="ni">get_code</span><span class="nt">(self, fullname)</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> 
+<span class="g g-Whitespace">    </span><span class="mi">121</span>   <span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">122</span>     <span class="n">node</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TreeAnnotator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_analyzer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">gast</span><span class="o">.</span><span class="n">stmt</span><span class="p">)</span> <span class="ow">and</span>
 
-<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/importlib/_bootstrap_external.py</span> in <span class="ni">get_data</span><span class="nt">(self, path)</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transformer.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>         <span class="n">entry_expr_value</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span> 
+<span class="ne">--&gt; </span><span class="mi">445</span>       <span class="n">result</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span> 
+<span class="g g-Whitespace">    </span><span class="mi">447</span>       <span class="c1"># Adjust for consistency: replacing the value of an Expr with</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>         <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;visit_&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>         <span class="n">visitor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">371</span>         <span class="k">return</span> <span class="n">visitor</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span> 
+<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">def</span> <span class="nf">generic_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">visit_FunctionDef</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span> 
+<span class="g g-Whitespace">    </span><span class="mi">145</span>   <span class="k">def</span> <span class="nf">visit_FunctionDef</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">146</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analyze_function</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">is_lambda</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span> 
+<span class="g g-Whitespace">    </span><span class="mi">148</span>   <span class="k">def</span> <span class="nf">_block_statement_live_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">_analyze_function</span><span class="nt">(self, node, is_lambda)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span>     <span class="n">analyzer</span><span class="o">.</span><span class="n">visit_reverse</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="bp">self</span><span class="o">.</span><span class="n">current_analyzer</span> <span class="o">=</span> <span class="n">analyzer</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> 
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="bp">self</span><span class="o">.</span><span class="n">current_analyzer</span> <span class="o">=</span> <span class="n">parent_analyzer</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>                 <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">old_value</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">AST</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">447</span>                         <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>                         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span>                             <span class="k">continue</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> 
+<span class="g g-Whitespace">    </span><span class="mi">121</span>   <span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">122</span>     <span class="n">node</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TreeAnnotator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_analyzer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">gast</span><span class="o">.</span><span class="n">stmt</span><span class="p">)</span> <span class="ow">and</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transformer.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>         <span class="n">entry_expr_value</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span> 
+<span class="ne">--&gt; </span><span class="mi">445</span>       <span class="n">result</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span> 
+<span class="g g-Whitespace">    </span><span class="mi">447</span>       <span class="c1"># Adjust for consistency: replacing the value of an Expr with</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>         <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;visit_&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>         <span class="n">visitor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">371</span>         <span class="k">return</span> <span class="n">visitor</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span> 
+<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">def</span> <span class="nf">generic_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">visit_With</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span> 
+<span class="g g-Whitespace">    </span><span class="mi">193</span>   <span class="k">def</span> <span class="nf">visit_With</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">194</span>     <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_block_statement_live_in</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">196</span> 
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>                 <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">old_value</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">AST</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">447</span>                         <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>                         <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span>                             <span class="k">continue</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> 
+<span class="g g-Whitespace">    </span><span class="mi">121</span>   <span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">122</span>     <span class="n">node</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TreeAnnotator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_analyzer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">gast</span><span class="o">.</span><span class="n">stmt</span><span class="p">)</span> <span class="ow">and</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transformer.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>         <span class="n">entry_expr_value</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span> 
+<span class="ne">--&gt; </span><span class="mi">445</span>       <span class="n">result</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span> 
+<span class="g g-Whitespace">    </span><span class="mi">447</span>       <span class="c1"># Adjust for consistency: replacing the value of an Expr with</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>         <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;visit_&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>         <span class="n">visitor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">371</span>         <span class="k">return</span> <span class="n">visitor</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span> 
+<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">def</span> <span class="nf">generic_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span>                 <span class="n">old_value</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">new_values</span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span>             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">old_value</span><span class="p">,</span> <span class="n">AST</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">456</span>                 <span class="n">new_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">old_value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>                 <span class="k">if</span> <span class="n">new_node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span>                     <span class="nb">delattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> 
+<span class="g g-Whitespace">    </span><span class="mi">121</span>   <span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">122</span>     <span class="n">node</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TreeAnnotator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_analyzer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">gast</span><span class="o">.</span><span class="n">stmt</span><span class="p">)</span> <span class="ow">and</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transformer.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>         <span class="n">entry_expr_value</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span> 
+<span class="ne">--&gt; </span><span class="mi">445</span>       <span class="n">result</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span> 
+<span class="g g-Whitespace">    </span><span class="mi">447</span>       <span class="c1"># Adjust for consistency: replacing the value of an Expr with</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>         <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;visit_&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>         <span class="n">visitor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">371</span>         <span class="k">return</span> <span class="n">visitor</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span> 
+<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">def</span> <span class="nf">generic_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span>                 <span class="n">old_value</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">new_values</span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span>             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">old_value</span><span class="p">,</span> <span class="n">AST</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">456</span>                 <span class="n">new_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">old_value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">457</span>                 <span class="k">if</span> <span class="n">new_node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span>                     <span class="nb">delattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/static_analysis/liveness.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> 
+<span class="g g-Whitespace">    </span><span class="mi">121</span>   <span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">122</span>     <span class="n">node</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">TreeAnnotator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_analyzer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">gast</span><span class="o">.</span><span class="n">stmt</span><span class="p">)</span> <span class="ow">and</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/tensorflow/python/autograph/pyct/transformer.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>         <span class="n">entry_expr_value</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span> 
+<span class="ne">--&gt; </span><span class="mi">445</span>       <span class="n">result</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span> 
+<span class="g g-Whitespace">    </span><span class="mi">447</span>       <span class="c1"># Adjust for consistency: replacing the value of an Expr with</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>         <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;visit_&#39;</span> <span class="o">+</span> <span class="n">node</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>         <span class="n">visitor</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generic_visit</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">371</span>         <span class="k">return</span> <span class="n">visitor</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span> 
+<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">def</span> <span class="nf">generic_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">generic_visit</span><span class="nt">(self, node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">440</span> 
+<span class="g g-Whitespace">    </span><span class="mi">441</span>     <span class="k">def</span> <span class="nf">generic_visit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">442</span>         <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">old_value</span> <span class="ow">in</span> <span class="n">iter_fields</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">old_value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>                 <span class="n">new_values</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/ast.py</span> in <span class="ni">iter_fields</span><span class="nt">(node)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">_fields</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>         <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">217</span>             <span class="k">yield</span> <span class="n">field</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>             <span class="k">pass</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

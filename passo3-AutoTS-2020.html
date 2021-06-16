@@ -158,10 +158,27 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="passo4.html">
    Passo 4: Apresentar e interpretar o modelo
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo4-Comparacao.html">
+     Comparação entre os algoritmos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo4-VariaveisExplicativas.html">
+     Variáveis Explicativas
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="referencias.html">
@@ -951,9 +968,7 @@ Results of Augmented Dickey-Fuller Test:
 |     Critical Value (10%)    |     -2.5889948363419957      |
 +-----------------------------+------------------------------+
  this series is non-stationary. Trying test again after differencing...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After differencing=1, results of Augmented Dickey-Fuller Test:
+After differencing=1, results of Augmented Dickey-Fuller Test:
 +-----------------------------+------------------------------+
 |                             | Dickey-Fuller Augmented Test |
 +-----------------------------+------------------------------+
@@ -974,7 +989,7 @@ ts_column: data sep: , target: total
     pandas Dataframe loaded successfully. Shape of data set = (72, 7)
 </pre></div>
 </div>
-<img alt="_images/passo3-AutoTS-2020_12_2.png" src="_images/passo3-AutoTS-2020_12_2.png" />
+<img alt="_images/passo3-AutoTS-2020_12_1.png" src="_images/passo3-AutoTS-2020_12_1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time Interval is given as M
     Correct Time interval given as a valid Pandas date-range frequency...
 <span class=" -Color -Color-Bold">WARNING: Running best models will take time... Be Patient...</span>
@@ -1066,32 +1081,41 @@ Fold Number: 5 --&gt; Train Shape: 67 Test Shape: 5
 <span class="g g-Whitespace">   </span><span class="mi">1437</span>         <span class="n">lower_p</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval_width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
 
 <span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">sample_posterior_predictive</span><span class="nt">(self, df)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1386</span>         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1387</span>             <span class="k">for</span> <span class="n">_j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samp_per_iter</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1388</span>                 <span class="n">sim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_model</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1389</span>                     <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1390</span>                     <span class="n">seasonal_features</span><span class="o">=</span><span class="n">seasonal_features</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1396</span>                     <span class="n">sim_values</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sim</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+<span class="g g-Whitespace">   </span><span class="mi">1397</span>         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sim_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="ne">-&gt; </span><span class="mi">1398</span>             <span class="n">sim_values</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1399</span>         <span class="k">return</span> <span class="n">sim_values</span>
+<span class="g g-Whitespace">   </span><span class="mi">1400</span> 
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">sample_model</span><span class="nt">(self, df, seasonal_features, iteration, s_a, s_m)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1462</span>         <span class="n">Dataframe</span> <span class="k">with</span> <span class="n">trend</span> <span class="ow">and</span> <span class="n">yhat</span><span class="p">,</span> <span class="n">each</span> <span class="n">like</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1463</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1464</span><span class="s2">         trend = self.sample_predictive_trend(df, iteration)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1465</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1466</span><span class="s2">         beta = self.params[&#39;beta&#39;][iteration]</span>
+<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">column_stack</span><span class="nt">(*args, **kwargs)</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">sample_predictive_trend</span><span class="nt">(self, df, iteration)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1520</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1521</span><span class="s2">         if self.growth == &#39;linear&#39;:</span>
-<span class="ne">-&gt; </span><span class="mi">1522</span><span class="s2">             trend = self.piecewise_linear(t, deltas, k, m, changepoint_ts)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1523</span><span class="s2">         elif self.growth == &#39;logistic&#39;:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1524</span><span class="s2">             cap = df[&#39;cap_scaled&#39;]</span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/numpy/lib/shape_base.py</span> in <span class="ni">column_stack</span><span class="nt">(tup)</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span>     <span class="n">arrays</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">652</span>         <span class="n">arr</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span>         <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span>             <span class="n">arr</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">piecewise_linear</span><span class="nt">(t, deltas, k, m, changepoint_ts)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1244</span><span class="s2">             indx = t &gt;= t_s</span>
-<span class="g g-Whitespace">   </span><span class="mi">1245</span><span class="s2">             k_t[indx] += deltas[s]</span>
-<span class="ne">-&gt; </span><span class="mi">1246</span><span class="s2">             m_t[indx] += gammas[s]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1247</span><span class="s2">         return k_t * t + m_t</span>
-<span class="g g-Whitespace">   </span><span class="mi">1248</span><span class="s2"> </span>
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/series.py</span> in <span class="ni">__array__</span><span class="nt">(self, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span>               <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">768</span><span class="s2">         return np.asarray(self.array, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span><span class="s2">     # ----------------------------------------------------------------------</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/series.py</span> in <span class="ni">array</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span><span class="s2">     @property</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span><span class="s2">     def array(self) -&gt; ExtensionArray:</span>
+<span class="ne">--&gt; </span><span class="mi">623</span><span class="s2">         return self._mgr._block.array_values()</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span><span class="s2">     # ops</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/internals/managers.py</span> in <span class="ni">_block</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1588</span><span class="s2">     @property</span>
+<span class="g g-Whitespace">   </span><span class="mi">1589</span><span class="s2">     def _block(self) -&gt; Block:</span>
+<span class="ne">-&gt; </span><span class="mi">1590</span><span class="s2">         return self.blocks[0]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1591</span><span class="s2"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1592</span><span class="s2">     @property</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

@@ -158,10 +158,27 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="passo4.html">
    Passo 4: Apresentar e interpretar o modelo
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo4-Comparacao.html">
+     Comparação entre os algoritmos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="passo4-VariaveisExplicativas.html">
+     Variáveis Explicativas
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="referencias.html">
@@ -1002,48 +1019,93 @@ Cross Validation window: 4 completed
 Fold Number: 5 --&gt; Train Shape: 55 Test Shape: 5
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 3,085,526.94
-    Std Deviation of actuals = 1,365,998.89
-    Normalized RMSE = 226%
-Cross Validation window: 5 completed
-
--------------------------------------------
-Model Cross Validation Results:
--------------------------------------------
-    MAE (as % Std Dev of Actuals) = 108.81%
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    MAPE (Mean Absolute Percent Error) = 18%
-    RMSE (Root Mean Squared Error) = 4170623.9330
-    Normalized RMSE (MinMax) = 38%
-    Normalized RMSE (as Std Dev of Actuals)= 139%
-Time Taken = 23 seconds
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception occurred while building Prophet model...
-&lt;class &#39;stanfit4anon_model_dfdaf2b8ece8a02eb11f050ec701c0ec_2558615561988454785.PyStanHolder&#39;&gt; returned a result with an error set
-    FB Prophet may not be installed or Model is not running...
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mf">38e86</span><span class="n">d23682b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="s2"> </span>
-<span class="ne">---&gt; </span><span class="mi">11</span><span class="s2"> model.fit(traindata, ts_column,target)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd"> </span>
+<span class="ne">---&gt; </span><span class="mi">11</span><span class="sd"> model.fit(traindata, ts_column,target)</span>
 
 <span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/auto_ts/__init__.py</span> in <span class="ni">fit</span><span class="nt">(self, traindata, ts_column, target, sep, cv)</span>
-<span class="g g-Whitespace">    </span><span class="mi">504</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">505</span><span class="s2">             self.ml_dict[name][&#39;model&#39;] = model</span>
-<span class="ne">--&gt; </span><span class="mi">506</span><span class="s2">             self.ml_dict[name][&#39;forecast&#39;] = forecast_df_folds</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span><span class="s2">             self.ml_dict[name][self.score_type] = score_val</span>
-<span class="g g-Whitespace">    </span><span class="mi">508</span><span class="s2">             self.ml_dict[name][&#39;model_build&#39;] = model_build</span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span><span class="sd">                     self.score_type, self.verbose, self.conf_int, self.holidays, self.growth,</span>
+<span class="g g-Whitespace">    </span><span class="mi">486</span><span class="sd">                     self.seasonality)</span>
+<span class="ne">--&gt; </span><span class="mi">487</span><span class="sd">                 model, forecast_df_folds, rmse_folds, norm_rmse_folds = model_build.fit(</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="sd">                     ts_df=ts_df[[target]+preds],</span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span><span class="sd">                     target_col=target,</span>
 
-<span class="ne">UnboundLocalError</span>: local variable &#39;forecast_df_folds&#39; referenced before assignment
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/auto_ts/models/build_prophet.py</span> in <span class="ni">fit</span><span class="nt">(self, ts_df, target_col, cv, time_col)</span>
+<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span><span class="sd">                 future_period = model.make_future_dataframe(freq=time_int, periods=horizon)</span>
+<span class="ne">--&gt; </span><span class="mi">259</span><span class="sd">                 forecast_df = model.predict(future_period)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span><span class="sd">                 ### Now compare the actuals with predictions ######</span>
+<span class="g g-Whitespace">    </span><span class="mi">261</span><span class="sd"> </span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">predict</span><span class="nt">(self, df)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1202</span><span class="sd">         seasonal_components = self.predict_seasonal_components(df)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1203</span><span class="sd">         if self.uncertainty_samples:</span>
+<span class="ne">-&gt; </span><span class="mi">1204</span><span class="sd">             intervals = self.predict_uncertainty(df)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1205</span><span class="sd">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1206</span><span class="sd">             intervals = None</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">predict_uncertainty</span><span class="nt">(self, df)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1433</span><span class="sd">         Dataframe with uncertainty intervals.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1434</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1435</span>         <span class="n">sim_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_posterior_predictive</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1436</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1437</span>         <span class="n">lower_p</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval_width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">sample_posterior_predictive</span><span class="nt">(self, df)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1386</span>         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iterations</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1387</span>             <span class="k">for</span> <span class="n">_j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samp_per_iter</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1388</span>                 <span class="n">sim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_model</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1389</span>                     <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1390</span>                     <span class="n">seasonal_features</span><span class="o">=</span><span class="n">seasonal_features</span><span class="p">,</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">sample_model</span><span class="nt">(self, df, seasonal_features, iteration, s_a, s_m)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1462</span>         <span class="n">Dataframe</span> <span class="k">with</span> <span class="n">trend</span> <span class="ow">and</span> <span class="n">yhat</span><span class="p">,</span> <span class="n">each</span> <span class="n">like</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1463</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1464</span><span class="sd">         trend = self.sample_predictive_trend(df, iteration)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1465</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1466</span><span class="sd">         beta = self.params[&#39;beta&#39;][iteration]</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">sample_predictive_trend</span><span class="nt">(self, df, iteration)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1493</span><span class="sd">         deltas = self.params[&#39;delta&#39;][iteration]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1494</span><span class="sd"> </span>
+<span class="ne">-&gt; </span><span class="mi">1495</span><span class="sd">         t = np.array(df[&#39;t&#39;])</span>
+<span class="g g-Whitespace">   </span><span class="mi">1496</span><span class="sd">         T = t.max()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1497</span><span class="sd"> </span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/series.py</span> in <span class="ni">__array__</span><span class="nt">(self, dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span><span class="sd">               dtype=&#39;datetime64[ns]&#39;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">768</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span> 
+<span class="g g-Whitespace">    </span><span class="mi">770</span>     <span class="c1"># ----------------------------------------------------------------------</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/series.py</span> in <span class="ni">array</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span>     <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span>     <span class="k">def</span> <span class="nf">array</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExtensionArray</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">623</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">_block</span><span class="o">.</span><span class="n">array_values</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span> 
+<span class="g g-Whitespace">    </span><span class="mi">625</span>     <span class="c1"># ops</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/internals/blocks.py</span> in <span class="ni">array_values</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>         <span class="n">The</span> <span class="n">array</span> <span class="n">that</span> <span class="n">Series</span><span class="o">.</span><span class="n">array</span> <span class="n">returns</span><span class="o">.</span> <span class="n">Always</span> <span class="n">an</span> <span class="n">ExtensionArray</span><span class="o">.</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">243</span><span class="s2">         return PandasArray(self.values)</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">245</span><span class="s2">     def get_values(self, dtype=None):</span>
+
+<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/arrays/numpy_.py</span> in <span class="ni">__init__</span><span class="nt">(self, values, copy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">155</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span><span class="s2">     def __init__(self, values: Union[np.ndarray, &quot;PandasArray&quot;], copy: bool = False):</span>
+<span class="ne">--&gt; </span><span class="mi">157</span><span class="s2">         if isinstance(values, type(self)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span><span class="s2">             values = values._ndarray</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span><span class="s2">         if not isinstance(values, np.ndarray):</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
-<img alt="_images/passo3-AutoTS-2019_12_12.png" src="_images/passo3-AutoTS-2019_12_12.png" />
-<img alt="_images/passo3-AutoTS-2019_12_13.png" src="_images/passo3-AutoTS-2019_12_13.png" />
 </div>
 </div>
 <p>A ferramenta ofereceu um ranking…</p>

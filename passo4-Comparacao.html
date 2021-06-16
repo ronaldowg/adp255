@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Passo 4: Apresentar e interpretar o modelo &#8212; ADP255 - Trabalho em Grupo</title>
+    <title>Comparação entre os algoritmos &#8212; ADP255 - Trabalho em Grupo</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -49,11 +49,13 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Comparação entre os algoritmos" href="passo4-Comparacao.html" />
-    <link rel="prev" title="VAR 2020" href="passo3-VAR-2020.html" />
+    <link rel="next" title="Variáveis Explicativas" href="passo4-VariaveisExplicativas.html" />
+    <link rel="prev" title="Passo 4: Apresentar e interpretar o modelo" href="passo4.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -159,7 +161,7 @@
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="passo4.html">
    Passo 4: Apresentar e interpretar o modelo
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -167,9 +169,9 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="passo4-Comparacao.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Comparação entre os algoritmos
     </a>
    </li>
@@ -226,7 +228,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/passo4.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/passo4-Comparacao.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -246,7 +248,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fpasso4.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fpasso4-Comparacao.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -275,11 +277,88 @@
         
               <div>
                 
-  <div class="section" id="passo-4-apresentar-e-interpretar-o-modelo">
-<h1>Passo 4: Apresentar e interpretar o modelo<a class="headerlink" href="#passo-4-apresentar-e-interpretar-o-modelo" title="Permalink to this headline">¶</a></h1>
-<p>Neste capítulo são discutos os resultados e apresentadas as principais conclusões. Uma análise comparativa entre os algoritmos é realizada com o objetivo de permitir aferir a performance de cada implementação.</p>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="section" id="comparacao-entre-os-algoritmos">
+<h1>Comparação entre os algoritmos<a class="headerlink" href="#comparacao-entre-os-algoritmos" title="Permalink to this headline">¶</a></h1>
+<p>Ao todo, cinco algoritmos foram utilizados para prever o comportamento do total das vendas de interruptores. As tabelas abaixo apresentam a performance de cada um:</p>
+<p><strong>Ano 2020</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ranking</p></th>
+<th class="head"><p>Algoritmo</p></th>
+<th class="head"><p>RMSE</p></th>
+<th class="head"><p>Relativo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>auto_SARIMAX</p></td>
+<td><p>1.892610e+06</p></td>
+<td><p>100%</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Prophet</p></td>
+<td><p>3.196887e+06</p></td>
+<td><p>60%</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>VAR</p></td>
+<td><p>3.391929e+06</p></td>
+<td><p>56%</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>SARIMAX</p></td>
+<td><p>5.269293+06</p></td>
+<td><p>36%</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>CNN</p></td>
+<td><p>13.180175+06</p></td>
+<td><p>2%</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ano 2019</strong></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ranking</p></th>
+<th class="head"><p>Algoritmo</p></th>
+<th class="head"><p>RMSE</p></th>
+<th class="head"><p>Relativo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>auto_SARIMAX</p></td>
+<td><p>2.280062e+06</p></td>
+<td><p>100%</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>CNN</p></td>
+<td><p>2.930361+06</p></td>
+<td><p>78%</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>VAR</p></td>
+<td><p>3.560624e+06</p></td>
+<td><p>64%</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Prophet</p></td>
+<td><p>3.740836e+06</p></td>
+<td><p>61%</p></td>
+</tr>
+</tbody>
+</table>
+<p>Para fins de comparação de performance dos algoritmos, utilizou-se a Raiz do Erro Quadrático Médio (RMSE) e a comparação relativa do melhor com os demais.</p>
+<div class="math notranslate nohighlight">
+\[
+RMSD = \sqrt{\frac{\sum_{i=1}^N(x_i-\hat{x_i})^2}{N}}
+\]</div>
+<p>O RMSE é normalmente utilizado para computar a acurácia dos resultados numéricos com a vantagem de apresentar valores do erro nas mesmas dimensões da variável analisada.</p>
+<p>No ano de 2019, o total de vendas variou de 19.011266e+06 a 26.826165e+06, obtendo o auto_SARIMAX um erro de apenas 2.280062e+06 quando comparado com o CNN</p>
+<p>No ano de 2020, o total de vendas apresentou uma amplitude muito maior do que em relação aos anos anteriores, variande de 16.697718e+06 a 41.851313e+06. O auto_SARIMAX apresentou um erro médio de 1.892610e+06, contra 13.180175+06 do CNN.</p>
+<p>Já no ano de 2019, com o total de vendas variando de 19.011266e+06 a 26.826165e+06, auto_SARIMAX um erro de apenas 2.280062e+06, estando o CNN logo atrás com o valor de 2.930361+06.</p>
+<p>O AutoTS, além de sugerir e rodar os algoritmos de sua biblioteca, também roda uma validação cruzada utilizando o modelo XGBoost. Desse forma, o RSME é calculado a partir da média das validações, alcançando resultados superiores. Tanto no ano de 2019 quanto em 2020, o auto_SARIMAX apresentou a melhor performance, todavia esse é um algoritmo univariado, ou seja, a predição da variável é realizada a partir dos dados históricos da mesma variável. Já os algoritmos VAR e CNN são multivariados, sendo este último implementado em camadas profundas, deep learning. Percebe-se que no ano de 2019 o algoritmo CNN obteve o melhor resultado dentre os modelos multivariados, porém com o pior desempenho em 2020. Uma possível explicação desse comportamento está no ano atípico vivenciado em 2020 devido à pandemia do SARS-CoV-2.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -307,8 +386,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="passo3-VAR-2020.html" title="previous page">VAR 2020</a>
-    <a class='right-next' id="next-link" href="passo4-Comparacao.html" title="next page">Comparação entre os algoritmos</a>
+    <a class='left-prev' id="prev-link" href="passo4.html" title="previous page">Passo 4: Apresentar e interpretar o modelo</a>
+    <a class='right-next' id="next-link" href="passo4-VariaveisExplicativas.html" title="next page">Variáveis Explicativas</a>
 
         </div>
         
