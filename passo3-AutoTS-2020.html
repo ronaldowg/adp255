@@ -92,6 +92,11 @@
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="introducao.html">
+   Introdução
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="passo0.html">
    Passo 0: Look at the big picture
   </a>
@@ -179,6 +184,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conclusao.html">
+   Conclusão
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="referencias.html">
@@ -331,207 +341,67 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Imported auto_timeseries version:0.0.36. Call by using:
-model = auto_timeseries(score_type=&#39;rmse&#39;,
-                time_interval=&#39;M&#39;,
-                non_seasonal_pdq=None, seasonality=False, seasonal_period=12,
-                model_type=[&#39;best&#39;],
-                verbose=2)
-model.fit(traindata, ts_column,target)
-model.predict(testdata, model=&#39;best&#39;)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">0e5</span><span class="n">f51a1ee2f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">auto_ts</span> <span class="k">as</span> <span class="nn">AT</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">mt</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
 
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-DatetimeIndex: 84 entries, 2014-01-01 to 2020-12-01
-Data columns (total 7 columns):
- #   Column      Non-Null Count  Dtype  
----  ------      --------------  -----  
- 0   total       84 non-null     int64  
- 1   ibc         84 non-null     float64
- 2   pib         84 non-null     float64
- 3   consumo     84 non-null     float64
- 4   ICST-R      84 non-null     float64
- 5   geracaoGWh  84 non-null     float64
- 6   IndGeral    84 non-null     float64
-dtypes: float64(6), int64(1)
-memory usage: 5.2 KB
-Rows     :  84
-Columns  :  7
+<span class="o">~/</span><span class="n">adp255</span><span class="o">/</span><span class="n">env_adp255</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">auto_ts</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="c1">#######################################</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="c1"># Models</span>
+<span class="ne">---&gt; </span><span class="mi">41</span> <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">BuildBase</span><span class="p">,</span> <span class="n">BuildArima</span><span class="p">,</span> <span class="n">BuildAutoSarimax</span><span class="p">,</span> <span class="n">BuildVAR</span><span class="p">,</span> <span class="n">BuildML</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="kn">from</span> <span class="nn">.models.build_prophet</span> <span class="kn">import</span> <span class="n">BuildProphet</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> 
 
-Features : 
- [&#39;total&#39;, &#39;ibc&#39;, &#39;pib&#39;, &#39;consumo&#39;, &#39;ICST-R&#39;, &#39;geracaoGWh&#39;, &#39;IndGeral&#39;]
+<span class="o">~/</span><span class="n">adp255</span><span class="o">/</span><span class="n">env_adp255</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">auto_ts</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">.ar_based</span> <span class="kn">import</span> <span class="n">BuildArima</span><span class="p">,</span> <span class="n">BuildSarimax</span><span class="p">,</span> <span class="n">BuildAutoSarimax</span><span class="p">,</span> <span class="n">BuildVAR</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">.build_ml</span> <span class="kn">import</span> <span class="n">BuildML</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">.build_prophet</span> <span class="kn">import</span> <span class="n">BuildProphet</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">.build_pyflux</span> <span class="kn">import</span> <span class="n">build_pyflux_model</span>
 
-Missing values :   total         False
-ibc           False
-pib           False
-consumo       False
-ICST-R        False
-geracaoGWh    False
-IndGeral      False
-dtype: bool
+<span class="o">~/</span><span class="n">adp255</span><span class="o">/</span><span class="n">env_adp255</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">auto_ts</span><span class="o">/</span><span class="n">models</span><span class="o">/</span><span class="n">build_prophet</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># type: ignore</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> 
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">fbprophet</span> <span class="kn">import</span> <span class="n">Prophet</span> <span class="c1"># type: ignore</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">fbprophet.diagnostics</span> <span class="kn">import</span> <span class="n">cross_validation</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">fbprophet.diagnostics</span> <span class="kn">import</span> <span class="n">performance_metrics</span>
 
-Unique values :  
- total         84
-ibc           79
-pib           84
-consumo       72
-ICST-R        73
-geracaoGWh    84
-IndGeral      74
-dtype: int64
+<span class="o">~/</span><span class="n">adp255</span><span class="o">/</span><span class="n">env_adp255</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">fbprophet</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># of patent rights can be found in the PATENTS file in the same directory.</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> 
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">fbprophet.forecaster</span> <span class="kn">import</span> <span class="n">Prophet</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.5&#39;</span>
+
+<span class="o">~/</span><span class="n">adp255</span><span class="o">/</span><span class="n">env_adp255</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">fbprophet</span><span class="o">/</span><span class="n">forecaster</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> 
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">fbprophet.diagnostics</span> <span class="kn">import</span> <span class="n">prophet_copy</span>
+<span class="ne">---&gt; </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">fbprophet.make_holidays</span> <span class="kn">import</span> <span class="n">get_holiday_names</span><span class="p">,</span> <span class="n">make_holidays_df</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">fbprophet.models</span> <span class="kn">import</span> <span class="n">prophet_stan_model</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">fbprophet.plot</span> <span class="kn">import</span> <span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="n">plot_components</span><span class="p">,</span> <span class="n">plot_forecast_component</span><span class="p">,</span>
+
+<span class="o">~/</span><span class="n">adp255</span><span class="o">/</span><span class="n">env_adp255</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">fbprophet</span><span class="o">/</span><span class="n">make_holidays</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> 
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="kn">import</span> <span class="nn">fbprophet.hdays</span> <span class="k">as</span> <span class="nn">hdays_part2</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">import</span> <span class="nn">holidays</span> <span class="k">as</span> <span class="nn">hdays_part1</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> 
+
+<span class="o">~/</span><span class="n">adp255</span><span class="o">/</span><span class="n">env_adp255</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">fbprophet</span><span class="o">/</span><span class="n">hdays</span><span class="o">.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> 
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">convertdate.islamic</span> <span class="kn">import</span> <span class="n">from_gregorian</span><span class="p">,</span> <span class="n">to_gregorian</span>
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">holidays</span> <span class="kn">import</span> <span class="n">WEEKEND</span><span class="p">,</span> <span class="n">HolidayBase</span><span class="p">,</span> <span class="n">easter</span><span class="p">,</span> <span class="n">rd</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">lunardate</span> <span class="kn">import</span> <span class="n">LunarDate</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> 
+
+<span class="ne">ImportError</span>: cannot import name &#39;easter&#39; from &#39;holidays&#39; (/Users/ronaldogamermann/adp255/env_adp255/lib/python3.9/site-packages/holidays/__init__.py)
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>total</th>
-      <th>ibc</th>
-      <th>pib</th>
-      <th>consumo</th>
-      <th>ICST-R</th>
-      <th>geracaoGWh</th>
-      <th>IndGeral</th>
-    </tr>
-    <tr>
-      <th>data</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2014-01-01</th>
-      <td>13427897</td>
-      <td>2.75</td>
-      <td>455935.0</td>
-      <td>4.027976e+07</td>
-      <td>97.8</td>
-      <td>50045.962407</td>
-      <td>53.1</td>
-    </tr>
-    <tr>
-      <th>2014-02-01</th>
-      <td>14152120</td>
-      <td>3.13</td>
-      <td>450358.8</td>
-      <td>4.165349e+07</td>
-      <td>96.7</td>
-      <td>46459.730274</td>
-      <td>52.3</td>
-    </tr>
-    <tr>
-      <th>2014-03-01</th>
-      <td>13710770</td>
-      <td>3.09</td>
-      <td>462159.8</td>
-      <td>4.026943e+07</td>
-      <td>96.3</td>
-      <td>48004.277170</td>
-      <td>52.4</td>
-    </tr>
-    <tr>
-      <th>2014-04-01</th>
-      <td>12602895</td>
-      <td>2.37</td>
-      <td>468767.5</td>
-      <td>3.959185e+07</td>
-      <td>92.6</td>
-      <td>45412.583753</td>
-      <td>49.2</td>
-    </tr>
-    <tr>
-      <th>2014-05-01</th>
-      <td>14603442</td>
-      <td>2.23</td>
-      <td>473347.1</td>
-      <td>3.910050e+07</td>
-      <td>94.6</td>
-      <td>44890.282526</td>
-      <td>47.9</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2020-08-01</th>
-      <td>33983713</td>
-      <td>-3.35</td>
-      <td>628818.8</td>
-      <td>3.912152e+07</td>
-      <td>87.8</td>
-      <td>45954.347797</td>
-      <td>57.0</td>
-    </tr>
-    <tr>
-      <th>2020-09-01</th>
-      <td>32205815</td>
-      <td>-3.56</td>
-      <td>632047.2</td>
-      <td>4.020856e+07</td>
-      <td>91.5</td>
-      <td>46045.040560</td>
-      <td>61.6</td>
-    </tr>
-    <tr>
-      <th>2020-10-01</th>
-      <td>33749277</td>
-      <td>-3.94</td>
-      <td>660199.5</td>
-      <td>4.245064e+07</td>
-      <td>95.2</td>
-      <td>46098.056273</td>
-      <td>61.8</td>
-    </tr>
-    <tr>
-      <th>2020-11-01</th>
-      <td>33762169</td>
-      <td>-4.06</td>
-      <td>666928.9</td>
-      <td>4.100828e+07</td>
-      <td>93.8</td>
-      <td>45883.704482</td>
-      <td>62.9</td>
-    </tr>
-    <tr>
-      <th>2020-12-01</th>
-      <td>31490103</td>
-      <td>-3.99</td>
-      <td>676371.9</td>
-      <td>4.187399e+07</td>
-      <td>93.9</td>
-      <td>45799.031123</td>
-      <td>63.1</td>
-    </tr>
-  </tbody>
-</table>
-<p>84 rows × 7 columns</p>
-</div></div></div>
+</div>
 </div>
 <p>Explorando o conjunto de dados utilizados.</p>
 <div class="cell docutils container">
@@ -545,7 +415,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;data&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1e099d58860&gt;
 </pre></div>
 </div>
 <img alt="_images/passo3-AutoTS-2020_3_1.png" src="_images/passo3-AutoTS-2020_3_1.png" />
@@ -562,7 +432,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;data&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1e09aadc438&gt;
 </pre></div>
 </div>
 <img alt="_images/passo3-AutoTS-2020_5_1.png" src="_images/passo3-AutoTS-2020_5_1.png" />
@@ -959,8 +829,8 @@ Results of Augmented Dickey-Fuller Test:
 +-----------------------------+------------------------------+
 |                             | Dickey-Fuller Augmented Test |
 +-----------------------------+------------------------------+
-|        Test Statistic       |     -1.8110599224858248      |
-|           p-value           |     0.37498473849006997      |
+|        Test Statistic       |     -1.8110599224858244      |
+|           p-value           |     0.37498473849007014      |
 |          #Lags Used         |             0.0              |
 | Number of Observations Used |             71.0             |
 |     Critical Value (1%)     |      -3.526004646825607      |
@@ -1002,124 +872,1087 @@ Building Prophet Model
 
 
 <span class=" -Color -Color-Bold">Running Facebook Prophet Model...</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Fit-Predict data (shape=(72, 8)) with Confidence Interval = 0.95...
+    Fit-Predict data (shape=(72, 8)) with Confidence Interval = 0.95...
   Starting Prophet Fit
        Adding monthly seasonality to Prophet with period=12, fourier_order=12 and prior_scale=0.10
   Starting Prophet Cross Validation
 Max. iterations using expanding window cross validation = 5
 
 Fold Number: 1 --&gt; Train Shape: 47 Test Shape: 5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 3,995,467.58
+    Root Mean Squared Error predictions vs actuals = 3,995,467.58
     Std Deviation of actuals = 1,311,594.35
     Normalized RMSE = 305%
 Cross Validation window: 1 completed
 
 Fold Number: 2 --&gt; Train Shape: 52 Test Shape: 5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 4,215,715.30
+    Root Mean Squared Error predictions vs actuals = 4,215,715.30
     Std Deviation of actuals = 2,878,829.99
     Normalized RMSE = 146%
 Cross Validation window: 2 completed
 
 Fold Number: 3 --&gt; Train Shape: 57 Test Shape: 5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 2,270,555.30
+    Root Mean Squared Error predictions vs actuals = 2,270,555.30
     Std Deviation of actuals = 1,696,147.66
     Normalized RMSE = 134%
 Cross Validation window: 3 completed
 
 Fold Number: 4 --&gt; Train Shape: 62 Test Shape: 5
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Root Mean Squared Error predictions vs actuals = 3,248,758.98
+    Root Mean Squared Error predictions vs actuals = 3,248,758.98
     Std Deviation of actuals = 1,098,094.61
     Normalized RMSE = 296%
 Cross Validation window: 4 completed
 
 Fold Number: 5 --&gt; Train Shape: 67 Test Shape: 5
+    Root Mean Squared Error predictions vs actuals = 2,253,935.86
+    Std Deviation of actuals = 954,024.36
+    Normalized RMSE = 236%
+Cross Validation window: 5 completed
+
+-------------------------------------------
+Model Cross Validation Results:
+-------------------------------------------
+    MAE (as % Std Dev of Actuals) = 76.85%
+    MAPE (Mean Absolute Percent Error) = 13%
+    RMSE (Root Mean Squared Error) = 3302305.2496
+    Normalized RMSE (MinMax) = 26%
+    Normalized RMSE (as Std Dev of Actuals)= 98%
+Time Taken = 12 seconds
+  End of Prophet Fit
+
+
+==================================================
+Building Auto SARIMAX Model
+==================================================
+
+
+
+<span class=" -Color -Color-Bold">Running Auto SARIMAX Model...</span>
+
+
+Best Parameters:
+p: None, d: None, q: None
+P: None, D: None, Q: None
+Seasonality: True
+Seasonal Period: 12
+
+Fold Number: 1 --&gt; Train Shape: 47 Test Shape: 5
+
+<span class=" -Color -Color-Bold">    Finding the best parameters using AutoArima:</span>
+Performing stepwise search to minimize aic
+ ARIMA(0,0,0)(0,1,0)[12] intercept   : AIC=1113.369, Time=0.04 sec
+ ARIMA(1,0,0)(1,1,0)[12] intercept   : AIC=1099.639, Time=0.42 sec
+ ARIMA(0,0,1)(0,1,1)[12] intercept   : AIC=1103.269, Time=0.35 sec
+ ARIMA(0,0,0)(0,1,0)[12]             : AIC=1202.202, Time=0.00 sec
+ ARIMA(1,0,0)(0,1,0)[12] intercept   : AIC=1107.510, Time=0.11 sec
+ ARIMA(1,0,0)(2,1,0)[12] intercept   : AIC=1101.361, Time=0.97 sec
+ ARIMA(1,0,0)(1,1,1)[12] intercept   : AIC=1101.485, Time=0.59 sec
+ ARIMA(1,0,0)(0,1,1)[12] intercept   : AIC=1104.134, Time=0.29 sec
+ ARIMA(1,0,0)(2,1,1)[12] intercept   : AIC=1103.709, Time=1.14 sec
+ ARIMA(0,0,0)(1,1,0)[12] intercept   : AIC=1099.539, Time=0.25 sec
+ ARIMA(0,0,0)(2,1,0)[12] intercept   : AIC=1111.512, Time=0.23 sec
+ ARIMA(0,0,0)(1,1,1)[12] intercept   : AIC=1101.422, Time=0.50 sec
+ ARIMA(0,0,0)(0,1,1)[12] intercept   : AIC=1111.349, Time=0.31 sec
+ ARIMA(0,0,0)(2,1,1)[12] intercept   : AIC=inf, Time=1.45 sec
+ ARIMA(0,0,1)(1,1,0)[12] intercept   : AIC=1098.669, Time=0.45 sec
+ ARIMA(0,0,1)(0,1,0)[12] intercept   : AIC=1103.942, Time=0.39 sec
+ ARIMA(0,0,1)(2,1,0)[12] intercept   : AIC=1100.412, Time=1.12 sec
+ ARIMA(0,0,1)(1,1,1)[12] intercept   : AIC=1100.560, Time=0.75 sec
+ ARIMA(0,0,1)(2,1,1)[12] intercept   : AIC=1102.436, Time=1.40 sec
+ ARIMA(1,0,1)(1,1,0)[12] intercept   : AIC=inf, Time=0.67 sec
+ ARIMA(0,0,2)(1,1,0)[12] intercept   : AIC=1101.514, Time=0.50 sec
+ ARIMA(1,0,2)(1,1,0)[12] intercept   : AIC=inf, Time=0.65 sec
+ ARIMA(0,0,1)(1,1,0)[12]             : AIC=1096.304, Time=0.33 sec
+ ARIMA(0,0,1)(0,1,0)[12]             : AIC=inf, Time=0.27 sec
+ ARIMA(0,0,1)(2,1,0)[12]             : AIC=1097.959, Time=1.08 sec
+ ARIMA(0,0,1)(1,1,1)[12]             : AIC=1098.075, Time=0.66 sec
+ ARIMA(0,0,1)(0,1,1)[12]             : AIC=1100.890, Time=0.46 sec
+ ARIMA(0,0,1)(2,1,1)[12]             : AIC=inf, Time=1.35 sec
+ ARIMA(0,0,0)(1,1,0)[12]             : AIC=1093.053, Time=0.28 sec
+ ARIMA(0,0,0)(2,1,0)[12]             : AIC=1113.880, Time=0.23 sec
+ ARIMA(0,0,0)(1,1,1)[12]             : AIC=1099.386, Time=0.77 sec
+ ARIMA(0,0,0)(0,1,1)[12]             : AIC=1109.513, Time=0.32 sec
+ ARIMA(0,0,0)(2,1,1)[12]             : AIC=1101.841, Time=1.30 sec
+ ARIMA(1,0,0)(1,1,0)[12]             : AIC=1097.808, Time=0.35 sec
+ ARIMA(1,0,1)(1,1,0)[12]             : AIC=inf, Time=0.62 sec
+
+Best model:  ARIMA(0,0,0)(1,1,0)[12]          
+Total fit time: 20.645 seconds
+
+Best model is a Seasonal SARIMAX(0,0,0)*(1,1,0,12), aic = 1093.053
+Static Forecasts:
+    RMSE = 2065615.54
+    Std Deviation of Actuals = 1311594.35
+    Normalized RMSE = 157.5%
+
+Fold Number: 2 --&gt; Train Shape: 52 Test Shape: 5
+
+<span class=" -Color -Color-Bold">    Finding the best parameters using AutoArima:</span>
+Performing stepwise search to minimize aic
+ ARIMA(0,0,0)(0,1,0)[12] intercept   : AIC=1281.579, Time=0.04 sec
+ ARIMA(1,0,0)(1,1,0)[12] intercept   : AIC=1263.190, Time=0.35 sec
+ ARIMA(0,0,1)(0,1,1)[12] intercept   : AIC=1264.776, Time=0.54 sec
+ ARIMA(0,0,0)(0,1,0)[12]             : AIC=1388.210, Time=0.02 sec
+ ARIMA(1,0,0)(0,1,0)[12] intercept   : AIC=1269.976, Time=0.26 sec
+ ARIMA(1,0,0)(2,1,0)[12] intercept   : AIC=1264.476, Time=0.90 sec
+ ARIMA(1,0,0)(1,1,1)[12] intercept   : AIC=1264.571, Time=0.74 sec
+ ARIMA(1,0,0)(0,1,1)[12] intercept   : AIC=1264.949, Time=0.30 sec
+ ARIMA(1,0,0)(2,1,1)[12] intercept   : AIC=1266.453, Time=1.21 sec
+ ARIMA(0,0,0)(1,1,0)[12] intercept   : AIC=1264.872, Time=0.32 sec
+ ARIMA(2,0,0)(1,1,0)[12] intercept   : AIC=1259.827, Time=0.63 sec
+ ARIMA(2,0,0)(0,1,0)[12] intercept   : AIC=1273.586, Time=0.18 sec
+ ARIMA(2,0,0)(2,1,0)[12] intercept   : AIC=1261.784, Time=1.48 sec
+ ARIMA(2,0,0)(1,1,1)[12] intercept   : AIC=1265.466, Time=0.79 sec
+ ARIMA(2,0,0)(0,1,1)[12] intercept   : AIC=1264.001, Time=0.53 sec
+ ARIMA(2,0,0)(2,1,1)[12] intercept   : AIC=1267.138, Time=0.94 sec
+ ARIMA(3,0,0)(1,1,0)[12] intercept   : AIC=1265.584, Time=0.70 sec
+ ARIMA(2,0,1)(1,1,0)[12] intercept   : AIC=1264.855, Time=0.65 sec
+ ARIMA(1,0,1)(1,1,0)[12] intercept   : AIC=1263.057, Time=0.68 sec
+ ARIMA(3,0,1)(1,1,0)[12] intercept   : AIC=1266.720, Time=0.81 sec
+ ARIMA(2,0,0)(1,1,0)[12]             : AIC=1257.125, Time=0.54 sec
+ ARIMA(2,0,0)(0,1,0)[12]             : AIC=1269.498, Time=0.36 sec
+ ARIMA(2,0,0)(2,1,0)[12]             : AIC=1263.086, Time=1.00 sec
+ ARIMA(2,0,0)(1,1,1)[12]             : AIC=1263.242, Time=0.80 sec
+ ARIMA(2,0,0)(0,1,1)[12]             : AIC=1263.700, Time=0.31 sec
+ ARIMA(2,0,0)(2,1,1)[12]             : AIC=1265.026, Time=1.37 sec
+ ARIMA(1,0,0)(1,1,0)[12]             : AIC=1256.834, Time=0.56 sec
+ ARIMA(1,0,0)(0,1,0)[12]             : AIC=1267.947, Time=0.23 sec
+ ARIMA(1,0,0)(2,1,0)[12]             : AIC=1262.515, Time=0.90 sec
+ ARIMA(1,0,0)(1,1,1)[12]             : AIC=1262.622, Time=0.62 sec
+ ARIMA(1,0,0)(0,1,1)[12]             : AIC=1261.336, Time=0.45 sec
+ ARIMA(1,0,0)(2,1,1)[12]             : AIC=1264.486, Time=1.31 sec
+ ARIMA(0,0,0)(1,1,0)[12]             : AIC=1256.594, Time=0.25 sec
+ ARIMA(0,0,0)(2,1,0)[12]             : AIC=1259.078, Time=0.71 sec
+ ARIMA(0,0,0)(1,1,1)[12]             : AIC=1258.488, Time=0.66 sec
+ ARIMA(0,0,0)(0,1,1)[12]             : AIC=1283.728, Time=0.30 sec
+ ARIMA(0,0,0)(2,1,1)[12]             : AIC=inf, Time=1.29 sec
+ ARIMA(0,0,1)(1,1,0)[12]             : AIC=1256.817, Time=0.48 sec
+ ARIMA(1,0,1)(1,1,0)[12]             : AIC=1260.958, Time=0.52 sec
+
+Best model:  ARIMA(0,0,0)(1,1,0)[12]          
+Total fit time: 24.795 seconds
+
+Best model is a Seasonal SARIMAX(0,0,0)*(1,1,0,12), aic = 1256.594
+Static Forecasts:
+    RMSE = 1080318.18
+    Std Deviation of Actuals = 2878829.99
+    Normalized RMSE = 37.5%
+
+Fold Number: 3 --&gt; Train Shape: 57 Test Shape: 5
+
+<span class=" -Color -Color-Bold">    Finding the best parameters using AutoArima:</span>
+Performing stepwise search to minimize aic
+ ARIMA(0,0,0)(0,0,0)[12] intercept   : AIC=1808.143, Time=0.05 sec
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">8</span><span class="o">-</span><span class="mf">38e86</span><span class="n">d23682b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span><span class="sd"> </span>
-<span class="ne">---&gt; </span><span class="mi">11</span><span class="sd"> model.fit(traindata, ts_column,target)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> ARIMA(1,0,0)(1,0,0)[12] intercept   : AIC=1797.346, Time=0.16 sec
+ ARIMA(0,0,1)(0,0,1)[12] intercept   : AIC=1802.433, Time=0.19 sec
+ ARIMA(0,0,0)(0,0,0)[12]             : AIC=1980.597, Time=0.06 sec
+ ARIMA(1,0,0)(0,0,0)[12] intercept   : AIC=1803.508, Time=0.06 sec
+ ARIMA(1,0,0)(2,0,0)[12] intercept   : AIC=1793.601, Time=0.66 sec
+ ARIMA(1,0,0)(3,0,0)[12] intercept   : AIC=1795.477, Time=1.20 sec
+ ARIMA(1,0,0)(2,0,1)[12] intercept   : AIC=1795.487, Time=0.64 sec
+ ARIMA(1,0,0)(1,0,1)[12] intercept   : AIC=1796.043, Time=0.35 sec
+ ARIMA(1,0,0)(3,0,1)[12] intercept   : AIC=1797.473, Time=2.05 sec
+ ARIMA(0,0,0)(2,0,0)[12] intercept   : AIC=1798.599, Time=0.61 sec
+ ARIMA(2,0,0)(2,0,0)[12] intercept   : AIC=1795.934, Time=1.18 sec
+ ARIMA(1,0,1)(2,0,0)[12] intercept   : AIC=1795.915, Time=0.73 sec
+ ARIMA(0,0,1)(2,0,0)[12] intercept   : AIC=1795.043, Time=0.52 sec
+ ARIMA(2,0,1)(2,0,0)[12] intercept   : AIC=1797.907, Time=0.64 sec
+ ARIMA(1,0,0)(2,0,0)[12]             : AIC=1791.593, Time=0.47 sec
+ ARIMA(1,0,0)(1,0,0)[12]             : AIC=1795.338, Time=0.11 sec
+ ARIMA(1,0,0)(3,0,0)[12]             : AIC=1793.469, Time=1.12 sec
+ ARIMA(1,0,0)(2,0,1)[12]             : AIC=1793.481, Time=0.69 sec
+ ARIMA(1,0,0)(1,0,1)[12]             : AIC=1794.017, Time=0.30 sec
+ ARIMA(1,0,0)(3,0,1)[12]             : AIC=1795.460, Time=1.74 sec
+ ARIMA(0,0,0)(2,0,0)[12]             : AIC=1789.458, Time=0.35 sec
+ ARIMA(0,0,0)(1,0,0)[12]             : AIC=1806.182, Time=0.10 sec
+ ARIMA(0,0,0)(3,0,0)[12]             : AIC=1790.738, Time=1.34 sec
+ ARIMA(0,0,0)(2,0,1)[12]             : AIC=1790.684, Time=0.81 sec
+ ARIMA(0,0,0)(1,0,1)[12]             : AIC=1813.506, Time=0.27 sec
+ ARIMA(0,0,0)(3,0,1)[12]             : AIC=1792.737, Time=1.52 sec
+ ARIMA(0,0,1)(2,0,0)[12]             : AIC=1793.065, Time=0.37 sec
+ ARIMA(1,0,1)(2,0,0)[12]             : AIC=1793.933, Time=0.73 sec
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/auto_ts/__init__.py</span> in <span class="ni">fit</span><span class="nt">(self, traindata, ts_column, target, sep, cv)</span>
-<span class="g g-Whitespace">    </span><span class="mi">485</span><span class="sd">                     self.score_type, self.verbose, self.conf_int, self.holidays, self.growth,</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span><span class="sd">                     self.seasonality)</span>
-<span class="ne">--&gt; </span><span class="mi">487</span><span class="sd">                 model, forecast_df_folds, rmse_folds, norm_rmse_folds = model_build.fit(</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span><span class="sd">                     ts_df=ts_df[[target]+preds],</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span><span class="sd">                     target_col=target,</span>
+Best model:  ARIMA(0,0,0)(2,0,0)[12]          
+Total fit time: 19.039 seconds
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/auto_ts/models/build_prophet.py</span> in <span class="ni">fit</span><span class="nt">(self, ts_df, target_col, cv, time_col)</span>
-<span class="g g-Whitespace">    </span><span class="mi">257</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">258</span><span class="sd">                 future_period = model.make_future_dataframe(freq=time_int, periods=horizon)</span>
-<span class="ne">--&gt; </span><span class="mi">259</span><span class="sd">                 forecast_df = model.predict(future_period)</span>
-<span class="g g-Whitespace">    </span><span class="mi">260</span><span class="sd">                 ### Now compare the actuals with predictions ######</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span><span class="sd"> </span>
+Best model is a Seasonal SARIMAX(0,0,0)*(2,0,0,12), aic = 1789.458
+Static Forecasts:
+    RMSE = 2423115.84
+    Std Deviation of Actuals = 1696147.66
+    Normalized RMSE = 142.9%
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">predict</span><span class="nt">(self, df)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1202</span><span class="sd">         seasonal_components = self.predict_seasonal_components(df)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1203</span><span class="sd">         if self.uncertainty_samples:</span>
-<span class="ne">-&gt; </span><span class="mi">1204</span><span class="sd">             intervals = self.predict_uncertainty(df)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1205</span><span class="sd">         else:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1206</span><span class="sd">             intervals = None</span>
+Fold Number: 4 --&gt; Train Shape: 62 Test Shape: 5
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">predict_uncertainty</span><span class="nt">(self, df)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1433</span><span class="sd">         Dataframe with uncertainty intervals.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1434</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1435</span>         <span class="n">sim_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_posterior_predictive</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1436</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1437</span>         <span class="n">lower_p</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval_width</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class=" -Color -Color-Bold">    Finding the best parameters using AutoArima:</span>
+Performing stepwise search to minimize aic
+ ARIMA(0,0,0)(0,0,0)[12] intercept   : AIC=1967.311, Time=0.05 sec
+ ARIMA(1,0,0)(1,0,0)[12] intercept   : AIC=1955.729, Time=0.13 sec
+ ARIMA(0,0,1)(0,0,1)[12] intercept   : AIC=1960.726, Time=0.15 sec
+ ARIMA(0,0,0)(0,0,0)[12]             : AIC=2160.194, Time=0.05 sec
+ ARIMA(1,0,0)(0,0,0)[12] intercept   : AIC=1961.363, Time=0.06 sec
+ ARIMA(1,0,0)(2,0,0)[12] intercept   : AIC=1951.648, Time=0.47 sec
+ ARIMA(1,0,0)(3,0,0)[12] intercept   : AIC=1953.535, Time=0.79 sec
+ ARIMA(1,0,0)(2,0,1)[12] intercept   : AIC=1953.515, Time=0.62 sec
+ ARIMA(1,0,0)(1,0,1)[12] intercept   : AIC=1954.045, Time=0.34 sec
+ ARIMA(1,0,0)(3,0,1)[12] intercept   : AIC=1955.470, Time=2.07 sec
+ ARIMA(0,0,0)(2,0,0)[12] intercept   : AIC=1959.615, Time=0.60 sec
+ ARIMA(2,0,0)(2,0,0)[12] intercept   : AIC=1953.988, Time=0.43 sec
+ ARIMA(1,0,1)(2,0,0)[12] intercept   : AIC=1953.951, Time=0.45 sec
+ ARIMA(0,0,1)(2,0,0)[12] intercept   : AIC=1953.387, Time=0.26 sec
+ ARIMA(2,0,1)(2,0,0)[12] intercept   : AIC=1953.502, Time=0.88 sec
+ ARIMA(1,0,0)(2,0,0)[12]             : AIC=1949.638, Time=0.32 sec
+ ARIMA(1,0,0)(1,0,0)[12]             : AIC=1953.722, Time=0.11 sec
+ ARIMA(1,0,0)(3,0,0)[12]             : AIC=1951.464, Time=1.25 sec
+ ARIMA(1,0,0)(2,0,1)[12]             : AIC=1951.444, Time=0.53 sec
+ ARIMA(1,0,0)(1,0,1)[12]             : AIC=1952.017, Time=0.18 sec
+ ARIMA(1,0,0)(3,0,1)[12]             : AIC=1953.441, Time=1.90 sec
+ ARIMA(0,0,0)(2,0,0)[12]             : AIC=1954.738, Time=0.20 sec
+ ARIMA(2,0,0)(2,0,0)[12]             : AIC=1951.931, Time=0.54 sec
+ ARIMA(1,0,1)(2,0,0)[12]             : AIC=1951.903, Time=0.47 sec
+ ARIMA(0,0,1)(2,0,0)[12]             : AIC=1951.372, Time=0.30 sec
+ ARIMA(2,0,1)(2,0,0)[12]             : AIC=1950.001, Time=0.85 sec
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/fbprophet/forecaster.py</span> in <span class="ni">sample_posterior_predictive</span><span class="nt">(self, df)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1396</span>                     <span class="n">sim_values</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sim</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
-<span class="g g-Whitespace">   </span><span class="mi">1397</span>         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">sim_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="ne">-&gt; </span><span class="mi">1398</span>             <span class="n">sim_values</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1399</span>         <span class="k">return</span> <span class="n">sim_values</span>
-<span class="g g-Whitespace">   </span><span class="mi">1400</span> 
+Best model:  ARIMA(1,0,0)(2,0,0)[12]          
+Total fit time: 14.012 seconds
 
-<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">column_stack</span><span class="nt">(*args, **kwargs)</span>
+Best model is a Seasonal SARIMAX(1,0,0)*(2,0,0,12), aic = 1949.638
+Static Forecasts:
+    RMSE = 659137.15
+    Std Deviation of Actuals = 1098094.61
+    Normalized RMSE = 60.0%
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/numpy/lib/shape_base.py</span> in <span class="ni">column_stack</span><span class="nt">(tup)</span>
-<span class="g g-Whitespace">    </span><span class="mi">650</span>     <span class="n">arrays</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tup</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">652</span>         <span class="n">arr</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">653</span>         <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">654</span>             <span class="n">arr</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subok</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+Fold Number: 5 --&gt; Train Shape: 67 Test Shape: 5
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/series.py</span> in <span class="ni">__array__</span><span class="nt">(self, dtype)</span>
-<span class="g g-Whitespace">    </span><span class="mi">766</span>               <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">768</span><span class="s2">         return np.asarray(self.array, dtype)</span>
-<span class="g g-Whitespace">    </span><span class="mi">769</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span><span class="s2">     # ----------------------------------------------------------------------</span>
+<span class=" -Color -Color-Bold">    Finding the best parameters using AutoArima:</span>
+Performing stepwise search to minimize aic
+ ARIMA(0,0,0)(0,0,0)[12] intercept   : AIC=2120.628, Time=0.04 sec
+ ARIMA(1,0,0)(1,0,0)[12] intercept   : AIC=2107.671, Time=0.13 sec
+ ARIMA(0,0,1)(0,0,1)[12] intercept   : AIC=2112.882, Time=0.10 sec
+ ARIMA(0,0,0)(0,0,0)[12]             : AIC=2334.342, Time=0.04 sec
+ ARIMA(1,0,0)(0,0,0)[12] intercept   : AIC=2114.289, Time=0.05 sec
+ ARIMA(1,0,0)(2,0,0)[12] intercept   : AIC=2103.046, Time=0.29 sec
+ ARIMA(1,0,0)(3,0,0)[12] intercept   : AIC=2104.913, Time=0.70 sec
+ ARIMA(1,0,0)(2,0,1)[12] intercept   : AIC=2104.885, Time=0.59 sec
+ ARIMA(1,0,0)(1,0,1)[12] intercept   : AIC=2105.380, Time=0.39 sec
+ ARIMA(1,0,0)(3,0,1)[12] intercept   : AIC=2106.894, Time=0.81 sec
+ ARIMA(0,0,0)(2,0,0)[12] intercept   : AIC=2111.767, Time=0.28 sec
+ ARIMA(2,0,0)(2,0,0)[12] intercept   : AIC=2105.342, Time=0.50 sec
+ ARIMA(1,0,1)(2,0,0)[12] intercept   : AIC=2105.259, Time=0.39 sec
+ ARIMA(0,0,1)(2,0,0)[12] intercept   : AIC=2104.737, Time=0.65 sec
+ ARIMA(2,0,1)(2,0,0)[12] intercept   : AIC=inf, Time=1.09 sec
+ ARIMA(1,0,0)(2,0,0)[12]             : AIC=2101.035, Time=0.33 sec
+ ARIMA(1,0,0)(1,0,0)[12]             : AIC=2105.622, Time=0.23 sec
+ ARIMA(1,0,0)(3,0,0)[12]             : AIC=2102.902, Time=0.69 sec
+ ARIMA(1,0,0)(2,0,1)[12]             : AIC=2102.877, Time=0.61 sec
+ ARIMA(1,0,0)(1,0,1)[12]             : AIC=2103.345, Time=0.39 sec
+ ARIMA(1,0,0)(3,0,1)[12]             : AIC=2104.870, Time=1.54 sec
+ ARIMA(0,0,0)(2,0,0)[12]             : AIC=2106.799, Time=0.31 sec
+ ARIMA(2,0,0)(2,0,0)[12]             : AIC=2103.332, Time=0.37 sec
+ ARIMA(1,0,1)(2,0,0)[12]             : AIC=2103.254, Time=0.50 sec
+ ARIMA(0,0,1)(2,0,0)[12]             : AIC=2102.751, Time=0.33 sec
+ ARIMA(2,0,1)(2,0,0)[12]             : AIC=2101.312, Time=0.70 sec
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/series.py</span> in <span class="ni">array</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">621</span><span class="s2">     @property</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span><span class="s2">     def array(self) -&gt; ExtensionArray:</span>
-<span class="ne">--&gt; </span><span class="mi">623</span><span class="s2">         return self._mgr._block.array_values()</span>
-<span class="g g-Whitespace">    </span><span class="mi">624</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">625</span><span class="s2">     # ops</span>
+Best model:  ARIMA(1,0,0)(2,0,0)[12]          
+Total fit time: 12.151 seconds
 
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/pandas/core/internals/managers.py</span> in <span class="ni">_block</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1588</span><span class="s2">     @property</span>
-<span class="g g-Whitespace">   </span><span class="mi">1589</span><span class="s2">     def _block(self) -&gt; Block:</span>
-<span class="ne">-&gt; </span><span class="mi">1590</span><span class="s2">         return self.blocks[0]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1591</span><span class="s2"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1592</span><span class="s2">     @property</span>
+Best model is a Seasonal SARIMAX(1,0,0)*(2,0,0,12), aic = 2101.035
+Static Forecasts:
+    RMSE = 3234846.35
+    Std Deviation of Actuals = 954024.36
+    Normalized RMSE = 339.1%
 
-<span class="ne">KeyboardInterrupt</span>: 
+SARIMAX RMSE (all folds): 1892606.6157
+SARIMAX Norm RMSE (all folds): 47%
+
+
+-------------------------------------------
+Model Cross Validation Results:
+-------------------------------------------
+    MAE (as % Std Dev of Actuals) = 49.28%
+    MAPE (Mean Absolute Percent Error) = 8%
+    RMSE (Root Mean Squared Error) = 2107322.3801
+    Normalized RMSE (MinMax) = 17%
+    Normalized RMSE (as Std Dev of Actuals)= 63%
+
+<span class=" -Color -Color-Bold">    Finding the best parameters using AutoArima:</span>
+Performing stepwise search to minimize aic
+ ARIMA(0,0,0)(0,0,0)[12] intercept   : AIC=2293.451, Time=0.05 sec
+ ARIMA(1,0,0)(1,0,0)[12] intercept   : AIC=2270.023, Time=0.11 sec
+ ARIMA(0,0,1)(0,0,1)[12] intercept   : AIC=2279.931, Time=0.27 sec
+ ARIMA(0,0,0)(0,0,0)[12]             : AIC=2528.377, Time=0.02 sec
+ ARIMA(1,0,0)(0,0,0)[12] intercept   : AIC=2283.302, Time=0.13 sec
+ ARIMA(1,0,0)(2,0,0)[12] intercept   : AIC=2266.173, Time=0.37 sec
+ ARIMA(1,0,0)(3,0,0)[12] intercept   : AIC=2267.665, Time=1.34 sec
+ ARIMA(1,0,0)(2,0,1)[12] intercept   : AIC=2267.618, Time=0.89 sec
+ ARIMA(1,0,0)(1,0,1)[12] intercept   : AIC=2267.995, Time=0.22 sec
+ ARIMA(1,0,0)(3,0,1)[12] intercept   : AIC=2269.602, Time=2.29 sec
+ ARIMA(0,0,0)(2,0,0)[12] intercept   : AIC=2280.345, Time=0.28 sec
+ ARIMA(2,0,0)(2,0,0)[12] intercept   : AIC=2268.355, Time=0.83 sec
+ ARIMA(1,0,1)(2,0,0)[12] intercept   : AIC=2268.395, Time=0.83 sec
+ ARIMA(0,0,1)(2,0,0)[12] intercept   : AIC=2269.215, Time=0.37 sec
+ ARIMA(2,0,1)(2,0,0)[12] intercept   : AIC=2269.800, Time=0.58 sec
+ ARIMA(1,0,0)(2,0,0)[12]             : AIC=2264.160, Time=0.47 sec
+ ARIMA(1,0,0)(1,0,0)[12]             : AIC=2267.991, Time=0.25 sec
+ ARIMA(1,0,0)(3,0,0)[12]             : AIC=2265.654, Time=1.33 sec
+ ARIMA(1,0,0)(2,0,1)[12]             : AIC=2265.609, Time=0.62 sec
+ ARIMA(1,0,0)(1,0,1)[12]             : AIC=2265.967, Time=0.15 sec
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> ARIMA(1,0,0)(3,0,1)[12]             : AIC=2267.594, Time=1.88 sec
+ ARIMA(0,0,0)(2,0,0)[12]             : AIC=2273.851, Time=0.20 sec
+ ARIMA(2,0,0)(2,0,0)[12]             : AIC=2266.439, Time=0.37 sec
+ ARIMA(1,0,1)(2,0,0)[12]             : AIC=2266.376, Time=0.49 sec
+ ARIMA(0,0,1)(2,0,0)[12]             : AIC=2267.214, Time=0.26 sec
+ ARIMA(2,0,1)(2,0,0)[12]             : AIC=2267.776, Time=0.75 sec
+
+Best model:  ARIMA(1,0,0)(2,0,0)[12]          
+Total fit time: 15.354 seconds
+
+Best model is a Seasonal SARIMAX(1,0,0)*(2,0,0,12), aic = 2264.160
+<span class=" -Color -Color-Bold">Refitting data with previously found best parameters</span>
+    Best aic metric = 1482.5
+                                     SARIMAX Results                                      
+==========================================================================================
+Dep. Variable:                              total   No. Observations:                   72
+Model:             SARIMAX(1, 0, 0)x(2, 0, 0, 12)   Log Likelihood                -729.235
+Date:                            Fri, 11 Jun 2021   AIC                           1482.469
+Time:                                    09:18:14   BIC                           1504.671
+Sample:                                01-01-2014   HQIC                          1490.824
+                                     - 12-01-2019                                         
+Covariance Type:                              opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept  -1.128e+05   1178.505    -95.706      0.000   -1.15e+05    -1.1e+05
+drift       3335.5441   6.58e+04      0.051      0.960   -1.26e+05    1.32e+05
+ibc         8.388e+05   1.12e+05      7.504      0.000     6.2e+05    1.06e+06
+pib           78.1202     39.188      1.993      0.046       1.313     154.928
+consumo        0.6862      0.854      0.803      0.422      -0.988       2.361
+ICST-R     -2.521e+04   1.49e+05     -0.169      0.866   -3.18e+05    2.67e+05
+geracaoGWh    81.5395    365.192      0.223      0.823    -634.223     797.302
+IndGeral   -6.141e+04   1.41e+05     -0.436      0.663   -3.37e+05    2.14e+05
+ar.L1          0.4592      0.331      1.387      0.165      -0.190       1.108
+ar.S.L12       0.3967      0.219      1.813      0.070      -0.032       0.826
+ar.S.L24       0.6247      0.223      2.799      0.005       0.187       1.062
+sigma2      2.745e+12      0.008    3.3e+14      0.000    2.75e+12    2.75e+12
+===================================================================================
+Ljung-Box (L1) (Q):                   0.59   Jarque-Bera (JB):                 2.64
+Prob(Q):                              0.44   Prob(JB):                         0.27
+Heteroskedasticity (H):               1.06   Skew:                             0.53
+Prob(H) (two-sided):                  0.90   Kurtosis:                         3.47
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+[2] Covariance matrix is singular or near-singular, with condition number 3.63e+31. Standard errors may be unstable.
+
+
+==================================================
+Building VAR Model - best suited for small datasets &lt; 1000 rows and &lt; 10 columns
+==================================================
+
+
+
+<span class=" -Color -Color-Bold">Running VAR Model...</span>
+    Shifting 6 predictors by 1 to align prior predictor values with current target values...
+
+Fold Number: 1 --&gt; Train Shape: 46 Test Shape: 5
+
+Additional Variable in VAR model = ibc
+ Iteration 1 completed
+ Iteration 2 completed
+ Iteration 3 completed
+ Iteration 4 completed
+ Iteration 5 completed
+ Iteration 6 completed
+ Iteration 7 completed
+ Iteration 8 completed
+ Iteration 10 completed
+ Iteration 11 completed
+ Iteration 12 completed
+ Iteration 13 completed
+ Iteration 13 completed
+ Iteration 14 completed
+ Iteration 15 completed
+ Iteration 16 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 1493.363
+
+Additional Variable in VAR model = pib
+ Iteration 17 completed
+ Iteration 18 completed
+ Iteration 19 completed
+ Iteration 20 completed
+ Iteration 21 completed
+ Iteration 22 completed
+ Iteration 23 completed
+ Iteration 24 completed
+ Iteration 25 completed
+ Iteration 26 completed
+ Iteration 27 completed
+ Iteration 28 completed
+ Iteration 29 completed
+ Iteration 30 completed
+ Iteration 31 completed
+ Iteration 32 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 2490.263
+
+Additional Variable in VAR model = consumo
+ Iteration 33 completed
+ Iteration 34 completed
+ Iteration 35 completed
+ Iteration 36 completed
+ Iteration 37 completed
+ Iteration 38 completed
+ Iteration 39 completed
+ Iteration 40 completed
+ Iteration 41 completed
+ Iteration 42 completed
+ Iteration 43 completed
+ Iteration 44 completed
+ Iteration 45 completed
+ Iteration 46 completed
+ Iteration 47 completed
+ Iteration 48 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 2846.332
+
+Additional Variable in VAR model = ICST-R
+ Iteration 49 completed
+ Iteration 50 completed
+ Iteration 51 completed
+ Iteration 52 completed
+ Iteration 53 completed
+ Iteration 54 completed
+ Iteration 55 completed
+ Iteration 56 completed
+ Iteration 57 completed
+ Iteration 58 completed
+ Iteration 59 completed
+ Iteration 60 completed
+ Iteration 61 completed
+ Iteration 62 completed
+ Iteration 63 completed
+ Iteration 64 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 1673.518
+
+Additional Variable in VAR model = geracaoGWh
+ Iteration 65 completed
+ Iteration 66 completed
+ Iteration 67 completed
+ Iteration 68 completed
+ Iteration 69 completed
+ Iteration 70 completed
+ Iteration 71 completed
+ Iteration 72 completed
+ Iteration 73 completed
+ Iteration 74 completed
+ Iteration 75 completed
+ Iteration 76 completed
+ Iteration 77 completed
+ Iteration 78 completed
+ Iteration 79 completed
+ Iteration 80 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 2301.264
+
+Additional Variable in VAR model = IndGeral
+ Iteration 81 completed
+ Iteration 82 completed
+ Iteration 83 completed
+ Iteration 84 completed
+ Iteration 85 completed
+ Iteration 86 completed
+ Iteration 87 completed
+ Iteration 88 completed
+ Iteration 89 completed
+ Iteration 90 completed
+ Iteration 91 completed
+ Iteration 92 completed
+ Iteration 93 completed
+ Iteration 94 completed
+ Iteration 95 completed
+ Iteration 96 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 1652.593
+Best variable selected for VAR: ibc
+    Root Mean Squared Error predictions vs actuals = 2,719,480.86
+    Std Deviation of actuals = 1,311,594.35
+    Normalized RMSE = 115%
+
+Fold Number: 2 --&gt; Train Shape: 51 Test Shape: 5
+
+Additional Variable in VAR model = ibc
+ Iteration 1 completed
+ Iteration 2 completed
+ Iteration 3 completed
+ Iteration 4 completed
+ Iteration 5 completed
+ Iteration 6 completed
+ Iteration 7 completed
+ Iteration 8 completed
+ Iteration 10 completed
+ Iteration 11 completed
+ Iteration 12 completed
+ Iteration 13 completed
+ Iteration 13 completed
+ Iteration 14 completed
+ Iteration 15 completed
+ Iteration 16 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 1645.096
+
+Additional Variable in VAR model = pib
+ Iteration 17 completed
+ Iteration 18 completed
+ Iteration 19 completed
+ Iteration 20 completed
+ Iteration 21 completed
+ Iteration 22 completed
+ Iteration 23 completed
+ Iteration 24 completed
+ Iteration 25 completed
+ Iteration 26 completed
+ Iteration 27 completed
+ Iteration 28 completed
+ Iteration 29 completed
+ Iteration 30 completed
+ Iteration 31 completed
+ Iteration 32 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 2766.737
+
+Additional Variable in VAR model = consumo
+ Iteration 33 completed
+ Iteration 34 completed
+ Iteration 35 completed
+ Iteration 36 completed
+ Iteration 37 completed
+ Iteration 38 completed
+ Iteration 39 completed
+ Iteration 40 completed
+ Iteration 41 completed
+ Iteration 42 completed
+ Iteration 43 completed
+ Iteration 44 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Iteration 45 completed
+ Iteration 46 completed
+ Iteration 47 completed
+ Iteration 48 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 3152.578
+
+Additional Variable in VAR model = ICST-R
+ Iteration 49 completed
+ Iteration 50 completed
+ Iteration 51 completed
+ Iteration 52 completed
+ Iteration 53 completed
+ Iteration 54 completed
+ Iteration 55 completed
+ Iteration 56 completed
+ Iteration 57 completed
+ Iteration 58 completed
+ Iteration 59 completed
+ Iteration 60 completed
+ Iteration 61 completed
+ Iteration 62 completed
+ Iteration 63 completed
+ Iteration 64 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 1845.010
+
+Additional Variable in VAR model = geracaoGWh
+ Iteration 65 completed
+ Iteration 66 completed
+ Iteration 67 completed
+ Iteration 68 completed
+ Iteration 69 completed
+ Iteration 70 completed
+ Iteration 71 completed
+ Iteration 72 completed
+ Iteration 73 completed
+ Iteration 74 completed
+ Iteration 75 completed
+ Iteration 76 completed
+ Iteration 77 completed
+ Iteration 78 completed
+ Iteration 79 completed
+ Iteration 80 completed
+    Best AR order p = 1, MA order q = 2, Interim metric = 2544.960
+
+Additional Variable in VAR model = IndGeral
+ Iteration 81 completed
+ Iteration 82 completed
+ Iteration 83 completed
+ Iteration 84 completed
+ Iteration 85 completed
+ Iteration 86 completed
+ Iteration 87 completed
+ Iteration 88 completed
+ Iteration 89 completed
+ Iteration 90 completed
+ Iteration 91 completed
+ Iteration 92 completed
+ Iteration 93 completed
+ Iteration 94 completed
+ Iteration 95 completed
+ Iteration 96 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 1824.410
+Best variable selected for VAR: ibc
+    Root Mean Squared Error predictions vs actuals = 4,689,498.14
+    Std Deviation of actuals = 2,878,829.99
+    Normalized RMSE = 197%
+
+Fold Number: 3 --&gt; Train Shape: 56 Test Shape: 5
+
+Additional Variable in VAR model = ibc
+ Iteration 1 completed
+ Iteration 2 completed
+ Iteration 3 completed
+ Iteration 4 completed
+ Iteration 5 completed
+ Iteration 6 completed
+ Iteration 7 completed
+ Iteration 8 completed
+ Iteration 9 completed
+ Iteration 10 completed
+ Iteration 11 completed
+ Iteration 12 completed
+ Iteration 13 completed
+ Iteration 14 completed
+ Iteration 15 completed
+ Iteration 16 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 1814.393
+
+Additional Variable in VAR model = pib
+ Iteration 17 completed
+ Iteration 18 completed
+ Iteration 19 completed
+ Iteration 20 completed
+ Iteration 21 completed
+ Iteration 22 completed
+ Iteration 23 completed
+ Iteration 24 completed
+ Iteration 25 completed
+ Iteration 26 completed
+ Iteration 27 completed
+ Iteration 28 completed
+ Iteration 29 completed
+ Iteration 30 completed
+ Iteration 31 completed
+ Iteration 32 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 3042.950
+
+Additional Variable in VAR model = consumo
+ Iteration 33 completed
+ Iteration 34 completed
+ Iteration 35 completed
+ Iteration 36 completed
+ Iteration 37 completed
+ Iteration 38 completed
+ Iteration 39 completed
+ Iteration 40 completed
+ Iteration 41 completed
+ Iteration 42 completed
+ Iteration 43 completed
+ Iteration 44 completed
+ Iteration 45 completed
+ Iteration 46 completed
+ Iteration 47 completed
+ Iteration 48 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 3470.621
+
+Additional Variable in VAR model = ICST-R
+ Iteration 49 completed
+ Iteration 50 completed
+ Iteration 51 completed
+ Iteration 52 completed
+ Iteration 53 completed
+ Iteration 54 completed
+ Iteration 55 completed
+ Iteration 56 completed
+ Iteration 57 completed
+ Iteration 59 completed
+ Iteration 60 completed
+ Iteration 60 completed
+ Iteration 61 completed
+ Iteration 62 completed
+ Iteration 63 completed
+ Iteration 64 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 2034.173
+
+Additional Variable in VAR model = geracaoGWh
+ Iteration 65 completed
+ Iteration 66 completed
+ Iteration 67 completed
+ Iteration 68 completed
+ Iteration 69 completed
+ Iteration 70 completed
+ Iteration 71 completed
+ Iteration 72 completed
+ Iteration 73 completed
+ Iteration 74 completed
+ Iteration 75 completed
+ Iteration 76 completed
+ Iteration 77 completed
+ Iteration 78 completed
+ Iteration 79 completed
+ Iteration 80 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 2807.888
+
+Additional Variable in VAR model = IndGeral
+ Iteration 81 completed
+ Iteration 82 completed
+ Iteration 83 completed
+ Iteration 84 completed
+ Iteration 85 completed
+ Iteration 86 completed
+ Iteration 87 completed
+ Iteration 88 completed
+ Iteration 90 completed
+ Iteration 91 completed
+ Iteration 92 completed
+ Iteration 93 completed
+ Iteration 93 completed
+ Iteration 94 completed
+ Iteration 95 completed
+ Iteration 96 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 2027.986
+Best variable selected for VAR: ibc
+    Root Mean Squared Error predictions vs actuals = 2,570,603.32
+    Std Deviation of actuals = 1,696,147.66
+    Normalized RMSE = 92%
+
+Fold Number: 4 --&gt; Train Shape: 61 Test Shape: 5
+
+Additional Variable in VAR model = ibc
+ Iteration 1 completed
+ Iteration 2 completed
+ Iteration 3 completed
+ Iteration 4 completed
+ Iteration 5 completed
+ Iteration 6 completed
+ Iteration 7 completed
+ Iteration 8 completed
+ Iteration 9 completed
+ Iteration 10 completed
+ Iteration 11 completed
+ Iteration 12 completed
+ Iteration 13 completed
+ Iteration 14 completed
+ Iteration 15 completed
+ Iteration 16 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 1972.667
+
+Additional Variable in VAR model = pib
+ Iteration 17 completed
+ Iteration 18 completed
+ Iteration 19 completed
+ Iteration 20 completed
+ Iteration 21 completed
+ Iteration 22 completed
+ Iteration 23 completed
+ Iteration 24 completed
+ Iteration 25 completed
+ Iteration 26 completed
+ Iteration 27 completed
+ Iteration 28 completed
+ Iteration 29 completed
+ Iteration 30 completed
+ Iteration 31 completed
+ Iteration 32 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 3315.935
+
+Additional Variable in VAR model = consumo
+ Iteration 33 completed
+ Iteration 34 completed
+ Iteration 35 completed
+ Iteration 36 completed
+ Iteration 37 completed
+ Iteration 38 completed
+ Iteration 39 completed
+ Iteration 40 completed
+ Iteration 41 completed
+ Iteration 42 completed
+ Iteration 43 completed
+ Iteration 44 completed
+ Iteration 45 completed
+ Iteration 46 completed
+ Iteration 47 completed
+ Iteration 48 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 3775.576
+
+Additional Variable in VAR model = ICST-R
+ Iteration 49 completed
+ Iteration 50 completed
+ Iteration 51 completed
+ Iteration 52 completed
+ Iteration 53 completed
+ Iteration 54 completed
+ Iteration 55 completed
+ Iteration 56 completed
+ Iteration 58 completed
+ Iteration 59 completed
+ Iteration 59 completed
+ Iteration 60 completed
+ Iteration 61 completed
+ Iteration 62 completed
+ Iteration 63 completed
+ Iteration 65 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 2209.655
+
+Additional Variable in VAR model = geracaoGWh
+ Iteration 65 completed
+ Iteration 66 completed
+ Iteration 67 completed
+ Iteration 68 completed
+ Iteration 69 completed
+ Iteration 70 completed
+ Iteration 71 completed
+ Iteration 72 completed
+ Iteration 73 completed
+ Iteration 74 completed
+ Iteration 75 completed
+ Iteration 76 completed
+ Iteration 77 completed
+ Iteration 78 completed
+ Iteration 79 completed
+ Iteration 80 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 3060.239
+
+Additional Variable in VAR model = IndGeral
+ Iteration 81 completed
+ Iteration 82 completed
+ Iteration 83 completed
+ Iteration 84 completed
+ Iteration 85 completed
+ Iteration 86 completed
+ Iteration 87 completed
+ Iteration 88 completed
+ Iteration 89 completed
+ Iteration 90 completed
+ Iteration 91 completed
+ Iteration 92 completed
+ Iteration 93 completed
+ Iteration 94 completed
+ Iteration 95 completed
+ Iteration 96 completed
+    Best AR order p = 1, MA order q = 1, Interim metric = 2224.630
+Best variable selected for VAR: ibc
+    Root Mean Squared Error predictions vs actuals = 2,813,269.30
+    Std Deviation of actuals = 1,098,094.61
+    Normalized RMSE = 88%
+
+Fold Number: 5 --&gt; Train Shape: 66 Test Shape: 5
+
+Additional Variable in VAR model = ibc
+ Iteration 1 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Iteration 2 completed
+ Iteration 3 completed
+ Iteration 4 completed
+ Iteration 5 completed
+ Iteration 6 completed
+ Iteration 7 completed
+ Iteration 8 completed
+ Iteration 9 completed
+ Iteration 10 completed
+ Iteration 11 completed
+ Iteration 12 completed
+ Iteration 13 completed
+ Iteration 14 completed
+ Iteration 15 completed
+ Iteration 16 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 2142.205
+
+Additional Variable in VAR model = pib
+ Iteration 17 completed
+ Iteration 18 completed
+ Iteration 19 completed
+ Iteration 20 completed
+ Iteration 21 completed
+ Iteration 22 completed
+ Iteration 23 completed
+ Iteration 24 completed
+ Iteration 25 completed
+ Iteration 26 completed
+ Iteration 27 completed
+ Iteration 28 completed
+ Iteration 29 completed
+ Iteration 30 completed
+ Iteration 31 completed
+ Iteration 32 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 3579.591
+
+Additional Variable in VAR model = consumo
+ Iteration 33 completed
+ Iteration 34 completed
+ Iteration 35 completed
+ Iteration 36 completed
+ Iteration 37 completed
+ Iteration 38 completed
+ Iteration 39 completed
+ Iteration 40 completed
+ Iteration 41 completed
+ Iteration 42 completed
+ Iteration 43 completed
+ Iteration 44 completed
+ Iteration 45 completed
+ Iteration 46 completed
+ Iteration 47 completed
+ Iteration 48 completed
+    Best AR order p = 2, MA order q = 0, Interim metric = 4087.733
+
+Additional Variable in VAR model = ICST-R
+ Iteration 49 completed
+ Iteration 50 completed
+ Iteration 51 completed
+ Iteration 52 completed
+ Iteration 53 completed
+ Iteration 54 completed
+ Iteration 55 completed
+ Iteration 56 completed
+ Iteration 57 completed
+ Iteration 58 completed
+ Iteration 59 completed
+ Iteration 60 completed
+ Iteration 61 completed
+ Iteration 62 completed
+ Iteration 63 completed
+ Iteration 64 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 2382.513
+
+Additional Variable in VAR model = geracaoGWh
+ Iteration 65 completed
+ Iteration 66 completed
+ Iteration 67 completed
+ Iteration 68 completed
+ Iteration 69 completed
+ Iteration 70 completed
+ Iteration 71 completed
+ Iteration 72 completed
+ Iteration 73 completed
+ Iteration 74 completed
+ Iteration 75 completed
+ Iteration 76 completed
+ Iteration 77 completed
+ Iteration 78 completed
+ Iteration 79 completed
+ Iteration 80 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 3305.119
+
+Additional Variable in VAR model = IndGeral
+ Iteration 81 completed
+ Iteration 82 completed
+ Iteration 83 completed
+ Iteration 84 completed
+ Iteration 85 completed
+ Iteration 86 completed
+ Iteration 87 completed
+ Iteration 88 completed
+ Iteration 90 completed
+ Iteration 90 completed
+ Iteration 91 completed
+ Iteration 92 completed
+ Iteration 93 completed
+ Iteration 94 completed
+ Iteration 95 completed
+ Iteration 96 completed
+    Best AR order p = 3, MA order q = 0, Interim metric = 2398.566
+Best variable selected for VAR: ibc
+    Root Mean Squared Error predictions vs actuals = 5,424,034.93
+    Std Deviation of actuals = 954,024.36
+    Normalized RMSE = 162%
+Refitting data with previously found best parameters
+    Best aic metric = 2302.3
+
+
+==================================================
+Building ML Model
+==================================================
+
+
+
+<span class=" -Color -Color-Bold">Running Machine Learning Models...</span>
+    Shifting 6 predictors by lag=4 to align prior predictor with current target...
+############## C L A S S I F Y I N G  V A R I A B L E S  ####################
+Classifying variables in data set...
+    6 Predictors classified...
+        No variables removed since no ID or low-information variables found in data set
+
+Fitting ML model
+    44 variables used in training ML model = [&#39;ibc(t)&#39;, &#39;pib(t)&#39;, &#39;consumo(t)&#39;, &#39;ICST-R(t)&#39;, &#39;geracaoGWh(t)&#39;, &#39;IndGeral(t)&#39;, &#39;ibc(t-4)&#39;, &#39;pib(t-4)&#39;, &#39;consumo(t-4)&#39;, &#39;ICST-R(t-4)&#39;, &#39;geracaoGWh(t-4)&#39;, &#39;IndGeral(t-4)&#39;, &#39;total(t-4)&#39;, &#39;ibc(t-3)&#39;, &#39;pib(t-3)&#39;, &#39;consumo(t-3)&#39;, &#39;ICST-R(t-3)&#39;, &#39;geracaoGWh(t-3)&#39;, &#39;IndGeral(t-3)&#39;, &#39;total(t-3)&#39;, &#39;ibc(t-2)&#39;, &#39;pib(t-2)&#39;, &#39;consumo(t-2)&#39;, &#39;ICST-R(t-2)&#39;, &#39;geracaoGWh(t-2)&#39;, &#39;IndGeral(t-2)&#39;, &#39;total(t-2)&#39;, &#39;ibc(t-1)&#39;, &#39;pib(t-1)&#39;, &#39;consumo(t-1)&#39;, &#39;ICST-R(t-1)&#39;, &#39;geracaoGWh(t-1)&#39;, &#39;IndGeral(t-1)&#39;, &#39;total(t-1)&#39;, &#39;data_hour&#39;, &#39;data_minute&#39;, &#39;data_dayofweek&#39;, &#39;data_quarter&#39;, &#39;data_month&#39;, &#39;data_year&#39;, &#39;data_dayofyear&#39;, &#39;data_dayofmonth&#39;, &#39;data_weekofyear&#39;, &#39;data_weekend&#39;]
+
+Running Cross Validation using XGBoost model..
+Max. iterations using expanding window cross validation = 5
+
+Fold Number: 1 --&gt; Train Shape: 43 Test Shape: 5
+    Root Mean Squared Error predictions vs actuals = 2,294,529.96
+    Std Deviation of actuals = 1,311,594.35
+    Normalized RMSE = 175%
+Cross Validation window: 1 completed
+
+Fold Number: 2 --&gt; Train Shape: 48 Test Shape: 5
+    Root Mean Squared Error predictions vs actuals = 4,154,628.13
+    Std Deviation of actuals = 2,878,829.99
+    Normalized RMSE = 144%
+Cross Validation window: 2 completed
+
+Fold Number: 3 --&gt; Train Shape: 53 Test Shape: 5
+    Root Mean Squared Error predictions vs actuals = 5,142,181.43
+    Std Deviation of actuals = 1,696,147.66
+    Normalized RMSE = 303%
+Cross Validation window: 3 completed
+
+Fold Number: 4 --&gt; Train Shape: 58 Test Shape: 5
+    Root Mean Squared Error predictions vs actuals = 2,761,184.58
+    Std Deviation of actuals = 1,098,094.61
+    Normalized RMSE = 251%
+Cross Validation window: 4 completed
+
+Fold Number: 5 --&gt; Train Shape: 63 Test Shape: 5
+    Root Mean Squared Error predictions vs actuals = 4,007,304.92
+    Std Deviation of actuals = 954,024.36
+    Normalized RMSE = 420%
+Cross Validation window: 5 completed
+
+-------------------------------------------
+Model Cross Validation Results:
+-------------------------------------------
+    MAE (as % Std Dev of Actuals) = 99.69%
+    MAPE (Mean Absolute Percent Error) = 15%
+    RMSE (Root Mean Squared Error) = 3811835.9230
+    Normalized RMSE (MinMax) = 30%
+    Normalized RMSE (as Std Dev of Actuals)= 113%
+Average CV RMSE of all predictions (micro) = 3811835.92302
+
+Fitting model on entire train set. Please be patient...
+    Time taken to train model (in seconds) = 0
+
+<span class=" -Color -Color-Bold">Best Model is: </span>auto_SARIMAX
+    Best Model (Mean CV) Score: 1892606.62
+
+
+--------------------------------------------------
+Total time taken: 436 seconds.
+--------------------------------------------------
+
+
+Leaderboard with best model on top of list:
+            name          rmse
+1  auto_SARIMAX  1.892607e+06
+0       Prophet  3.196887e+06
+2           VAR  3.643377e+06
+3            ML  3.671966e+06
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;auto_ts.auto_timeseries at 0x1e0af56ba20&gt;
+</pre></div>
+</div>
+<img alt="_images/passo3-AutoTS-2020_12_8.png" src="_images/passo3-AutoTS-2020_12_8.png" />
+<img alt="_images/passo3-AutoTS-2020_12_9.png" src="_images/passo3-AutoTS-2020_12_9.png" />
+<img alt="_images/passo3-AutoTS-2020_12_10.png" src="_images/passo3-AutoTS-2020_12_10.png" />
+<img alt="_images/passo3-AutoTS-2020_12_11.png" src="_images/passo3-AutoTS-2020_12_11.png" />
+<img alt="_images/passo3-AutoTS-2020_12_12.png" src="_images/passo3-AutoTS-2020_12_12.png" />
+<img alt="_images/passo3-AutoTS-2020_12_13.png" src="_images/passo3-AutoTS-2020_12_13.png" />
+<img alt="_images/passo3-AutoTS-2020_12_14.png" src="_images/passo3-AutoTS-2020_12_14.png" />
 </div>
 </div>
 <p>A ferramenta ofereceu um ranking…</p>

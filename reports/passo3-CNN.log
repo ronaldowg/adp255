@@ -1,39 +1,70 @@
 Traceback (most recent call last):
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/client.py", line 622, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/util.py", line 85, in ensure_async
-    result = await obj
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/client.py", line 1112, in execute
+  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.9/site-packages/nbclient/client.py", line 1112, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.9/site-packages/nbclient/util.py", line 74, in wrapped
     return just_run(coro(*args, **kwargs))
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.9/site-packages/nbclient/util.py", line 53, in just_run
     return loop.run_until_complete(coro)
-  File "/usr/local/Cellar/python@3.8/3.8.10/Frameworks/Python.framework/Versions/3.8/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+  File "/usr/local/Cellar/python@3.9/3.9.5/Frameworks/Python.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
     return future.result()
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/client.py", line 553, in async_execute
+  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.9/site-packages/nbclient/client.py", line 553, in async_execute
     await self.async_execute_cell(
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/client.py", line 841, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/client.py", line 646, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.8/site-packages/nbclient/client.py", line 696, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['modelos = {}', 'for i in range (0,1):', '    model = Sequential() ', "    model.add(Conv1D(filters=64, kernel_size=2, activation='relu' , input_shape=(n_steps, n_features)))", '    model.add(MaxPooling1D(pool_size=2)) ']
-...
-['    model.add(Dense(1)) ', "    model.compile(optimizer='adam' , loss='mse' )", '    model.fit(X, y, epochs=1000, verbose=0)', '    score = model.evaluate(X, y)', '    modelos[i] = (model,score)']
--------------------
+  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.9/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/ronaldogamermann/adp255/env_adp255/lib/python3.9/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from numpy import array, hstack, vstack 
+from keras.models import Sequential 
+from keras.layers import Dense
+from keras.layers import Flatten 
+from keras.layers.convolutional import Conv1D 
+from keras.layers.convolutional import MaxPooling1D
+from datetime import timedelta, date
+from dateutil. relativedelta import relativedelta
+
+from sklearn.preprocessing import Normalizer, MinMaxScaler, StandardScaler
+
+import keras
+import pickle
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+[0;32m<ipython-input-1-4e69fccf0567>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;32mfrom[0m [0mnumpy[0m [0;32mimport[0m [0marray[0m[0;34m,[0m [0mhstack[0m[0;34m,[0m [0mvstack[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0;32mfrom[0m [0mkeras[0m[0;34m.[0m[0mmodels[0m [0;32mimport[0m [0mSequential[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0;32mfrom[0m [0mkeras[0m[0;34m.[0m[0mlayers[0m [0;32mimport[0m [0mDense[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mfrom[0m [0mkeras[0m[0;34m.[0m[0mlayers[0m [0;32mimport[0m [0mFlatten[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;32mfrom[0m [0mkeras[0m[0;34m.[0m[0mlayers[0m[0;34m.[0m[0mconvolutional[0m [0;32mimport[0m [0mConv1D[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/adp255/env_adp255/lib/python3.9/site-packages/keras/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     18[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mcallbacks[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     19[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mconstraints[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 20[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0minitializers[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     21[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mmetrics[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     22[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mmodels[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/adp255/env_adp255/lib/python3.9/site-packages/keras/initializers/__init__.py[0m in [0;36m<module>[0;34m[0m
+[1;32m    122[0m [0;31m# from ALL_OBJECTS. We make no guarantees as to whether these objects will[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    123[0m [0;31m# using their correct version.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 124[0;31m [0mpopulate_deserializable_objects[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    125[0m [0mglobals[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0mLOCAL[0m[0;34m.[0m[0mALL_OBJECTS[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    126[0m [0;34m[0m[0m
+
+[0;32m~/adp255/env_adp255/lib/python3.9/site-packages/keras/initializers/__init__.py[0m in [0;36mpopulate_deserializable_objects[0;34m()[0m
+[1;32m     80[0m     [0mv2_objs[0m [0;34m=[0m [0;34m{[0m[0;34m}[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     81[0m     [0mbase_cls[0m [0;34m=[0m [0minitializers_v2[0m[0;34m.[0m[0mInitializer[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 82[0;31m     generic_utils.populate_dict_with_module_objects(
+[0m[1;32m     83[0m         [0mv2_objs[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     84[0m         [0;34m[[0m[0minitializers_v2[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mAttributeError[0m: module 'keras.utils.generic_utils' has no attribute 'populate_dict_with_module_objects'
+AttributeError: module 'keras.utils.generic_utils' has no attribute 'populate_dict_with_module_objects'
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; ADP255 - Trabalho em Grupo</title>
+    <title>Conclusão &#8212; ADP255 - Trabalho em Grupo</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -50,7 +50,7 @@
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -89,11 +89,6 @@
  </li>
 </ul>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="introducao.html">
-   Introdução
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="passo0.html">
    Passo 0: Look at the big picture
@@ -184,11 +179,6 @@
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="conclusao.html">
-   Conclusão
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="referencias.html">
    Referências
   </a>
@@ -226,6 +216,23 @@
             </button>
             
             
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Conclusão.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
             <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -237,7 +244,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ronaldowg/adp255/issues/new?title=Issue%20on%20page%20%2FConclusão.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -266,13 +273,37 @@
         
               <div>
                 
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="conclusao">
+<h1>Conclusão<a class="headerlink" href="#conclusao" title="Permalink to this headline">¶</a></h1>
+<p>A previsão de vendas é uma parte importante da inteligência de negócios moderna. As vendas podem ser consideradas como uma série temporal e diferentes modelos que abordam séries temporais foram desenvolvidos, como ARIMA, SARIMA, SARIMAX, GARCH, investigando sua previsibilidade (PAVLYSHENKO, 2019).</p>
+<p>Assim como neste trabalho, existem diversos estudos buscando prever vendas nos mais variados segmentos. Em sua pesquisa, utilizando dados meteorológicos para prever a venda de bebidas em uma rede de supermercados no Japão, Liu &amp; Ichise (2017) utilizaram diversos algoritmos, como Gradient Boosting Decision Tree (GBDT) e Randon Decision Forest (RandForest) até chegarem à combinação de Long Short-Term Memory (LSTM) network com Stacked Denoising Autoencoder Network para obter um melhor resultado.</p>
+<p>Para Boyapati &amp; Mummidi (2020), os algoritmos Randon Forest Regression e Gradient Boost Regretion apresentaram os melhores resultados na previsão de vendas de itens diversos de vários pontos de vendas, com dados colhidos de diversas fontes.</p>
+<p>A previsão de vendas de interruptores, pulsadores e tomadas, assim como as de quaisquer outros produtos, depende da análise de dados, do treinamento do modelo, da análise dos testes e da implantação do modelo para a obtenção dos resultados esperados.</p>
+<p>Ao longo do presente trabalho, o grupo analisou dados sobre o cenário nacional, testou diferentes formas de tratamento e processamento e diversos algoritmos com o objetivo de encontrar um modelo que nos permitisse alcançar uma previsão de demanda acurada de interruptores, tomadas e pulsadores para o ano de 2020.</p>
+<p>Após as etapas de limpeza, adequação e plotagem das informações, e considerando a característica de série temporal dos dados utilizados, nós testamos 5 modelos de previsão, sendo eles: Seasonal Autoregressive Integrated Moving Average (SARIMA), Convolutional Neural Networks (CNN) e a partir da utilização da ferramenta AutoTS, foram considerados o Autoregressive Integrated Moving Average with Exogenous Variables (SARIMAX), Prophet e Vector Autoregression (VAR).</p>
+<p>Foi possível perceber que os modelos performaram melhor na previsão da demanda de 2019 do que de 2020, o que pode ser explicado pelos acontecimentos atípicos ocorridos em 2020 em decorrência da pandemia do SARS-CoV-2.</p>
+<p>Após as análises e considerações apresentadas no trabalho, o grupo julgou o Auto_SARIMAX como o melhor modelo para a previsão de demanda de tomadas, interruptores e pulsadores de 2020, já que obteve o menor RMSE (1.892610e+06) entre os modelos testados.</p>
 </div>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               

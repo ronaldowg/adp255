@@ -92,6 +92,11 @@
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="introducao.html">
+   Introdução
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="passo0.html">
    Passo 0: Look at the big picture
   </a>
@@ -179,6 +184,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conclusao.html">
+   Conclusão
+  </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="referencias.html">
@@ -1360,119 +1370,7 @@ Critical Values:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/numpy/core/fromnumeric.py</span> in <span class="ni">_wrapit</span><span class="nt">(obj, method, *args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">41</span>         <span class="n">wrap</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">__array_wrap__</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-
-<span class="ne">AttributeError</span>: &#39;tuple&#39; object has no attribute &#39;__array_wrap__&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">34</span><span class="o">-</span><span class="n">fac243a5aed4</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>   <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>   <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">11</span>   <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/_api/deprecation.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">469</span>                 <span class="s2">&quot;parameter will become keyword-only </span><span class="si">%(removal)s</span><span class="s2">.&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">470</span>                 <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">obj_type</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;parameter of </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">()&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">471</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">472</span> 
-<span class="g g-Whitespace">    </span><span class="mi">473</span>     <span class="k">return</span> <span class="n">wrapper</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/pyplot.py</span> in <span class="ni">tight_layout</span><span class="nt">(pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1659</span>         <span class="n">subplots</span> <span class="n">area</span> <span class="p">(</span><span class="n">including</span> <span class="n">labels</span><span class="p">)</span> <span class="n">will</span> <span class="n">fit</span><span class="o">.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1660</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1661</span><span class="sd">     gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1662</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1663</span><span class="sd"> </span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/figure.py</span> in <span class="ni">tight_layout</span><span class="nt">(self, pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3152</span><span class="sd">                else suppress())</span>
-<span class="g g-Whitespace">   </span><span class="mi">3153</span><span class="sd">         with ctx:</span>
-<span class="ne">-&gt; </span><span class="mi">3154</span><span class="sd">             kwargs = get_tight_layout_figure(</span>
-<span class="g g-Whitespace">   </span><span class="mi">3155</span><span class="sd">                 self, self.axes, subplotspec_list, renderer,</span>
-<span class="g g-Whitespace">   </span><span class="mi">3156</span><span class="sd">                 pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/tight_layout.py</span> in <span class="ni">get_tight_layout_figure</span><span class="nt">(fig, axes_list, subplotspec_list, renderer, pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span><span class="sd">                               (colNum2 + 1) * div_col - 1))</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span><span class="sd"> </span>
-<span class="ne">--&gt; </span><span class="mi">312</span><span class="sd">     kwargs = auto_adjust_subplotpars(fig, renderer,</span>
-<span class="g g-Whitespace">    </span><span class="mi">313</span><span class="sd">                                      nrows_ncols=(max_nrows, max_ncols),</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span><span class="sd">                                      num1num2_list=num1num2_list,</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/tight_layout.py</span> in <span class="ni">auto_adjust_subplotpars</span><span class="nt">(fig, renderer, nrows_ncols, num1num2_list, subplot_list, ax_bbox_list, pad, h_pad, w_pad, rect)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="sd">             if ax.get_visible():</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span><span class="sd">                 try:</span>
-<span class="ne">---&gt; </span><span class="mi">84</span><span class="sd">                     bb += [ax.get_tightbbox(renderer, for_layout_only=True)]</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="sd">                 except TypeError:</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span><span class="sd">                     bb += [ax.get_tightbbox(renderer)]</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/axes/_base.py</span> in <span class="ni">get_tightbbox</span><span class="nt">(self, renderer, call_axes_locator, bbox_extra_artists, for_layout_only)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4451</span><span class="sd">                 if bb_yaxis:</span>
-<span class="g g-Whitespace">   </span><span class="mi">4452</span><span class="sd">                     bb.append(bb_yaxis)</span>
-<span class="ne">-&gt; </span><span class="mi">4453</span><span class="sd">         self._update_title_position(renderer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4454</span><span class="sd">         axbbox = self.get_window_extent(renderer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4455</span><span class="sd">         bb.append(axbbox)</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/axes/_base.py</span> in <span class="ni">_update_title_position</span><span class="nt">(self, renderer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2820</span><span class="sd">                 _log.debug(&#39;top of axes not in the figure, so title not moved&#39;)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2821</span><span class="sd">                 return</span>
-<span class="ne">-&gt; </span><span class="mi">2822</span><span class="sd">             if title.get_window_extent(renderer).ymin &lt; top:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2823</span><span class="sd">                 _, y = self.transAxes.inverted().transform((0, top))</span>
-<span class="g g-Whitespace">   </span><span class="mi">2824</span><span class="sd">                 title.set_position((x, y))</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/text.py</span> in <span class="ni">get_window_extent</span><span class="nt">(self, renderer, dpi)</span>
-<span class="g g-Whitespace">    </span><span class="mi">891</span><span class="sd">             with cbook._setattr_cm(self.figure, dpi=dpi):</span>
-<span class="g g-Whitespace">    </span><span class="mi">892</span><span class="sd">                 tx, ty = self._get_xy_display()</span>
-<span class="ne">--&gt; </span><span class="mi">893</span><span class="sd">                 return Bbox.from_bounds(tx, ty, 0, 0)</span>
-<span class="g g-Whitespace">    </span><span class="mi">894</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">895</span><span class="sd">         if renderer is not None:</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/transforms.py</span> in <span class="ni">from_bounds</span><span class="nt">(x0, y0, width, height)</span>
-<span class="g g-Whitespace">    </span><span class="mi">825</span><span class="sd">         *width* and *height* may be negative.</span>
-<span class="g g-Whitespace">    </span><span class="mi">826</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">827</span>         <span class="k">return</span> <span class="n">Bbox</span><span class="o">.</span><span class="n">from_extents</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">y0</span> <span class="o">+</span> <span class="n">height</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">828</span> 
-<span class="g g-Whitespace">    </span><span class="mi">829</span>     <span class="nd">@staticmethod</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/matplotlib/transforms.py</span> in <span class="ni">from_extents</span><span class="nt">(minpos, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">844</span>            <span class="n">scales</span> <span class="n">where</span> <span class="n">negative</span> <span class="n">bounds</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">floating</span> <span class="n">point</span> <span class="n">errors</span><span class="o">.</span>
-<span class="g g-Whitespace">    </span><span class="mi">845</span>         <span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">846</span><span class="sd">         bbox = Bbox(np.reshape(args, (2, 2)))</span>
-<span class="g g-Whitespace">    </span><span class="mi">847</span><span class="sd">         if minpos is not None:</span>
-<span class="g g-Whitespace">    </span><span class="mi">848</span><span class="sd">             bbox._minpos[:] = minpos</span>
-
-<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">reshape</span><span class="nt">(*args, **kwargs)</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/numpy/core/fromnumeric.py</span> in <span class="ni">reshape</span><span class="nt">(a, newshape, order)</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span><span class="sd">            [5, 6]])</span>
-<span class="g g-Whitespace">    </span><span class="mi">298</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">299</span>     <span class="k">return</span> <span class="n">_wrapfunc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;reshape&#39;</span><span class="p">,</span> <span class="n">newshape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">300</span> 
-<span class="g g-Whitespace">    </span><span class="mi">301</span> 
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/numpy/core/fromnumeric.py</span> in <span class="ni">_wrapfunc</span><span class="nt">(obj, method, *args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="n">bound</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="k">if</span> <span class="n">bound</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">55</span>         <span class="k">return</span> <span class="n">_wrapit</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> 
-<span class="g g-Whitespace">     </span><span class="mi">57</span>     <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">~/adp255/env_adp255/lib/python3.8/site-packages/numpy/core/fromnumeric.py</span> in <span class="ni">_wrapit</span><span class="nt">(obj, method, *args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="k">def</span> <span class="nf">_wrapit</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">41</span>         <span class="n">wrap</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">__array_wrap__</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>         <span class="n">wrap</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
+<img alt="_images/passo2_41_0.png" src="_images/passo2_41_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1729,23 +1627,23 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (0.015103169967494163, 0.9021902806608234, 1),
    &#39;lrtest&#39;: (0.015101744485946256, 0.9021948733642501, 1),
    &#39;params_ftest&#39;: (0.014536801093682232, 0.9043467544470174, 77.0, 1.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1212ee310&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1242d3b80&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e504490&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e3394f0&gt;,
    array([[0., 1., 0.]])]),
  2: ({&#39;ssr_ftest&#39;: (0.757985966750342, 0.47221243984939976, 74.0, 2),
    &#39;ssr_chi2test&#39;: (1.6184024695480277, 0.44521354533001367, 2),
    &#39;lrtest&#39;: (1.6020480677830164, 0.44886907154250943, 2),
    &#39;params_ftest&#39;: (0.7579859667503319, 0.47221243984940164, 74.0, 2.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1247ceb80&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760fd0&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e504a30&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e504ee0&gt;,
    array([[0., 0., 1., 0., 0.],
           [0., 0., 0., 1., 0.]])]),
  3: ({&#39;ssr_ftest&#39;: (8.142801174261391, 9.856225115368751e-05, 71.0, 3),
    &#39;ssr_chi2test&#39;: (26.83683767291783, 6.369753766703703e-06, 3),
    &#39;lrtest&#39;: (23.064318259841457, 3.915541323894831e-05, 3),
    &#39;params_ftest&#39;: (8.142801174261384, 9.856225115368849e-05, 71.0, 3.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1247608e0&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760b50&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e504ac0&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e504970&gt;,
    array([[0., 0., 0., 1., 0., 0., 0.],
           [0., 0., 0., 0., 1., 0., 0.],
           [0., 0., 0., 0., 0., 1., 0.]])]),
@@ -1753,8 +1651,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (43.62223915478748, 7.685953002143935e-09, 4),
    &#39;lrtest&#39;: (34.562085227483294, 5.713990478028571e-07, 4),
    &#39;params_ftest&#39;: (9.630883969238795, 3.132351505417038e-06, 68.0, 4.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760550&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760340&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e390790&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e390070&gt;,
    array([[0., 0., 0., 0., 1., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 1., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 1., 0., 0.],
@@ -1763,8 +1661,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (46.4595056103639, 7.321626374852195e-09, 5),
    &#39;lrtest&#39;: (36.25557721385212, 8.443065252228178e-07, 5),
    &#39;params_ftest&#39;: (7.947020696509608, 6.84604206881874e-06, 65.0, 5.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760310&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760190&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e4ccbe0&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e4ccd00&gt;,
    array([[0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.],
@@ -1774,8 +1672,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (46.53081632203676, 2.3208323893363332e-08, 6),
    &#39;lrtest&#39;: (36.20098120239027, 2.5194435909462903e-06, 6),
    &#39;params_ftest&#39;: (6.410912471036162, 2.7163416816780954e-05, 62.0, 6.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760ac0&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760820&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e386d60&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e386e20&gt;,
    array([[0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
@@ -1786,8 +1684,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (44.62058563258371, 1.620216160517908e-07, 7),
    &#39;lrtest&#39;: (34.91800631789329, 1.1588324881795948e-05, 7),
    &#39;params_ftest&#39;: (5.082267475525952, 0.00014719665479880477, 59.0, 7.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760e20&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x124760430&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e522670&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e4f4850&gt;,
    array([[0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.],
@@ -1799,8 +1697,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (49.642160471597, 4.787554998323702e-08, 8),
    &#39;lrtest&#39;: (37.87323290297854, 7.945285396619697e-06, 8),
    &#39;params_ftest&#39;: (4.760207168509319, 0.00017093692529827691, 56.0, 8.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12478b520&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12478b0a0&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e4f4970&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e498bb0&gt;,
    array([[0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.,
            0.],
           [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.,
@@ -1821,8 +1719,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (47.693808889877666, 2.913548445147297e-07, 9),
    &#39;lrtest&#39;: (36.59549546312428, 3.107127684286246e-05, 9),
    &#39;params_ftest&#39;: (3.9008825172276076, 0.0007528572400909259, 53.0, 9.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12478bd90&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12478b970&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12ddd1fa0&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e56f880&gt;,
    array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0.,
            0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.,
@@ -1845,8 +1743,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (43.59524565314786, 3.8908881078288595e-06, 10),
    &#39;lrtest&#39;: (33.9895772351374, 0.00018545045638616116, 10),
    &#39;params_ftest&#39;: (3.070087722052674, 0.004106757027212034, 50.0, 10.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12478b310&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12478b250&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e498280&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e584520&gt;,
    array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 0.,
            0., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
@@ -1871,8 +1769,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (41.204692624762686, 2.2221826831114168e-05, 11),
    &#39;lrtest&#39;: (32.401413711779696, 0.0006574031169319448, 11),
    &#39;params_ftest&#39;: (2.5150916277452593, 0.013993725227959084, 47.0, 11.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12476d7f0&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12476de50&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e584040&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e584be0&gt;,
    array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
            0., 0., 0., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
@@ -1899,8 +1797,8 @@ parameter F test:         F=2.4663  , p=0.0147  , df_denom=44, df_num=12
    &#39;ssr_chi2test&#39;: (46.410367544995104, 5.895048012196348e-06, 12),
    &#39;lrtest&#39;: (35.49275030083254, 0.00039073239301149913, 12),
    &#39;params_ftest&#39;: (2.466251415434524, 0.014664073244602713, 44.0, 12.0)},
-  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1247d8850&gt;,
-   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x1247d8a90&gt;,
+  [&lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e568940&gt;,
+   &lt;statsmodels.regression.linear_model.RegressionResultsWrapper at 0x12e584940&gt;,
    array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0.,
            0., 0., 0., 0., 0., 0., 0., 0., 0.],
           [0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
