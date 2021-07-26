@@ -2,6 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
+- file: introducao
 - file: passo0
 - file: passo1
 - file: passo2
@@ -19,4 +20,5 @@
   sections:
     - file: passo4-Comparacao
     - file: passo4-VariaveisExplicativas
+- file: conclusao
 - file: referencias

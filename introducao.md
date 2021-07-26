@@ -1,5 +1,5 @@
-## Introdução
-
+Introdução
+=======================
 
 A dinâmica dos negócios muitas vezes força os tomadores de decisão a decidirem baseados em modelos mentais subjetivos, até que a pesquisa mostrou que as empresas têm melhor desempenho quando tomam de decisões baseada em dados (BOHANEC; BORŠTNAR; ROBNIK-ŠIKONJA, 2016, p. 416). Para Cheriyan et al. (2018, p. 53), um sistema analítico de decisão inteligente requer a integração da análise de decisão e previsões. A maioria das organizações empresariais depende de uma base de conhecimento e da previsão de demanda das tendências de vendas, cuja precisão proporciona um grande impacto nos negócios.
 

@@ -1,5 +1,5 @@
-## Conclusão
-
+Conclusão
+=======================
 
 A previsão de vendas é uma parte importante da inteligência de negócios moderna. As vendas podem ser consideradas como uma série temporal e diferentes modelos que abordam séries temporais foram desenvolvidos, como ARIMA, SARIMA, SARIMAX, GARCH, investigando sua previsibilidade (PAVLYSHENKO, 2019).
 
