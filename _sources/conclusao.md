@@ -16,3 +16,7 @@ Após as etapas de limpeza, adequação e plotagem das informações, e consider
 Foi possível perceber que os modelos performaram melhor na previsão da demanda de 2019 do que de 2020, o que pode ser explicado pelos acontecimentos atípicos ocorridos em 2020 em decorrência da pandemia do SARS-CoV-2.
 
 Após as análises e considerações apresentadas no trabalho, o grupo julgou o Auto_SARIMAX como o melhor modelo para a previsão de demanda de tomadas, interruptores e pulsadores de 2020, já que obteve o menor RMSE (1.892610e+06) entre os modelos testados.
+
+ Abaixo deixamos o link para o nosso vídeo de apresentação e explicação do trabalho discutido neste repositório.
+
+ ## [Vídeo de Apresentação](https://clipchamp.com/watch/eptOf4ZPlfd)
